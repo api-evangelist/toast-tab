@@ -1,0 +1,8 @@
+{
+  "website": "string",
+  "facebook": "string",
+  "twitter": "string",
+  "orderOnline": "string",
+  "purchaseGiftCard": "string",
+  "checkGiftCard": "string"
+}

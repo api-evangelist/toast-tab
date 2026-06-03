@@ -1,0 +1,11 @@
+{
+  "token": {
+    "tokenType": "Bearer",
+    "scope": "string",
+    "expiresIn": 86400,
+    "accessToken": "string",
+    "idToken": "90a86f12",
+    "refreshToken": "string"
+  },
+  "status": "SUCCESS"
+}

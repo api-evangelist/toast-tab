@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/orders-applied-discount-trigger-structure.json",
+  "name": "AppliedDiscountTrigger",
+  "description": "The Selection that triggered the application of this discount",
+  "type": "object",
+  "properties": {
+    "selection": {
+      "$ref": "#/$defs/ExternalReference"
+    },
+    "quantity": {
+      "type": "double",
+      "description": "The amount of the selection used to trigger the applied discount.",
+      "example": 1.0
+    }
+  },
+  "definitions": {
+    "ExternalReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast platform entity by Toast GUID or a partner's identifier.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "externalId": {
+              "description": "External identifier string that is prefixed by the naming authority. You can use the orders API to set an `externalId` for an order and then GET the order with that `externalId`.",
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "name": "ExternalReference"
+    }
+  }
+}

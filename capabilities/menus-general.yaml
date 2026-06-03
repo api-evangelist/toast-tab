@@ -1,0 +1,120 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Menus API — general
+  description: 'Menus API — general. 2 operations. Lead operation: Toast Get Menus. Self-contained Naftiko capability covering one Toast business surface.'
+  tags:
+  - Toast
+  - Menus
+  - general
+  created: '2026-06-03'
+  modified: '2026-06-03'
+binds:
+- namespace: env
+  keys:
+    TOAST_API_TOKEN: TOAST_API_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: menus-general
+    baseUri: https://ws-api.toasttab.com/menus/v2
+    description: Menus API — general business capability. Self-contained, no shared references.
+    resources:
+    - name: menus
+      path: /menus
+      operations:
+      - name: menusGet
+        method: GET
+        description: Toast Get Menus
+        inputParameters:
+        - name: Toast-Restaurant-External-ID
+          in: header
+          type: string
+          required: true
+          description: The identifier for the restaurant.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: metadata
+      path: /metadata
+      operations:
+      - name: metadataGet
+        method: GET
+        description: Toast Get Menu Last Modified Timestamp
+        inputParameters:
+        - name: Toast-Restaurant-External-ID
+          in: header
+          type: string
+          required: true
+          description: The identifier for the restaurant.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TOAST_API_TOKEN}}'
+  exposes:
+  - type: rest
+    namespace: menus-general-rest
+    port: 8080
+    description: REST adapter for Menus API — general. One resource per consumed operation.
+    resources:
+    - path: /v1/menus
+      name: menus
+      description: REST surface for menusGet.
+      operations:
+      - method: GET
+        name: menusGet
+        description: Toast Get Menus
+        call: menus-general.menusGet
+        with:
+          Toast-Restaurant-External-ID: rest.Toast-Restaurant-External-ID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metadata
+      name: metadata
+      description: REST surface for metadataGet.
+      operations:
+      - method: GET
+        name: metadataGet
+        description: Toast Get Menu Last Modified Timestamp
+        call: menus-general.metadataGet
+        with:
+          Toast-Restaurant-External-ID: rest.Toast-Restaurant-External-ID
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: menus-general-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Menus API — general. One tool per consumed operation.
+    tools:
+    - name: get-menus
+      description: Toast Get Menus
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: menus-general.menusGet
+      with:
+        Toast-Restaurant-External-ID: tools.Toast-Restaurant-External-ID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-menu-last-modified-timestamp
+      description: Toast Get Menu Last Modified Timestamp
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: menus-general.metadataGet
+      with:
+        Toast-Restaurant-External-ID: tools.Toast-Restaurant-External-ID
+      outputParameters:
+      - type: object
+        mapping: $.

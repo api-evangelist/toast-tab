@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/orders-applied-service-charge-structure.json",
+  "name": "AppliedServiceCharge",
+  "description": "A service charge that is added to a check. A service charge can represent an upcharge such as a gratuity or a delivery fee.\n\nWhether the upcharge is taxable is defined in the restaurant-configured `serviceCharge`.\n\nThe fields on the `AppliedServiceCharge` are calculated based on the referenced `ServiceCharge` configuration.\n",
+  "type": "object",
+  "definitions": {
+    "ExternalReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast platform entity by Toast GUID or a partner's identifier.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "externalId": {
+              "description": "External identifier string that is prefixed by the naming authority. You can use the orders API to set an `externalId` for an order and then GET the order with that `externalId`.",
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "name": "ExternalReference"
+    },
+    "AppliedTaxRate": {
+      "type": "object",
+      "description": "A tax rate that is applied to an item or service charge.",
+      "required": [
+        "taxRate"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "entityType": {
+              "description": "The type of object this is.",
+              "type": "string"
+            },
+            "taxRate": {
+              "type": "object",
+              "$ref": "#/$defs/ToastReference"
+            },
+            "name": {
+              "type": "string",
+              "description": "The name of the tax rate."
+            },
+            "rate": {
+              "type": "number",
+              "format": "double",
+              "description": "The tax rate, which can be a fixed amount, a percentage, or null."
+            },
+            "taxAmount": {
+              "type": "number",
+              "format": "double",
+              "description": "The tax amount that was actually applied."
+            },
+            "type": {
+              "type": "string",
+              "description": "The type of the tax rate. Default is `PERCENT`.\n\nThe value `EXTERNAL` indicates that the tax is for a marketplace\nfacilitator order, and that the marketplace facilitator\norganization calculated the tax amount.\n",
+              "enum": [
+                "PERCENT",
+                "FIXED",
+                "NONE",
+                "TABLE",
+                "EXTERNAL"
+              ]
+            },
+            "facilitatorCollectAndRemitTax": {
+              "type": "boolean",
+              "description": "Indicates whether the marketplace facilitator that\nreceived a guest order remitted the tax amount on behalf\nof the Toast platform restaurant.\n\nYou can use this information to identify tax amounts that\nhave already been paid by an ordering service provider\nand do not need to be paid again.\n\n* `true` - The marketplace facilitator paid the tax\namount on behalf of the Toast platform restaurant\nlocation.\n\n* `false` - The marketplace facilitator has not paid the\ntax amount. The Toast platform restaurant location may be\nrequired to pay the tax amount.\n\n**Note**: Toast API response data is not guidance or\nadvice for tax compliance.\n"
+            },
+            "displayName": {
+              "type": "string",
+              "description": "The name of the tax rate as it appears on guest receipts."
+            },
+            "jurisdiction": {
+              "type": "string",
+              "description": "The state or province of the tax rate for reporting purposes."
+            },
+            "jurisdictionType": {
+              "type": "string",
+              "description": "The jurisdiction type (ex. STATE, COUNTY, etc.) of the tax rate for reporting purposes."
+            }
+          }
+        }
+      ],
+      "name": "AppliedTaxRate"
+    },
+    "RefundDetails": {
+      "type": "object",
+      "description": "Information about refunded currency amounts for an item\nselection, modifier option, or service charge. The refund\ninformation includes separate values for the pre-tax value\nbeing refunded and the tax amount being refunded.\n",
+      "properties": {
+        "refundAmount": {
+          "description": "The value of the menu item or service charge (excluding taxes) being\nrefunded. Includes the value of any nested modifier options that\nincreased the price of the item or modifier option (an upcharge for\nthe modifier option).\n",
+          "type": "double",
+          "example": 1.0
+        },
+        "taxRefundAmount": {
+          "description": "The tax amount being refunded.\n",
+          "type": "double",
+          "example": 1.0
+        },
+        "refundTransaction": {
+          "description": "An identifier for the refund transaction. You can use the identifier to associate items and service charges that were refunded in the same transaction.\n",
+          "type": "object",
+          "$ref": "#/$defs/RefundTransaction"
+        }
+      },
+      "name": "RefundDetails"
+    },
+    "RefundTransaction": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "description": "An identifier for the refund transaction. You can use the identifier to associate items and service charges that were refunded in the same transaction.\n"
+        }
+      ],
+      "name": "RefundTransaction"
+    }
+  }
+}

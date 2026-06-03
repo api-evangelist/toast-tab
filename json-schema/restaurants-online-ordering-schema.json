@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/restaurants-online-ordering-schema.json",
+  "title": "OnlineOrdering",
+  "description": "Information about the web-based ordering configuration for the\nrestaurant.\n",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "description": "Indicates whether the restaurant has enabled the Toast online \nordering module. This value is `true` if the module has ever \nbeen enabled. The value _does not_ indicate that a restaurant \nis accepting online orders or that the restaurant is using \nthe Toast online ordering feature.\n",
+      "example": true
+    },
+    "scheduling": {
+      "type": "boolean",
+      "description": "Indicates whether the online ordering function for the\nrestaurant allows guests to place orders that will be\nfulfilled in the future. If this value is `false`, orders\nwill be fulfilled as soon as possible.\n",
+      "example": true
+    },
+    "specialRequests": {
+      "type": "boolean",
+      "description": "Indicates whether the online ordering function for the\nrestaurant allows guests to include written notes with\nadditional instructions for their orders.\n",
+      "example": true
+    },
+    "specialRequestsMessage": {
+      "type": "string",
+      "description": "A written message that is shown to guests when they\ninclude additional instructions with an order. For example,\nthe message might be \"no substitutions.\"\n",
+      "example": "string"
+    },
+    "paymentOptions": {
+      "$ref": "#/$defs/PaymentOptions",
+      "description": "Information about the forms of payment that the restaurant\naccepts for online orders.\n"
+    }
+  },
+  "$defs": {
+    "PaymentOptions": {
+      "type": "object",
+      "description": "Information about the forms of payment that the restaurant will\naccept for orders.\n",
+      "properties": {
+        "delivery": {
+          "$ref": "#/$defs/DeliveryPaymentOptions"
+        },
+        "takeout": {
+          "$ref": "#/$defs/TakeoutPaymentOptions"
+        },
+        "ccTip": {
+          "type": "boolean",
+          "description": "enables credit card tips",
+          "example": true
+        }
+      }
+    },
+    "DeliveryPaymentOptions": {
+      "type": "object",
+      "description": "Information about the forms of payment that the restaurant will\naccept for delivery orders.\n",
+      "properties": {
+        "cash": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts cash payment for\ndelivery orders that are placed online.\n",
+          "example": true
+        },
+        "ccSameDay": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for delivery orders that are delivered on the same\nday.\n",
+          "example": true
+        },
+        "ccFuture": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for delivery orders that are to be delivered on a day\nafter the guest places the order.\n",
+          "example": true
+        }
+      }
+    },
+    "TakeoutPaymentOptions": {
+      "type": "object",
+      "description": "Information about the forms of payment that the restaurant will\naccept for orders that a guest picks up in person.\n",
+      "properties": {
+        "cash": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts cash payment for\ntakeout orders that are placed online.\n",
+          "example": true
+        },
+        "ccSameDay": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for takeout orders that the guest will pick up on\nthe same day.\n",
+          "example": true
+        },
+        "ccFuture": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for takeout orders that the guest will pick up on\na day after the guest places the order.\n",
+          "example": true
+        },
+        "ccInStore": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts credit card payment\nat the time the guest picks up a takeout order.\n",
+          "example": true
+        }
+      }
+    }
+  }
+}

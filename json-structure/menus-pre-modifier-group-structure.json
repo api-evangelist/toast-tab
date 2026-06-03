@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/menus-pre-modifier-group-structure.json",
+  "name": "PreModifierGroup",
+  "description": "Information about a pre-modifier group configured for this restaurant, including an array of pre-modifiers contained in the group.\n",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "A descriptive name for this pre-modifier group, for example, \"Sandwich Pre-mods\".\n",
+      "example": "Example Name"
+    },
+    "guid": {
+      "description": "A unique identifier for this pre-modifier group, assigned by the Toast POS system.\n",
+      "type": "string",
+      "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+    },
+    "multiLocationId": {
+      "$ref": "#/$defs/MultiLocationId"
+    },
+    "preModifiers": {
+      "description": "An array of `PreModifier` objects that are contained in this pre-modifier group. Pre-modifiers alter the display of modifier options on receipts and tickets to satisfy guest requests such as EXTRA or ON THE SIDE for modifier options. Pre-modifiers can also be configured to modify the cost of the modifier options they are applied to, for example, by charging more for an EXTRA serving of a modifier option.\n",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PreModifier"
+      }
+    }
+  },
+  "definitions": {
+    "MultiLocationId": {
+      "type": "string",
+      "description": "An identifier that is used to identify and consolidate menu entities that are versions of each other.\n\n`multiLocationId` replaces `masterId`. `multiLocationId` and `masterId` always have the same value.\n\nMenu entities can be versioned. Those versions can be assigned to specific restaurant locations, or groups of locations, in a management group. For example, you could have two versions of a burger, one for a Boston location and another for a New York City location. Versioned menu entities share the majority of, but not all of, their data. For example, the Boston version is called the Minuteman Burger and has pickles, while the New York City version is called the Empire Burger and does not.\n\nYou use the `multiLocationId` to identify menu entities that are versions of each other. To continue the example above, the Minuteman Burger in the JSON returned for the Boston location has the same `multilocationId` as the Empire Burger in the JSON returned for the New York City location. These matching `multlocationId` values indicate that the two items are related versions of the same item. In Toast reports, this allows a restaurant to track sales of the burger across both locations.\n\nThe Toast POS system ensures that once a `multilocationId` value is assigned to a set of versions within a management group, that `multiLocationId` is not used for any other version sets in the same management group. It does not guarantee, however, that the `multiLocationId` is not used by another management group to identify a set of versions within it.\n\nSee <a href=\"https://doc.toasttab.com/doc/devguide/portalToastIdentifiers.html\">Toast identifiers</a> in the Toast Developer Guide for more information on the `multiLocationId` and its relationship to other Toast identifiers.\n\nSee <a href=\"https://doc.toasttab.com/doc/platformguide/sharingMenusAndOtherInformationAmongRestaurants.html\">Enterprise module overview</a> in the Toast Platform Guide for more information on the enterprise module and versioning.\n",
+      "name": "MultiLocationId"
+    },
+    "PreModifier": {
+      "type": "object",
+      "description": "Information about a pre-modifier configured for this restaurant.\n",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "A descriptive name for this pre-modifier, for example, \"NO\" or \"EXTRA\".\n",
+          "example": "Example Name"
+        },
+        "guid": {
+          "description": "A unique identifier for this pre-modifier group, assigned by the Toast POS system.\n",
+          "type": "string",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "multiLocationId": {
+          "$ref": "#/$defs/MultiLocationId"
+        },
+        "fixedPrice": {
+          "description": "An optional fixed price for this pre-modifier. The fixed price is added to the cost of the modifier option that the pre-modifier is applied to.\n\nA PreModifier object has two optional values, `fixedPrice` and `multiplicationFactor`, that both alter the price of a modifier option when the pre-modifier is applied to it. However, these values cannot be used at the same time. If you specify a `fixedPrice` value for a premodifier, then `multiplicationFactor` is null. If you specify a `multiplicationFactor` for a pre-modifier, then `fixedPrice` is null. If you choose not to assign either a fixed price or a multiplication factor to a pre-modifier, then the `fixedPrice` value is 0 and the `multiplicationFactor` is null.\n",
+          "type": "double",
+          "x-nullable": true,
+          "example": 1.0
+        },
+        "multiplicationFactor": {
+          "description": "An optional number that specifies how much the cost of a modifier option is multiplied by when this pre-modifier is applied to it. For example, an EXTRA pre-modifier option could specify a `multiplicationFactor` of 1.5 to indicate that adding extra cheese to a menu item costs one and a half times the regular price of the cheese modifier option.\n\nA PreModifier object has two optional values, `fixedPrice` and `multiplicationFactor`, that both alter the price of a modifier option when the pre-modifier is applied to it. However, these values cannot be used at the same time. If you specify a `fixedPrice` value for a premodifier, then `multiplicationFactor` is null. If you specify a `multiplicationFactor` for a premodifier, then `fixedPrice` is null. If you choose not to assign either a fixed price or a multiplication factor to a pre-modifier, then the `fixedPrice` value is 0 and the `multiplicationFactor` is null.\n",
+          "type": "double",
+          "x-nullable": true,
+          "example": 1.0
+        },
+        "displayMode": {
+          "description": "A string that indicates how the pre-modifier is displayed on tickets and receipts:\n  * PREFIX: The pre-modifier name is placed before the modifier option name, for example, \"EXTRA Cheese\".\n  * SUFFIX: The pre-modifier name is placed after the modifier option name, for example, \"Cheese EXTRA\".\n",
+          "type": "string",
+          "enum": [
+            "PREFIX",
+            "SUFFIX"
+          ],
+          "example": "PREFIX"
+        },
+        "posName": {
+          "$ref": "#/$defs/PosName"
+        },
+        "posButtonColorLight": {
+          "$ref": "#/$defs/PosButtonColorLight"
+        },
+        "posButtonColorDark": {
+          "$ref": "#/$defs/PosButtonColorDark"
+        },
+        "chargeAsExtra": {
+          "type": "boolean",
+          "x-nullable": true,
+          "description": "When true, selecting this pre-modifier adds an additional portion of the modifier to the menu item and adds the price of the additional portion to the menu item according to the rules listed below.\n\nIf the modifier group that the modifier belongs to:\n* Uses the **No charge** option, the Toast platform uses the modifier's <a href=\"https://doc.toasttab.com/doc/platformguide/adminPricingModifierOptions.html#adminBasingModifierOptionsOnExistingMenuItems\">override price</a> or, if no override price exists, the <a href=\"https://doc.toasttab.com/doc/platformguide/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference\">item reference</a> price as the price of the additional portion.\n* Uses the **Individual** option where each modifier has its own price, the Toast platform uses the modifier's override price or, if no override price exists, the item reference price as the price of the additional portion.\n* Uses the **Group** option where all modifiers in the group share a price, the Toast platform uses the group price as the price of the additional portion.\n\nAdditionally, if the modifier group that the modifier belongs to uses:\n* <a href=\"https://doc.toasttab.com/doc/platformguide/adminSizePrice.html#adminSizePricingForModifierGroups\">Size</a> pricing, the Toast platform uses the size price that matches the size of the menu item when determining the price of the additional portion.\n* <a href=\"https://doc.toasttab.com/doc/platformguide/adminSequencePrice.html\">Sequence</a> pricing, the Toast platform treats the additional portion as the next modifier in the sequence and prices it using the sequence pricing rules that have been specified.\n* <a href=\"https://doc.toasttab.com/doc/platformguide/adminSizeSequencePrice.html\">Size/sequence</a> pricing, the Toast platform matches the size of the additional portion to the size of the menu item and then treats it as the next modifier in the sequence when determining the price of the additional portion.\n\nThe `chargeAsExtra` value is `null` if it has not been set.\n",
+          "example": true
+        },
+        "plu": {
+          "type": "string",
+          "description": "The price lookup (PLU) code for this pre-modifier. The PLU code can contain both numbers and letters. This value contains an empty string if a PLU code has not been defined.\n",
+          "example": "string"
+        }
+      },
+      "name": "PreModifier"
+    },
+    "PosName": {
+      "type": "string",
+      "description": "The button label name that appears for this menu entity in the Toast POS app. `posName` contains an empty string if a `posName` has not been defined for the menu entity and the `name` value is used for the button label instead.\n",
+      "name": "PosName"
+    },
+    "PosButtonColorLight": {
+      "type": "string",
+      "description": "The color of the menu entity's button on the Toast POS app, when the app is running in light mode.\n     \nWhen an employee configures a POS button's color, they select a color pairing that consists of two colors, one for light mode and one for dark mode. `posButtonColorLight` contains the HEX code for the light mode color.\n\n`posButtonColorLight` defaults to `#f7f7f7`, the HEX code when the `WHITE` color pairing is chosen.\n\nThe following list shows the possible HEX codes for `posButtonColorLight`, with the associated color pairing in parentheses.\n\n* #f7f7f7 (WHITE)\n* #ffe6e9 (TERRACOTTA_1)\n* #efa49f (TERRACOTTA_2)\n* #f07166 (TERRACOTTA_3)\n* #e45a4e (TERRACOTTA_4)\n* #fbd9b6 (ORANGE_1)\n* #f7be6e (ORANGE_2)\n* #f98c1f (ORANGE_3)\n* #e56f1a (ORANGE_4)    \n* #fbf5b6 (YELLOW_1)\n* #fed850 (YELLOW_2)\n* #e9b10c (YELLOW_3)\n* #c78605 (YELLOW_4)      \n* #e8f7d4 (GRASS_1)\n* #afe26c (GRASS_2)\n* #71b314 (GRASS_3)\n* #32a206 (GRASS_4)      \n* #e3f0fb (SKY_1)\n* #9fc5f0 (SKY_2)\n* #77a5e4 (SKY_3)\n* #558edd (SKY_4)      \n* #f1e3fd (LAVENDER_1)\n* #dab2f7 (LAVENDER_2)\n* #b26ee2 (LAVENDER_3)\n* #a270db (LAVENDER_4)      \n* #d0d0d0 (GRAY_1)\n* #c3c3c3 (GRAY_2)\n* #b1b1b1 (GRAY_3)\n* #989898 (GRAY_4)\n",
+      "name": "PosButtonColorLight"
+    },
+    "PosButtonColorDark": {
+      "type": "string",
+      "description": "The color of the menu entity's button on the Toast POS app, when the app is running in dark mode.\n     \nWhen an employee configures a POS button's color, they select a color pairing that consists of two colors, one for light mode and one for dark mode. `posButtonColorDark` contains the HEX code for the dark mode color.\n\n`posButtonColorDark` defaults to `#1a1c23`, the HEX code when the `WHITE` color pairing is chosen.\n\nThe following list shows the possible HEX codes for `posButtonColorDark`, with the associated color pairing in parentheses.\n\n* #1a1c23 (WHITE)\n* #7e635d (TERRACOTTA_1)\n* #74504D (TERRACOTTA_2)\n* #722e25 (TERRACOTTA_3)\n* #561408 (TERRACOTTA_4)\n* #8f5f3d (ORANGE_1)\n* #7e4116 (ORANGE_2)\n* #803500 (ORANGE_3)\n* #682d03 (ORANGE_4)    \n* #7e6b44 (YELLOW_1)\n* #7b5f27 (YELLOW_2)\n* #7c5000 (YELLOW_3)\n* #633d09 (YELLOW_4)      \n* #657552 (GRASS_1)\n* #556e34 (GRASS_2)\n* #37570a (GRASS_3)\n* #113a00 (GRASS_4)      \n* #637486 (SKY_1)\n* #4d6074 (SKY_2)\n* #2a456b (SKY_3)\n* #213554 (SKY_4)      \n* #78668a (LAVENDER_1)\n* #5e4776 (LAVENDER_2)\n* #402960 (LAVENDER_3)\n* #25174f (LAVENDER_4)      \n* #6c6c6c (GRAY_1)\n* #5f5f5f (GRAY_2)\n* #474747 (GRAY_3)\n* #404040 (GRAY_4)\n",
+      "name": "PosButtonColorDark"
+    }
+  }
+}

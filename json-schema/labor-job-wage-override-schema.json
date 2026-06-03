@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/labor-job-wage-override-schema.json",
+  "title": "JobWageOverride",
+  "description": "The overriding job wage, for an employee that has a wage that \ndiffers from the job's default wage.\n",
+  "type": "object",
+  "properties": {
+    "wage": {
+      "type": "number",
+      "format": "double",
+      "description": "Required currency value of the employee's overriding job wage.\n",
+      "example": 1.0
+    },
+    "jobReference": {
+      "type": "object",
+      "description": "Required external reference to the job to which this wage \napplies overridden\n",
+      "$ref": "#/$defs/ExternalReference"
+    }
+  },
+  "required": [
+    "wage",
+    "jobReference"
+  ],
+  "$defs": {
+    "ExternalReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast \nplatform entity by Toast GUID or an external identifier.\n",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "externalId": {
+              "description": "External identifier string that is prefixed by the naming \nauthority. You can, for example, use the labor API to \n`POST` an `externalId` for an employee and then `GET` the \nemployee with that `externalId`.\n",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "days": [
+    "SUNDAY"
+  ],
+  "timeRanges": [
+    {
+      "start": "string",
+      "end": "string"
+    }
+  ]
+}

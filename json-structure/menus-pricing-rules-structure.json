@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/menus-pricing-rules-structure.json",
+  "name": "PricingRules",
+  "description": "The PricingRules object is a multi-use object that provides pricing rules for:\n  * A menu item or modifier option <a href=\"https://doc.toasttab.com/doc/platformguide/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference\">item reference</a> that uses the Time Specific Price or Size Price pricing strategy.\n  * A modifier group that uses the Size Price, Sequence Price, or Size/Sequence Price pricing strategy.\n",
+  "type": "object",
+  "properties": {
+    "timeSpecificPricingRules": {
+      "description": "An array of `TimeSpecificPrice` objects that define the time-specific prices for a menu item or modifier option <a href=\"https://doc.toasttab.com/doc/platformguide/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference\">item reference</a> that uses the Time Specific Price pricing strategy. If the menu item or modifier option item reference does not use time-specific prices, this array is empty.\n",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TimeSpecificPrice"
+      }
+    },
+    "sizeSpecificPricingGuid": {
+      "description": "The GUID of a Size modifier group that defines sizes and prices for a menu item or a modifier option <a href=\"https://doc.toasttab.com/doc/platformguide/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference\">item reference</a> that uses the Size Price pricing strategy.\n\nIf the menu item or modifier option item reference does not use the Size Price pricing strategy, then `sizeSpecificPricingGuid` is null.\n\nThe Toast POS system automatically creates a Size modifier group when you choose the Size Price pricing strategy for a menu item or modifier option item reference and stores the sizes and prices you specify in it. You use the `sizeSpecificPricingGuid` value to locate the correct Size modifier group to use when pricing a menu item or modifier option item reference that uses size pricing. In the JSON fragment below, you can see that the Cheese Pizza menu item uses the SIZE_PRICE pricing strategy and the Size modifier group where the sizes and prices for Cheese Pizza are defined has a GUID that ends in `31b0`.\n\n```\n{\n  \"restaurantGuid\": \"2071fb81-988b-4d75-b8dc-c5c17cff9706\",\n  ...\n  \"menus\": [\n    {\n      \"name\": \"Dinner\",\n      \"guid\": \"ddd681de-3c12-4d45-b8b1-a5b2ea898210\",\n      ...\n      \"menuGroups\": [\n        {\n          \"name\": \"Pizza\",\n          \"guid\": \"dc868006-919a-4950-a4cc-3a03f9770fd7\",\n          ...\n          \"menuItems\": [\n            {\n              \"name\": \"Cheese Pizza\",\n              \"guid\": \"95c5d500-8d92-46f2-bec4-fb2a42a46621\",\n              ...\n              \"price\": null,\n              \"pricingStrategy\": \"SIZE_PRICE\",\n              \"pricingRules\": {\n                \"timeSpecificPricingRules\": [],\n                \"sizeSpecificPricingGuid\": \"23c02762-9d6a-4d3f-a298-71c989bf31b0\",\n                \"sizeSequencePricingRules\": []\n              },\n              ...\n              \"modifierGroupReferences\": [\n                2,\n                6,\n                ...\n              ],\n              ...\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"modifierGroupReferences\": {\n    ...\n    \"2\": {\n      \"referenceId\": 2,\n      \"name\": \"Size\",\n      \"guid\": \"23c02762-9d6a-4d3f-a298-71c989bf31b0\",\n      ...\n      \"pricingStrategy\": \"NONE\",\n      \"pricingRules\": null,\n      ...\n      \"modifierOptionReferences\": [\n        12,\n        13\n      ],\n      ...\n    },\n    ...\n  },\n  \"modifierOptionReferences\": {\n    ...\n    \"12\": {\n      \"referenceId\": 12,\n      \"name\": \"Small\",\n      \"guid\": \"352244f2-a952-4a3a-a3ae-7775fa221ce7\",\n      ...\n      \"price\": 8.0,\n      \"pricingStrategy\": \"BASE_PRICE\",\n      \"pricingRules\": null,\n      ...\n      \"modifierGroupReferences\": []\n    },\n    \"13\": {\n      \"referenceId\": 13,\n      \"name\": \"Large\",\n      \"guid\": \"4ff89bca-b448-4892-bc4c-62c37a28ac44\",\n      ...\n      \"price\": 10.0,\n      \"pricingStrategy\": \"BASE_PRICE\",\n      \"pricingRules\": null,\n      ...\n      \"modifierGroupReferences\": []\n    }\n    ...\n  }\n}\n```\n\n\nWhen the `PricingRules` object appears in the context of a modifier\ngroup, the `sizeSpecificPricingGuid` value it contains is also used to\nfind matching sizes between menu items and any modifier options that\nuse the Size Price or Size/Sequence Pricing pricing strategies (for\nexample, toppings on a small pizza cost $1 while toppings on a large\npizza cost $2). In this scenario, the Toast POS system locates the\nmodifier option size that matches the menu item size and uses the\nprice defined for that size of the modifier option. The sizes for the\nmenu item are defined in the Size modifier group specified by the\n`sizeSpecificPricingGuid` value. The sizes for the modifier options\nare defined in objects contained in the `sizeSequencePricingRules`\narray that is contained in the modifier group's `PricingRules` object.\nSizes are considered matching when their names are identical. For\ndetailed information on the **Size Price** and **Size/Sequence Price**\npricing strategies, see [Pricing\nStrategies](https://doc.toasttab.com/doc/platformguide/adminPricingStrategies.html)\nin the _Toast Platform Guide_.\n\nIn the example below, the Cheese Pizza menu item and the Toppings\nmodifier group use the `SIZE_PRICE` pricing strategy. The menu item\nsizes and prices are defined in the Size modifier group with a GUID\nending in `31b0`. The sizes and prices for the modifier options are\ndefined in the `sizeSequencePricingRules` value that is a child of the\nToppings modifier group.\n\n```\n{\n  \"restaurantGuid\": \"2071fb81-988b-4d75-b8dc-c5c17cff9706\",\n  ...\n  \"menus\": [\n    {\n      \"name\": \"Dinner\",\n      \"guid\": \"ddd681de-3c12-4d45-b8b1-a5b2ea898210\",\n      ...\n      \"menuGroups\": [\n        {\n          \"name\": \"Pizza\",\n          \"guid\": \"dc868006-919a-4950-a4cc-3a03f9770fd7\",\n          ...\n          \"menuItems\": [\n            {\n              \"name\": \"Cheese Pizza\",\n              \"guid\": \"95c5d500-8d92-46f2-bec4-fb2a42a46621\",\n              ...\n              \"price\": null,\n              \"pricingStrategy\": \"SIZE_PRICE\",\n              \"pricingRules\": {\n                \"timeSpecificPricingRules\": [],\n                \"sizeSpecificPricingGuid\": \"23c02762-9d6a-4d3f-a298-71c989bf31b0\",\n                \"sizeSequencePricingRules\": []\n              },\n              ...\n              \"modifierGroupReferences\": [\n                2,\n                3,\n                ...\n              ],\n              ...\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"modifierGroupReferences\": {\n    ...\n    \"2\": {\n      \"referenceId\": 2,\n      \"name\": \"Size\",\n      \"guid\": \"23c02762-9d6a-4d3f-a298-71c989bf31b0\",\n      ...\n      \"pricingStrategy\": \"NONE\",\n      \"pricingRules\": null,\n      ...\n      \"modifierOptionReferences\": [\n        12,\n        13\n      ],\n      ...\n    },\n    \"3\": {\n      \"referenceId\": 3,\n      \"name\": \"Toppings\",\n      \"guid\": \"58b79986-f88f-411d-ba18-14b1e2441e9d\",\n      ...\n      \"pricingStrategy\": \"SIZE_PRICE\",\n      \"pricingRules\": {\n        \"timeSpecificPricingRules\": [],\n        \"sizeSpecificPricingGuid\": \"23c02762-9d6a-4d3f-a298-71c989bf31b0\",\n        \"sizeSequencePricingRules\": [\n          {\n            \"sizeName\": \"Small\",\n            \"sizeGuid\": \"352244f2-a952-4a3a-a3ae-7775fa221ce7\",\n            \"sequencePrices\": [\n              {\n                \"sequence\": 1,\n                \"price\": 2.0\n              }\n            ]\n          },\n          {\n            \"sizeName\": \"Large\",\n            \"sizeGuid\": \"4ff89bca-b448-4892-bc4c-62c37a28ac44\",\n            \"sequencePrices\": [\n              {\n                \"sequence\": 1,\n                \"price\": 4.0\n              }\n            ]\n          }\n        ]\n      },\n      ...\n      \"modifierOptionReferences\": [\n        10,\n        11\n      ],\n      ...\n    },\n    ...\n  },\n  \"modifierOptionReferences\": {\n    ...\n    \"10\": {\n      \"referenceId\": 10,\n      \"name\": \"Mushrooms\",\n      \"guid\": \"fa24fee9-76c4-40ba-ae3c-7dfccafdd8d3\",\n      ...\n      \"price\": null,\n      \"pricingStrategy\": \"GROUP_PRICE\",\n      \"pricingRules\": null,\n      ...\n      \"modifierGroupReferences\": []\n    },\n    \"11\": {\n      \"referenceId\": 11,\n      \"name\": \"Onions\",\n      \"guid\": \"afee6be7-8280-4c69-a170-9fdf4c76bf7b\",\n      ...\n      \"price\": null,\n      \"pricingStrategy\": \"GROUP_PRICE\",\n      \"pricingRules\": null,\n      ...\n      \"modifierGroupReferences\": []\n    },\n    \"12\": {\n      \"referenceId\": 12,\n      \"name\": \"Small\",\n      \"guid\": \"352244f2-a952-4a3a-a3ae-7775fa221ce7\",\n      ...\n      \"price\": 8.0,\n      \"pricingStrategy\": \"BASE_PRICE\",\n      \"pricingRules\": null,\n      ...\n      \"modifierGroupReferences\": []\n    },\n    \"13\": {\n      \"referenceId\": 13,\n      \"name\": \"Large\",\n      \"guid\": \"4ff89bca-b448-4892-bc4c-62c37a28ac44\",\n      ...\n      \"price\": 10.0,\n      \"pricingStrategy\": \"BASE_PRICE\",\n      \"pricingRules\": null,\n      ...\n      \"modifierGroupReferences\": []\n    },\n    ...\n  }\n}  \n```     \n",
+      "type": "string",
+      "x-nullable": true,
+      "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+    },
+    "sizeSequencePricingRules": {
+      "type": "array",
+      "description": "An array of `SizeSequencePricingRule` objects that define the prices for the modifier options in a modifier group that uses the Size Price, Sequence Price, or Size/Sequence Pricing pricing strategy. If the modifier group does not use one of these pricing strategies, this array is empty.\n",
+      "items": {
+        "$ref": "#/$defs/SizeSequencePricingRule"
+      }
+    }
+  },
+  "definitions": {
+    "TimeSpecificPrice": {
+      "type": "object",
+      "description": "Represents the pricing rules for a menu item that uses a time-specific price.\n",
+      "properties": {
+        "timeSpecificPrice": {
+          "type": "double",
+          "description": "The price of the menu item during the periods of time defined by the associated `schedule` array.\n",
+          "example": 1.0
+        },
+        "basePrice": {
+          "type": "double",
+          "description": "The base price of the menu item, used for time periods when a time-specific price has not been defined.\n",
+          "example": 1.0
+        },
+        "schedule": {
+          "type": "array",
+          "description": "An array of `Schedule` objects that indicate the specific days and times that a time-specific price is available.\n",
+          "items": {
+            "$ref": "#/$defs/Schedule"
+          }
+        }
+      },
+      "name": "TimeSpecificPrice"
+    },
+    "Schedule": {
+      "type": "object",
+      "description": "A multi-use object that is used to:\n\n* Define when a menu is available.\n* Define when a time-specific price is available for a menu item or modifier option.\n\nA `Schedule` object defines a set of days of the week and a set of time ranges for those days. Days that have identical time ranges are grouped into a single `Schedule` object, for example, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, and FRIDAY in the example below have identical time ranges and are in the same `Schedule` object while SATURDAY and SUNDAY are in a separate `Schedule` object because their time ranges differ from the weekday time ranges.\n\n```\n\"availability\": {\n  \"alwaysAvailable\": false,\n  \"schedule\": [\n    {\n      \"days\": [\n        \"MONDAY\", \n        \"TUESDAY\", \n        \"WEDNESDAY\", \n        \"THURSDAY\"\n      ],\n      \"timeRanges\": [\n        {\n          \"start\": \"09:00\",\n          \"end\": \"18:00\"\n        }\n      ]\n    },\n    {\n      \"days\": [\n        \"FRIDAY\", \n        \"SATURDAY\"\n      ],\n      \"timeRanges\": [\n        {\n          \"start\": \"09:00\",\n          \"end\": \"18:00\"\n        },\n        {\n          \"start\": \"20:00\",\n          \"end\": \"23:00\"\n        }\n      ]\n    }\n  ]\n}\n```\n\nTime ranges are in 24-hour HH:MM format.\n\nIf a day is not represented in the `Schedule` objects, the menu or time-specific price is not available on that day.      \n",
+      "properties": {
+        "days": {
+          "type": "array",
+          "description": "An array of days of the week that are associated with identical time ranges. The time ranges are defined in a corresponding `timeRanges` value. Names of the days are in upper case, for example, MONDAY.\n",
+          "items": {
+            "type": "string",
+            "description": "A day of the week, for example, SUNDAY or THURSDAY.",
+            "enum": [
+              "SUNDAY",
+              "MONDAY",
+              "TUESDAY",
+              "WEDNESDAY",
+              "THURSDAY",
+              "FRIDAY",
+              "SATURDAY"
+            ]
+          }
+        },
+        "timeRanges": {
+          "type": "array",
+          "description": "An array of `TimeRange` objects that define the time ranges that a menu or a time-specific price is available on the days defined by the corresponding `days` value. A `TimeRange` object contains a `start` time and an `end` time, expressed in the restaurant\u2019s local time. If both the `start` and `end` times for a given day are 00:00, it indicates that the menu or the time-specific price is available 24 hours on the associated days. Time ranges may also run overnight, for example, a time range that starts at \"07:00\" and ends at \"03:00\" runs from 7am until 3am the next day. \n",
+          "items": {
+            "$ref": "#/$defs/TimeRange"
+          }
+        }
+      },
+      "name": "Schedule"
+    },
+    "TimeRange": {
+      "type": "object",
+      "description": "Represents a time range for when a menu or a time-specific price is available.\n",
+      "properties": {
+        "start": {
+          "type": "string",
+          "description": "The start time of the time range. Expressed in the restaurant\u2019s local time.\n",
+          "example": "string"
+        },
+        "end": {
+          "type": "string",
+          "description": "The end time of the time range. Expressed in the restaurant\u2019s local time.\n",
+          "example": "string"
+        }
+      },
+      "name": "TimeRange"
+    },
+    "SizeSequencePricingRule": {
+      "type": "object",
+      "description": "A multi-use object that defines the pricing rules for modifier options that belong to a modifier group that uses the Size Price, Sequence Price, or Size/Sequence Price pricing strategy. The contents of this object depend on the pricing strategy that is in effect.\n",
+      "properties": {
+        "sizeName": {
+          "type": "string",
+          "description": "A string that represents the size of a modifier option in this modifier group, for example, Small, Medium, or Large.\n\nWith Size Price and the Size/Sequence Price pricing strategies, the price of a modifier option changes based on the size of the menu item it is applied to, for example, a topping costs $1 on a small pizza and $2 on a large pizza. To determine which size and size-based price to use for a modifier option, the Toast POS system matches the size name of the modifier option to the size name of the menu item. For example, the Small size of a modifier option would match the Small size of a menu item. The `sizeName` value of the `SizeSequencePricingRule` object represents the modifier option size while the `sizeGuid` value represents the matching menu item size.\n\nThe Toast POS system does allow a configuration where the size of the modifier option is specified independently from the size of the menu item it applies to. In this scenario, you could order a Large menu item and apply a Small size of the modifier option to it. This configuration is unusual but the menus API supports it. When this configuration is in use, the `sizeName` value is populated with the modifier option size but the `sizeGuid` value that represents the menu item size will be null because there is no matching menu item size.\n\nThe `sizeName` value is null if the modifier group uses the Sequence Price pricing strategy because this strategy does not use sizes.\n\nSee the <a href=\"https://doc.toasttab.com/doc/platformguide/adminPricingStrategiesOverview.html\">Pricing strategies</a> section in the Toast Platform Guide for information on the Size Price, Sequence Price, and Size/Sequence Price pricing strategies.\n",
+          "x-nullable": true,
+          "example": "Example Name"
+        },
+        "sizeGuid": {
+          "type": "string",
+          "description": "The GUID of the modifier option where a menu item size has been defined that matches the `sizeName` value. For example, if a menu item has Small and Large sizes, those sizes are represented in a Size modifier group with a Small modifier option and a Large modifier option. It is the GUID of one of those size modifier options that appears in this value. If the `sizeName` value is Small, then the `sizeGuid` value would contain the Small modifier option\u2019s GUID.\n\nWith Size Price and the Size/Sequence Price pricing strategies, the price of a modifier option changes based on the size of the menu item it is applied to, for example, a topping costs $1 on a small pizza and $2 on a large pizza. To determine which size and size-based price to use for a modifier option, the Toast POS system matches the size name of the modifier option to the size name of the menu item. For example, the Small size of a modifier option would match the Small size of a menu item. The `sizeName` value represents the modifier option size while the `sizeGuid` value represents the matching menu item size.\n\nThe Toast POS system does allow a configuration where the size of the modifier option is specified independently from the size of the menu item it applies to. In this scenario, you could order a Large menu item and apply a Small size of the modifier option to it. This configuration is unusual but the menus API supports it. When this configuration is in use, the `sizeName` value is populated with the modifier option size but there is no corresponding `sizeGuid` for the menu item size.\n\nThe `sizeGuid` value is null if the modifier group uses the Sequence Price pricing strategy because this strategy does not use sizes.\n\nSee the <a href=\"https://doc.toasttab.com/doc/platformguide/adminPricingStrategiesOverview.html\">Pricing strategies</a> section in the Toast Platform Guide for information on the Size Price, Sequence Price, and Size/Sequence Price pricing strategies.\n",
+          "x-nullable": true,
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "sequencePrices": {
+          "type": "array",
+          "description": "An array of `SequencePrices` objects that define the size, sequence, or size/sequence prices for the modifier options in this modifier group.\n\nBecause they are multi use objects, the `SequencePrices` objects always contain `sequence` and `price` values for all three pricing strategies. However, the `sequence` is always 1 for the Size Price pricing strategy because only one price is defined per size for that strategy. For example, the `sequencePrices` value for a modifier group priced using the Size Price pricing strategy looks similar to the following:\n```\n\"sizeSequencePricingRules\": [\n      {\n        \"sizeName\": \"Small\",\n        \"sizeGuid\": \"e02d1a57-5f9f-4800-a8c3-a5fe1a0b029b\",\n        \"sequencePrices\": [\n          {\n            \"sequence\": 1,\n            \"price\": 2\n          }\n        ]\n      },\n      {\n        \"sizeName\": \"Large\",\n        \"sizeGuid\": \"0e206b2d-72ab-46d1-b273-a5425cbef9a5\",\n        \"sequencePrices\": [\n          {\n            \"sequence\": 1,\n            \"price\": 4\n          }\n        ]\n      }\n    ]\n```             \n\nThe modifier options in this group cost $2.00 for the Small size and $4.00 for the Large size.\n\nThe `sequencePrices` value for a modifier group priced using the Sequence Price pricing strategy looks like this:\n```\n\"sizeSequencePricingRules\": [\n      {\n        \"sizeName\": null,\n        \"sizeGuid\": null,\n        \"sequencePrices\": [\n          {\n            \"sequence\": 1,\n            \"price\": 1\n          },\n          {\n            \"sequence\": 2,\n            \"price\": 2\n          },\n          {\n            \"sequence\": 3,\n            \"price\": 2.5\n          }\n        ]\n      }\n    ]\n```\n\nThe first modifier option in this group costs $1.00, the second modifier option costs $2.00, and any additional modifier options from this group costs $2.50.\n\nThe `sequencePrices` value for a modifier group using the Size/Sequence Price pricing strategy looks like this:\n```\n\"sizeSequencePricingRules\": [\n      {\n        \"sizeName\": \"Small\",\n        \"sizeGuid\": \"e02d1a57-5f9f-4800-a8c3-a5fe1a0b029b\",\n        \"sequencePrices\": [\n          {\n            \"sequence\": 1,\n            \"price\": 1\n          },\n          {\n            \"sequence\": 2,\n            \"price\": 2\n          }\n        ]\n      },\n      {\n        \"sizeName\": \"Large\",\n        \"sizeGuid\": \"0e206b2d-72ab-46d1-b273-a5425cbef9a5\",\n        \"sequencePrices\": [\n          {\n            \"sequence\": 1,\n            \"price\": 3\n          },\n          {\n            \"sequence\": 2,\n            \"price\": 4\n          }\n        ]\n      }\n    ]\n```\n\nThe first modifier option on a Small menu item costs $1.00 and additional modifier options on a Small cost $2.00, while the first modifier option on a Large menu item costs $3.00 and additional modifier options on a Large cost $4.00.\n",
+          "items": {
+            "$ref": "#/$defs/SequencePrice"
+          }
+        }
+      },
+      "name": "SizeSequencePricingRule"
+    },
+    "SequencePrice": {
+      "type": "object",
+      "description": "Defines the size, sequence, or size/sequence prices for modifier options contained in a modifier group that uses the Size Price, Sequence Price, or Size/Sequence Price pricing strategy.\n",
+      "properties": {
+        "sequence": {
+          "type": "int32",
+          "description": "Specifies the order of the prices.\n\nFor modifier groups that use the Size Price pricing strategy, the `sequence` is always 1 because only one price is defined per size for that strategy.\n\nFor modifier groups that use the Sequence Price or Size/Sequence Price pricing strategy, this value starts at 1 and increases with each successive price in the sequence. For example, in the JSON snippet below, `\"sequence\":1` defines the first price in the sequence and `\"sequence\":2` defines the second price in the sequence.\n```\n\"sequencePrices\": [\n          {\n            \"sequence\": 1,\n            \"price\": 3\n          },\n          {\n            \"sequence\": 2,\n            \"price\": 4\n          }\n        ]\n```\n",
+          "example": 1
+        },
+        "price": {
+          "type": "double",
+          "description": "The price for a modifier option when it is ordered at the specified point in the sequence.\n",
+          "example": 1.0
+        }
+      },
+      "name": "SequencePrice"
+    }
+  }
+}

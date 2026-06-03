@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/orders-customer-structure.json",
+  "name": "Customer",
+  "description": "Customer schema from Toast Orders API",
+  "type": "object",
+  "definitions": {
+    "ToastReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast entity by Toast GUID.",
+      "required": [
+        "guid",
+        "entityType"
+      ],
+      "properties": {
+        "guid": {
+          "description": "The GUID maintained by the Toast platform.",
+          "type": "string",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "entityType": {
+          "x-toast-read-only": true,
+          "description": "The type of object this is. Response only.",
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "name": "ToastReference"
+    }
+  }
+}

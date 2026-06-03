@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/orders-payment-structure.json",
+  "name": "Payment",
+  "description": "Defines a payment.",
+  "type": "object",
+  "definitions": {
+    "ExternalReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast platform entity by Toast GUID or a partner's identifier.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "externalId": {
+              "description": "External identifier string that is prefixed by the naming authority. You can use the orders API to set an `externalId` for an order and then GET the order with that `externalId`.",
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "name": "ExternalReference"
+    },
+    "Refund": {
+      "type": "object",
+      "description": "A currency amount removed from a guest payment.",
+      "properties": {
+        "refundAmount": {
+          "type": "double",
+          "description": "The amount of the refund, excluding the tip.",
+          "example": 1.0
+        },
+        "tipRefundAmount": {
+          "type": "double",
+          "description": "The amount of the tip refund.",
+          "example": 1.0
+        },
+        "refundDate": {
+          "description": "The date and time when the refund was made.",
+          "type": "datetime",
+          "example": "2026-06-03T12:00:00.000+0000"
+        },
+        "refundBusinessDate": {
+          "x-toast-read-only": true,
+          "description": "The business date (yyyyMMdd) on which this refund was created. Response only.",
+          "type": "int32",
+          "example": "2026-06-03T12:00:00.000+0000"
+        },
+        "refundTransaction": {
+          "description": "An identifier for the refund transaction. You can use the identifier to associate items and service charges that were refunded in the same transaction.\n",
+          "type": "object",
+          "$ref": "#/$defs/RefundTransaction"
+        }
+      },
+      "name": "Refund"
+    },
+    "RefundTransaction": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "description": "An identifier for the refund transaction. You can use the identifier to associate items and service charges that were refunded in the same transaction.\n"
+        }
+      ],
+      "name": "RefundTransaction"
+    },
+    "VoidInformation": {
+      "type": "object",
+      "description": "Information about a void applied to a check or item.",
+      "properties": {
+        "voidUser": {
+          "type": "object",
+          "description": "The user who voided the order.",
+          "$ref": "#/$defs/ExternalReference"
+        },
+        "voidApprover": {
+          "type": "object",
+          "description": "The user who approved the void.",
+          "$ref": "#/$defs/ExternalReference"
+        },
+        "voidDate": {
+          "description": "The date on which the void was made.",
+          "type": "datetime",
+          "example": "2026-06-03T12:00:00.000+0000"
+        },
+        "voidBusinessDate": {
+          "x-toast-read-only": true,
+          "description": "The business date (yyyyMMdd) on which the void was made. Response only.",
+          "type": "int32",
+          "example": "2026-06-03T12:00:00.000+0000"
+        },
+        "voidReason": {
+          "type": "object",
+          "description": "A reference to the configured void reason for the void.",
+          "$ref": "#/$defs/ExternalReference"
+        }
+      },
+      "name": "VoidInformation"
+    },
+    "Device": {
+      "type": "object",
+      "description": "The *Device ID* value that the Toast platform assigns to a specific Toast POS device.\n\nThe `id` value is a unique identifier for a device.\n\nTo find the ID for a Toast POS device, from the overflow  menu (\u22ee) select *Device Status* and then select the *Device* tab.\n",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The physical id of the device",
+          "example": "90a86f12"
+        }
+      },
+      "name": "Device"
+    }
+  }
+}

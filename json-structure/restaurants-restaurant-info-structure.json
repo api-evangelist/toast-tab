@@ -1,0 +1,488 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/restaurants-restaurant-info-structure.json",
+  "name": "RestaurantInfo",
+  "description": "Information about the configuration of a restaurant in the Toast\nPOS.\n",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "type": "string",
+      "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+    },
+    "general": {
+      "$ref": "#/$defs/General"
+    },
+    "urls": {
+      "$ref": "#/$defs/URLs"
+    },
+    "location": {
+      "$ref": "#/$defs/Location"
+    },
+    "schedules": {
+      "$ref": "#/$defs/Schedules"
+    },
+    "delivery": {
+      "$ref": "#/$defs/Delivery"
+    },
+    "onlineOrdering": {
+      "$ref": "#/$defs/OnlineOrdering"
+    },
+    "prepTimes": {
+      "$ref": "#/$defs/PrepTimes"
+    }
+  },
+  "definitions": {
+    "General": {
+      "type": "object",
+      "description": "General information about a restaurant location.\n",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The guest-facing name of the restaurant. For example, the\n`name` of a restaurant might be `Tommy's Burgers`.\n",
+          "example": "Example Name"
+        },
+        "locationName": {
+          "type": "string",
+          "description": "A name used externally to differentiate multiple locations, like Neighborhood, Square, City, or Hotel.",
+          "example": "Example Name"
+        },
+        "locationCode": {
+          "type": "string",
+          "description": "A code used internally to differentiate multiple locations, typically a 3 or 4 letter code.",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the restaurant, such as information about the atmosphere and food.",
+          "example": "string"
+        },
+        "timeZone": {
+          "type": "string",
+          "description": "The name of the restaurant's time zone in the <a \nhref=\"https://www.iana.org/time-zones\">IANA time zone \ndatabase</a>. For example, `America/New_York`.\n",
+          "example": "string"
+        },
+        "closeoutHour": {
+          "type": "int32",
+          "description": "The hour of the day that separates one business day from the\nnext, also known as the \"business day cutoff time\". This is \nin the time zone of the restaurant. The `closeoutHour` is set \nto a value from 0-12 (midnight to noon) in the Business Day \nCutoff field in Toast Web.\n",
+          "example": 1
+        },
+        "managementGroupGuid": {
+          "type": "string",
+          "description": "The unique identifier of the restaurant group for the restaurant.",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "currencyCode": {
+          "type": "string",
+          "description": "The ISO-4217 currency code used in this restaurant",
+          "example": "string"
+        },
+        "firstBusinessDate": {
+          "type": "int32",
+          "description": "The first business date (yyyyMMdd) is the day a restaurant began using the Toast platform. The\n`firstBusinessDate` is also the first day on which time entries can be created for employees.\n",
+          "example": "2026-06-03T12:00:00.000+0000"
+        },
+        "archived": {
+          "type": "boolean",
+          "description": "Returns `true` if the restaurant has been archived from the Toast platform, otherwise returns `false`. A\ncommon reason for archiving a restaurant is if the restaurant was created in error.\n",
+          "default": false,
+          "example": true
+        }
+      },
+      "name": "General"
+    },
+    "URLs": {
+      "type": "object",
+      "description": "Web addresses for the restaurant.",
+      "properties": {
+        "website": {
+          "type": "string",
+          "description": "The primary website for the restaurant.",
+          "example": "string"
+        },
+        "facebook": {
+          "type": "string",
+          "description": "A Facebook\u2122 page for the restaurant.",
+          "example": "string"
+        },
+        "twitter": {
+          "type": "string",
+          "description": "A Twitter\u2122 handle for the restaurant.",
+          "example": "string"
+        },
+        "orderOnline": {
+          "type": "string",
+          "description": "A URL for the online ordering site for the restaurant.",
+          "example": "string"
+        },
+        "purchaseGiftCard": {
+          "type": "string",
+          "description": "A URL for the gift card purchasing site for the restaurant.",
+          "example": "string"
+        },
+        "checkGiftCard": {
+          "type": "string",
+          "description": "A URL for a site at which guests can find balances and other information about gift cards.",
+          "example": "string"
+        }
+      },
+      "name": "URLs"
+    },
+    "Location": {
+      "type": "object",
+      "description": "Information about the physical location of a restaurant.",
+      "properties": {
+        "address1": {
+          "type": "string",
+          "description": "The first line of the street address of the restaurant.",
+          "example": "string"
+        },
+        "address2": {
+          "type": "string",
+          "description": "The second line of the street address of the restaurant.",
+          "example": "string"
+        },
+        "city": {
+          "type": "string",
+          "description": "The city or town of the restaurant. restaurant.",
+          "example": "string"
+        },
+        "stateCode": {
+          "type": "string",
+          "description": "Deprecated. Get the state or province of a restaurant in the\n`administrativeArea` value.\n\nThe abbreviation of the state or province of the restaurant.\n",
+          "example": "string"
+        },
+        "administrativeArea": {
+          "type": "string",
+          "description": "The name of the geographical division (for example, state, province,\nor county) that the restaurant is located in.\n",
+          "example": "string"
+        },
+        "zipCode": {
+          "type": "string",
+          "description": "The ZIP or postal code of the restaurant.",
+          "example": "string"
+        },
+        "country": {
+          "type": "string",
+          "description": "The nation of the restaurant.",
+          "example": "string"
+        },
+        "phone": {
+          "type": "string",
+          "example": "string"
+        },
+        "phoneCountryCode": {
+          "type": "string",
+          "description": "A numeric code corresponding to one or more countries,\nused as a telephone number prefix when making \ninternational telephone calls.\n",
+          "example": "string"
+        },
+        "latitude": {
+          "type": "double",
+          "description": "The north/south geographic coordinate of the restaurant, in decimal degrees.",
+          "example": 1.0
+        },
+        "longitude": {
+          "type": "double",
+          "description": "The east/west geographic coordinate of the restaurant, in decimal degrees.",
+          "example": 1.0
+        }
+      },
+      "name": "Location"
+    },
+    "Schedules": {
+      "type": "object",
+      "description": "Describes the types of service and hours of operation for the\nrestaurant over a one week period. The schedules object contains\nservice and hour schedules for types of days and the types of\ndays for each day of the calendar week.\n",
+      "properties": {
+        "daySchedules": {
+          "type": "object",
+          "description": "A map of `DaySchedule` objects.\nThe value names in this object are key identifiers that are\nused to associate a day schedule with a day of the week in\nthe `weekSchedule` value.\n",
+          "properties": {
+            "identifier": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/DaySchedule"
+          }
+        },
+        "weekSchedule": {
+          "$ref": "#/$defs/WeekSchedule"
+        }
+      },
+      "name": "Schedules"
+    },
+    "DaySchedule": {
+      "type": "object",
+      "description": "Information about the services and hours that are scheduled for a\nrestaurant during a type of day. For example, a restaurant might\nhave different services available on a type of day named\n`weekday` than it does on a type of day named `weekend`.\n",
+      "properties": {
+        "scheduleName": {
+          "type": "string",
+          "description": "The name of the type of day. For example, `weekday`.",
+          "example": "Example Name"
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Service"
+          },
+          "description": "An array of `Service` objects that are available during the\ntype of day.\n"
+        },
+        "openTime": {
+          "type": "string",
+          "description": "The time of day that the first service for the type of day\nbegins. For example, the first service might begin at\n`06:00:00.000`.\n",
+          "example": "2026-06-03T12:00:00.000+0000"
+        },
+        "closeTime": {
+          "type": "string",
+          "description": "The time of day that the last service for the type of day\nends. For example, the last service might end at\n`02:00:00.000`.\n",
+          "example": "2026-06-03T12:00:00.000+0000"
+        }
+      },
+      "name": "DaySchedule"
+    },
+    "Service": {
+      "type": "object",
+      "description": "A time-based division of the operation of the restaurant. For\nexample, a service might be named `lunch` and it might be\navailable between specific hours during the day.\n",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Example Name"
+        },
+        "hours": {
+          "$ref": "#/$defs/Hours"
+        },
+        "overnight": {
+          "type": "boolean",
+          "description": "Indicates whether any portion of the period of time that a\nservice is available occurs after 00:00 (midnight) and before\nthe business day cutoff time for the restaurant which is \navailable in the `closeoutHour` property. An\novernight shift spans two calendar dates but occurs during\none business day.\n",
+          "example": true
+        }
+      },
+      "name": "Service"
+    },
+    "Hours": {
+      "type": "object",
+      "description": "The period of time that the restaurant offers a service. For\nexample, a service might be named \"lunch\" and it might be offered\nbetween `10:00:00.000` and `16:00:00.000`.\n",
+      "properties": {
+        "startTime": {
+          "type": "string",
+          "description": "The time of day that the service begins.",
+          "example": "2026-06-03T12:00:00.000+0000"
+        },
+        "endTime": {
+          "type": "string",
+          "description": "The time of day that the service ends.",
+          "example": "2026-06-03T12:00:00.000+0000"
+        }
+      },
+      "name": "Hours"
+    },
+    "WeekSchedule": {
+      "type": "object",
+      "description": "The day schedule used for each day of the week. A day schedule is \nthe set of services (for example, \"lunch\") that a restaurant \noffers and the hours that it offers each one. If a day of the \nweek value in this object is `null`, the restaurant is closed on \nthat day. Values for each day of the week are identifiers for day \nschedules in the map of `DaySchedule` objects in the \n`daySchedules` value of the `Schedules` object.\n",
+      "properties": {
+        "monday": {
+          "type": "string",
+          "description": "A key identifier for the `DaySchedule` object\nthat represents the services and hours for the restaurant on\nthis day of the week.\n",
+          "example": "string"
+        },
+        "tuesday": {
+          "type": "string",
+          "description": "A key identifier for the `DaySchedule` object\nthat represents the services and hours for the restaurant on\nthis day of the week.\n",
+          "example": "string"
+        },
+        "wednesday": {
+          "type": "string",
+          "description": "A key identifier for the `DaySchedule` object\nthat represents the services and hours for the restaurant on\nthis day of the week.\n",
+          "example": "string"
+        },
+        "thursday": {
+          "type": "string",
+          "description": "A key identifier for the `DaySchedule` object\nthat represents the services and hours for the restaurant on\nthis day of the week.\n",
+          "example": "string"
+        },
+        "friday": {
+          "type": "string",
+          "description": "A key identifier for the `DaySchedule` object\nthat represents the services and hours for the restaurant on\nthis day of the week.\n",
+          "example": "90a86f12"
+        },
+        "saturday": {
+          "type": "string",
+          "description": "A key identifier for the `DaySchedule` object\nthat represents the services and hours for the restaurant on\nthis day of the week.\n",
+          "example": "string"
+        },
+        "sunday": {
+          "type": "string",
+          "description": "A key identifier for the `DaySchedule` object\nthat represents the services and hours for the restaurant on\nthis day of the week.\n",
+          "example": "string"
+        }
+      },
+      "name": "WeekSchedule"
+    },
+    "Delivery": {
+      "type": "object",
+      "description": "Information about delivery service provided by the restaurant.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant provides delivery service\nand has enabled the delivery configuration in Toast Web.\n",
+          "example": true
+        },
+        "minimum": {
+          "type": "double",
+          "description": "The minimum order price that is qualified for delivery. For\nexample, a restaurant might not deliver orders that cost less\nthan $25.00.\n",
+          "example": 1.0
+        },
+        "area": {
+          "type": "string",
+          "description": "The geographic area in which the restaurant provides delivery\nservice. The delivery area is represented by an encoded set\nof latitude and longitude coordinates that describe a polygon\narea on a map. The coordinates are encoded using the Google\nmaps encoded polyline algorithm format. See [more information\nabout the way that the encoded polyline algorithm format\nencodes location coordinates]\n(https://developers.google.com/maps/documentation/utilities/polylinealgorithm).\nYou can decode the coordinates of the delivery area using any\nsoftware that supports the encoded polyline algorithm format.\nFor example, you can decode the coordinates using [the Mapline\nPolyline decoding program]\n(https://github.com/mapbox/polyline). The delivery area\ncoordinates are a JSON array of decimal degree latitude and\nlongitude pairs. For example,\n`[[42.36083,-71.14798],[42.34028,-71.15673],[42.3272,-71.14386]]`.\n",
+          "example": "string"
+        }
+      },
+      "name": "Delivery"
+    },
+    "OnlineOrdering": {
+      "type": "object",
+      "description": "Information about the web-based ordering configuration for the\nrestaurant.\n",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant has enabled the Toast online \nordering module. This value is `true` if the module has ever \nbeen enabled. The value _does not_ indicate that a restaurant \nis accepting online orders or that the restaurant is using \nthe Toast online ordering feature.\n",
+          "example": true
+        },
+        "scheduling": {
+          "type": "boolean",
+          "description": "Indicates whether the online ordering function for the\nrestaurant allows guests to place orders that will be\nfulfilled in the future. If this value is `false`, orders\nwill be fulfilled as soon as possible.\n",
+          "example": true
+        },
+        "specialRequests": {
+          "type": "boolean",
+          "description": "Indicates whether the online ordering function for the\nrestaurant allows guests to include written notes with\nadditional instructions for their orders.\n",
+          "example": true
+        },
+        "specialRequestsMessage": {
+          "type": "string",
+          "description": "A written message that is shown to guests when they\ninclude additional instructions with an order. For example,\nthe message might be \"no substitutions.\"\n",
+          "example": "string"
+        },
+        "paymentOptions": {
+          "$ref": "#/$defs/PaymentOptions",
+          "description": "Information about the forms of payment that the restaurant\naccepts for online orders.\n"
+        }
+      },
+      "name": "OnlineOrdering"
+    },
+    "PaymentOptions": {
+      "type": "object",
+      "description": "Information about the forms of payment that the restaurant will\naccept for orders.\n",
+      "properties": {
+        "delivery": {
+          "$ref": "#/$defs/DeliveryPaymentOptions"
+        },
+        "takeout": {
+          "$ref": "#/$defs/TakeoutPaymentOptions"
+        },
+        "ccTip": {
+          "type": "boolean",
+          "description": "enables credit card tips",
+          "example": true
+        }
+      },
+      "name": "PaymentOptions"
+    },
+    "DeliveryPaymentOptions": {
+      "type": "object",
+      "description": "Information about the forms of payment that the restaurant will\naccept for delivery orders.\n",
+      "properties": {
+        "cash": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts cash payment for\ndelivery orders that are placed online.\n",
+          "example": true
+        },
+        "ccSameDay": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for delivery orders that are delivered on the same\nday.\n",
+          "example": true
+        },
+        "ccFuture": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for delivery orders that are to be delivered on a day\nafter the guest places the order.\n",
+          "example": true
+        }
+      },
+      "name": "DeliveryPaymentOptions"
+    },
+    "TakeoutPaymentOptions": {
+      "type": "object",
+      "description": "Information about the forms of payment that the restaurant will\naccept for orders that a guest picks up in person.\n",
+      "properties": {
+        "cash": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts cash payment for\ntakeout orders that are placed online.\n",
+          "example": true
+        },
+        "ccSameDay": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for takeout orders that the guest will pick up on\nthe same day.\n",
+          "example": true
+        },
+        "ccFuture": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for takeout orders that the guest will pick up on\na day after the guest places the order.\n",
+          "example": true
+        },
+        "ccInStore": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts credit card payment\nat the time the guest picks up a takeout order.\n",
+          "example": true
+        }
+      },
+      "name": "TakeoutPaymentOptions"
+    },
+    "PrepTimes": {
+      "type": "object",
+      "description": "Information about the scheduled availability of the dining\noptions that are provided by the restaurant.\n",
+      "properties": {
+        "deliveryPrepTime": {
+          "type": "int32",
+          "description": "The amount of time, in minutes, that it takes to prepare an\nonline delivery order.\n",
+          "example": 1
+        },
+        "deliveryTimeAfterOpen": {
+          "type": "int32",
+          "description": "The amount of time, in minutes, that it takes for delivery\nservice to become available after the restaurant opens.\n",
+          "example": 1
+        },
+        "deliveryTimeBeforeClose": {
+          "type": "int32",
+          "description": "The amount of time, in minutes, before the restaurant closing\ntime that delivery service becomes unavailable.\n",
+          "example": 1
+        },
+        "takeoutPrepTime": {
+          "type": "int32",
+          "description": "The amount of time, in minutes, that it takes to prepare an\nonline takeout order.\n",
+          "example": 1
+        },
+        "takeoutTimeAfterOpen": {
+          "type": "int32",
+          "description": "The amount of time, in minutes, that it takes for takeout\nservice to become available after the restaurant opens.\n",
+          "example": 1
+        },
+        "takeoutTimeBeforeClose": {
+          "type": "int32",
+          "description": "The amount of time, in minutes, before the restaurant closing\ntime that takeout service becomes unavailable.\n",
+          "example": 1
+        },
+        "takeoutThrottlingTime": {
+          "type": "int32",
+          "description": "The amount of time, in minutes, that an online takeout order\nis delayed before the Toast POS fires it in the kitchen.\n",
+          "example": 1
+        },
+        "deliveryThrottlingTime": {
+          "type": "int32",
+          "description": "The amount of time, in minutes, that an online delivery order\nis delayed before the Toast POS fires it in the kitchen.\n",
+          "example": 1
+        }
+      },
+      "name": "PrepTimes"
+    }
+  }
+}

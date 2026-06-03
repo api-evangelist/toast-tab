@@ -1,0 +1,14 @@
+{
+  "timeSpecificPrice": 1.0,
+  "basePrice": 1.0,
+  "schedule": [
+    {
+      "days": [
+        "SUNDAY"
+      ],
+      "timeRanges": [
+        {}
+      ]
+    }
+  ]
+}

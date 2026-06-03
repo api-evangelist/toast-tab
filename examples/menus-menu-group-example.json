@@ -1,0 +1,103 @@
+{
+  "name": "Example Name",
+  "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+  "multiLocationId": "string",
+  "masterId": 420,
+  "description": "string",
+  "posName": "string",
+  "posButtonColorLight": "string",
+  "posButtonColorDark": "string",
+  "image": "string",
+  "visibility": [
+    "POS"
+  ],
+  "itemTags": [
+    {
+      "name": "Example Name",
+      "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+    }
+  ],
+  "menuGroups": [
+    {
+      "name": "Example Name",
+      "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+      "multiLocationId": {},
+      "masterId": {},
+      "description": "string",
+      "posName": {},
+      "posButtonColorLight": {},
+      "posButtonColorDark": {},
+      "image": {},
+      "visibility": {},
+      "itemTags": [
+        {}
+      ],
+      "menuGroups": [
+        {}
+      ],
+      "menuItems": [
+        {}
+      ]
+    }
+  ],
+  "menuItems": [
+    {
+      "name": "Example Name",
+      "kitchenName": "Example Name",
+      "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+      "multiLocationId": {},
+      "masterId": {},
+      "description": "string",
+      "posName": {},
+      "posButtonColorLight": {},
+      "posButtonColorDark": {},
+      "image": {},
+      "visibility": {},
+      "price": 1.0,
+      "pricingStrategy": "BASE_PRICE",
+      "pricingRules": {},
+      "isDeferred": true,
+      "isDiscountable": true,
+      "salesCategory": {},
+      "taxInfo": [
+        "string"
+      ],
+      "taxInclusion": "TAX_INCLUDED",
+      "itemTags": [
+        {}
+      ],
+      "plu": "string",
+      "sku": "string",
+      "calories": 1,
+      "contentAdvisories": {},
+      "unitOfMeasure": "NONE",
+      "portions": [
+        {}
+      ],
+      "prepTime": 1,
+      "prepStations": [
+        "string"
+      ],
+      "modifierGroupReferences": [
+        912
+      ],
+      "eligiblePaymentAssistancePrograms": [
+        "string"
+      ],
+      "allergens": [
+        {}
+      ],
+      "length": {},
+      "height": {},
+      "width": {},
+      "dimensionUnitOfMeasure": {},
+      "weight": {},
+      "weightUnitOfMeasure": {},
+      "images": {},
+      "guestCount": {},
+      "sortOrder": 1,
+      "catalogProductInfo": {},
+      "isComboParent": true
+    }
+  ]
+}

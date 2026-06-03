@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/restaurants-day-schedule-structure.json",
+  "name": "DaySchedule",
+  "description": "Information about the services and hours that are scheduled for a\nrestaurant during a type of day. For example, a restaurant might\nhave different services available on a type of day named\n`weekday` than it does on a type of day named `weekend`.\n",
+  "type": "object",
+  "properties": {
+    "scheduleName": {
+      "type": "string",
+      "description": "The name of the type of day. For example, `weekday`.",
+      "example": "Example Name"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Service"
+      },
+      "description": "An array of `Service` objects that are available during the\ntype of day.\n"
+    },
+    "openTime": {
+      "type": "string",
+      "description": "The time of day that the first service for the type of day\nbegins. For example, the first service might begin at\n`06:00:00.000`.\n",
+      "example": "2026-06-03T12:00:00.000+0000"
+    },
+    "closeTime": {
+      "type": "string",
+      "description": "The time of day that the last service for the type of day\nends. For example, the last service might end at\n`02:00:00.000`.\n",
+      "example": "2026-06-03T12:00:00.000+0000"
+    }
+  },
+  "definitions": {
+    "Service": {
+      "type": "object",
+      "description": "A time-based division of the operation of the restaurant. For\nexample, a service might be named `lunch` and it might be\navailable between specific hours during the day.\n",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Example Name"
+        },
+        "hours": {
+          "$ref": "#/$defs/Hours"
+        },
+        "overnight": {
+          "type": "boolean",
+          "description": "Indicates whether any portion of the period of time that a\nservice is available occurs after 00:00 (midnight) and before\nthe business day cutoff time for the restaurant which is \navailable in the `closeoutHour` property. An\novernight shift spans two calendar dates but occurs during\none business day.\n",
+          "example": true
+        }
+      },
+      "name": "Service"
+    },
+    "Hours": {
+      "type": "object",
+      "description": "The period of time that the restaurant offers a service. For\nexample, a service might be named \"lunch\" and it might be offered\nbetween `10:00:00.000` and `16:00:00.000`.\n",
+      "properties": {
+        "startTime": {
+          "type": "string",
+          "description": "The time of day that the service begins.",
+          "example": "2026-06-03T12:00:00.000+0000"
+        },
+        "endTime": {
+          "type": "string",
+          "description": "The time of day that the service ends.",
+          "example": "2026-06-03T12:00:00.000+0000"
+        }
+      },
+      "name": "Hours"
+    }
+  }
+}

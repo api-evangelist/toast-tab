@@ -1,0 +1,56 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Toast
+providerId: toast-tab
+created: '2026-06-03'
+modified: '2026-06-03'
+reconciled: false
+tags:
+  - Food Service
+  - Point Of Sale
+  - Restaurants
+  - Hospitality
+description: Toast packages a restaurant POS, payment processing, hardware, and online-ordering platform.
+  Pricing is sales-led — the public pricing page returns 403 to automated retrieval, and Toast scopes
+  monthly software fees, hardware costs, and processing rates per restaurant in the sales conversation.
+  Toast's developer APIs (Orders, Menus, Labor, Stock, Restaurants, Partners) are exposed through the
+  Toast partner program rather than as a separate self-service tier with list pricing.
+sources:
+  - https://pos.toasttab.com/
+  - https://doc.toasttab.com/
+notes: Public pricing pages (https://pos.toasttab.com/pricing) returned HTTP 403 to WebFetch. API access
+  is via Toast's partner-onboarding process; developer terms and per-call pricing are not publicly reconcilable.
+plans:
+  - id: toast-contact-sales
+    name: Toast Platform (Contact Sales)
+    type: enterprise
+    description: Toast subscription, hardware, and payment-processing pricing is configured per restaurant
+      via Toast's sales team. Partner / developer API access is provisioned through the Toast Partners
+      program. No public list price is available.
+    entries:
+      - label: Software, Hardware, Processing & API Access
+        name: full_offering
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+    elements:
+      - name: Toast POS Software
+      - name: Hardware (terminals, KDS, handhelds)
+      - name: Payment Processing
+      - name: Online Ordering
+      - name: Toast Orders API
+      - name: Toast Menus API
+      - name: Toast Labor API
+      - name: Toast Restaurants API
+      - name: Toast Stock API
+      - name: Toast Partners API
+      - name: Toast Authentication API
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

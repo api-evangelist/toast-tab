@@ -1,0 +1,20 @@
+{
+  "name": "Example Name",
+  "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+  "multiLocationId": "string",
+  "preModifiers": [
+    {
+      "name": "Example Name",
+      "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+      "multiLocationId": {},
+      "fixedPrice": 1.0,
+      "multiplicationFactor": 1.0,
+      "displayMode": "PREFIX",
+      "posName": {},
+      "posButtonColorLight": {},
+      "posButtonColorDark": {},
+      "chargeAsExtra": true,
+      "plu": "string"
+    }
+  ]
+}

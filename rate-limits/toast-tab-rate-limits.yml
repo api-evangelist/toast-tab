@@ -1,0 +1,35 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Toast
+providerId: toast-tab
+created: '2026-06-03'
+modified: '2026-06-03'
+reconciled: false
+tags:
+  - Food Service
+  - Point Of Sale
+  - Restaurants
+  - Hospitality
+  - Rate Limiting
+description: Toast's developer documentation does not expose per-second/per-minute rate limits in publicly
+  retrievable form. Access to Toast APIs is restricted to vetted partners under the Toast Partners program,
+  and rate-limit terms are part of partner onboarding rather than a public spec. WebFetch on documentation
+  endpoints did not return rate-limit data.
+sources:
+  - https://doc.toasttab.com/
+notes: doc.toasttab.com pages did not return rate-limit specifications via WebFetch. Partners receive
+  limits in the developer agreement.
+limits:
+  - name: Toast partner API limits
+    scope: partner-account
+    metric: varies
+    limit: not publicly published; defined per partner agreement
+policies:
+  - name: Partner Program Limits
+    description: Rate limits for Toast Orders, Menus, Labor, Stock, Restaurants, and Partners APIs are
+      negotiated and communicated through Toast's Partner program. Public reconciliation is not possible
+      without partner credentials.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

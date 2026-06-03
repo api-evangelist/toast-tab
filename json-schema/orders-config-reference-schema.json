@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/orders-config-reference-schema.json",
+  "title": "ConfigReference",
+  "description": "A wrapper object containing identifier values for Toast platform entities.\n",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/$defs/ToastReference"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "multiLocationId": {
+          "description": "A consistent identifier for Toast platform entities, such\nas menu items, that applies to all versions of a shared\nentity at all locations in a restaurant group.\n\nFor example, you can use the `multiLocationId` value to\nidentify menu entities that are versions of a shared menu\nentity. For more information about the menus API `multilocationId` value, see\n[the _Toast Developer Guide_](https://doc.toasttab.com/doc/devguide/apiUnderstandingGuidsEntityIdentifiersAndMultilocationIds_V2.html#apiMultilocationIdValues_V2).\n",
+          "type": "string"
+        },
+        "externalId": {
+          "description": "An external identifier that is prefixed by a naming\nauthority. Deprecated for use in `ConfigReference`.\n",
+          "type": "string"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "ToastReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast entity by Toast GUID.",
+      "required": [
+        "guid",
+        "entityType"
+      ],
+      "properties": {
+        "guid": {
+          "description": "The GUID maintained by the Toast platform.",
+          "type": "string",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "entityType": {
+          "x-toast-read-only": true,
+          "description": "The type of object this is. Response only.",
+          "type": "string",
+          "example": "string"
+        }
+      }
+    }
+  }
+}

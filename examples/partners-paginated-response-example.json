@@ -1,0 +1,25 @@
+{
+  "currentPageNum": 1,
+  "results": [
+    {
+      "restaurantGuid": "7ab295f6-8dc8-4cb6-8cdb-072b83e84184",
+      "managementGroupGuid": "75063706-dd6e-4da6-8bb6-3a99e218e686",
+      "restaurantName": "Main Street Cafe",
+      "locationName": "123 Main Street",
+      "createdByEmailAddress": "clefebvre@mainstreetcafe.com",
+      "externalGroupRef": "",
+      "externalRestaurantRef": "",
+      "modifiedDate": 1678823073353,
+      "createdDate": 1678823073353,
+      "isoModifiedDate": "2023-03-14T19:44:33.353Z",
+      "isoCreatedDate": "2023-03-14T19:44:33.353Z"
+    }
+  ],
+  "totalResultCount": 3222,
+  "pageSize": 1,
+  "currentPageToken": "cDoxLHM6MQ==",
+  "nextPageToken": "cDoyLHM6MQ==",
+  "totalCount": 3222,
+  "nextPageNum": 2,
+  "lastPageNum": 3222
+}

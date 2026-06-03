@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/menus-catalog-product-variant-structure.json",
+  "name": "CatalogProductVariant",
+  "description": "The specific version of the retail product that this menu item represents, defined by a unique combination of option values (for example, a T-Shirt with options `Red` and size `Small`).\n",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "uuid",
+      "description": "The unique identifier for the product variant.\n",
+      "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the variant, for example, \"T-Shirt - Small\".\n",
+      "example": "Example Name"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the variant.\n",
+      "x-nullable": true,
+      "example": "string"
+    },
+    "selectedOptions": {
+      "type": "array",
+      "description": "List of selected options for the variant.\n",
+      "items": {
+        "$ref": "#/$defs/CatalogProductVariantOption"
+      }
+    }
+  },
+  "definitions": {
+    "CatalogProductVariantOption": {
+      "type": "object",
+      "description": "A selected option for a retail product variant.\n",
+      "properties": {
+        "id": {
+          "type": "uuid",
+          "description": "The unique identifier for the product variant option.\n",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the product variant option, for example, \"size\".\n",
+          "example": "Example Name"
+        },
+        "sortOrder": {
+          "type": "int32",
+          "description": "The sort order of the product variant option.\n",
+          "example": 1
+        },
+        "value": {
+          "$ref": "#/$defs/CatalogProductOptionValue"
+        }
+      },
+      "name": "CatalogProductVariantOption"
+    },
+    "CatalogProductOptionValue": {
+      "type": "object",
+      "description": "A value within a catalog product option.\n",
+      "properties": {
+        "id": {
+          "type": "uuid",
+          "description": "The unique identifier for the product option value.\n",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the product option value, for example, \"small\".\n",
+          "example": "Example Name"
+        },
+        "sortOrder": {
+          "type": "int32",
+          "description": "The sort order of the product option value.\n",
+          "example": 1
+        }
+      },
+      "name": "CatalogProductOptionValue"
+    }
+  }
+}

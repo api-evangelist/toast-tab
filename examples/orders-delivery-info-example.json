@@ -1,0 +1,16 @@
+{
+  "address1": "string",
+  "address2": "string",
+  "city": "string",
+  "administrativeArea": "string",
+  "state": "string",
+  "zipCode": "string",
+  "country": "string",
+  "latitude": 1.0,
+  "longitude": 1.0,
+  "notes": "string",
+  "deliveredDate": "2025-02-07T08:00:00.000-0800",
+  "dispatchedDate": "2025-02-07T08:00:00.000-0800",
+  "deliveryEmployee": {},
+  "deliveryState": "PENDING"
+}

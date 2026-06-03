@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "scheduling": true,
+  "specialRequests": true,
+  "specialRequestsMessage": "string",
+  "paymentOptions": {
+    "delivery": {},
+    "takeout": {},
+    "ccTip": true
+  }
+}

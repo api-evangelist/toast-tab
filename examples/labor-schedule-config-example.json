@@ -1,0 +1,7 @@
+{
+  "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+  "minBeforeClockIn": 1.0,
+  "minAfterClockIn": 1.0,
+  "minBeforeClockOut": 1.0,
+  "minAfterClockOut": 1.0
+}

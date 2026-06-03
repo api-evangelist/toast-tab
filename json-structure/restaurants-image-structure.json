@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/restaurants-image-structure.json",
+  "name": "Image",
+  "description": "Information about an image.",
+  "type": "object",
+  "properties": {
+    "width": {
+      "type": "int32",
+      "description": "The width of the image, in pixels.",
+      "example": 1
+    },
+    "height": {
+      "type": "int32",
+      "description": "The height of the image, in pixels.",
+      "example": 1
+    },
+    "url": {
+      "type": "string",
+      "example": "https://doc.toasttab.com/"
+    },
+    "heightWidthRatio": {
+      "type": "float",
+      "description": "The ratio of height to width",
+      "example": 1.0
+    }
+  }
+}

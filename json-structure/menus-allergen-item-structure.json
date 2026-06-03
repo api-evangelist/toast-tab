@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/menus-allergen-item-structure.json",
+  "name": "AllergenItem",
+  "description": "Reserved for future functionality. Not currently supported for external integrations.\n",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "description": "Reserved for future functionality. Not currently supported for external integrations.\n",
+      "type": "uuid",
+      "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+    },
+    "code": {
+      "description": "Reserved for future functionality. Not currently supported for external integrations.\n",
+      "type": "string",
+      "example": "string"
+    },
+    "groupGuid": {
+      "description": "Reserved for future functionality. Not currently supported for external integrations.\n",
+      "type": "uuid",
+      "x-nullable": true,
+      "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+    },
+    "groupCode": {
+      "description": "Reserved for future functionality. Not currently supported for external integrations.\n",
+      "type": "string",
+      "x-nullable": true,
+      "example": "string"
+    },
+    "presenceType": {
+      "type": "string",
+      "description": "Reserved for future functionality. Not currently supported for external integrations.\n",
+      "enum": [
+        "CONTAINS",
+        "TRACES"
+      ],
+      "x-nullable": true,
+      "example": "CONTAINS"
+    }
+  }
+}

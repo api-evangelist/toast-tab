@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/restaurants-payment-options-schema.json",
+  "title": "PaymentOptions",
+  "description": "Information about the forms of payment that the restaurant will\naccept for orders.\n",
+  "type": "object",
+  "properties": {
+    "delivery": {
+      "$ref": "#/$defs/DeliveryPaymentOptions"
+    },
+    "takeout": {
+      "$ref": "#/$defs/TakeoutPaymentOptions"
+    },
+    "ccTip": {
+      "type": "boolean",
+      "description": "enables credit card tips",
+      "example": true
+    }
+  },
+  "$defs": {
+    "DeliveryPaymentOptions": {
+      "type": "object",
+      "description": "Information about the forms of payment that the restaurant will\naccept for delivery orders.\n",
+      "properties": {
+        "cash": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts cash payment for\ndelivery orders that are placed online.\n",
+          "example": true
+        },
+        "ccSameDay": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for delivery orders that are delivered on the same\nday.\n",
+          "example": true
+        },
+        "ccFuture": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for delivery orders that are to be delivered on a day\nafter the guest places the order.\n",
+          "example": true
+        }
+      }
+    },
+    "TakeoutPaymentOptions": {
+      "type": "object",
+      "description": "Information about the forms of payment that the restaurant will\naccept for orders that a guest picks up in person.\n",
+      "properties": {
+        "cash": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts cash payment for\ntakeout orders that are placed online.\n",
+          "example": true
+        },
+        "ccSameDay": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for takeout orders that the guest will pick up on\nthe same day.\n",
+          "example": true
+        },
+        "ccFuture": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts online credit card\npayment for takeout orders that the guest will pick up on\na day after the guest places the order.\n",
+          "example": true
+        },
+        "ccInStore": {
+          "type": "boolean",
+          "description": "Indicates whether the restaurant accepts credit card payment\nat the time the guest picks up a takeout order.\n",
+          "example": true
+        }
+      }
+    }
+  }
+}

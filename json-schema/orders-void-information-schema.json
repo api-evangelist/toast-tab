@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/orders-void-information-schema.json",
+  "title": "VoidInformation",
+  "description": "Information about a void applied to a check or item.",
+  "type": "object",
+  "properties": {
+    "voidUser": {
+      "type": "object",
+      "description": "The user who voided the order.",
+      "$ref": "#/$defs/ExternalReference"
+    },
+    "voidApprover": {
+      "type": "object",
+      "description": "The user who approved the void.",
+      "$ref": "#/$defs/ExternalReference"
+    },
+    "voidDate": {
+      "description": "The date on which the void was made.",
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-06-03T12:00:00.000+0000"
+    },
+    "voidBusinessDate": {
+      "x-toast-read-only": true,
+      "description": "The business date (yyyyMMdd) on which the void was made. Response only.",
+      "type": "integer",
+      "example": "2026-06-03T12:00:00.000+0000"
+    },
+    "voidReason": {
+      "type": "object",
+      "description": "A reference to the configured void reason for the void.",
+      "$ref": "#/$defs/ExternalReference"
+    }
+  },
+  "$defs": {
+    "ExternalReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast platform entity by Toast GUID or a partner's identifier.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "externalId": {
+              "description": "External identifier string that is prefixed by the naming authority. You can use the orders API to set an `externalId` for an order and then GET the order with that `externalId`.",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

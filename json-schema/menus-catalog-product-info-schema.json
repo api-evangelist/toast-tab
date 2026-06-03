@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/menus-catalog-product-info-schema.json",
+  "title": "CatalogProductInfo",
+  "description": "Contains retail catalog product information for a menu item.\n",
+  "type": "object",
+  "properties": {
+    "product": {
+      "$ref": "#/$defs/CatalogProduct"
+    },
+    "productVariant": {
+      "$ref": "#/$defs/CatalogProductVariant"
+    }
+  },
+  "$defs": {
+    "CatalogProduct": {
+      "type": "object",
+      "description": "Retail catalog product information for a menu item.\n",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The unique identifier of the retail product in the retail product catalog. This is different from the menu item identifier.\n",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the product, for example, \"T-Shirt\".\n",
+          "example": "Example Name"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the product.\n",
+          "x-nullable": true,
+          "example": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "SINGLE",
+            "OPTION",
+            "UNSPECIFIED"
+          ],
+          "description": "The type of product. Possible values include:\n\n* `SINGLE`: The product has exactly one variant and does not have any options.\n* `OPTION`: The product is an option-type product and will contain at least one variant and at least one option.\n* `UNSPECIFIED`: Product type is not specified or unknown.\n",
+          "example": "SINGLE"
+        },
+        "images": {
+          "type": "array",
+          "description": "List of image URLs for the product. A product can have different images than its variants.\n",
+          "items": {
+            "type": "string"
+          }
+        },
+        "availableOptions": {
+          "type": "array",
+          "description": "List of available options for the product.\n",
+          "items": {
+            "$ref": "#/$defs/CatalogProductOption"
+          }
+        }
+      }
+    },
+    "CatalogProductOption": {
+      "type": "object",
+      "description": "An option for a retail product.\n",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The unique identifier for the product option.\n",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the product option, for example, \"size\".\n",
+          "example": "Example Name"
+        },
+        "sortOrder": {
+          "type": "integer",
+          "description": "The sort order of the product option.\n",
+          "example": 1
+        },
+        "values": {
+          "type": "array",
+          "description": "List of values for the product option.\n",
+          "items": {
+            "$ref": "#/$defs/CatalogProductOptionValue"
+          }
+        }
+      }
+    },
+    "CatalogProductOptionValue": {
+      "type": "object",
+      "description": "A value within a catalog product option.\n",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The unique identifier for the product option value.\n",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the product option value, for example, \"small\".\n",
+          "example": "Example Name"
+        },
+        "sortOrder": {
+          "type": "integer",
+          "description": "The sort order of the product option value.\n",
+          "example": 1
+        }
+      }
+    },
+    "CatalogProductVariant": {
+      "type": "object",
+      "description": "The specific version of the retail product that this menu item represents, defined by a unique combination of option values (for example, a T-Shirt with options `Red` and size `Small`).\n",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The unique identifier for the product variant.\n",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the variant, for example, \"T-Shirt - Small\".\n",
+          "example": "Example Name"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the variant.\n",
+          "x-nullable": true,
+          "example": "string"
+        },
+        "selectedOptions": {
+          "type": "array",
+          "description": "List of selected options for the variant.\n",
+          "items": {
+            "$ref": "#/$defs/CatalogProductVariantOption"
+          }
+        }
+      }
+    },
+    "CatalogProductVariantOption": {
+      "type": "object",
+      "description": "A selected option for a retail product variant.\n",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The unique identifier for the product variant option.\n",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the product variant option, for example, \"size\".\n",
+          "example": "Example Name"
+        },
+        "sortOrder": {
+          "type": "integer",
+          "description": "The sort order of the product variant option.\n",
+          "example": 1
+        },
+        "value": {
+          "$ref": "#/$defs/CatalogProductOptionValue"
+        }
+      }
+    }
+  }
+}

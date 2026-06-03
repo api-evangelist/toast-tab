@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/orders-customer-schema.json",
+  "title": "Customer",
+  "description": "Customer schema from Toast Orders API",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/$defs/ToastReference"
+    },
+    {
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "phone"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "description": "The first name, or given name, of the guest.\n"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "The last name, or surname, of the guest.\n"
+        },
+        "phone": {
+          "type": "string",
+          "description": "The telephone number of the guest.\n"
+        },
+        "phoneCountryCode": {
+          "type": "string",
+          "description": "The international phone country code for the number of the guest.\n"
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address corresponding to the guest who placed the order.\n\nThe email address is the key that identifies a unique restaurant guest. All distinct guests should have distinct email addresses.\n"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "ToastReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast entity by Toast GUID.",
+      "required": [
+        "guid",
+        "entityType"
+      ],
+      "properties": {
+        "guid": {
+          "description": "The GUID maintained by the Toast platform.",
+          "type": "string",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "entityType": {
+          "x-toast-read-only": true,
+          "description": "The type of object this is. Response only.",
+          "type": "string",
+          "example": "string"
+        }
+      }
+    }
+  }
+}

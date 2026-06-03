@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/orders-fulfillment-structure.json",
+  "name": "Fulfillment",
+  "description": "Information about the fulfillment requirements for a menu item selection.\n",
+  "type": "object",
+  "properties": {
+    "quantity": {
+      "type": "double",
+      "description": "The quantity required for fulfillment.",
+      "example": 1.0
+    },
+    "unit": {
+      "type": "string",
+      "description": "The unit of measure for the fulfillment quantity.",
+      "example": "string"
+    }
+  }
+}

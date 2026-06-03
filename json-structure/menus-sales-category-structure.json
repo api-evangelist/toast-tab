@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/menus-sales-category-structure.json",
+  "name": "SalesCategory",
+  "description": "A descriptive category, for example, \"Food\" or \"Liquor\" that, when applied to the menu items and modifier options in your menu, allow you to view sales data by category. Null if no sales category has been defined.\n",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "A descriptive name for this sales category, for example, \"Food\" or \"Liquor\".\n",
+      "type": "string",
+      "example": "Example Name"
+    },
+    "guid": {
+      "description": "A unique identifier for this sales category, assigned by the Toast POS system.\n",
+      "type": "string",
+      "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+    }
+  }
+}

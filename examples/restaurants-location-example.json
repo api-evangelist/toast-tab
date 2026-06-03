@@ -1,0 +1,13 @@
+{
+  "address1": "string",
+  "address2": "string",
+  "city": "string",
+  "stateCode": "string",
+  "administrativeArea": "string",
+  "zipCode": "string",
+  "country": "string",
+  "phone": "string",
+  "phoneCountryCode": "string",
+  "latitude": 1.0,
+  "longitude": 1.0
+}

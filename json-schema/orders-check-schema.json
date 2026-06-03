@@ -1,0 +1,952 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/orders-check-schema.json",
+  "title": "Check",
+  "description": "Represents a single check within an order.\n\nThe `externalId` value for a check must be unique. If you submit a check\nwith an `externalId` that already exists for another check, the request\nwill fail. You can use this behavior to implement idempotent check\nsubmission by always providing a consistent `externalId` for each unique\ncheck attempt.\n",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/$defs/ExternalReference"
+    },
+    {
+      "type": "object",
+      "required": [
+        "selections"
+      ],
+      "properties": {
+        "createdDate": {
+          "description": "The date and time that the Toast platform received the check.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "openedDate": {
+          "description": "The date on which this check was opened. If not specified, it is set to the current system time.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "closedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The most recent date on which this check's payment status was set to `CLOSED`."
+        },
+        "modifiedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The most recent date on which this check was modified."
+        },
+        "deletedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date on which this check was deleted.\n\n`deletedDate` is only applicable when `deleted` is true.\n\nIf `deleted` is false, then `deletedDate` is set to the UNIX epoch, `1970-01-01T00:00:00.000+0000`.\n"
+        },
+        "deleted": {
+          "type": "boolean",
+          "description": "Set to `true` if this check was deleted."
+        },
+        "selections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Selection"
+          }
+        },
+        "customer": {
+          "description": "A `Customer` object\nthat holds information about a restaurant guest\nthat is associated with the check.\n\nRequired for `POST` requests for orders that use the\ntakeout or delivery dining options.\n\nFor checks that apply or accrue Toast loyalty points, a\n`GET` request returns a `Customer` object\neven when restaurant employees do not enter guest\ninformation for a check. In this case, the `Customer` object\ncontains only the Toast platform GUID of the guest.\nAll other values are `null`.\n",
+          "$ref": "#/$defs/Customer"
+        },
+        "appliedLoyaltyInfo": {
+          "description": "Information about the customer loyalty program account associated with the check. Used to accrue loyalty program benefits and to redeem loyalty program discounts.",
+          "$ref": "#/$defs/AppliedLoyaltyInfo"
+        },
+        "taxExempt": {
+          "type": "boolean",
+          "default": false,
+          "description": "Set to `true` if this check is tax exempt."
+        },
+        "displayNumber": {
+          "type": "string",
+          "description": "Generally starts at one each day and counts up. The Toast platform fills this in if it is not specified when the order is POSTed. Not guaranteed to be unique."
+        },
+        "appliedServiceCharges": {
+          "type": "array",
+          "description": "Any restaurant-configured service charges that applied to this check.",
+          "items": {
+            "$ref": "#/$defs/AppliedServiceCharge"
+          }
+        },
+        "amount": {
+          "x-toast-read-only": true,
+          "type": "number",
+          "format": "double",
+          "description": "The total calculated price of the check including discounts and service charges. The `amount` does not include gratuity or taxes. Response only."
+        },
+        "taxAmount": {
+          "x-toast-read-only": true,
+          "type": "number",
+          "format": "double",
+          "description": "The calculated tax amount. Includes service charge and item level taxes. Response only."
+        },
+        "totalAmount": {
+          "type": "number",
+          "format": "double",
+          "description": "The total calculated price of this check including discounts and taxes. Not affected by refunds."
+        },
+        "payments": {
+          "type": "array",
+          "description": "Payments made on this check.",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/Payment"
+          }
+        },
+        "tabName": {
+          "type": "string",
+          "description": "The name of the tab on this check. This displays on the KDS (Kitchen Display System) for pending orders.\n\nThe `tabName` value can contain up to 255 characters.\n"
+        },
+        "paymentStatus": {
+          "x-toast-read-only": true,
+          "type": "string",
+          "description": "The payment status of this check.\n\nValid values:\n\n* `OPEN` - There is an outstanding balance.\n\n* `PAID` - A credit card payment was applied, but the tip has not been adjusted.\n\n* `CLOSED`  - There is no remaining amount due on this check. For credit card payments, the payment has been adjusted to reflect the tip. Toast does not prevent a `CLOSED` check from transitioning back to `OPEN` or `PAID`.\n\nResponse only.\n",
+          "enum": [
+            "OPEN",
+            "PAID",
+            "CLOSED"
+          ]
+        },
+        "appliedDiscounts": {
+          "type": "array",
+          "description": "The discounts applied to this check. In a `POST` request, only one `appliedDiscount` is allowed per check.",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/AppliedDiscount"
+          }
+        },
+        "voided": {
+          "x-toast-read-only": true,
+          "type": "boolean",
+          "description": "True if this check is voided. Response only."
+        },
+        "voidDate": {
+          "x-toast-read-only": true,
+          "type": "string",
+          "format": "date-time",
+          "description": "The date when this check was voided. Response only."
+        },
+        "voidBusinessDate": {
+          "x-toast-read-only": true,
+          "type": "integer",
+          "description": "The business date (yyyyMMdd) on which this check was voided. Response only."
+        },
+        "paidDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The most recent date when this check received payment. If not specified when `POST`ing, it is set to the current system time."
+        },
+        "createdDevice": {
+          "description": "The Toast POS device that created the check. This value is `null` if the check was not created using a Toast POS device.",
+          "$ref": "#/$defs/Device"
+        },
+        "lastModifiedDevice": {
+          "description": "The Toast POS device that modified the check most recently. This value is `null` if the check was never modified using a Toast POS device.\n\nIf the check is modified but the modification was not made using a Toast POS device, then this value does not change.\n",
+          "type": "object",
+          "$ref": "#/$defs/Device"
+        },
+        "duration": {
+          "x-toast-read-only": true,
+          "type": "integer",
+          "description": "The number of seconds between creation and payment. Response only."
+        },
+        "openedBy": {
+          "description": "The restaurant employee, or server, who opened the check.",
+          "$ref": "#/$defs/ExternalReference"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "ExternalReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast platform entity by Toast GUID or a partner's identifier.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "externalId": {
+              "description": "External identifier string that is prefixed by the naming authority. You can use the orders API to set an `externalId` for an order and then GET the order with that `externalId`.",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "Selection": {
+      "type": "object",
+      "description": "A `Selection` object can represent either a primary item (for example,\n`Check.selections`) or a modifier (`Selection.modifiers`) selection.\nQuantity defaults to `1`.\n\nFor a `POST` operation, all selections must have valid `item` and\n`itemGroup` fields. The `item` and `itemGroup` values can be `null` for\n`GET` requests. For example, they are `null` for gift cards and on special\nrequests.\n\nTo specify a modifier selection, add it to the `modifiers` list of\nanother selection. Each modifier selection must have its `optionGroup` field\nset correctly, because a `MenuItem` can be included in multiple\n`MenuOptionGroups`, potentially with different prices or sizing.\n\nThe `externalId` value for a selection must be unique. If you submit a\nselection with an `externalId` that already exists for another selection,\nthe request will fail. You can use this behavior to implement idempotent\nselection submission by always providing a consistent `externalId` for\neach unique selection attempt.\n",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ExternalReference"
+        },
+        {
+          "type": "object",
+          "required": [
+            "item",
+            "quantity"
+          ],
+          "properties": {
+            "item": {
+              "type": "object",
+              "description": "A reference to the selected menu item.",
+              "$ref": "#/$defs/ConfigReference"
+            },
+            "itemGroup": {
+              "type": "object",
+              "description": "A reference to the menu group from which the item was selected.",
+              "$ref": "#/$defs/ConfigReference"
+            },
+            "optionGroup": {
+              "type": "object",
+              "description": "A reference to the modifier group from which the menu item was selected. Only applies if this is a modifier selection.",
+              "$ref": "#/$defs/ConfigReference"
+            },
+            "preModifier": {
+              "type": "object",
+              "description": "A reference to the selected pre-modifier.",
+              "$ref": "#/$defs/ConfigReference"
+            },
+            "quantity": {
+              "type": "number",
+              "format": "double",
+              "description": "Quantity ordered. For items sold by weight, a decimal number. For discrete items, a counting number."
+            },
+            "seatNumber": {
+              "x-toast-read-only": true,
+              "type": "integer",
+              "description": "Indicates which guest seat at a restaurant table ordered\na menu item selection. Restaurant employees can choose the\nseat number when they add a menu item to a guest check.\n\n* A positive integer value indicates the seat number for\n  the menu item.\n\n* `0` - Indicates that the menu item is shared by\n  multiple guests.\n\n* `-1` - Indicates that the restaurant employee did not\n  select a seat for the menu item.\n\nResponse only.\n"
+            },
+            "unitOfMeasure": {
+              "type": "string",
+              "description": "The unit of measure used to weigh, determine size, or otherwise\nquantify the item.\n\nThe default is `NONE`, which means that the item is not meant to\nbe measured during a sale.\n\nValues are:\n* `NONE` - The item is not meant to be measured.\n* `LB` - Weighed in pounds.\n* `OZ` - Weighed in ounces.\n* `KG` - Weighed in kilograms.\n* `G` - Weighed in grams.\n* `GAL` - Measured in gallons.\n* `L` - Measured in liters.\n* `ML` - Measured in milliliters.\n* `FL_OZ` - Measured in fluid ounces.\n* `M` - Measured in meters.\n* `CM` - Measured in centimeters.\n* `FT` - Measured in feet.\n* `IN` - Measured in inches.\n* `YD` - Measured in yards.\n",
+              "enum": [
+                "NONE",
+                "LB",
+                "OZ",
+                "KG",
+                "G",
+                "GAL",
+                "L",
+                "ML",
+                "FL_OZ",
+                "M",
+                "CM",
+                "FT",
+                "IN",
+                "YD"
+              ]
+            },
+            "selectionType": {
+              "type": "string",
+              "description": "Specifies whether this selection is a special request or other off-menu sale.\n\nIf `null` or `NONE`, describes a normal modifier or item selection.\n\n`TOAST_CARD_SELL` and `TOAST_CARD_RELOAD` are currently response-only.\n",
+              "enum": [
+                "NONE",
+                "OPEN_ITEM",
+                "SPECIAL_REQUEST",
+                "PORTION",
+                "HOUSE_ACCOUNT_PAY_BALANCE",
+                "TOAST_CARD_SELL",
+                "TOAST_CARD_RELOAD"
+              ]
+            },
+            "salesCategory": {
+              "x-toast-read-only": true,
+              "type": "object",
+              "description": "A reference to the sales category of the item. Response only.",
+              "$ref": "#/$defs/ConfigReference"
+            },
+            "appliedDiscounts": {
+              "x-toast-read-only": true,
+              "type": "array",
+              "description": "The itemized discounts that are applied to this item. Response only.",
+              "minItems": 0,
+              "items": {
+                "$ref": "#/$defs/AppliedDiscount"
+              }
+            },
+            "deferred": {
+              "type": "boolean",
+              "description": "Whether this selection is a deferred revenue transaction, such as a gift card sale."
+            },
+            "preDiscountPrice": {
+              "x-toast-read-only": true,
+              "type": "number",
+              "description": "Gross sale price for this selection. Excludes tax. Response only.",
+              "format": "double"
+            },
+            "price": {
+              "x-toast-read-only": true,
+              "type": "number",
+              "format": "double",
+              "description": "Net price for this selection. The final price of the item after considering discounts (including discounts at the check level), quantity adjustments, and modifier prices at the time the item was selected for purchase. Response only."
+            },
+            "tax": {
+              "x-toast-read-only": true,
+              "type": "number",
+              "format": "double",
+              "description": "The total tax amount for this selection. Response only."
+            },
+            "voided": {
+              "x-toast-read-only": true,
+              "type": "boolean",
+              "description": "Set to `true` if this selection is voided. Response only."
+            },
+            "voidDate": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "format": "date-time",
+              "description": "The date on which this selection was voided. Response only."
+            },
+            "voidBusinessDate": {
+              "x-toast-read-only": true,
+              "type": "integer",
+              "description": "The business date (yyyyMMdd) on which this selection was voided. Response only."
+            },
+            "voidReason": {
+              "x-toast-read-only": true,
+              "type": "object",
+              "description": "If `voided` is `true`, a reference to the void reason. Response only.",
+              "$ref": "#/$defs/ExternalReference"
+            },
+            "refundDetails": {
+              "description": "A `RefundDetails` object that\ncontains information about refunded payment amounts for the item.\n",
+              "type": "object",
+              "$ref": "#/$defs/RefundDetails"
+            },
+            "displayName": {
+              "type": "string",
+              "description": "The display name of the selection.\n\nCan be used to set a special request value.\n\nOtherwise, it is generated from this selection's item property.\n"
+            },
+            "plu": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "The price look-up (PLU) code for the menu item selection used for pricing and inventory management."
+            },
+            "premodifierPlu": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "The Price Look-Up (PLU) code for the premodifier associated with this menu item selection. This is a unique identifier used for pricing and inventory management purposes. Currently this field is read only."
+            },
+            "createdDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date on which this selection was created. If not specified, defaults to the current time."
+            },
+            "modifiedDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date on which this selection was last modified. If not specified, defaults to the current time."
+            },
+            "modifiers": {
+              "type": "array",
+              "description": "A list of modifiers that apply to this selection.",
+              "items": {
+                "$ref": "#/$defs/Selection"
+              }
+            },
+            "fulfillmentStatus": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "default": "NEW",
+              "description": "Indicates the stage of the preparation workflow that the\nmenu item selection is in.\n\nThe `fulfillmentStatus` of a\nmenu item selection changes as restaurant employees move\nthe item through the functions of the Toast POS, for\nexample order entry and the kitchen display system (KDS).\nResponse only.\n\nValid values:\n\n* `NEW` - The menu item selection was added to a\n  check but is not yet sent to the KDS for\n  preparation.\n\n* `HOLD` - A restaurant employee paused the menu\n  item selection so that it does not appear in the\n  KDS for preparation.\n\n* `SENT` - The menu item selection was fired and\n  appears in the KDS for preparation.\n\n* `READY` - Preparation is complete. The menu item\n  selection is fulfilled and no longer appears in\n  the KDS. If your restaurant does not use the Toast platform\n  KDS, then order items do not reach the `READY`\n  status.\n",
+              "enum": [
+                "NEW",
+                "HOLD",
+                "SENT",
+                "READY"
+              ]
+            },
+            "fulfillment": {
+              "x-toast-read-only": true,
+              "type": "object",
+              "description": "Information about the fulfillment requirements for this menu item selection. Response only.\n",
+              "$ref": "#/$defs/Fulfillment"
+            },
+            "taxInclusion": {
+              "type": "string",
+              "description": "Indicates whether the menu item price includes one or more tax\namounts. If the menu item is a modifier for another menu item\nselection, it always inherits the tax inclusion behavior of the menu\nitem that it applies to.\n\nValid values:\n* `INCLUDED` - The menu item price includes one or more tax amounts.\n* `NOT_INCLUDED` - The menu item price does not include any tax\n  amounts.\n* `INHERITED` - The menu item is a modifier for another menu item\n  selection in the check. The `taxInclusion` value of the parent menu\n  item selection applies to the modifier. If a menu item selection\n  *that is not a modifier* inherits tax inclusion behavior from a\n  menu or menu group, the `taxInclusion` value is either\n  `INCLUDED` or `NOT_INCLUDED`.\n",
+              "enum": [
+                "INCLUDED",
+                "NOT_INCLUDED",
+                "INHERITED"
+              ]
+            },
+            "appliedTaxes": {
+              "x-toast-read-only": true,
+              "type": "array",
+              "description": "An array of `AppliedTaxRate` objects that contain information about tax payments made for the selection. Response only.",
+              "items": {
+                "$ref": "#/$defs/AppliedTaxRate"
+              }
+            },
+            "diningOption": {
+              "x-toast-read-only": true,
+              "description": "A reference to the setting or method that a restaurant uses to fulfill orders. For example, dine-in, takeout, or delivery might be dining options.\n\nRestaurants configure the dining options that they fulfill orders in.\n\nResponse only.\n",
+              "type": "object",
+              "$ref": "#/$defs/ExternalReference"
+            },
+            "openPriceAmount": {
+              "description": "A non-negative currency amount that sets the price of a\nmenu item that is configured to use the *Open Price*\npricing strategy. If you do not supply an\n`openPriceAmount` value for an open price menu item, the\norders API sets the price to 0.00.\n\nIf a menu item is configured to use tax-inclusive\npricing, the orders API calculates the base price and tax\namount based on the open price that you specify. _The\nopen-price amount includes both the base-price and\ninclusive tax amount._\n\n`POST` only. The `openPriceAmount` value is not\npresent in orders API return data. It is used to\npopulate `receiptLinePrice`.\n",
+              "type": "number",
+              "format": "double"
+            },
+            "receiptLinePrice": {
+              "type": "number",
+              "format": "double",
+              "description": "The price of the menu item selection without any quantity, taxes, \ndiscounts, and modifier adjustments. If the menu item has taxes included, the `receiptLinePrice` value shows the original price, including taxes.\n\nFor example, if the menu item selection is for two orders of fries, \n`receiptLinePrice` is the price of one order of fries. If a menu item selection \nis for three large drinks, receiptLinePrice is the price of one large drink.\n\nPopulated based on the menu configuration, or using the value provided in \n`externalPriceAmount` or `openPriceAmount`.\n"
+            },
+            "optionGroupPricingMode": {
+              "type": "string",
+              "description": "Information about how the modifier group affects the pricing of its parent item.",
+              "enum": [
+                "INCLUDED",
+                "FIXED_PRICE",
+                "ADJUSTS_PRICE",
+                "REPLACES_PRICE",
+                "LOCATION_SPECIFIC_PRICE"
+              ]
+            },
+            "externalPriceAmount": {
+              "description": "The menu item price that was calculated by the\nmarketplace facilitator organization that created the\norder.\n\n`POST` only. The orders API does not include the\n`externalPriceAmount` value in return data. It is\nused to populate `receiptLinePrice`.\n\n**Note**: you can only include this information if your\nToast API client is associated with a designated\nmarketplace facilitator organization. Most Toast API\nclients do not create marketplace facilitator orders.\n",
+              "type": "number",
+              "format": "double"
+            },
+            "splitOrigin": {
+              "description": "Reserved for future use.\n",
+              "type": "object",
+              "$ref": "#/$defs/ExternalReference"
+            }
+          }
+        }
+      ]
+    },
+    "Customer": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "required": [
+            "firstName",
+            "lastName",
+            "email",
+            "phone"
+          ],
+          "properties": {
+            "firstName": {
+              "type": "string",
+              "description": "The first name, or given name, of the guest.\n"
+            },
+            "lastName": {
+              "type": "string",
+              "description": "The last name, or surname, of the guest.\n"
+            },
+            "phone": {
+              "type": "string",
+              "description": "The telephone number of the guest.\n"
+            },
+            "phoneCountryCode": {
+              "type": "string",
+              "description": "The international phone country code for the number of the guest.\n"
+            },
+            "email": {
+              "type": "string",
+              "description": "The email address corresponding to the guest who placed the order.\n\nThe email address is the key that identifies a unique restaurant guest. All distinct guests should have distinct email addresses.\n"
+            }
+          }
+        }
+      ]
+    },
+    "AppliedLoyaltyInfo": {
+      "type": "object",
+      "description": "Information about the customer loyalty program account associated with a check.",
+      "required": [
+        "loyaltyIdentifier",
+        "vendor"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "loyaltyIdentifier": {
+              "type": "string",
+              "description": "An identifier for the loyalty program account. For `POST` orders, this identifier is transmitted to the loyalty program service provider to associate the check with the loyalty account."
+            },
+            "maskedLoyaltyIdentifier": {
+              "type": "string",
+              "description": "A representation of the identifier of the loyalty program\naccount that can be displayed securely. For example:\n`************1234`. The Toast POS displays this string to\nrestaurant employees and guests.\n\nYou can optionally include this\nvalue when you `POST` an order. It is\navailable in response data when you `GET` the order.\n\nIf you do not provide a `maskedLoyaltyIdentifier` when you\n`POST` an order, this value is `null` in response data.\n\nThe Toast POS app displays a masked representation of the\n`loyaltyIdentifier`. All characters except the last four\nare hidden.\n"
+            },
+            "vendor": {
+              "type": "string",
+              "description": "The specific loyalty program service provider that supports the loyalty account.",
+              "enum": [
+                "TOAST",
+                "PUNCHH",
+                "PUNCHH2",
+                "PAYTRONIX",
+                "APPFRONT",
+                "INTEGRATION"
+              ]
+            },
+            "accrualFamilyGuid": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "Response only. An internal Toast platform identifier for loyalty\nprogram transactions.\n\nThis is not returned from the initial\n`POST` order request and is available at a later time.\n"
+            },
+            "accrualText": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "Response only. A description of the loyalty program transaction\nto print on the customer's receipt. For example,\n\"Earned 27 points.\"\n\nThe maximum length of the description string\nis 255 characters.\n\nThis is not returned from the initial\n`POST` order request and is available at a later time.\n"
+            }
+          }
+        }
+      ]
+    },
+    "AppliedServiceCharge": {
+      "type": "object",
+      "description": "A service charge that is added to a check. A service charge can represent an upcharge such as a gratuity or a delivery fee.\n\nWhether the upcharge is taxable is defined in the restaurant-configured `serviceCharge`.\n\nThe fields on the `AppliedServiceCharge` are calculated based on the referenced `ServiceCharge` configuration.\n",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ExternalReference"
+        },
+        {
+          "type": "object",
+          "required": [
+            "serviceCharge"
+          ],
+          "properties": {
+            "chargeAmount": {
+              "type": "number",
+              "format": "double",
+              "description": "The final applied amount excluding tax. Required if `chargeType` is `OPEN`."
+            },
+            "serviceCharge": {
+              "description": "A reference to the restaurant-configured service charge. If a service charge is taxable, the tax amount is applied to the check.",
+              "$ref": "#/$defs/ExternalReference"
+            },
+            "chargeType": {
+              "x-toast-read-only": true,
+              "description": "The type of service charge. Response only.\n\nValid values:\n\n* `FIXED` - The service charge is for a specific currency amount.\n\n* `PERCENT` - The service charge is for a percentage of the check amount.\n\n* `OPEN` - The service charge is not configured with an amount. The amount is specified by the restaurant employee.\n",
+              "type": "string",
+              "enum": [
+                "FIXED",
+                "PERCENT",
+                "OPEN"
+              ]
+            },
+            "name": {
+              "x-toast-read-only": true,
+              "description": "The configured human readable label for the service charge. Response only.",
+              "type": "string"
+            },
+            "delivery": {
+              "x-toast-read-only": true,
+              "description": "Whether this service charge is a delivery charge. Response only.",
+              "type": "boolean"
+            },
+            "takeout": {
+              "x-toast-read-only": true,
+              "description": "Whether this service charge is a takeout charge. Response only.",
+              "type": "boolean"
+            },
+            "dineIn": {
+              "x-toast-read-only": true,
+              "description": "Whether this service charge is a dine-in charge. Response only.",
+              "type": "boolean"
+            },
+            "gratuity": {
+              "x-toast-read-only": true,
+              "description": "Whether this service charge is a gratuity. Can be used to derive required tip amount on the check. Response only.",
+              "type": "boolean"
+            },
+            "taxable": {
+              "x-toast-read-only": true,
+              "description": "Whether this service charge is taxable. Response only.",
+              "type": "boolean"
+            },
+            "appliedTaxes": {
+              "type": "array",
+              "description": "Taxes applied to the service charge.",
+              "items": {
+                "$ref": "#/$defs/AppliedTaxRate"
+              }
+            },
+            "serviceChargeCalculation": {
+              "type": "string",
+              "description": "Defines whether a `PERCENT` service charge is applied before (`PRE_DISCOUNT`) or after (`POST_DISCOUNT`) discounts.\n\nThis field is `null` for `FIXED` and `OPEN` service charges.\n",
+              "enum": [
+                "PRE_DISCOUNT",
+                "POST_DISCOUNT"
+              ]
+            },
+            "refundDetails": {
+              "description": "A `RefundDetails` object that\ncontains information about refunded payment amounts for the item.\n",
+              "type": "object",
+              "$ref": "#/$defs/RefundDetails"
+            },
+            "serviceChargeCategory": {
+              "x-toast-read-only": true,
+              "description": "The type of service charge. Default is `SERVICE_CHARGE`. Response only.\n\nValid values:\n\n* `SERVICE_CHARGE` - The default type for a service charge.\n\n* `CREDIT_CARD_SURCHARGE` - A fee assessed _only_ on payment transactions that use a credit card.\n\n* `FUNDRAISING_CAMPAIGN` - Service charge associated with fundraising.\n\n* `CASH_ROUNDING` - Adjustment to the check total to account for cash payments with minimum denominations greater than 0.01.\n",
+              "type": "string",
+              "enum": [
+                "SERVICE_CHARGE",
+                "CREDIT_CARD_SURCHARGE",
+                "FUNDRAISING_CAMPAIGN",
+                "CASH_ROUNDING"
+              ]
+            },
+            "paymentGuid": {
+              "x-toast-read-only": true,
+              "description": "The Toast platform unique identifier for the payment the fee is linked to. The `paymentGuid` value is always `null` unless the `serviceChargeCategory` object value is `CREDIT_CARD_SURCHARGE` or `CASH_ROUNDING`. Response only.",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "Payment": {
+      "type": "object",
+      "description": "Defines a payment.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ExternalReference"
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "amount",
+            "tipAmount"
+          ],
+          "properties": {
+            "paidDate": {
+              "description": "The date on which the payment was made.",
+              "type": "string",
+              "format": "date-time"
+            },
+            "paidBusinessDate": {
+              "x-toast-read-only": true,
+              "description": "The business date (yyyyMMdd) on which this payment was first applied. Response only.",
+              "type": "integer"
+            },
+            "type": {
+              "type": "string",
+              "description": "The payment method.\n\nWhen `POST`ing, only `OTHER` and `CREDIT` payment types are supported. For cash payments, you create an external cash payment type in Other Payment Options.\n\nAll other types are response only.\n\nValid values:\n\n* `CASH` - The guest paid in cash.\n* `CREDIT` - The guest used a credit card.\n* `GIFTCARD` - The guest used a gift card.\n* `HOUSE_ACCOUNT` - The guest used funds from their house account.\n* `REWARDCARD` - The guest used the available balance on a rewards card.\n* `LEVELUP` - The guest used the LevelUp app.\n* `TOAST_SV` - The guest used their Toast Cash stored value.\n* `OTHER` - The payment type is a custom type configured by the restaurant.\n* `UNDETERMINED` - The payment type cannot be determined.\n",
+              "enum": [
+                "CASH",
+                "CREDIT",
+                "GIFTCARD",
+                "HOUSE_ACCOUNT",
+                "REWARDCARD",
+                "LEVELUP",
+                "TOAST_SV",
+                "OTHER",
+                "UNDETERMINED"
+              ]
+            },
+            "cardEntryMode": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "Indicates how credit card data was obtained. Response only.\n\nValid values:\n\n* `SWIPED` - The credit card was swiped through a card reader.\n* `KEYED` - The restaurant employee typed the card number into a device.\n* `ONLINE` - The credit card information was entered online.\n* `EMV_CHIP_SIGN` - The credit card was inserted into a chip reader.\n* `TOKENIZED` - The credit card number is tokenized, meaning that it is replaced by a series of randomly generated numbers. The authorizer is able to use the token to authorize the actual credit card.\n* `PRE_AUTHED` - The credit card was pre-authorized for an initial amount. An example of pre-authorization is swiping a credit card to start a bar tab. The final payment is authorized when the order is complete.\n* `SAVED_CARD` - The credit card information was retrieved from the guest's account.\n* `FUTURE_ORDER` - The credit card payment was included on a scheduled order.\n* `CONTACTLESS` - The guest used a contactless payment option to provide the credit card number.\n* `APPLE_PAY_CNP` - The guest used the Apple Pay app to make the payment.\n* `GOOGLE_PAY_CNP` - The guest used the Google Pay app to make the payment.\n* `INCREMENTAL_PRE_AUTHED` - An additional payment was added to a pre-authorized card. For example, a guest uses a credit card to open a bar tab. As they continue to order more drinks, the pre-authorized amount is updated. The final payment is authorized when the order is complete.\n* `PARTNER_ECOM_COF` - The restaurant has the credit card on file.\n* `CLICK_TO_PAY_CNP` - The guest used Click to Pay to make the payment.\n",
+              "enum": [
+                "SWIPED",
+                "KEYED",
+                "ONLINE",
+                "EMV_CHIP_SIGN",
+                "TOKENIZED",
+                "PRE_AUTHED",
+                "SAVED_CARD",
+                "FUTURE_ORDER",
+                "CONTACTLESS",
+                "APPLE_PAY_CNP",
+                "GOOGLE_PAY_CNP",
+                "INCREMENTAL_PRE_AUTHED",
+                "PARTNER_ECOM_COF",
+                "CLICK_TO_PAY_CNP"
+              ]
+            },
+            "amount": {
+              "type": "number",
+              "format": "double",
+              "description": "The amount of this payment, excluding tips."
+            },
+            "tipAmount": {
+              "type": "number",
+              "format": "double",
+              "description": "The amount tipped on this payment."
+            },
+            "amountTendered": {
+              "type": "number",
+              "format": "double",
+              "description": "The amount tendered for this payment. The amount tendered does not include the tip."
+            },
+            "cardType": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "The type of credit card that was used. Response only.",
+              "enum": [
+                "VISA",
+                "MASTERCARD",
+                "AMEX",
+                "DISCOVER",
+                "JCB",
+                "DINERS",
+                "CIT",
+                "MAESTRO",
+                "LASER",
+                "SOLO",
+                "INTERAC",
+                "EFTPOS",
+                "WRIGHT_EXPRESS",
+                "VOYAGER",
+                "UNKNOWN"
+              ]
+            },
+            "first6Digits": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "The first 6 digits of the card that was used. Response only."
+            },
+            "last4Digits": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "The last 4 digits of the credit card that was used. Response only."
+            },
+            "originalProcessingFee": {
+              "x-toast-read-only": true,
+              "type": "number",
+              "format": "double",
+              "description": "The original processing fee for this payment. Populated after the payment is captured. Response only."
+            },
+            "server": {
+              "x-toast-read-only": true,
+              "description": "The restaurant employee, or server, who is associated with the payment. Response only.",
+              "$ref": "#/$defs/ExternalReference"
+            },
+            "cashDrawer": {
+              "x-toast-read-only": true,
+              "type": "object",
+              "description": "A reference to the `cashDrawer` used to receive this payment. Response only.",
+              "$ref": "#/$defs/ExternalReference"
+            },
+            "refundStatus": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "Indicates whether the payment was refunded. Response only.\n\nValid values:\n* `NONE` - The payment was not refunded.\n* `PARTIAL` - The payment was partially refunded.\n* `FULL` - The payment was refunded in full.\n",
+              "enum": [
+                "NONE",
+                "PARTIAL",
+                "FULL"
+              ]
+            },
+            "refund": {
+              "x-toast-read-only": true,
+              "type": "object",
+              "description": "Response only.",
+              "$ref": "#/$defs/Refund"
+            },
+            "paymentStatus": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "The status of this payment when the type is `CREDIT`. Response only.\n\nValid values:\n\n* `OPEN` - The payment has not been presented for processing.\n* `PROCESSING` - The payment is being processed.\n* `AUTHORIZED_AT_RISK` - (DEPRECATED) This value is no longer used.\n* `AUTHORIZED` - The payment is approved but not yet captured. The card is valid and the funds are available.\n* `ERROR` - An error occurred during the payment processing.\n* `ERROR_NETWORK` - Unable to connect to the payment authorizer.\n* `DENIED` - The payment request was denied. For example, the provided credit card is over its limit.\n* `PROCESSING_VOID` - A void request for the payment is being processed.\n* `VOIDED_AT_RISK` - This value is no longer used.\n* `CANCELLED` - The payment is canceled.\n* `CAPTURE_IN_PROGRESS` - The payment is in the process of being captured.\n* `CAPTURED` - The payment has been captured. When the payment is captured, the guest account is charged for the transaction amount.\n* `VOIDED` - The payment is voided.\n",
+              "enum": [
+                "OPEN",
+                "PROCESSING",
+                "AUTHORIZED_AT_RISK",
+                "AUTHORIZED",
+                "ERROR",
+                "ERROR_NETWORK",
+                "DENIED",
+                "PROCESSING_VOID",
+                "VOIDED_AT_RISK",
+                "CANCELLED",
+                "CAPTURE_IN_PROGRESS",
+                "CAPTURED",
+                "VOIDED"
+              ]
+            },
+            "voidInfo": {
+              "x-toast-read-only": true,
+              "type": "object",
+              "description": "If the payment was voided, this contains information about who did it and when. Response only.",
+              "$ref": "#/$defs/VoidInformation"
+            },
+            "houseAccount": {
+              "x-toast-read-only": true,
+              "type": "object",
+              "description": "A reference to the house account, if any, that is associated with this payment. Response only.",
+              "$ref": "#/$defs/ExternalReference"
+            },
+            "otherPayment": {
+              "description": "Required when the payment type is `OTHER`. A reference to an alternative payment method that was configured by the restaurant.",
+              "$ref": "#/$defs/ExternalReference"
+            },
+            "createdDevice": {
+              "description": "The Toast POS device that created the payment. This value is `null` if the payment was not created using a Toast POS device.",
+              "$ref": "#/$defs/Device"
+            },
+            "lastModifiedDevice": {
+              "description": "The Toast POS device that modified the payment most recently. This value is `null` if the payment was never modified using a Toast POS device.\n\nIf the payment is modified but the modification was not made using a Toast POS device, then this value does not change.\n",
+              "type": "object",
+              "$ref": "#/$defs/Device"
+            },
+            "mcaRepaymentAmount": {
+              "x-toast-read-only": true,
+              "description": "The total currency amount withheld as payments or repayments that\napply to your business. For example, the `mcaRepaymentAmount` might include:\n\n* Toast Capital payments\n* Marketplace facilitator tax\n* Toast Delivery Services costs\n* Instant deposits\n\nThe MCA repayment amount is set at the time the payment is\ncaptured, which is typically hours after the actual restaurant\nguest payment.\n\nUntil the `mcaRepaymentAmount` is set, this value is `null`.\n\nThe `mcaRepaymentAmount` _might_ be updated when the payment is\nsettled, which is typically one or more days after the actual\nguest payment. Response only.\n\nYou can use the following resources to find more specific\ninformation about the payment and repayment amounts that are\nincluded in `mcaRepaymentAmount`.\n\n* [Toast Capital payments](https://www.toasttab.com/restaurants/admin/capital/)\n* [Marketplace facilitator tax](https://www.toasttab.com/restaurants/admin/reports/home#sales-summary)\n* [Marketplace facilitator tax in API data](https://doc.toasttab.com/openapi/orders/tag/Data-definitions/schema/MarketplaceFacilitatorTaxInfo/)\n* [Instant deposits](https://www.toasttab.com/restaurants/admin/instant-deposit)\n* [Toast Delivery Services fees and tips](https://www.toasttab.com/restaurants/admin/reports/home#sales-summary)\n* [Toast Delivery Services fees and tips description](https://www.toasttab.com/restaurants/admin/reports/home#sales-summary)\n\n_Important_: Some of the resources listed here require access to\nToast products as a restaurant employee or operator. If your\norganization provides an integration service you might not have\naccess to the Toast products used by the restaurants you integrate\nwith. Toast support cannot provide access to Toast product\ninformation. That information is only available to direct Toast\nproduct users.\n",
+              "type": "number",
+              "format": "double"
+            },
+            "cardPaymentId": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "**Note:** this value is in limited release. Your orders API\nintegration might not include the `cardPaymentId` value.\n\nA unique identifier for the credit card used for a\n`CREDIT` type payment. The identifier string is generated\nby the Toast platform and _does not include any\ninformation related to or associated with the actual\ncredit card account._ The identifier is unique within\nyour restaurant management group.\n\nThe value is `null` for the following payment types:\n\n* Payment types other than `CREDIT`\n* Credit card payments entered using EMV (chip cards)\n* Credit card payments entered by keying in card numbers\n\nResponse only.\n"
+            },
+            "orderGuid": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "The Toast platform identifier for the order that contains the payment. Response only."
+            },
+            "checkGuid": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "The Toast platform identifier for the check that contains the payment. Response only."
+            },
+            "tenderTransactionGuid": {
+              "type": "string",
+              "description": "For internal use only."
+            },
+            "networkTransactionIdentifier": {
+              "x-toast-read-only": true,
+              "type": "string",
+              "description": "Card network identifier for transactions. Response only.\n\nFor more information, see [networkTransactionIdentifier in order payments](https://doc.toasttab.com/doc/apiordersdraftdoc/apiOrdersPaymentNetworkTransactionIdentifier.html).\n"
+            }
+          }
+        }
+      ]
+    },
+    "AppliedDiscount": {
+      "type": "object",
+      "description": "A discount applied to a check or item. The Toast platform calculates service\ncharges before it applies discounts. The system calculates tax after applying\ndiscounts.\n\nIn a `POST` request, you cannot apply open percent discounts. You can apply open amount discounts.\nYou can only apply one discount to a menu item selection. For more information, see\n[the _Toast Developer Guide_](https://doc.toasttab.com/doc/devguide/apiDiscountingOrders.html).\n",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ExternalReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the applied discount."
+            },
+            "discountAmount": {
+              "type": "number",
+              "format": "double",
+              "description": "The discount amount. This amount is subtracted from the check or item."
+            },
+            "nonTaxDiscountAmount": {
+              "type": "number",
+              "format": "double",
+              "description": "The amount that a discount reduces a menu item price,\nexcluding any discount amount applied to taxes.\n\nIn most cases, a discount only applies to the menu item price, and\nthe `nonTaxDiscountAmount` is the same as the `discountAmount`.\n\nIf you apply a discount to a menu item that includes tax in\nits price, the `nonTaxDiscountAmount` is less than `discountAmount`.\n"
+            },
+            "discount": {
+              "type": "object",
+              "description": "A GUID reference to the discount configured for the restaurant.",
+              "$ref": "#/$defs/ToastReference"
+            },
+            "triggers": {
+              "x-toast-read-only": true,
+              "type": "array",
+              "description": "Optional items that triggered this discount. Response only.",
+              "items": {
+                "$ref": "#/$defs/AppliedDiscountTrigger"
+              }
+            },
+            "approver": {
+              "x-toast-read-only": true,
+              "type": "object",
+              "description": "The user who approved the discount. Response only.",
+              "$ref": "#/$defs/ExternalReference"
+            },
+            "processingState": {
+              "x-toast-read-only": true,
+              "readOnly": true,
+              "type": "string",
+              "description": "Applies to loyalty program discounts only. Loyalty\nprogram reward discounts are validated and then applied,\nor redeemed, by the third-party loyalty program service\nprovider depending on the state of the Toast platform order.\n\nThis field's value is `null` if the order discount is a Toast discount.\n\nThis value indicates the state of the discount in that\nvalidation and application process. Response only.\n\nValid values:\n\n* `PENDING_APPLIED` - The loyalty program\n  service provider confirmed that the reward discount\n  is valid for the order and customer. The reward is not yet\n  redeemed, or applied to the customer's loyalty\n  account.\n* `APPLIED` - The reward discount is\n  redeemed. The reward is no longer available from the\n  customer's loyalty program account.\n* `PENDING_VOID` - The reward discount was\n  removed from the Toast platform order. The reward is not\n  available from the customer's loyalty program account\n  until the loyalty program service provider processes\n  the void operation.\n* `VOID` - The reward discount was removed\n  from the Toast platform order and the reward is available from\n  the customer's loyalty program account again.\n",
+              "enum": [
+                "PENDING_APPLIED",
+                "APPLIED",
+                "PENDING_VOID",
+                "VOID"
+              ]
+            },
+            "appliedDiscountReason": {
+              "x-toast-read-only": true,
+              "type": "object",
+              "description": "An optional reason for the applied discount. Response only.",
+              "$ref": "#/$defs/AppliedDiscountReason"
+            },
+            "loyaltyDetails": {
+              "type": "object",
+              "description": "Information about the customer loyalty program discount that is being applied to the check.",
+              "$ref": "#/$defs/LoyaltyDetails"
+            },
+            "comboItems": {
+              "x-toast-read-only": true,
+              "type": "array",
+              "description": "A list of menu item selections that this combo discount applies to. Empty for non-combo discounts. Response only.",
+              "items": {
+                "$ref": "#/$defs/ExternalReference"
+              }
+            },
+            "appliedPromoCode": {
+              "type": "string",
+              "description": "The promo code that was applied for this discount.\n\nFor a POSTed order, the Toast platform cannot validate the promo code.\n"
+            },
+            "discountType": {
+              "type": "string",
+              "description": "The behavior of this discount.\n\nValid values:\n* `BOGO` - Buy One, Get One. The guest receives a discount based on purchasing a specific item or items.\n* `PERCENT` - The guest receives a specific percentage off of the price.\n* `FIXED` - The guest receives a fixed currency amount off of the price.\n* `OPEN_PERCENT` - The guest receives a percentage off of the price. The percentage is specified when the order is placed.\n* `OPEN_FIXED` - The guest receives a currency amount off of the price. The amount is specified when the order is placed.\n* `FIXED_TOTAL` - The guest pays a specified discounted price when they purchase specific items. Also referred to as a combo discount.\n",
+              "enum": [
+                "BOGO",
+                "PERCENT",
+                "FIXED",
+                "OPEN_PERCENT",
+                "OPEN_FIXED",
+                "FIXED_TOTAL"
+              ]
+            },
+            "discountPercent": {
+              "type": "number",
+              "format": "double",
+              "description": "The percent value (0-100) of the applied discount when the `discountType` is `PERCENT` or `OPEN_PERCENT`. For other discount types, this value is `null`."
+            }
+          }
+        }
+      ]
+    },
+    "Device": {
+      "type": "object",
+      "description": "The *Device ID* value that the Toast platform assigns to a specific Toast POS device.\n\nThe `id` value is a unique identifier for a device.\n\nTo find the ID for a Toast POS device, from the overflow  menu (\u22ee) select *Device Status* and then select the *Device* tab.\n",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The physical id of the device",
+          "example": "90a86f12"
+        }
+      }
+    }
+  }
+}

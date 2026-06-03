@@ -1,0 +1,13 @@
+{
+  "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+  "breakType": {
+    "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+    "entityType": "string"
+  },
+  "paid": true,
+  "inDate": "2026-06-03T12:00:00.000+0000",
+  "outDate": "2026-06-03T12:00:00.000+0000",
+  "missed": true,
+  "waived": true,
+  "auditResponse": true
+}

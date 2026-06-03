@@ -1,0 +1,14 @@
+{
+  "delivery": {
+    "cash": true,
+    "ccSameDay": true,
+    "ccFuture": true
+  },
+  "takeout": {
+    "cash": true,
+    "ccSameDay": true,
+    "ccFuture": true,
+    "ccInStore": true
+  },
+  "ccTip": true
+}

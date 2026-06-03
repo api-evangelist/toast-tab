@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/orders-applicable-discount-structure.json",
+  "name": "ApplicableDiscount",
+  "description": "A wrapper object that contains information about a discount that you\ncan apply to an order, and which checks or menu item selections\nyou can apply it to.\n",
+  "type": "object",
+  "properties": {
+    "discount": {
+      "x-toast-read-only": true,
+      "description": "A `ToastReference` object containing the identifiers of the discount.\nResponse only.\n",
+      "type": "object",
+      "$ref": "#/$defs/ToastReference"
+    },
+    "applicableChecks": {
+      "description": "If the discount is applicable to a check, this value holds an\narray of `ExternalReference` objects containing the identifiers of the checks.\n",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalReference"
+      }
+    },
+    "applicableSelections": {
+      "description": "If the discount is applicable to a menu item selection, this\nvalue holds an array of `ExternalReference` objects containing\nthe identifiers of the menu items.\n",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ExternalReference"
+      }
+    }
+  },
+  "required": [
+    "discount"
+  ],
+  "definitions": {
+    "ToastReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast entity by Toast GUID.",
+      "required": [
+        "guid",
+        "entityType"
+      ],
+      "properties": {
+        "guid": {
+          "description": "The GUID maintained by the Toast platform.",
+          "type": "string",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "entityType": {
+          "x-toast-read-only": true,
+          "description": "The type of object this is. Response only.",
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "name": "ToastReference"
+    },
+    "ExternalReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast platform entity by Toast GUID or a partner's identifier.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "externalId": {
+              "description": "External identifier string that is prefixed by the naming authority. You can use the orders API to set an `externalId` for an order and then GET the order with that `externalId`.",
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "name": "ExternalReference"
+    }
+  }
+}

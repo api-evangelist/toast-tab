@@ -1,0 +1,64 @@
+{
+  "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+  "general": {
+    "name": "Example Name",
+    "locationName": "Example Name",
+    "locationCode": "string",
+    "description": "string",
+    "timeZone": "string",
+    "closeoutHour": 1,
+    "managementGroupGuid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+    "currencyCode": "string",
+    "firstBusinessDate": "2026-06-03T12:00:00.000+0000",
+    "archived": true
+  },
+  "urls": {
+    "website": "string",
+    "facebook": "string",
+    "twitter": "string",
+    "orderOnline": "string",
+    "purchaseGiftCard": "string",
+    "checkGiftCard": "string"
+  },
+  "location": {
+    "address1": "string",
+    "address2": "string",
+    "city": "string",
+    "stateCode": "string",
+    "administrativeArea": "string",
+    "zipCode": "string",
+    "country": "string",
+    "phone": "string",
+    "phoneCountryCode": "string",
+    "latitude": 1.0,
+    "longitude": 1.0
+  },
+  "schedules": {
+    "daySchedules": {
+      "identifier": "string"
+    },
+    "weekSchedule": {}
+  },
+  "delivery": {
+    "enabled": true,
+    "minimum": 1.0,
+    "area": "string"
+  },
+  "onlineOrdering": {
+    "enabled": true,
+    "scheduling": true,
+    "specialRequests": true,
+    "specialRequestsMessage": "string",
+    "paymentOptions": {}
+  },
+  "prepTimes": {
+    "deliveryPrepTime": 1,
+    "deliveryTimeAfterOpen": 1,
+    "deliveryTimeBeforeClose": 1,
+    "takeoutPrepTime": 1,
+    "takeoutTimeAfterOpen": 1,
+    "takeoutTimeBeforeClose": 1,
+    "takeoutThrottlingTime": 1,
+    "deliveryThrottlingTime": 1
+  }
+}

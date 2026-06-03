@@ -1,0 +1,12 @@
+{
+  "name": "Example Name",
+  "locationName": "Example Name",
+  "locationCode": "string",
+  "description": "string",
+  "timeZone": "string",
+  "closeoutHour": 1,
+  "managementGroupGuid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+  "currencyCode": "string",
+  "firstBusinessDate": "2026-06-03T12:00:00.000+0000",
+  "archived": true
+}

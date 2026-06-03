@@ -1,0 +1,6 @@
+{
+  "taxRateGuids": [
+    "string"
+  ],
+  "overrideItemTaxRates": true
+}

@@ -1,0 +1,86 @@
+{
+  "name": "Example Name",
+  "kitchenName": "Example Name",
+  "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+  "multiLocationId": "string",
+  "masterId": 477,
+  "description": "string",
+  "posName": "string",
+  "posButtonColorLight": "string",
+  "posButtonColorDark": "string",
+  "image": "string",
+  "visibility": [
+    "POS"
+  ],
+  "price": 1.0,
+  "pricingStrategy": "BASE_PRICE",
+  "pricingRules": {},
+  "isDeferred": true,
+  "isDiscountable": true,
+  "salesCategory": {
+    "name": "Example Name",
+    "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+  },
+  "taxInfo": [
+    "string"
+  ],
+  "taxInclusion": "TAX_INCLUDED",
+  "itemTags": [
+    {
+      "name": "Example Name",
+      "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+    }
+  ],
+  "plu": "string",
+  "sku": "string",
+  "calories": 1,
+  "contentAdvisories": {
+    "alcohol": {}
+  },
+  "unitOfMeasure": "NONE",
+  "portions": [
+    {
+      "name": "Example Name",
+      "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+      "modifierGroupReferences": [
+        94
+      ],
+      "priceScaleFactor": 1.0
+    }
+  ],
+  "prepTime": 1,
+  "prepStations": [
+    "string"
+  ],
+  "modifierGroupReferences": [
+    253
+  ],
+  "eligiblePaymentAssistancePrograms": [
+    "string"
+  ],
+  "allergens": [
+    {
+      "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+      "code": "string",
+      "groupGuid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+      "groupCode": "string",
+      "presenceType": "CONTAINS"
+    }
+  ],
+  "length": 79.78,
+  "height": 96.67,
+  "width": 82.15,
+  "dimensionUnitOfMeasure": "IN",
+  "weight": 85.32,
+  "weightUnitOfMeasure": "NONE",
+  "images": [
+    "string"
+  ],
+  "guestCount": 57.62,
+  "sortOrder": 1,
+  "catalogProductInfo": {
+    "product": {},
+    "productVariant": {}
+  },
+  "isComboParent": true
+}

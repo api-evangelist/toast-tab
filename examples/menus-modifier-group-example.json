@@ -1,0 +1,25 @@
+{
+  "name": "Example Name",
+  "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+  "referenceId": 1,
+  "multiLocationId": "string",
+  "masterId": 851,
+  "posName": "string",
+  "posButtonColorLight": "string",
+  "posButtonColorDark": "string",
+  "visibility": [
+    "POS"
+  ],
+  "pricingStrategy": "string",
+  "pricingRules": {},
+  "defaultOptionsChargePrice": "NO",
+  "defaultOptionsSubstitutionPricing": "NO",
+  "minSelections": 1,
+  "maxSelections": 1,
+  "requiredMode": "REQUIRED",
+  "isMultiSelect": true,
+  "preModifierGroupReference": 1,
+  "modifierOptionReferences": [
+    149
+  ]
+}

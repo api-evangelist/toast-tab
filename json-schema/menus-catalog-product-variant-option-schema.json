@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/menus-catalog-product-variant-option-schema.json",
+  "title": "CatalogProductVariantOption",
+  "description": "A selected option for a retail product variant.\n",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier for the product variant option.\n",
+      "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the product variant option, for example, \"size\".\n",
+      "example": "Example Name"
+    },
+    "sortOrder": {
+      "type": "integer",
+      "description": "The sort order of the product variant option.\n",
+      "example": 1
+    },
+    "value": {
+      "$ref": "#/$defs/CatalogProductOptionValue"
+    }
+  },
+  "$defs": {
+    "CatalogProductOptionValue": {
+      "type": "object",
+      "description": "A value within a catalog product option.\n",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The unique identifier for the product option value.\n",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the product option value, for example, \"small\".\n",
+          "example": "Example Name"
+        },
+        "sortOrder": {
+          "type": "integer",
+          "description": "The sort order of the product option value.\n",
+          "example": 1
+        }
+      }
+    }
+  }
+}

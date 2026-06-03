@@ -1,0 +1,205 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Toast"
+  description: "Unified vocabulary for the Toast (toasttab.com) restaurant platform APIs covering restaurant operations, order management, labor, menus, stock, and partner integrations."
+  created: "2026-06-03"
+  modified: "2026-06-03"
+
+operational:
+  apis:
+    - namespace: toast-orders
+      version: "2.0.0"
+      baseUrl: https://ws-api.toasttab.com
+      status: active
+      description: Toast Orders API
+    - namespace: toast-labor
+      version: "1.0.0"
+      baseUrl: https://ws-api.toasttab.com
+      status: active
+      description: Toast Labor API
+    - namespace: toast-menus
+      version: "2.0.0"
+      baseUrl: https://ws-api.toasttab.com
+      status: active
+      description: Toast Menus API
+    - namespace: toast-restaurants
+      version: "1.0.0"
+      baseUrl: https://ws-api.toasttab.com
+      status: active
+      description: Toast Restaurants API
+    - namespace: toast-stock
+      version: "1.0.0"
+      baseUrl: https://ws-api.toasttab.com
+      status: active
+      description: Toast Stock API
+    - namespace: toast-partners
+      version: "1.0.1"
+      baseUrl: https://ws-api.toasttab.com
+      status: active
+      description: Toast Partners API
+    - namespace: toast-authentication
+      version: "1.0.0"
+      baseUrl: https://ws-api.toasttab.com
+      status: active
+      description: Toast Authentication API
+
+  resources:
+    - name: Order
+      api: toast-orders
+      actions: [get, list, create]
+      description: Restaurant order with checks and payments
+    - name: Check
+      api: toast-orders
+      actions: [get, create]
+      description: A check (bill) within an order
+    - name: Payment
+      api: toast-orders
+      actions: [get, list, create]
+      description: Payment transaction for a check
+    - name: Employee
+      api: toast-labor
+      actions: [list, get, create, update, delete]
+      description: Restaurant employee record
+    - name: Shift
+      api: toast-labor
+      actions: [list, get]
+      description: Employee work shift record
+    - name: TimeEntry
+      api: toast-labor
+      actions: [list, get]
+      description: Clock-in / clock-out time entry for an employee
+    - name: Menu
+      api: toast-menus
+      actions: [get]
+      description: Restaurant menu with items and modifiers
+    - name: MenuItemInventory
+      api: toast-stock
+      actions: [list, get, update]
+      description: Stock status and quantity for a menu item
+    - name: Restaurant
+      api: toast-restaurants
+      actions: [get, list]
+      description: Restaurant location configuration
+    - name: Partner
+      api: toast-partners
+      actions: [list]
+      description: Accessible and connected restaurants for a partner client
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+      description: List or find a collection of resources
+    - name: get
+      httpMethod: GET
+      pattern: read
+      description: Retrieve a single resource by GUID or ID
+    - name: create
+      httpMethod: POST
+      pattern: write
+      description: Create a new resource
+    - name: update
+      httpMethod: PUT
+      pattern: write
+      description: Update an existing resource
+    - name: delete
+      httpMethod: DELETE
+      pattern: destructive
+      description: Delete a resource
+
+  parameters:
+    identifiers:
+      - name: guid
+        type: string
+        format: uuid
+        description: Global Unique Identifier for Toast resources
+      - name: restaurantGuid
+        type: string
+        description: Restaurant GUID passed as the Toast-Restaurant-External-ID header
+    filters:
+      - name: startDate
+        type: string
+        format: date-time
+        description: Start date for querying time-scoped data
+      - name: endDate
+        type: string
+        format: date-time
+        description: End date for querying time-scoped data
+
+  authentication:
+    schemes:
+      - name: OAuth2 Client Credentials
+        type: oauth2
+        flow: clientCredentials
+        description: Client credentials flow using TOAST_CLIENT_ID and TOAST_CLIENT_SECRET with userAccessType TOAST_MACHINE_CLIENT
+        tokenUrl: https://ws-api.toasttab.com/authentication/v1/authentication/login
+
+capability:
+  workflows:
+    - name: Restaurant Operations
+      description: Day-to-day restaurant operations including order monitoring, stock, and staff management
+      apis: [toast-orders, toast-labor, toast-stock]
+      personas: [Restaurant Manager, Operations Team]
+      domains: [Order Management, Labor Management, Inventory Management]
+    - name: Partner Integration Onboarding
+      description: Discovery and provisioning of authorized restaurants for a Toast partner integration
+      apis: [toast-partners, toast-authentication]
+      personas: [Integration Developer]
+      domains: [Partner Integration]
+
+  personas:
+    - id: restaurant-manager
+      name: Restaurant Manager
+      description: Manages daily restaurant operations, staff, and order flow
+      workflows: [Restaurant Operations]
+    - id: operations-team
+      name: Operations Team
+      description: Monitors multi-location restaurant performance and staff
+      workflows: [Restaurant Operations]
+    - id: integration-developer
+      name: Integration Developer
+      description: Builds third-party integrations with the Toast platform via the Partner program
+      workflows: [Partner Integration Onboarding]
+
+  domains:
+    - name: Order Management
+      description: Restaurant order creation, tracking, and payment processing
+      apis: [toast-orders]
+    - name: Labor Management
+      description: Employee records, scheduling, and shift management
+      apis: [toast-labor]
+    - name: Menu Management
+      description: Menu items, modifiers, and pricing management
+      apis: [toast-menus]
+    - name: Inventory Management
+      description: Menu item stock status and quantity tracking
+      apis: [toast-stock]
+    - name: Restaurant Configuration
+      description: Location settings, availability, and restaurant metadata
+      apis: [toast-restaurants]
+    - name: Partner Integration
+      description: Partner discovery of accessible and connected restaurants
+      apis: [toast-partners]
+
+crossReference:
+  - resource: Order
+    operations: [get, list, create]
+    workflows: [Restaurant Operations]
+    personas: [Restaurant Manager, Operations Team]
+  - resource: Payment
+    operations: [get, list]
+    workflows: [Restaurant Operations]
+    personas: [Restaurant Manager]
+  - resource: Employee
+    operations: [list, get, create, update, delete]
+    workflows: [Restaurant Operations]
+    personas: [Restaurant Manager, Operations Team]
+  - resource: MenuItemInventory
+    operations: [list, get, update]
+    workflows: [Restaurant Operations]
+    personas: [Restaurant Manager]
+  - resource: Partner
+    operations: [list]
+    workflows: [Partner Integration Onboarding]
+    personas: [Integration Developer]

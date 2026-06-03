@@ -1,0 +1,33 @@
+{
+  "restaurantGuid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+  "lastUpdated": "string",
+  "restaurantTimeZone": "string",
+  "menus": [
+    {
+      "name": "Example Name",
+      "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+      "multiLocationId": {},
+      "masterId": {},
+      "description": "string",
+      "posName": {},
+      "posButtonColorLight": {},
+      "posButtonColorDark": {},
+      "highResImage": "string",
+      "image": {},
+      "visibility": {},
+      "availability": {},
+      "menuGroups": [
+        {}
+      ]
+    }
+  ],
+  "modifierGroupReferences": {
+    "identifier": 647
+  },
+  "modifierOptionReferences": {
+    "identifier": 19
+  },
+  "preModifierGroupReferences": {
+    "identifier": 938
+  }
+}

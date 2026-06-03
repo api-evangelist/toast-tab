@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/labor-shift-schema.json",
+  "title": "Shift",
+  "description": "A scheduled shift in the Toast platform used to enforce employee \nclock-in and clock outs. Shifts might be created in an external \nscheduling system and pushed to the Toast platform.\n",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/$defs/ExternalReference"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "createdDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date created, in UTC format (read-only).\n"
+        },
+        "modifiedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date modified, in UTC format (read-only).\n"
+        },
+        "deletedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date deleted, in UTC format (read-only).\n"
+        },
+        "deleted": {
+          "type": "boolean",
+          "description": "If the shift is deleted in the Toast platform.\n"
+        },
+        "jobReference": {
+          "type": "object",
+          "description": "External reference to the job assigned to this shift.\n",
+          "$ref": "#/$defs/ExternalReference"
+        },
+        "employeeReference": {
+          "type": "object",
+          "description": "External reference to the employee assigned to this shift.\n",
+          "$ref": "#/$defs/ExternalReference"
+        },
+        "inDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the beginning of the shift. This is when the \nemployee can clock in. Expressed in the UTC time zone.\n"
+        },
+        "outDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the end of the shift. This is when the \nemployee can clock out. Expressed in the UTC time zone.\n"
+        },
+        "scheduleConfig": {
+          "type": "object",
+          "description": "Grace period scheduling configuration\n",
+          "$ref": "#/$defs/ScheduleConfig"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "ExternalReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast \nplatform entity by Toast GUID or an external identifier.\n",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "externalId": {
+              "description": "External identifier string that is prefixed by the naming \nauthority. You can, for example, use the labor API to \n`POST` an `externalId` for an employee and then `GET` the \nemployee with that `externalId`.\n",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ScheduleConfig": {
+      "type": "object",
+      "description": "Schedule configuration containing info about the clock in/clock out\ngrace period.\n",
+      "properties": {
+        "guid": {
+          "description": "The GUID maintained by the Toast platform.\n",
+          "type": "string",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "minBeforeClockIn": {
+          "description": "Grace period minutes before clock in\n",
+          "type": "number",
+          "format": "double",
+          "example": 1.0
+        },
+        "minAfterClockIn": {
+          "description": "Grace period minutes after clock in\n",
+          "type": "number",
+          "format": "double",
+          "example": 1.0
+        },
+        "minBeforeClockOut": {
+          "description": "Grace period minutes before clock out\n",
+          "type": "number",
+          "format": "double",
+          "example": 1.0
+        },
+        "minAfterClockOut": {
+          "description": "Grace period minutes after clock out\n",
+          "type": "number",
+          "format": "double",
+          "example": 1.0
+        }
+      }
+    }
+  }
+}

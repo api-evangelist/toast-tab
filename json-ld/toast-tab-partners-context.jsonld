@@ -1,0 +1,153 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "toast": "https://doc.toasttab.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "PartnerAccessExternalRep": "toast:PartnerAccessExternalRep",
+    "restaurantGuid": {
+      "@id": "toast:restaurantGuid",
+      "@type": "xsd:string"
+    },
+    "managementGroupGuid": {
+      "@id": "toast:managementGroupGuid",
+      "@type": "xsd:string"
+    },
+    "deleted": {
+      "@id": "toast:deleted",
+      "@type": "xsd:boolean"
+    },
+    "restaurantName": {
+      "@id": "toast:restaurantName",
+      "@type": "xsd:string"
+    },
+    "locationName": {
+      "@id": "toast:locationName",
+      "@type": "xsd:string"
+    },
+    "createdByEmailAddress": {
+      "@id": "toast:createdByEmailAddress",
+      "@type": "xsd:string"
+    },
+    "externalGroupRef": {
+      "@id": "toast:externalGroupRef",
+      "@type": "xsd:string"
+    },
+    "externalRestaurantRef": {
+      "@id": "toast:externalRestaurantRef",
+      "@type": "xsd:string"
+    },
+    "modifiedDate": {
+      "@id": "toast:modifiedDate",
+      "@type": "xsd:integer"
+    },
+    "createdDate": {
+      "@id": "toast:createdDate",
+      "@type": "xsd:integer"
+    },
+    "isoModifiedDate": {
+      "@id": "toast:isoModifiedDate",
+      "@type": "xsd:string"
+    },
+    "isoCreatedDate": {
+      "@id": "toast:isoCreatedDate",
+      "@type": "xsd:string"
+    },
+    "PartnerAccessExternalWebhookRep": "toast:PartnerAccessExternalWebhookRep",
+    "createdByFirstName": {
+      "@id": "toast:createdByFirstName",
+      "@type": "xsd:string"
+    },
+    "createdByLastName": {
+      "@id": "toast:createdByLastName",
+      "@type": "xsd:string"
+    },
+    "createdByPhoneNumber": {
+      "@id": "toast:createdByPhoneNumber",
+      "@type": "xsd:string"
+    },
+    "restaurantPhoneNumber": {
+      "@id": "toast:restaurantPhoneNumber",
+      "@type": "xsd:string"
+    },
+    "restaurantAddressLine1": {
+      "@id": "toast:restaurantAddressLine1",
+      "@type": "xsd:string"
+    },
+    "restaurantAddressLine2": {
+      "@id": "toast:restaurantAddressLine2",
+      "@type": "xsd:string"
+    },
+    "restaurantCity": {
+      "@id": "toast:restaurantCity",
+      "@type": "xsd:string"
+    },
+    "restaurantState": {
+      "@id": "toast:restaurantState",
+      "@type": "xsd:string"
+    },
+    "restaurantZipCode": {
+      "@id": "toast:restaurantZipCode",
+      "@type": "xsd:string"
+    },
+    "restaurantLatitude": {
+      "@id": "toast:restaurantLatitude",
+      "@type": "xsd:string"
+    },
+    "restaurantLongitude": {
+      "@id": "toast:restaurantLongitude",
+      "@type": "xsd:string"
+    },
+    "restaurantCountryCode": {
+      "@id": "toast:restaurantCountryCode",
+      "@type": "xsd:string"
+    },
+    "restaurantTimezone": {
+      "@id": "toast:restaurantTimezone",
+      "@type": "xsd:string"
+    },
+    "PaginatedResponse": "toast:PaginatedResponse",
+    "currentPageNum": {
+      "@id": "toast:currentPageNum",
+      "@type": "xsd:integer"
+    },
+    "results": {
+      "@id": "toast:results",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "totalResultCount": {
+      "@id": "toast:totalResultCount",
+      "@type": "xsd:integer"
+    },
+    "pageSize": {
+      "@id": "toast:pageSize",
+      "@type": "xsd:integer"
+    },
+    "currentPageToken": {
+      "@id": "toast:currentPageToken",
+      "@type": "xsd:string"
+    },
+    "nextPageToken": {
+      "@id": "toast:nextPageToken",
+      "@type": "xsd:string"
+    },
+    "totalCount": {
+      "@id": "toast:totalCount",
+      "@type": "xsd:integer"
+    },
+    "nextPageNum": {
+      "@id": "toast:nextPageNum",
+      "@type": "xsd:integer"
+    },
+    "lastPageNum": {
+      "@id": "toast:lastPageNum",
+      "@type": "xsd:integer"
+    },
+    "previousPageNum": {
+      "@id": "toast:previousPageNum",
+      "@type": "xsd:integer"
+    }
+  }
+}

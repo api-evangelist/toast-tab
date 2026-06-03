@@ -1,0 +1,88 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Toast
+providerId: toast-tab
+publisherName: Toast, Inc.
+serviceCategory: Restaurant POS & Payments
+created: '2026-06-03'
+modified: '2026-06-03'
+reconciled: false
+tags:
+  - Food Service
+  - Point Of Sale
+  - Restaurants
+  - Hospitality
+  - FinOps
+  - FOCUS
+description: 'FinOps shape for Toast: a hybrid POS subscription + payment processing take-rate + hardware
+  purchase model, with API access bundled into the partner relationship. Specific dollar amounts and meter
+  rates are sales-led and not exposed publicly, so this artifact captures the structure rather than reconciled
+  rates.'
+sources:
+  - https://pos.toasttab.com/
+notes: Public pricing pages returned 403 to WebFetch; rates and per-meter prices are not reconcilable
+  without a Toast quote. Meters described here are structural (what Toast bills on), not priced.
+billingModel:
+  pricingCategory: Subscription + Take Rate + Hardware
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Adjustment
+    - Refund
+focusColumns:
+  ServiceName: Toast
+  ServiceCategory: Restaurant POS & Payments
+  ProviderName: Toast
+  PublisherName: Toast, Inc.
+  InvoiceIssuerName: Toast, Inc.
+  BillingCurrency: USD
+meters:
+  - name: pos_software_subscription
+    description: Per-restaurant Toast POS software subscription billed monthly.
+    unit: location-month
+    aggregation: sum
+    dimensions:
+      - location
+      - package
+  - name: card_transactions
+    description: Card-present and card-not-present transactions processed through Toast Payments. Take
+      rate is configured per merchant.
+    unit: transaction
+    aggregation: sum
+    dimensions:
+      - location
+      - card_present
+      - card_brand
+  - name: hardware_purchase
+    description: One-time purchase of POS hardware (terminals, KDS, handhelds, peripherals).
+    unit: device
+    aggregation: count
+    dimensions:
+      - device_type
+      - location
+principles:
+  - name: Visibility
+    description: Pull the Toast invoice and Sales Summary reports per location; reconcile software fees,
+      processing fees, and hardware lines separately because they have different optimization levers.
+  - name: Allocation
+    description: Allocate fees to the operating restaurant location; multi-location operators can roll
+      up by brand or region using Toast's multi-location reporting.
+  - name: Optimization
+    description: Negotiate processing rates at scale, right-size hardware fleets per location, and audit
+      software add-ons (online ordering, marketing) against active usage at each renewal.
+  - name: Accountability
+    description: GM or operations director per location owns the Toast bill; corporate finance owns the
+      processing-rate negotiation for multi-location operators.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

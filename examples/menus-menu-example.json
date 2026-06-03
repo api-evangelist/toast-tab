@@ -1,0 +1,39 @@
+{
+  "name": "Example Name",
+  "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+  "multiLocationId": "string",
+  "masterId": 413,
+  "description": "string",
+  "posName": "string",
+  "posButtonColorLight": "string",
+  "posButtonColorDark": "string",
+  "highResImage": "string",
+  "image": "string",
+  "visibility": [
+    "POS"
+  ],
+  "availability": {},
+  "menuGroups": [
+    {
+      "name": "Example Name",
+      "guid": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1",
+      "multiLocationId": {},
+      "masterId": {},
+      "description": "string",
+      "posName": {},
+      "posButtonColorLight": {},
+      "posButtonColorDark": {},
+      "image": {},
+      "visibility": {},
+      "itemTags": [
+        {}
+      ],
+      "menuGroups": [
+        {}
+      ],
+      "menuItems": [
+        {}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-schema/orders-curbside-pickup-info-schema.json",
+  "title": "CurbsidePickupInfo",
+  "description": "Information that the restaurant can use to identify a guest when they arrive\noutside the restaurant to pick up their order. `transportDescription` is a required field.\n",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/$defs/ToastReference"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "transportColor": {
+          "description": "The color of the guest's vehicle if they will arrive at the restaurant in a vehicle to pick up their order.\n",
+          "type": "string",
+          "maxLength": 20
+        },
+        "transportDescription": {
+          "description": "Information about how the guest will arrive at the restaurant to pick up their order.\n\nFor example, the make and model of the vehicle the guest will arrive in.\n",
+          "type": "string",
+          "maxLength": 100
+        },
+        "notes": {
+          "description": "Extra notes.\n",
+          "type": "string",
+          "maxLength": 100
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "ToastReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast entity by Toast GUID.",
+      "required": [
+        "guid",
+        "entityType"
+      ],
+      "properties": {
+        "guid": {
+          "description": "The GUID maintained by the Toast platform.",
+          "type": "string",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "entityType": {
+          "x-toast-read-only": true,
+          "description": "The type of object this is. Response only.",
+          "type": "string",
+          "example": "string"
+        }
+      }
+    }
+  }
+}

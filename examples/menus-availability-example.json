@@ -1,0 +1,13 @@
+{
+  "alwaysAvailable": true,
+  "schedule": [
+    {
+      "days": [
+        "SUNDAY"
+      ],
+      "timeRanges": [
+        {}
+      ]
+    }
+  ]
+}

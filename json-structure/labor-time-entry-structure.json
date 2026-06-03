@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/labor-time-entry-structure.json",
+  "name": "TimeEntry",
+  "description": "A `TimeEntry` captures the actual time an employee worked or took \na break. Typically, a time entry is one-to-one with a scheduled \nshift, but it is possible in the Toast platform for an employee \nto clock-in and clock-out without a shift.\n",
+  "type": "object",
+  "definitions": {
+    "ExternalReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast \nplatform entity by Toast GUID or an external identifier.\n",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "externalId": {
+              "description": "External identifier string that is prefixed by the naming \nauthority. You can, for example, use the labor API to \n`POST` an `externalId` for an employee and then `GET` the \nemployee with that `externalId`.\n",
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "name": "ExternalReference"
+    },
+    "TimeEntryBreak": {
+      "type": "object",
+      "description": "Information about a period of time that an employee is not\nworking during a shift. For example, an employee might take a\nbreak to eat at some time during a shift. An employee can be paid\nor unpaid for the break period.\n",
+      "properties": {
+        "guid": {
+          "description": "The GUID maintained by the Toast platform.\n",
+          "type": "string",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "breakType": {
+          "type": "object",
+          "description": "Optional, Toast platform reference to the break type \nassociated with this time entry.\n",
+          "$ref": "#/$defs/ToastReference"
+        },
+        "paid": {
+          "type": "boolean",
+          "description": "Indicates whether the employee was paid for the break.\n* `true` - The break was a paid break.\n* `false` - The break was an unpaid break.\n",
+          "example": true
+        },
+        "inDate": {
+          "type": "datetime",
+          "description": "The date and time that the employee started the break period,\nin UTC.\n",
+          "example": "2026-06-03T12:00:00.000+0000"
+        },
+        "outDate": {
+          "type": "datetime",
+          "description": "The date and time that the employee ended the break period\nand returned to work, in UTC.\n",
+          "example": "2026-06-03T12:00:00.000+0000"
+        },
+        "missed": {
+          "type": "boolean",
+          "description": "Indicates whether the break was a missed break.\n* `true` - The break was missed.\n* `false` - The break was taken.\n",
+          "example": true
+        },
+        "waived": {
+          "type": "boolean",
+          "description": "Indicates whether the break was waived by the employee.\n* `true` - The break was waived.\n* `false` - The break was not waived.\n",
+          "example": true
+        },
+        "auditResponse": {
+          "type": "boolean",
+          "description": "Indicates whether the employee was asked to take the break.\n\n* `true` - The employee was asked to take the break.\n* `false` - The employee was not asked to take the break.\n\nNull for break types that do not use break acknowledgement \ntracking or when the employee did not complete the audit \nresponse prompt.\n",
+          "example": true
+        }
+      },
+      "name": "TimeEntryBreak"
+    },
+    "ToastReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast \nplatform entity by Toast GUID.\n",
+      "required": [
+        "guid",
+        "entityType"
+      ],
+      "properties": {
+        "guid": {
+          "description": "The GUID maintained by the Toast platform.\n",
+          "type": "string",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "entityType": {
+          "description": "The type of object this is.\n",
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "name": "ToastReference"
+    }
+  }
+}

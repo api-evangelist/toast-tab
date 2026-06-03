@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/json-structure/labor-shift-structure.json",
+  "name": "Shift",
+  "description": "A scheduled shift in the Toast platform used to enforce employee \nclock-in and clock outs. Shifts might be created in an external \nscheduling system and pushed to the Toast platform.\n",
+  "type": "object",
+  "definitions": {
+    "ExternalReference": {
+      "type": "object",
+      "description": "A wrapper object with fields that allow reference to a Toast \nplatform entity by Toast GUID or an external identifier.\n",
+      "allOf": [
+        {
+          "$ref": "#/$defs/ToastReference"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "externalId": {
+              "description": "External identifier string that is prefixed by the naming \nauthority. You can, for example, use the labor API to \n`POST` an `externalId` for an employee and then `GET` the \nemployee with that `externalId`.\n",
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "name": "ExternalReference"
+    },
+    "ScheduleConfig": {
+      "type": "object",
+      "description": "Schedule configuration containing info about the clock in/clock out\ngrace period.\n",
+      "properties": {
+        "guid": {
+          "description": "The GUID maintained by the Toast platform.\n",
+          "type": "string",
+          "example": "5a401af8-d2e2-4090-8c45-9f87b8b6c4d1"
+        },
+        "minBeforeClockIn": {
+          "description": "Grace period minutes before clock in\n",
+          "type": "double",
+          "example": 1.0
+        },
+        "minAfterClockIn": {
+          "description": "Grace period minutes after clock in\n",
+          "type": "double",
+          "example": 1.0
+        },
+        "minBeforeClockOut": {
+          "description": "Grace period minutes before clock out\n",
+          "type": "double",
+          "example": 1.0
+        },
+        "minAfterClockOut": {
+          "description": "Grace period minutes after clock out\n",
+          "type": "double",
+          "example": 1.0
+        }
+      },
+      "name": "ScheduleConfig"
+    }
+  }
+}
