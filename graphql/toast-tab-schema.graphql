@@ -1,0 +1,1258 @@
+# Toast GraphQL Schema
+# Conceptual schema derived from the Toast REST API covering orders, menus,
+# discounts, labor, payments, and restaurant configuration.
+
+# ─────────────────────────────────────────────
+# Scalars
+# ─────────────────────────────────────────────
+scalar DateTime
+scalar UUID
+scalar Money
+
+# ─────────────────────────────────────────────
+# Enums
+# ─────────────────────────────────────────────
+enum OrderStatus {
+  OPEN
+  NEEDS_APPROVAL
+  VOIDED
+  CLOSED
+}
+
+enum PaymentStatus {
+  OPEN
+  CLOSED
+  VOIDED
+  CAPTURED
+  AUTHORIZED
+}
+
+enum PaymentType {
+  CREDIT_CARD
+  CASH
+  GIFT_CARD
+  HOUSE_ACCOUNT
+  TENDER_TYPE
+  OTHER
+}
+
+enum DiningOptionBehavior {
+  DINE_IN
+  TAKE_OUT
+  DELIVERY
+  DRIVE_THRU
+  ONLINE_ORDER
+}
+
+enum SelectionType {
+  MENU_ITEM
+  OPEN_ITEM
+  MODIFIER
+  GIFT_CARD
+  SPECIAL_REQUEST
+}
+
+enum VoidReason {
+  CUSTOMER_MISTAKE
+  STAFF_MISTAKE
+  SPILLED
+  OTHER
+  WRONG_ORDER
+}
+
+enum DiscountType {
+  PERCENT
+  FIXED
+  OPEN_PERCENT
+  OPEN_AMOUNT
+  BOGO
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  INACTIVE
+  DELETED
+}
+
+enum ShiftStatus {
+  OPEN
+  CLOSED
+  ACTIVE
+}
+
+enum TimeEntryStatus {
+  RECORDED
+  APPROVED
+  VOIDED
+}
+
+enum MenuItemVisibility {
+  ALL
+  POS
+  ONLINE
+  KIOSK
+  THIRD_PARTY
+  NONE
+}
+
+enum StockStatus {
+  IN_STOCK
+  OUT_OF_STOCK
+  QUANTITY_LIMITED
+}
+
+enum RefundStatus {
+  REFUND_SUCCESSFUL
+  REFUND_FAILED
+  REFUND_DECLINED
+  REFUND_PARTIAL
+}
+
+enum KitchenTicketStatus {
+  NEW
+  IN_PROGRESS
+  DONE
+  VOIDED
+}
+
+enum PackagingInstructionType {
+  STANDARD
+  CURBSIDE
+  DELIVERY
+}
+
+enum ServiceChargeCalculation {
+  CHECK
+  PERCENTAGE
+  PER_ITEM
+  PER_PERSON
+}
+
+enum CashEntryType {
+  PAID_IN
+  PAID_OUT
+  DRAWER_COUNT
+  DEPOSIT
+}
+
+enum LoyaltyActionType {
+  ACCRUE
+  REDEEM
+  LOOKUP
+  VOID
+}
+
+enum GiftCardActionType {
+  ACTIVATE
+  RELOAD
+  REDEEM
+  BALANCE_INQUIRY
+  VOID
+}
+
+enum AllergenType {
+  MILK
+  EGGS
+  FISH
+  SHELLFISH
+  TREE_NUTS
+  PEANUTS
+  WHEAT
+  SOYBEANS
+  SESAME
+}
+
+enum AlcoholType {
+  BEER
+  WINE
+  SPIRITS
+  NONE
+}
+
+# ─────────────────────────────────────────────
+# Common / Shared Types
+# ─────────────────────────────────────────────
+type ToastReference {
+  guid: UUID!
+  entityType: String
+  externalId: String
+}
+
+type ExternalReference {
+  externalId: String!
+  externalSource: String
+}
+
+type Address {
+  street1: String
+  street2: String
+  city: String
+  state: String
+  zipCode: String
+  country: String
+  latitude: Float
+  longitude: Float
+}
+
+type Image {
+  url: String!
+  altText: String
+  width: Int
+  height: Int
+}
+
+type TimeRange {
+  start: String!
+  end: String!
+}
+
+type Money {
+  amount: Float!
+  currencyCode: String!
+}
+
+type TaxRate {
+  guid: UUID!
+  name: String
+  rate: Float
+  taxable: Boolean
+}
+
+# ─────────────────────────────────────────────
+# Restaurant & Configuration Types
+# ─────────────────────────────────────────────
+type Restaurant {
+  guid: UUID!
+  name: String!
+  description: String
+  address: Address
+  phone: String
+  timezone: String
+  currencyCode: String
+  location: RestaurantLocation
+  urls: RestaurantUrls
+  hours: RestaurantHours
+  general: RestaurantGeneral
+  onlineOrdering: OnlineOrdering
+  delivery: DeliveryConfig
+  prepTimes: PrepTimes
+  paymentOptions: PaymentOptions
+  images: [Image]
+  schedules: [Schedule]
+  serviceAreas: [ServiceArea]
+  revenueCenters: [RevenueCenter]
+  menus: [Menu]
+  employees: [Employee]
+  jobs: [Job]
+}
+
+type RestaurantLocation {
+  guid: UUID!
+  restaurantGuid: UUID!
+  externalId: String
+  description: String
+  address: Address
+}
+
+type RestaurantUrls {
+  website: String
+  orderingUrl: String
+  purchaseGiftCardUrl: String
+  checkGiftCardBalanceUrl: String
+  loyaltySignUpUrl: String
+}
+
+type RestaurantHours {
+  Sunday: [TimeRange]
+  Monday: [TimeRange]
+  Tuesday: [TimeRange]
+  Wednesday: [TimeRange]
+  Thursday: [TimeRange]
+  Friday: [TimeRange]
+  Saturday: [TimeRange]
+}
+
+type RestaurantGeneral {
+  name: String
+  locationName: String
+  phone: String
+  timezone: String
+  closeoutHour: Int
+  managementGroupGuid: UUID
+}
+
+type OnlineOrdering {
+  acceptsOnlineOrders: Boolean
+  estimatedFulfillmentDate: DateTime
+  logo: Image
+  socialMediaLinks: [SocialMediaLink]
+}
+
+type SocialMediaLink {
+  platform: String
+  url: String
+}
+
+type DeliveryConfig {
+  enabled: Boolean
+  minimumOrderAmount: Float
+  leadTime: Int
+  deliveryRadius: Float
+  deliveryFee: Float
+}
+
+type PrepTimes {
+  prepTime: Int
+  deliveryPrepTime: Int
+}
+
+type PaymentOptions {
+  allowCash: Boolean
+  allowCreditCards: Boolean
+  allowGiftCards: Boolean
+  allowHouseAccounts: Boolean
+  allowTabs: Boolean
+}
+
+type Schedule {
+  guid: UUID!
+  name: String!
+  timeRanges: [TimeRange]
+  days: [String]
+}
+
+type ServiceArea {
+  guid: UUID!
+  name: String!
+  description: String
+  tables: [Table]
+}
+
+type Table {
+  guid: UUID!
+  name: String!
+  seats: Int
+  serviceAreaGuid: UUID
+}
+
+type RevenueCenter {
+  guid: UUID!
+  name: String!
+  description: String
+}
+
+# ─────────────────────────────────────────────
+# Menu Types
+# ─────────────────────────────────────────────
+type Menu {
+  guid: UUID!
+  name: String!
+  description: String
+  visibility: MenuItemVisibility
+  availability: Availability
+  images: [Image]
+  menuGroups: [MenuGroup]
+}
+
+type MenuGroup {
+  guid: UUID!
+  name: String!
+  description: String
+  visibility: MenuItemVisibility
+  menuItems: [MenuItem]
+  modifierGroups: [ModifierGroup]
+}
+
+type MenuItem {
+  guid: UUID!
+  name: String!
+  description: String
+  price: Float
+  sku: String
+  calories: Int
+  unitOfMeasure: String
+  visibility: MenuItemVisibility
+  availability: Availability
+  images: [Image]
+  modifierGroups: [ModifierGroup]
+  taxInfo: [TaxRate]
+  allergens: [AllergenType]
+  alcohol: AlcoholType
+  salesCategory: SalesCategory
+  tags: [ItemTag]
+  stockStatus: StockStatus
+}
+
+type ModifierGroup {
+  guid: UUID!
+  name: String!
+  required: Boolean
+  minSelections: Int
+  maxSelections: Int
+  modifiers: [ModifierOption]
+  preModifierGroup: PreModifierGroup
+}
+
+type ModifierOption {
+  guid: UUID!
+  name: String!
+  price: Float
+  calories: Int
+  isDefault: Boolean
+  modifierGroups: [ModifierGroup]
+  taxInfo: ModifierOptionTaxInfo
+}
+
+type ModifierOptionTaxInfo {
+  taxRate: Float
+  taxable: Boolean
+}
+
+type PreModifierGroup {
+  guid: UUID!
+  name: String!
+  preModifiers: [PreModifier]
+}
+
+type PreModifier {
+  guid: UUID!
+  name: String!
+  displayName: String
+}
+
+type Availability {
+  alwaysAvailable: Boolean
+  schedule: [Schedule]
+}
+
+type SalesCategory {
+  guid: UUID!
+  name: String!
+}
+
+type ItemTag {
+  guid: UUID!
+  name: String!
+}
+
+type PricingRules {
+  guid: UUID!
+  name: String!
+  rules: [SequencePrice]
+}
+
+type SequencePrice {
+  sequence: Int!
+  price: Float!
+}
+
+# ─────────────────────────────────────────────
+# Order Types
+# ─────────────────────────────────────────────
+type Order {
+  guid: UUID!
+  entityType: String
+  externalId: String
+  displayNumber: String
+  status: OrderStatus
+  openedDate: DateTime
+  closedDate: DateTime
+  modifiedDate: DateTime
+  deletedDate: DateTime
+  deliveryInfo: DeliveryInfo
+  diningOption: ToastReference
+  serviceArea: ToastReference
+  table: ToastReference
+  server: ToastReference
+  device: Device
+  guestCount: Int
+  numberOfGuests: Int
+  estimatedFulfillmentDate: DateTime
+  createdDevice: Device
+  lastModifiedDevice: Device
+  checks: [Check]
+  curbsidePickupInfo: CurbsidePickupInfo
+  source: String
+  voided: Boolean
+  voidDate: DateTime
+  voidBusinessDate: Int
+}
+
+type Check {
+  guid: UUID!
+  entityType: String
+  externalId: String
+  displayNumber: String
+  openedDate: DateTime
+  closedDate: DateTime
+  modifiedDate: DateTime
+  tabName: String
+  totalAmount: Float
+  subtotalAmount: Float
+  taxAmount: Float
+  totalDiscountAmount: Float
+  customer: Customer
+  selections: [Selection]
+  appliedDiscounts: [AppliedDiscount]
+  appliedServiceCharges: [AppliedServiceCharge]
+  appliedLoyaltyInfo: AppliedLoyaltyInfo
+  payments: [Payment]
+  voided: Boolean
+  voidDate: DateTime
+  voidBusinessDate: Int
+}
+
+type Selection {
+  guid: UUID!
+  entityType: String
+  externalId: String
+  displayName: String
+  quantity: Float
+  price: Float
+  tax: Float
+  unitOfMeasure: String
+  selectionType: SelectionType
+  item: ToastReference
+  salesCategory: ToastReference
+  appliedDiscounts: [AppliedDiscount]
+  appliedTaxes: [AppliedTaxRate]
+  modifiers: [Selection]
+  voidReason: ToastReference
+  voided: Boolean
+  voidDate: DateTime
+  fulfillmentStatus: String
+  deferredDate: DateTime
+}
+
+type Payment {
+  guid: UUID!
+  entityType: String
+  externalId: String
+  type: PaymentType
+  status: PaymentStatus
+  amount: Float
+  tipAmount: Float
+  amountTendered: Float
+  cardType: String
+  last4CardDigits: String
+  originalProcessingFee: Float
+  cashDrawer: ToastReference
+  refunds: [Refund]
+  voidInfo: VoidInformation
+  giftCardInfo: GiftCardInfo
+  loyaltyDetails: LoyaltyDetails
+  otherPayment: ToastReference
+  houseAccount: ToastReference
+  createdDate: DateTime
+  closedDate: DateTime
+}
+
+type Refund {
+  refundAmount: Float
+  tipRefundAmount: Float
+  status: RefundStatus
+  refundTransaction: RefundTransaction
+}
+
+type RefundTransaction {
+  guid: UUID!
+  entityType: String
+  externalId: String
+  amount: Float
+  originalPayment: ToastReference
+}
+
+type VoidInformation {
+  voidUser: ToastReference
+  voidDate: DateTime
+  voidBusinessDate: Int
+  voidReason: ToastReference
+}
+
+type Customer {
+  guid: UUID
+  firstName: String
+  lastName: String
+  phone: String
+  email: String
+  loyaltyIdentifier: String
+}
+
+type DeliveryInfo {
+  address: Address
+  deliveredDate: DateTime
+  dispatchedDate: DateTime
+  deliveryEmployee: ToastReference
+  deliveryServiceInfo: DeliveryServiceInfo
+}
+
+type DeliveryServiceInfo {
+  deliveryServiceGuid: UUID
+  dispatchedDate: DateTime
+  deliveryEmployee: ToastReference
+  originalQuotedDeliveryDate: DateTime
+}
+
+type CurbsidePickupInfo {
+  transportColor: String
+  transportDescription: String
+  personalIdentifier: String
+  notes: String
+  arrivalTime: DateTime
+}
+
+type Device {
+  id: UUID
+  description: String
+}
+
+type AppliedDiscount {
+  guid: UUID!
+  entityType: String
+  externalId: String
+  discount: ToastReference
+  discountAmount: Float
+  discountType: DiscountType
+  appliedPromoCode: String
+  triggers: [AppliedDiscountTrigger]
+  approver: ToastReference
+  processingState: String
+  loyaltyDetails: LoyaltyDetails
+  comps: Float
+  promos: Float
+}
+
+type AppliedDiscountTrigger {
+  guid: UUID!
+  triggeredBy: ToastReference
+  type: String
+}
+
+type AppliedServiceCharge {
+  guid: UUID!
+  name: String
+  amount: Float
+  calculationType: ServiceChargeCalculation
+  serviceCharge: ToastReference
+  chargedAmount: Float
+  gratuity: Boolean
+}
+
+type AppliedTaxRate {
+  guid: UUID!
+  name: String
+  rate: Float
+  taxAmount: Float
+  taxable: Boolean
+}
+
+type AppliedLoyaltyInfo {
+  loyaltyIdentifier: String
+  redemptions: [LoyaltyRedemption]
+}
+
+type LoyaltyRedemption {
+  paymentGuid: UUID
+  redemptionAmount: Float
+  pointsRedeemed: Float
+}
+
+type LoyaltyDetails {
+  loyaltyGuid: UUID
+  points: Float
+  rewardsBalance: Float
+}
+
+type GiftCardInfo {
+  giftCardGuid: UUID
+  maskedCardNumber: String
+}
+
+type FulfillmentInfo {
+  fulfillmentStatus: String
+  deferredDate: DateTime
+}
+
+type ExternalPaymentInfo {
+  externalId: String
+  source: String
+}
+
+# ─────────────────────────────────────────────
+# Discount Types
+# ─────────────────────────────────────────────
+type Discount {
+  guid: UUID!
+  name: String!
+  type: DiscountType
+  amount: Float
+  percentage: Float
+  active: Boolean
+  selectionType: String
+  fixedTotal: Float
+  minSubtotal: Float
+  maxSubtotal: Float
+  availableForOrders: Boolean
+  availableForChecks: Boolean
+  availableForSelections: Boolean
+  bogo: BogoCriteria
+}
+
+type BogoCriteria {
+  buyItems: [ToastReference]
+  getItems: [ToastReference]
+  buyQuantity: Int
+  getQuantity: Int
+}
+
+# ─────────────────────────────────────────────
+# Labor Types
+# ─────────────────────────────────────────────
+type Employee {
+  guid: UUID!
+  externalEmployeeId: String
+  firstName: String!
+  lastName: String!
+  email: String
+  phoneNumber: String
+  chosenName: String
+  passcode: String
+  status: EmployeeStatus
+  jobReferences: [EmployeeJobReference]
+  wageOverrides: [JobWageOverride]
+  posAccessCode: String
+  createdDate: DateTime
+  modifiedDate: DateTime
+  deletedDate: DateTime
+}
+
+type EmployeeJobReference {
+  job: ToastReference!
+  primaryJob: Boolean
+  externalId: String
+}
+
+type Job {
+  guid: UUID!
+  entityType: String
+  externalId: String
+  title: String!
+  code: String
+  wage: Float
+  tipped: Boolean
+  defaultScheduleRate: Float
+  wageFrequency: String
+  deletedDate: DateTime
+}
+
+type JobWageOverride {
+  job: ToastReference!
+  wage: Float!
+  wageFrequency: String
+}
+
+type TimeEntry {
+  guid: UUID!
+  employee: ToastReference!
+  job: ToastReference!
+  inDate: DateTime!
+  outDate: DateTime
+  businessDate: Int
+  regularHours: Float
+  overtimeHours: Float
+  wages: Float
+  overtimeWages: Float
+  tips: Float
+  declaredCashTips: Float
+  nonCashTips: Float
+  status: TimeEntryStatus
+  breaks: [TimeEntryBreak]
+  deletedDate: DateTime
+  modifiedDate: DateTime
+}
+
+type TimeEntryBreak {
+  guid: UUID!
+  breakType: ToastReference
+  inDate: DateTime!
+  outDate: DateTime
+  paid: Boolean
+  duration: Int
+}
+
+type Shift {
+  guid: UUID!
+  employee: ToastReference!
+  job: ToastReference!
+  startDate: DateTime!
+  endDate: DateTime
+  status: ShiftStatus
+  publishedShift: Boolean
+  isPosted: Boolean
+  inDate: DateTime
+  outDate: DateTime
+  timeEntries: [TimeEntry]
+  breaks: [TimeEntryBreak]
+  wage: Float
+  wageFrequency: String
+}
+
+type ScheduleConfig {
+  enabled: Boolean
+  weekStart: String
+  overtimeThreshold: Float
+}
+
+# ─────────────────────────────────────────────
+# Stock / Inventory Types
+# ─────────────────────────────────────────────
+type MenuItemInventory {
+  guid: UUID!
+  menuItem: ToastReference!
+  status: StockStatus!
+  quantity: Int
+  quantityUpdatedDate: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Kitchen Types
+# ─────────────────────────────────────────────
+type KitchenTicket {
+  guid: UUID!
+  entityType: String
+  externalId: String
+  status: KitchenTicketStatus
+  createdDate: DateTime
+  modifiedDate: DateTime
+  estimatedFulfillmentDate: DateTime
+  kitchenItems: [KitchenTicketItem]
+  order: ToastReference
+  diningOption: ToastReference
+  fulfillmentType: String
+}
+
+type KitchenTicketItem {
+  guid: UUID!
+  name: String
+  quantity: Float
+  modifiers: [KitchenTicketItem]
+  prepStation: ToastReference
+  expediter: ToastReference
+  status: KitchenTicketStatus
+  doneDate: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Cash Management Types
+# ─────────────────────────────────────────────
+type CashEntry {
+  guid: UUID!
+  entityType: String
+  date: DateTime!
+  amount: Float!
+  type: CashEntryType
+  employee: ToastReference
+  undoSource: ToastReference
+  paidInReason: ToastReference
+  paidOutReason: ToastReference
+  cashDrawer: ToastReference
+  restaurant: ToastReference
+}
+
+# ─────────────────────────────────────────────
+# Credit Card Types
+# ─────────────────────────────────────────────
+type CreditCard {
+  guid: UUID!
+  maskedPan: String
+  cardType: String
+  expirationMonth: Int
+  expirationYear: Int
+  holderName: String
+}
+
+# ─────────────────────────────────────────────
+# Gift Card Types
+# ─────────────────────────────────────────────
+type GiftCard {
+  guid: UUID!
+  cardNumber: String
+  maskedCardNumber: String
+  balance: Float
+  currencyCode: String
+  active: Boolean
+  expirationDate: DateTime
+}
+
+type GiftCardTransaction {
+  guid: UUID!
+  card: GiftCard!
+  action: GiftCardActionType!
+  amount: Float
+  preBalance: Float
+  postBalance: Float
+  transactionDate: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Loyalty Types
+# ─────────────────────────────────────────────
+type LoyaltyAccount {
+  guid: UUID!
+  identifier: String!
+  firstName: String
+  lastName: String
+  email: String
+  phoneNumber: String
+  pointsBalance: Float
+  rewardsBalance: Float
+}
+
+type LoyaltyTransaction {
+  guid: UUID!
+  account: LoyaltyAccount!
+  action: LoyaltyActionType!
+  points: Float
+  amount: Float
+  transactionDate: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Partner Types
+# ─────────────────────────────────────────────
+type PartnerAccess {
+  partnerGuid: UUID!
+  restaurantGuid: UUID!
+  restaurantName: String
+  locationName: String
+  managementGroupGuid: UUID
+  externalGroupRef: String
+  createdDate: DateTime
+}
+
+type PaginatedPartnerAccess {
+  results: [PartnerAccess]
+  nextPageToken: String
+  totalCount: Int
+}
+
+# ─────────────────────────────────────────────
+# Analytics Types
+# ─────────────────────────────────────────────
+type SalesSummary {
+  restaurantGuid: UUID!
+  businessDate: Int
+  netSales: Float
+  grossSales: Float
+  taxAmount: Float
+  totalDiscountAmount: Float
+  totalServiceCharges: Float
+  totalTips: Float
+  orderCount: Int
+  checkCount: Int
+  guestCount: Int
+  voidCount: Int
+  voidAmount: Float
+}
+
+type LaborSummary {
+  restaurantGuid: UUID!
+  businessDate: Int
+  regularHours: Float
+  overtimeHours: Float
+  regularWages: Float
+  overtimeWages: Float
+  laborCostPercentage: Float
+}
+
+# ─────────────────────────────────────────────
+# Configuration Types
+# ─────────────────────────────────────────────
+type DiningOption {
+  guid: UUID!
+  name: String!
+  behavior: DiningOptionBehavior
+  curbside: Boolean
+  deliveryEnabled: Boolean
+}
+
+type ServiceCharge {
+  guid: UUID!
+  name: String!
+  type: ServiceChargeCalculation
+  amount: Float
+  percentage: Float
+  gratuity: Boolean
+  taxable: Boolean
+}
+
+type Packaging {
+  guid: UUID!
+  name: String!
+  instructionType: PackagingInstructionType
+  items: [PackagingItem]
+}
+
+type PackagingItem {
+  guid: UUID!
+  name: String!
+  quantity: Int
+  instructions: String
+}
+
+# ─────────────────────────────────────────────
+# Input Types
+# ─────────────────────────────────────────────
+input OrdersFilter {
+  restaurantGuid: UUID!
+  startDate: DateTime
+  endDate: DateTime
+  status: OrderStatus
+  pageToken: String
+  pageSize: Int
+}
+
+input MenusFilter {
+  restaurantGuid: UUID!
+  menuGuids: [UUID]
+  visibility: MenuItemVisibility
+}
+
+input LaborFilter {
+  restaurantGuid: UUID!
+  startDate: DateTime!
+  endDate: DateTime!
+  employeeGuid: UUID
+  jobGuid: UUID
+  status: TimeEntryStatus
+}
+
+input EmployeeInput {
+  firstName: String!
+  lastName: String!
+  email: String
+  phoneNumber: String
+  chosenName: String
+  externalEmployeeId: String
+  jobReferences: [EmployeeJobReferenceInput]
+  wageOverrides: [JobWageOverrideInput]
+}
+
+input EmployeeJobReferenceInput {
+  jobGuid: UUID!
+  primaryJob: Boolean
+  externalId: String
+}
+
+input JobWageOverrideInput {
+  jobGuid: UUID!
+  wage: Float!
+  wageFrequency: String
+}
+
+input CreateOrderInput {
+  restaurantGuid: UUID!
+  externalId: String
+  diningOptionGuid: UUID
+  serviceAreaGuid: UUID
+  tableGuid: UUID
+  guestCount: Int
+  estimatedFulfillmentDate: DateTime
+  deliveryInfo: DeliveryInfoInput
+  checks: [CreateCheckInput]
+}
+
+input CreateCheckInput {
+  externalId: String
+  tabName: String
+  customer: CustomerInput
+  selections: [CreateSelectionInput]
+}
+
+input CreateSelectionInput {
+  itemGuid: UUID
+  quantity: Float
+  price: Float
+  modifiers: [CreateSelectionInput]
+  specialRequest: String
+}
+
+input CustomerInput {
+  firstName: String
+  lastName: String
+  phone: String
+  email: String
+  loyaltyIdentifier: String
+}
+
+input DeliveryInfoInput {
+  address: AddressInput!
+}
+
+input AddressInput {
+  street1: String!
+  street2: String
+  city: String!
+  state: String!
+  zipCode: String!
+  country: String
+}
+
+input StockUpdateInput {
+  restaurantGuid: UUID!
+  itemGuid: UUID!
+  status: StockStatus!
+  quantity: Int
+}
+
+input TimeEntryInput {
+  employeeGuid: UUID!
+  jobGuid: UUID!
+  inDate: DateTime!
+  outDate: DateTime
+  businessDate: Int
+  breaks: [TimeEntryBreakInput]
+}
+
+input TimeEntryBreakInput {
+  breakTypeGuid: UUID
+  inDate: DateTime!
+  outDate: DateTime
+  paid: Boolean
+}
+
+input CashEntryInput {
+  restaurantGuid: UUID!
+  amount: Float!
+  type: CashEntryType!
+  employeeGuid: UUID
+}
+
+input DiscountsFilter {
+  restaurantGuid: UUID!
+  active: Boolean
+  type: DiscountType
+}
+
+input AnalyticsFilter {
+  restaurantGuid: UUID!
+  startBusinessDate: Int!
+  endBusinessDate: Int!
+}
+
+input InventorySearchInput {
+  restaurantGuid: UUID!
+  itemGuids: [UUID]
+  status: StockStatus
+}
+
+# ─────────────────────────────────────────────
+# Query Root
+# ─────────────────────────────────────────────
+type Query {
+  # Restaurant queries
+  restaurant(guid: UUID!): Restaurant
+  restaurants(managementGroupGuid: UUID): [Restaurant]
+  restaurantLocation(guid: UUID!, restaurantGuid: UUID!): RestaurantLocation
+  restaurantLocations(restaurantGuid: UUID!): [RestaurantLocation]
+
+  # Menu queries
+  menus(filter: MenusFilter!): [Menu]
+  menu(guid: UUID!, restaurantGuid: UUID!): Menu
+  menuGroup(guid: UUID!, restaurantGuid: UUID!): MenuGroup
+  menuItem(guid: UUID!, restaurantGuid: UUID!): MenuItem
+  modifierGroup(guid: UUID!, restaurantGuid: UUID!): ModifierGroup
+
+  # Order queries
+  orders(filter: OrdersFilter!): [Order]
+  order(guid: UUID!, restaurantGuid: UUID!): Order
+  check(guid: UUID!, restaurantGuid: UUID!): Check
+
+  # Discount queries
+  discounts(filter: DiscountsFilter!): [Discount]
+  discount(guid: UUID!, restaurantGuid: UUID!): Discount
+
+  # Labor queries
+  employees(restaurantGuid: UUID!, status: EmployeeStatus): [Employee]
+  employee(guid: UUID!, restaurantGuid: UUID!): Employee
+  jobs(restaurantGuid: UUID!): [Job]
+  job(guid: UUID!, restaurantGuid: UUID!): Job
+  timeEntries(filter: LaborFilter!): [TimeEntry]
+  timeEntry(guid: UUID!, restaurantGuid: UUID!): TimeEntry
+  shifts(restaurantGuid: UUID!, startDate: DateTime, endDate: DateTime): [Shift]
+
+  # Stock queries
+  inventory(input: InventorySearchInput!): [MenuItemInventory]
+  menuItemInventory(guid: UUID!, restaurantGuid: UUID!): MenuItemInventory
+
+  # Kitchen queries
+  kitchenTickets(restaurantGuid: UUID!, startDate: DateTime, endDate: DateTime): [KitchenTicket]
+  kitchenTicket(guid: UUID!, restaurantGuid: UUID!): KitchenTicket
+
+  # Cash management queries
+  cashEntries(restaurantGuid: UUID!, startDate: DateTime, endDate: DateTime): [CashEntry]
+  cashEntry(guid: UUID!, restaurantGuid: UUID!): CashEntry
+
+  # Configuration queries
+  diningOptions(restaurantGuid: UUID!): [DiningOption]
+  serviceCharges(restaurantGuid: UUID!): [ServiceCharge]
+  salesCategories(restaurantGuid: UUID!): [SalesCategory]
+  serviceAreas(restaurantGuid: UUID!): [ServiceArea]
+  revenueCenters(restaurantGuid: UUID!): [RevenueCenter]
+  packagingConfigurations(restaurantGuid: UUID!): [Packaging]
+
+  # Partner queries
+  accessibleRestaurants(pageToken: String, pageSize: Int): PaginatedPartnerAccess
+  connectedRestaurants(pageToken: String, pageSize: Int): PaginatedPartnerAccess
+
+  # Analytics queries
+  salesSummary(filter: AnalyticsFilter!): [SalesSummary]
+  laborSummary(filter: AnalyticsFilter!): [LaborSummary]
+
+  # Gift card queries
+  giftCard(cardNumber: String!, restaurantGuid: UUID!): GiftCard
+
+  # Loyalty queries
+  loyaltyAccount(identifier: String!, restaurantGuid: UUID!): LoyaltyAccount
+}
+
+# ─────────────────────────────────────────────
+# Mutation Root
+# ─────────────────────────────────────────────
+type Mutation {
+  # Order mutations
+  createOrder(input: CreateOrderInput!): Order
+  voidOrder(guid: UUID!, restaurantGuid: UUID!, reason: String): Order
+  addCheckToOrder(orderGuid: UUID!, restaurantGuid: UUID!, check: CreateCheckInput!): Order
+  addSelectionToCheck(checkGuid: UUID!, restaurantGuid: UUID!, selection: CreateSelectionInput!): Check
+  voidSelection(selectionGuid: UUID!, restaurantGuid: UUID!, voidReasonGuid: UUID): Selection
+  applyDiscountToCheck(checkGuid: UUID!, restaurantGuid: UUID!, discountGuid: UUID!, promoCode: String): Check
+  removeDiscountFromCheck(checkGuid: UUID!, restaurantGuid: UUID!, appliedDiscountGuid: UUID!): Check
+
+  # Employee mutations
+  createEmployee(restaurantGuid: UUID!, input: EmployeeInput!): Employee
+  updateEmployee(guid: UUID!, restaurantGuid: UUID!, input: EmployeeInput!): Employee
+  deleteEmployee(guid: UUID!, restaurantGuid: UUID!): Boolean
+
+  # Time entry mutations
+  createTimeEntry(restaurantGuid: UUID!, input: TimeEntryInput!): TimeEntry
+  updateTimeEntry(guid: UUID!, restaurantGuid: UUID!, input: TimeEntryInput!): TimeEntry
+  deleteTimeEntry(guid: UUID!, restaurantGuid: UUID!): Boolean
+
+  # Stock mutations
+  updateStock(input: StockUpdateInput!): MenuItemInventory
+  bulkUpdateStock(restaurantGuid: UUID!, updates: [StockUpdateInput!]!): [MenuItemInventory]
+
+  # Cash management mutations
+  createCashEntry(input: CashEntryInput!): CashEntry
+
+  # Gift card mutations
+  activateGiftCard(cardNumber: String!, restaurantGuid: UUID!, amount: Float!): GiftCardTransaction
+  reloadGiftCard(cardNumber: String!, restaurantGuid: UUID!, amount: Float!): GiftCardTransaction
+  redeemGiftCard(cardNumber: String!, restaurantGuid: UUID!, amount: Float!): GiftCardTransaction
+  voidGiftCardTransaction(transactionGuid: UUID!, restaurantGuid: UUID!): GiftCardTransaction
+
+  # Loyalty mutations
+  accruePoints(identifier: String!, restaurantGuid: UUID!, amount: Float!): LoyaltyTransaction
+  redeemPoints(identifier: String!, restaurantGuid: UUID!, points: Float!): LoyaltyTransaction
+}

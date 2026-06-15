@@ -1,1138 +1,1095 @@
 aid: toast-tab
 name: Toast
-description: >-
-  Toast (NYSE: TOST) is a cloud-based restaurant technology platform that
-  unifies point-of-sale (POS), payments, online ordering, delivery, digital
-  marketing, loyalty, gift cards, kitchen display, inventory, and team
-  management for restaurants of every size — from independent operators to
-  enterprise chains. The Toast platform exposes a substantial REST API
-  surface at https://ws-api.toasttab.com/, authenticated via OAuth 2.0
-  client credentials, and is used by restaurants, internal IT teams, and
-  the Toast Partner Integrations program to read and write menus, orders,
-  payments, employees, schedules, time entries, cash entries, kitchen
-  tickets, restaurant configuration, gift cards, loyalty balances, and
-  partner-restaurant connections. Toast offers three flavors of API access:
-  Standard API Access (self-service for restaurant operators), Analytics API
-  Access (Restaurant Management Suites Pro), and Partner Integrations
-  (technology companies building productized integrations).
+description: 'Toast (NYSE: TOST) is a cloud-based restaurant technology platform that
+  unifies point-of-sale (POS), payments, online ordering, delivery, digital marketing,
+  loyalty, gift cards, kitchen display, inventory, and team management for restaurants
+  of every size — from independent operators to enterprise chains. The Toast platform
+  exposes a substantial REST API surface at https://ws-api.toasttab.com/, authenticated
+  via OAuth 2.0 client credentials, and is used by restaurants, internal IT teams,
+  and the Toast Partner Integrations program to read and write menus, orders, payments,
+  employees, schedules, time entries, cash entries, kitchen tickets, restaurant configuration,
+  gift cards, loyalty balances, and partner-restaurant connections. Toast offers three
+  flavors of API access: Standard API Access (self-service for restaurant operators),
+  Analytics API Access (Restaurant Management Suites Pro), and Partner Integrations
+  (technology companies building productized integrations).'
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Restaurants
-  - Point Of Sale
-  - Payments
-  - Online Ordering
-  - Delivery
-  - Loyalty
-  - Gift Cards
-  - Menus
-  - Orders
-  - Kitchen
-  - Labor
-  - Scheduling
-  - Inventory
-  - Hospitality
-  - Partner Integrations
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/apis.yml
+- Restaurants
+- Point Of Sale
+- Payments
+- Online Ordering
+- Delivery
+- Loyalty
+- Gift Cards
+- Menus
+- Orders
+- Kitchen
+- Labor
+- Scheduling
+- Inventory
+- Hospitality
+- Partner Integrations
+url: https://raw.githubusercontent.com/api-evangelist/toast-tab/refs/heads/main/apis.yml
 created: '2026-05-25'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: toast-tab:toast-authentication-api
-    name: Toast Authentication API
-    description: >-
-      OAuth 2.0 client-credentials authentication for Toast APIs. Exchanges
-      a clientId and clientSecret (with userAccessType
-      TOAST_MACHINE_CLIENT) for a bearer access token at
-      /authentication/v1/authentication/login. Token lifetime is returned
-      in the response and varies by environment.
-    humanURL: https://doc.toasttab.com/openapi/authentication/overview/
-    baseURL: https://ws-api.toasttab.com/authentication/v1
-    tags:
-      - Authentication
-      - OAuth
-      - Tokens
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/authentication/overview/
-      - type: AuthenticationGuide
-        url: https://doc.toasttab.com/doc/devguide/authentication.html
-      - type: OpenAPI
-        url: openapi/toast-tab-authentication-openapi.yml
-      - type: JSONSchema
-        url: json-schema/authentication-authentication-request-schema.json
-      - type: JSONSchema
-        url: json-schema/authentication-authentication-response-schema.json
-      - type: JSONSchema
-        url: json-schema/authentication-authentication-token-schema.json
-      - type: JSONStructure
-        url: json-structure/authentication-authentication-request-structure.json
-      - type: JSONStructure
-        url: json-structure/authentication-authentication-response-structure.json
-      - type: JSONStructure
-        url: json-structure/authentication-authentication-token-structure.json
-      - type: Example
-        url: examples/authentication-authentication-request-example.json
-      - type: Example
-        url: examples/authentication-authentication-response-example.json
-      - type: Example
-        url: examples/authentication-authentication-token-example.json
-      - type: JSON-LD
-        url: json-ld/toast-tab-authentication-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/authentication-authentication.yaml
-  - aid: toast-tab:toast-restaurants-api
-    name: Toast Restaurants API
-    description: >-
-      Returns restaurant-level information including locations, addresses,
-      hours, schedules, urls, closeout hour, and reference identifiers that
-      anchor every other Toast API call (restaurantGuid).
-    humanURL: https://doc.toasttab.com/openapi/restaurants/overview/
-    baseURL: https://ws-api.toasttab.com/restaurants/v1
-    tags:
-      - Restaurants
-      - Locations
-      - Configuration
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/restaurants/overview/
-      - type: OpenAPI
-        url: openapi/toast-tab-restaurants-openapi.yml
-      - type: JSONSchema
-        url: json-schema/restaurants-day-schedule-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-delivery-payment-options-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-delivery-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-general-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-hours-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-image-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-location-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-online-ordering-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-payment-options-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-prep-times-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-restaurant-info-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-restaurant-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-schedules-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-service-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-takeout-payment-options-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-urls-schema.json
-      - type: JSONSchema
-        url: json-schema/restaurants-week-schedule-schema.json
-      - type: JSONStructure
-        url: json-structure/restaurants-day-schedule-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-delivery-payment-options-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-delivery-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-general-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-hours-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-image-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-location-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-online-ordering-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-payment-options-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-prep-times-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-restaurant-info-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-restaurant-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-schedules-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-service-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-takeout-payment-options-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-urls-structure.json
-      - type: JSONStructure
-        url: json-structure/restaurants-week-schedule-structure.json
-      - type: Example
-        url: examples/restaurants-day-schedule-example.json
-      - type: Example
-        url: examples/restaurants-delivery-example.json
-      - type: Example
-        url: examples/restaurants-delivery-payment-options-example.json
-      - type: Example
-        url: examples/restaurants-general-example.json
-      - type: Example
-        url: examples/restaurants-hours-example.json
-      - type: Example
-        url: examples/restaurants-image-example.json
-      - type: Example
-        url: examples/restaurants-location-example.json
-      - type: Example
-        url: examples/restaurants-online-ordering-example.json
-      - type: Example
-        url: examples/restaurants-payment-options-example.json
-      - type: Example
-        url: examples/restaurants-prep-times-example.json
-      - type: Example
-        url: examples/restaurants-restaurant-example.json
-      - type: Example
-        url: examples/restaurants-restaurant-info-example.json
-      - type: Example
-        url: examples/restaurants-schedules-example.json
-      - type: Example
-        url: examples/restaurants-service-example.json
-      - type: Example
-        url: examples/restaurants-takeout-payment-options-example.json
-      - type: Example
-        url: examples/restaurants-urls-example.json
-      - type: Example
-        url: examples/restaurants-week-schedule-example.json
-      - type: JSON-LD
-        url: json-ld/toast-tab-restaurants-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/restaurants-general.yaml
-  - aid: toast-tab:toast-configuration-api
-    name: Toast Configuration API
-    description: >-
-      Read-access to a restaurant's configuration entities — menus,
-      modifier groups, employees, jobs, dining options, service areas,
-      revenue centers, sales categories, discounts, service charges, and
-      table topology — that drive POS behavior.
-    humanURL: https://doc.toasttab.com/openapi/configuration/overview/
-    baseURL: https://ws-api.toasttab.com/config/v2
-    tags:
-      - Configuration
-      - Employees
-      - Discounts
-      - Service Charges
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/configuration/overview/
-  - aid: toast-tab:toast-menus-v2-api
-    name: Toast Menus API (V2)
-    description: >-
-      Returns published menu data for a restaurant — menus, menu groups,
-      menu items, modifier groups, options, prices, and tax info — in the
-      legacy V2 shape used by ordering and POS integrations.
-    humanURL: https://doc.toasttab.com/openapi/menus/overview/
-    baseURL: https://ws-api.toasttab.com/menus/v2
-    tags:
-      - Menus
-      - Pricing
-      - Modifiers
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/menus/overview/
-      - type: OpenAPI
-        url: openapi/toast-tab-menus-openapi.yml
-      - type: JSONSchema
-        url: json-schema/menus-alcohol-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-allergen-item-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-availability-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-catalog-product-info-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-catalog-product-option-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-catalog-product-option-value-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-catalog-product-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-catalog-product-variant-option-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-catalog-product-variant-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-content-advisories-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-dimension-unit-of-measure-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-guest-count-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-height-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-image-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-images-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-item-tag-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-length-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-master-id-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-menu-group-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-menu-item-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-menu-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-metadata-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-modifier-group-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-modifier-option-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-modifier-option-tax-info-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-multi-location-id-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-portion-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-pos-button-color-dark-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-pos-button-color-light-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-pos-name-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-pre-modifier-group-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-pre-modifier-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-pricing-rules-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-restaurant-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-sales-category-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-schedule-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-sequence-price-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-size-sequence-pricing-rule-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-time-range-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-time-specific-price-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-visibility-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-weight-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-weight-unit-of-measure-schema.json
-      - type: JSONSchema
-        url: json-schema/menus-width-schema.json
-      - type: JSONStructure
-        url: json-structure/menus-alcohol-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-allergen-item-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-availability-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-catalog-product-info-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-catalog-product-option-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-catalog-product-option-value-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-catalog-product-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-catalog-product-variant-option-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-catalog-product-variant-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-content-advisories-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-dimension-unit-of-measure-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-guest-count-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-height-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-image-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-images-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-item-tag-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-length-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-master-id-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-menu-group-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-menu-item-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-menu-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-metadata-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-modifier-group-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-modifier-option-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-modifier-option-tax-info-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-multi-location-id-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-portion-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-pos-button-color-dark-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-pos-button-color-light-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-pos-name-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-pre-modifier-group-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-pre-modifier-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-pricing-rules-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-restaurant-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-sales-category-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-schedule-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-sequence-price-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-size-sequence-pricing-rule-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-time-range-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-time-specific-price-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-visibility-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-weight-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-weight-unit-of-measure-structure.json
-      - type: JSONStructure
-        url: json-structure/menus-width-structure.json
-      - type: Example
-        url: examples/menus-alcohol-example.json
-      - type: Example
-        url: examples/menus-allergen-item-example.json
-      - type: Example
-        url: examples/menus-availability-example.json
-      - type: Example
-        url: examples/menus-catalog-product-example.json
-      - type: Example
-        url: examples/menus-catalog-product-info-example.json
-      - type: Example
-        url: examples/menus-catalog-product-option-example.json
-      - type: Example
-        url: examples/menus-catalog-product-option-value-example.json
-      - type: Example
-        url: examples/menus-catalog-product-variant-example.json
-      - type: Example
-        url: examples/menus-catalog-product-variant-option-example.json
-      - type: Example
-        url: examples/menus-content-advisories-example.json
-      - type: Example
-        url: examples/menus-dimension-unit-of-measure-example.json
-      - type: Example
-        url: examples/menus-guest-count-example.json
-      - type: Example
-        url: examples/menus-height-example.json
-      - type: Example
-        url: examples/menus-image-example.json
-      - type: Example
-        url: examples/menus-images-example.json
-      - type: Example
-        url: examples/menus-item-tag-example.json
-      - type: Example
-        url: examples/menus-length-example.json
-      - type: Example
-        url: examples/menus-master-id-example.json
-      - type: Example
-        url: examples/menus-menu-example.json
-      - type: Example
-        url: examples/menus-menu-group-example.json
-      - type: Example
-        url: examples/menus-menu-item-example.json
-      - type: Example
-        url: examples/menus-metadata-example.json
-      - type: Example
-        url: examples/menus-modifier-group-example.json
-      - type: Example
-        url: examples/menus-modifier-option-example.json
-      - type: Example
-        url: examples/menus-modifier-option-tax-info-example.json
-      - type: Example
-        url: examples/menus-multi-location-id-example.json
-      - type: Example
-        url: examples/menus-portion-example.json
-      - type: Example
-        url: examples/menus-pos-button-color-dark-example.json
-      - type: Example
-        url: examples/menus-pos-button-color-light-example.json
-      - type: Example
-        url: examples/menus-pos-name-example.json
-      - type: Example
-        url: examples/menus-pre-modifier-example.json
-      - type: Example
-        url: examples/menus-pre-modifier-group-example.json
-      - type: Example
-        url: examples/menus-pricing-rules-example.json
-      - type: Example
-        url: examples/menus-restaurant-example.json
-      - type: Example
-        url: examples/menus-sales-category-example.json
-      - type: Example
-        url: examples/menus-schedule-example.json
-      - type: Example
-        url: examples/menus-sequence-price-example.json
-      - type: Example
-        url: examples/menus-size-sequence-pricing-rule-example.json
-      - type: Example
-        url: examples/menus-time-range-example.json
-      - type: Example
-        url: examples/menus-time-specific-price-example.json
-      - type: Example
-        url: examples/menus-visibility-example.json
-      - type: Example
-        url: examples/menus-weight-example.json
-      - type: Example
-        url: examples/menus-weight-unit-of-measure-example.json
-      - type: Example
-        url: examples/menus-width-example.json
-      - type: JSON-LD
-        url: json-ld/toast-tab-menus-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/menus-general.yaml
-  - aid: toast-tab:toast-menus-v3-api
-    name: Toast Menus API (V3)
-    description: >-
-      Next-generation read API for Toast menus, exposing the same menu /
-      menu group / item / modifier / option model as V2 in a refreshed
-      shape aligned with Toast's newer platform services.
-    humanURL: https://doc.toasttab.com/openapi/menusv3/overview/
-    baseURL: https://ws-api.toasttab.com/menus/v3
-    tags:
-      - Menus
-      - Pricing
-      - Modifiers
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/menusv3/overview/
-  - aid: toast-tab:toast-orders-api
-    name: Toast Orders API
-    description: >-
-      Create, retrieve, modify, and void orders, checks, and selections;
-      attach payments and refunds; manage dining options and service
-      charges. The Orders API is the workhorse of Toast integrations —
-      online-ordering channels, delivery providers, kiosks, and POS-aware
-      tools all post orders here.
-    humanURL: https://doc.toasttab.com/openapi/orders/overview/
-    baseURL: https://ws-api.toasttab.com/orders/v2
-    tags:
-      - Orders
-      - Checks
-      - Payments
-      - Online Ordering
-      - Delivery
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/orders/overview/
-      - type: OpenAPI
-        url: openapi/toast-tab-orders-openapi.yml
-      - type: JSONSchema
-        url: json-schema/orders-applicable-discount-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-applicable-discounts-request-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-applied-discount-reason-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-applied-discount-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-applied-discount-trigger-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-applied-loyalty-info-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-applied-packaging-info-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-applied-packaging-item-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-applied-service-charge-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-applied-tax-rate-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-check-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-config-reference-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-curbside-pickup-info-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-customer-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-delivery-info-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-delivery-service-info-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-device-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-external-reference-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-fulfillment-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-gift-card-info-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-loyalty-details-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-marketplace-facilitator-tax-info-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-order-response-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-order-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-payment-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-refund-details-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-refund-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-refund-transaction-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-selection-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-toast-reference-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-update-payment-request-schema.json
-      - type: JSONSchema
-        url: json-schema/orders-void-information-schema.json
-      - type: JSONStructure
-        url: json-structure/orders-applicable-discount-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-applicable-discounts-request-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-applied-discount-reason-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-applied-discount-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-applied-discount-trigger-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-applied-loyalty-info-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-applied-packaging-info-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-applied-packaging-item-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-applied-service-charge-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-applied-tax-rate-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-check-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-config-reference-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-curbside-pickup-info-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-customer-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-delivery-info-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-delivery-service-info-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-device-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-external-reference-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-fulfillment-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-gift-card-info-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-loyalty-details-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-marketplace-facilitator-tax-info-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-order-response-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-order-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-payment-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-refund-details-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-refund-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-refund-transaction-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-selection-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-toast-reference-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-update-payment-request-structure.json
-      - type: JSONStructure
-        url: json-structure/orders-void-information-structure.json
-      - type: Example
-        url: examples/orders-applicable-discount-example.json
-      - type: Example
-        url: examples/orders-applicable-discounts-request-example.json
-      - type: Example
-        url: examples/orders-applied-discount-example.json
-      - type: Example
-        url: examples/orders-applied-discount-reason-example.json
-      - type: Example
-        url: examples/orders-applied-discount-trigger-example.json
-      - type: Example
-        url: examples/orders-applied-loyalty-info-example.json
-      - type: Example
-        url: examples/orders-applied-packaging-info-example.json
-      - type: Example
-        url: examples/orders-applied-packaging-item-example.json
-      - type: Example
-        url: examples/orders-applied-service-charge-example.json
-      - type: Example
-        url: examples/orders-applied-tax-rate-example.json
-      - type: Example
-        url: examples/orders-check-example.json
-      - type: Example
-        url: examples/orders-config-reference-example.json
-      - type: Example
-        url: examples/orders-curbside-pickup-info-example.json
-      - type: Example
-        url: examples/orders-customer-example.json
-      - type: Example
-        url: examples/orders-delivery-info-example.json
-      - type: Example
-        url: examples/orders-delivery-service-info-example.json
-      - type: Example
-        url: examples/orders-device-example.json
-      - type: Example
-        url: examples/orders-external-reference-example.json
-      - type: Example
-        url: examples/orders-fulfillment-example.json
-      - type: Example
-        url: examples/orders-gift-card-info-example.json
-      - type: Example
-        url: examples/orders-loyalty-details-example.json
-      - type: Example
-        url: examples/orders-marketplace-facilitator-tax-info-example.json
-      - type: Example
-        url: examples/orders-order-example.json
-      - type: Example
-        url: examples/orders-order-response-example.json
-      - type: Example
-        url: examples/orders-payment-example.json
-      - type: Example
-        url: examples/orders-refund-details-example.json
-      - type: Example
-        url: examples/orders-refund-example.json
-      - type: Example
-        url: examples/orders-refund-transaction-example.json
-      - type: Example
-        url: examples/orders-selection-example.json
-      - type: Example
-        url: examples/orders-toast-reference-example.json
-      - type: Example
-        url: examples/orders-update-payment-request-example.json
-      - type: Example
-        url: examples/orders-void-information-example.json
-      - type: JSON-LD
-        url: json-ld/toast-tab-orders-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/orders-discounts.yaml
-      - type: NaftikoCapability
-        url: capabilities/orders-orders.yaml
-      - type: NaftikoCapability
-        url: capabilities/orders-payments.yaml
-  - aid: toast-tab:toast-order-management-config-api
-    name: Toast Order Management Configuration API
-    description: >-
-      Read configuration that governs how orders flow through Toast —
-      throttling, prep-time rules, surge controls, and order-management
-      settings used by online-ordering and delivery integrations.
-    humanURL: https://doc.toasttab.com/openapi/ordermgmt.configuration/overview/
-    baseURL: https://ws-api.toasttab.com/ordermgmt-config/v1
-    tags:
-      - Orders
-      - Throttling
-      - Configuration
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/ordermgmt.configuration/overview/
-  - aid: toast-tab:toast-restaurant-availability-api
-    name: Toast Restaurant Availability API
-    description: >-
-      Returns whether a restaurant is currently accepting online orders,
-      its expected prep times, and per-channel availability so ordering
-      partners and delivery marketplaces can route demand appropriately.
-    humanURL: https://doc.toasttab.com/openapi/rx.availability.service/overview/
-    baseURL: https://ws-api.toasttab.com/restaurants/v1/availability
-    tags:
-      - Availability
-      - Online Ordering
-      - Delivery
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/rx.availability.service/overview/
-  - aid: toast-tab:toast-credit-cards-api
-    name: Toast Credit Cards API
-    description: >-
-      Read tokenized credit-card information attached to orders for
-      receipts, returns, and reconciliation. Toast Payments handles
-      acceptance natively; this API exposes the resulting tokenized card
-      records.
-    humanURL: https://doc.toasttab.com/openapi/creditcards/overview/
-    baseURL: https://ws-api.toasttab.com/creditcards/v1
-    tags:
-      - Payments
-      - Credit Cards
-      - Tokens
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/creditcards/overview/
-  - aid: toast-tab:toast-cash-management-api
-    name: Toast Cash Management API
-    description: >-
-      Records and retrieves cash entries — paid in, paid out, deposits,
-      drawer counts — that flow into a restaurant's cash-management ledger
-      and reconciliation reports.
-    humanURL: https://doc.toasttab.com/openapi/cashmanagement/overview/
-    baseURL: https://ws-api.toasttab.com/cashmgmt/v1
-    tags:
-      - Cash Management
-      - Reconciliation
-      - Payments
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/cashmanagement/overview/
-  - aid: toast-tab:toast-labor-api
-    name: Toast Labor API
-    description: >-
-      Manages employees, jobs, time entries, breaks, and shifts for
-      Toast's labor-management surface — the integration point used by
-      scheduling, payroll, and HR vendors.
-    humanURL: https://doc.toasttab.com/openapi/labor/overview/
-    baseURL: https://ws-api.toasttab.com/labor/v1
-    tags:
-      - Labor
-      - Employees
-      - Time Tracking
-      - Scheduling
-      - Payroll
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/labor/overview/
-      - type: OpenAPI
-        url: openapi/toast-tab-labor-openapi.yml
-      - type: JSONSchema
-        url: json-schema/labor-employee-schema.json
-      - type: JSONSchema
-        url: json-schema/labor-external-reference-schema.json
-      - type: JSONSchema
-        url: json-schema/labor-job-schema.json
-      - type: JSONSchema
-        url: json-schema/labor-job-wage-override-schema.json
-      - type: JSONSchema
-        url: json-schema/labor-schedule-config-schema.json
-      - type: JSONSchema
-        url: json-schema/labor-shift-schema.json
-      - type: JSONSchema
-        url: json-schema/labor-time-entry-break-schema.json
-      - type: JSONSchema
-        url: json-schema/labor-time-entry-schema.json
-      - type: JSONSchema
-        url: json-schema/labor-toast-reference-schema.json
-      - type: JSONStructure
-        url: json-structure/labor-employee-structure.json
-      - type: JSONStructure
-        url: json-structure/labor-external-reference-structure.json
-      - type: JSONStructure
-        url: json-structure/labor-job-structure.json
-      - type: JSONStructure
-        url: json-structure/labor-job-wage-override-structure.json
-      - type: JSONStructure
-        url: json-structure/labor-schedule-config-structure.json
-      - type: JSONStructure
-        url: json-structure/labor-shift-structure.json
-      - type: JSONStructure
-        url: json-structure/labor-time-entry-break-structure.json
-      - type: JSONStructure
-        url: json-structure/labor-time-entry-structure.json
-      - type: JSONStructure
-        url: json-structure/labor-toast-reference-structure.json
-      - type: Example
-        url: examples/labor-employee-example.json
-      - type: Example
-        url: examples/labor-external-reference-example.json
-      - type: Example
-        url: examples/labor-job-example.json
-      - type: Example
-        url: examples/labor-job-wage-override-example.json
-      - type: Example
-        url: examples/labor-schedule-config-example.json
-      - type: Example
-        url: examples/labor-shift-example.json
-      - type: Example
-        url: examples/labor-time-entry-break-example.json
-      - type: Example
-        url: examples/labor-time-entry-example.json
-      - type: Example
-        url: examples/labor-toast-reference-example.json
-      - type: JSON-LD
-        url: json-ld/toast-tab-labor-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/labor-employees.yaml
-      - type: NaftikoCapability
-        url: capabilities/labor-jobs.yaml
-      - type: NaftikoCapability
-        url: capabilities/labor-shifts.yaml
-      - type: NaftikoCapability
-        url: capabilities/labor-time-entries.yaml
-  - aid: toast-tab:toast-kitchen-api
-    name: Toast Kitchen API
-    description: >-
-      Surfaces kitchen tickets, prep stations, ticket items, and ticket
-      events to support kitchen-display integrations and out-of-band prep
-      orchestration.
-    humanURL: https://doc.toasttab.com/openapi/kitchen/overview/
-    baseURL: https://ws-api.toasttab.com/kitchen/v1
-    tags:
-      - Kitchen
-      - Tickets
-      - Prep
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/kitchen/overview/
-  - aid: toast-tab:toast-packaging-configuration-api
-    name: Toast Packaging Configuration API
-    description: >-
-      Read configuration about packaging — containers, lids, utensils, and
-      packaging instructions — that off-premises orders and delivery
-      handoff workflows must respect.
-    humanURL: https://doc.toasttab.com/openapi/packaging/overview/
-    baseURL: https://ws-api.toasttab.com/packaging/v1
-    tags:
-      - Packaging
-      - Delivery
-      - Off Premises
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/packaging/overview/
-  - aid: toast-tab:toast-stock-api
-    name: Toast Stock API
-    description: >-
-      Read and update menu-item stock levels — what is in stock, what is
-      sold out, what is limited — so online-ordering, delivery, and
-      inventory tools stay in sync with the restaurant's true sellable
-      catalog.
-    humanURL: https://doc.toasttab.com/openapi/stock/overview/
-    baseURL: https://ws-api.toasttab.com/stock/v1
-    tags:
-      - Stock
-      - Inventory
-      - 86ing
-      - Online Ordering
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/stock/overview/
-      - type: OpenAPI
-        url: openapi/toast-tab-stock-openapi.yml
-      - type: JSONSchema
-        url: json-schema/stock-inventory-search-request-schema.json
-      - type: JSONSchema
-        url: json-schema/stock-menu-item-inventory-schema.json
-      - type: JSONStructure
-        url: json-structure/stock-inventory-search-request-structure.json
-      - type: JSONStructure
-        url: json-structure/stock-menu-item-inventory-structure.json
-      - type: Example
-        url: examples/stock-inventory-search-request-example.json
-      - type: Example
-        url: examples/stock-menu-item-inventory-example.json
-      - type: JSON-LD
-        url: json-ld/toast-tab-stock-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/stock-stock.yaml
-  - aid: toast-tab:toast-analytics-api
-    name: Toast Analytics API
-    description: >-
-      Analytics and reporting endpoints for Restaurant Management Suites
-      Pro customers — sales, labor, productivity, and operational
-      performance data exposed for BI integrations and warehouse
-      pipelines.
-    humanURL: https://doc.toasttab.com/openapi/analytics/overview/
-    baseURL: https://ws-api.toasttab.com/analytics/v1
-    tags:
-      - Analytics
-      - Reporting
-      - BI
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/analytics/overview/
-  - aid: toast-tab:toast-partners-api
-    name: Toast Partners API
-    description: >-
-      Enables Toast Partner Integration clients to enumerate the
-      restaurants that have authorized them. Exposes "accessible
-      restaurants" and "connected restaurants" so a partner can discover
-      and provision its tenant base across the Toast network.
-    humanURL: https://doc.toasttab.com/openapi/partners/overview/
-    baseURL: https://ws-api.toasttab.com/partners/v1
-    tags:
-      - Partners
-      - Tenancy
-      - Onboarding
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/partners/overview/
-      - type: OpenAPI
-        url: openapi/toast-tab-partners-openapi.yml
-      - type: JSONSchema
-        url: json-schema/partners-paginated-response-schema.json
-      - type: JSONSchema
-        url: json-schema/partners-partner-access-external-rep-schema.json
-      - type: JSONSchema
-        url: json-schema/partners-partner-access-external-webhook-rep-schema.json
-      - type: JSONStructure
-        url: json-structure/partners-paginated-response-structure.json
-      - type: JSONStructure
-        url: json-structure/partners-partner-access-external-rep-structure.json
-      - type: JSONStructure
-        url: json-structure/partners-partner-access-external-webhook-rep-structure.json
-      - type: Example
-        url: examples/partners-paginated-response-example.json
-      - type: Example
-        url: examples/partners-partner-access-external-rep-example.json
-      - type: Example
-        url: examples/partners-partner-access-external-webhook-rep-example.json
-      - type: JSON-LD
-        url: json-ld/toast-tab-partners-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/partners-general.yaml
-  - aid: toast-tab:toast-gift-cards-integration
-    name: Toast Gift Cards Integration
-    description: >-
-      Specification for integrating third-party gift-card programs with
-      Toast — Toast calls the partner's endpoints to look up balances,
-      authorize, redeem, and reload gift cards inline with a check.
-    humanURL: https://doc.toasttab.com/openapi/giftcards/overview/
-    baseURL: https://doc.toasttab.com/openapi/giftcards
-    tags:
-      - Gift Cards
-      - Integrations
-      - Partners
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/giftcards/overview/
-  - aid: toast-tab:toast-loyalty-integration
-    name: Toast Loyalty Integration
-    description: >-
-      Specification for integrating third-party loyalty programs with
-      Toast — discovery, lookup, accrual, and redemption callbacks that
-      Toast invokes against partner endpoints during a transaction.
-    humanURL: https://doc.toasttab.com/openapi/loyalty/overview/
-    baseURL: https://doc.toasttab.com/openapi/loyalty
-    tags:
-      - Loyalty
-      - Integrations
-      - Partners
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/loyalty/overview/
-  - aid: toast-tab:toast-tender-integration
-    name: Toast Tender Integration
-    description: >-
-      Specification for integrating alternative tender types into Toast —
-      callback endpoints partners implement so Toast can validate,
-      authorize, and reconcile non-card forms of payment at checkout.
-    humanURL: https://doc.toasttab.com/openapi/tender/overview/
-    baseURL: https://doc.toasttab.com/openapi/tender
-    tags:
-      - Tender
-      - Payments
-      - Integrations
-      - Partners
-    properties:
-      - type: Documentation
-        url: https://doc.toasttab.com/openapi/tender/overview/
-common:
-  - type: Website
-    url: https://pos.toasttab.com/
-  - type: DeveloperPortal
-    url: https://dev.toasttab.com/
+- aid: toast-tab:toast-authentication-api
+  name: Toast Authentication API
+  description: OAuth 2.0 client-credentials authentication for Toast APIs. Exchanges
+    a clientId and clientSecret (with userAccessType TOAST_MACHINE_CLIENT) for a bearer
+    access token at /authentication/v1/authentication/login. Token lifetime is returned
+    in the response and varies by environment.
+  humanURL: https://doc.toasttab.com/openapi/authentication/overview/
+  baseURL: https://ws-api.toasttab.com/authentication/v1
+  tags:
+  - Authentication
+  - OAuth
+  - Tokens
+  properties:
   - type: Documentation
-    url: https://doc.toasttab.com/
-  - type: APIReference
-    url: https://doc.toasttab.com/openapi/
-  - type: DeveloperGuide
-    url: https://doc.toasttab.com/doc/devguide/index.html
-  - type: HowToGuides
-    url: https://doc.toasttab.com/doc/cookbook/index.html
-  - type: PlatformGuide
-    url: https://doc.toasttab.com/doc/platformguide/index.html
-  - type: ReleaseNotes
-    url: https://doc.toasttab.com/doc/relnotes/index.html
-  - type: Authentication
+    url: https://doc.toasttab.com/openapi/authentication/overview/
+  - type: AuthenticationGuide
     url: https://doc.toasttab.com/doc/devguide/authentication.html
-  - type: Webhooks
-    url: https://doc.toasttab.com/doc/devguide/webhooks.html
-  - type: PartnerProgram
-    url: https://pos.toasttab.com/integrations
-  - type: GitHubOrganization
-    url: https://github.com/toasttab
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/toast-inc
-  - type: Investors
-    url: https://investors.toasttab.com/
-  - type: Status
-    url: https://status.toasttab.com/
-  - type: Support
-    url: https://central.toasttab.com/
-  - type: Pricing
-    url: https://pos.toasttab.com/pricing
-  - type: SignUp
-    url: https://pos.toasttab.com/get-a-demo
-  - type: SpectralRules
-    url: rules/toast-tab-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/toast-tab-vocabulary.yaml
-  - type: Plans
-    url: plans/toast-tab-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/toast-tab-rate-limits.yml
-  - type: FinOps
-    url: finops/toast-tab-finops.yml
-  - type: Features
-    data:
-      - name: OAuth 2.0 Client Credentials
-        description: Machine-to-machine authentication issuing bearer tokens for all Toast platform APIs.
-      - name: Orders & Payments
-        description: Create, retrieve, modify, and void orders, checks, selections, payments, and refunds.
-      - name: Menus
-        description: Read published menu, menu group, item, modifier, and pricing data in V2 and V3 shapes.
-      - name: Labor Management
-        description: Manage employees, jobs, shifts, and time entries for scheduling and payroll vendors.
-      - name: Stock / 86ing
-        description: Read and update menu-item stock levels to keep ordering channels in sync.
-      - name: Partner Integrations
-        description: Discover accessible and connected restaurants across the Toast network for a partner client.
-  - type: UseCases
-    data:
-      - name: Online Ordering Integration
-        description: Post orders and read menus/stock to power third-party ordering and delivery channels.
-      - name: Payroll & Scheduling
-        description: Sync employees, jobs, shifts, and time entries into payroll, HR, and scheduling platforms.
-      - name: BI & Reporting
-        description: Pull analytics and operational data into warehouses and BI tooling.
-      - name: Gift Card & Loyalty Programs
-        description: Integrate third-party gift card, loyalty, and alternative tender programs via callback specs.
-  - type: Integrations
-    data:
-      - name: Delivery Marketplaces
-        description: Route demand and availability to delivery and online-ordering partners.
-      - name: Payroll Providers
-        description: Labor API time entries feed payroll and workforce-management systems.
-      - name: Loyalty & Gift Card Vendors
-        description: Inline callbacks let third-party loyalty/gift-card programs participate in checks.
+  - type: OpenAPI
+    url: openapi/toast-tab-authentication-openapi.yml
+  - type: JSONSchema
+    url: json-schema/authentication-authentication-request-schema.json
+  - type: JSONSchema
+    url: json-schema/authentication-authentication-response-schema.json
+  - type: JSONSchema
+    url: json-schema/authentication-authentication-token-schema.json
+  - type: JSONStructure
+    url: json-structure/authentication-authentication-request-structure.json
+  - type: JSONStructure
+    url: json-structure/authentication-authentication-response-structure.json
+  - type: JSONStructure
+    url: json-structure/authentication-authentication-token-structure.json
+  - type: Example
+    url: examples/authentication-authentication-request-example.json
+  - type: Example
+    url: examples/authentication-authentication-response-example.json
+  - type: Example
+    url: examples/authentication-authentication-token-example.json
+  - type: JSON-LD
+    url: json-ld/toast-tab-authentication-context.jsonld
+  - url: graphql/toast-tab-graphql.md
+    type: GraphQL
+- aid: toast-tab:toast-restaurants-api
+  name: Toast Restaurants API
+  description: Returns restaurant-level information including locations, addresses,
+    hours, schedules, urls, closeout hour, and reference identifiers that anchor every
+    other Toast API call (restaurantGuid).
+  humanURL: https://doc.toasttab.com/openapi/restaurants/overview/
+  baseURL: https://ws-api.toasttab.com/restaurants/v1
+  tags:
+  - Restaurants
+  - Locations
+  - Configuration
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/restaurants/overview/
+  - type: OpenAPI
+    url: openapi/toast-tab-restaurants-openapi.yml
+  - type: JSONSchema
+    url: json-schema/restaurants-day-schedule-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-delivery-payment-options-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-delivery-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-general-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-hours-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-image-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-location-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-online-ordering-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-payment-options-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-prep-times-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-restaurant-info-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-restaurant-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-schedules-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-service-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-takeout-payment-options-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-urls-schema.json
+  - type: JSONSchema
+    url: json-schema/restaurants-week-schedule-schema.json
+  - type: JSONStructure
+    url: json-structure/restaurants-day-schedule-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-delivery-payment-options-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-delivery-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-general-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-hours-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-image-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-location-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-online-ordering-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-payment-options-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-prep-times-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-restaurant-info-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-restaurant-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-schedules-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-service-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-takeout-payment-options-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-urls-structure.json
+  - type: JSONStructure
+    url: json-structure/restaurants-week-schedule-structure.json
+  - type: Example
+    url: examples/restaurants-day-schedule-example.json
+  - type: Example
+    url: examples/restaurants-delivery-example.json
+  - type: Example
+    url: examples/restaurants-delivery-payment-options-example.json
+  - type: Example
+    url: examples/restaurants-general-example.json
+  - type: Example
+    url: examples/restaurants-hours-example.json
+  - type: Example
+    url: examples/restaurants-image-example.json
+  - type: Example
+    url: examples/restaurants-location-example.json
+  - type: Example
+    url: examples/restaurants-online-ordering-example.json
+  - type: Example
+    url: examples/restaurants-payment-options-example.json
+  - type: Example
+    url: examples/restaurants-prep-times-example.json
+  - type: Example
+    url: examples/restaurants-restaurant-example.json
+  - type: Example
+    url: examples/restaurants-restaurant-info-example.json
+  - type: Example
+    url: examples/restaurants-schedules-example.json
+  - type: Example
+    url: examples/restaurants-service-example.json
+  - type: Example
+    url: examples/restaurants-takeout-payment-options-example.json
+  - type: Example
+    url: examples/restaurants-urls-example.json
+  - type: Example
+    url: examples/restaurants-week-schedule-example.json
+  - type: JSON-LD
+    url: json-ld/toast-tab-restaurants-context.jsonld
+- aid: toast-tab:toast-configuration-api
+  name: Toast Configuration API
+  description: Read-access to a restaurant's configuration entities — menus, modifier
+    groups, employees, jobs, dining options, service areas, revenue centers, sales
+    categories, discounts, service charges, and table topology — that drive POS behavior.
+  humanURL: https://doc.toasttab.com/openapi/configuration/overview/
+  baseURL: https://ws-api.toasttab.com/config/v2
+  tags:
+  - Configuration
+  - Employees
+  - Discounts
+  - Service Charges
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/configuration/overview/
+- aid: toast-tab:toast-menus-v2-api
+  name: Toast Menus API (V2)
+  description: Returns published menu data for a restaurant — menus, menu groups,
+    menu items, modifier groups, options, prices, and tax info — in the legacy V2
+    shape used by ordering and POS integrations.
+  humanURL: https://doc.toasttab.com/openapi/menus/overview/
+  baseURL: https://ws-api.toasttab.com/menus/v2
+  tags:
+  - Menus
+  - Pricing
+  - Modifiers
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/menus/overview/
+  - type: OpenAPI
+    url: openapi/toast-tab-menus-openapi.yml
+  - type: JSONSchema
+    url: json-schema/menus-alcohol-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-allergen-item-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-availability-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-catalog-product-info-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-catalog-product-option-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-catalog-product-option-value-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-catalog-product-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-catalog-product-variant-option-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-catalog-product-variant-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-content-advisories-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-dimension-unit-of-measure-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-guest-count-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-height-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-image-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-images-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-item-tag-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-length-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-master-id-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-menu-group-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-menu-item-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-menu-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-modifier-group-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-modifier-option-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-modifier-option-tax-info-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-multi-location-id-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-portion-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-pos-button-color-dark-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-pos-button-color-light-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-pos-name-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-pre-modifier-group-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-pre-modifier-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-pricing-rules-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-restaurant-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-sales-category-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-schedule-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-sequence-price-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-size-sequence-pricing-rule-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-time-range-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-time-specific-price-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-visibility-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-weight-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-weight-unit-of-measure-schema.json
+  - type: JSONSchema
+    url: json-schema/menus-width-schema.json
+  - type: JSONStructure
+    url: json-structure/menus-alcohol-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-allergen-item-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-availability-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-catalog-product-info-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-catalog-product-option-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-catalog-product-option-value-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-catalog-product-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-catalog-product-variant-option-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-catalog-product-variant-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-content-advisories-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-dimension-unit-of-measure-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-guest-count-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-height-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-image-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-images-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-item-tag-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-length-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-master-id-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-menu-group-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-menu-item-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-menu-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-metadata-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-modifier-group-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-modifier-option-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-modifier-option-tax-info-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-multi-location-id-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-portion-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-pos-button-color-dark-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-pos-button-color-light-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-pos-name-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-pre-modifier-group-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-pre-modifier-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-pricing-rules-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-restaurant-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-sales-category-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-schedule-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-sequence-price-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-size-sequence-pricing-rule-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-time-range-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-time-specific-price-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-visibility-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-weight-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-weight-unit-of-measure-structure.json
+  - type: JSONStructure
+    url: json-structure/menus-width-structure.json
+  - type: Example
+    url: examples/menus-alcohol-example.json
+  - type: Example
+    url: examples/menus-allergen-item-example.json
+  - type: Example
+    url: examples/menus-availability-example.json
+  - type: Example
+    url: examples/menus-catalog-product-example.json
+  - type: Example
+    url: examples/menus-catalog-product-info-example.json
+  - type: Example
+    url: examples/menus-catalog-product-option-example.json
+  - type: Example
+    url: examples/menus-catalog-product-option-value-example.json
+  - type: Example
+    url: examples/menus-catalog-product-variant-example.json
+  - type: Example
+    url: examples/menus-catalog-product-variant-option-example.json
+  - type: Example
+    url: examples/menus-content-advisories-example.json
+  - type: Example
+    url: examples/menus-dimension-unit-of-measure-example.json
+  - type: Example
+    url: examples/menus-guest-count-example.json
+  - type: Example
+    url: examples/menus-height-example.json
+  - type: Example
+    url: examples/menus-image-example.json
+  - type: Example
+    url: examples/menus-images-example.json
+  - type: Example
+    url: examples/menus-item-tag-example.json
+  - type: Example
+    url: examples/menus-length-example.json
+  - type: Example
+    url: examples/menus-master-id-example.json
+  - type: Example
+    url: examples/menus-menu-example.json
+  - type: Example
+    url: examples/menus-menu-group-example.json
+  - type: Example
+    url: examples/menus-menu-item-example.json
+  - type: Example
+    url: examples/menus-metadata-example.json
+  - type: Example
+    url: examples/menus-modifier-group-example.json
+  - type: Example
+    url: examples/menus-modifier-option-example.json
+  - type: Example
+    url: examples/menus-modifier-option-tax-info-example.json
+  - type: Example
+    url: examples/menus-multi-location-id-example.json
+  - type: Example
+    url: examples/menus-portion-example.json
+  - type: Example
+    url: examples/menus-pos-button-color-dark-example.json
+  - type: Example
+    url: examples/menus-pos-button-color-light-example.json
+  - type: Example
+    url: examples/menus-pos-name-example.json
+  - type: Example
+    url: examples/menus-pre-modifier-example.json
+  - type: Example
+    url: examples/menus-pre-modifier-group-example.json
+  - type: Example
+    url: examples/menus-pricing-rules-example.json
+  - type: Example
+    url: examples/menus-restaurant-example.json
+  - type: Example
+    url: examples/menus-sales-category-example.json
+  - type: Example
+    url: examples/menus-schedule-example.json
+  - type: Example
+    url: examples/menus-sequence-price-example.json
+  - type: Example
+    url: examples/menus-size-sequence-pricing-rule-example.json
+  - type: Example
+    url: examples/menus-time-range-example.json
+  - type: Example
+    url: examples/menus-time-specific-price-example.json
+  - type: Example
+    url: examples/menus-visibility-example.json
+  - type: Example
+    url: examples/menus-weight-example.json
+  - type: Example
+    url: examples/menus-weight-unit-of-measure-example.json
+  - type: Example
+    url: examples/menus-width-example.json
+  - type: JSON-LD
+    url: json-ld/toast-tab-menus-context.jsonld
+- aid: toast-tab:toast-menus-v3-api
+  name: Toast Menus API (V3)
+  description: Next-generation read API for Toast menus, exposing the same menu /
+    menu group / item / modifier / option model as V2 in a refreshed shape aligned
+    with Toast's newer platform services.
+  humanURL: https://doc.toasttab.com/openapi/menusv3/overview/
+  baseURL: https://ws-api.toasttab.com/menus/v3
+  tags:
+  - Menus
+  - Pricing
+  - Modifiers
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/menusv3/overview/
+- aid: toast-tab:toast-orders-api
+  name: Toast Orders API
+  description: Create, retrieve, modify, and void orders, checks, and selections;
+    attach payments and refunds; manage dining options and service charges. The Orders
+    API is the workhorse of Toast integrations — online-ordering channels, delivery
+    providers, kiosks, and POS-aware tools all post orders here.
+  humanURL: https://doc.toasttab.com/openapi/orders/overview/
+  baseURL: https://ws-api.toasttab.com/orders/v2
+  tags:
+  - Orders
+  - Checks
+  - Payments
+  - Online Ordering
+  - Delivery
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/orders/overview/
+  - type: OpenAPI
+    url: openapi/toast-tab-orders-openapi.yml
+  - type: JSONSchema
+    url: json-schema/orders-applicable-discount-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-applicable-discounts-request-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-applied-discount-reason-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-applied-discount-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-applied-discount-trigger-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-applied-loyalty-info-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-applied-packaging-info-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-applied-packaging-item-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-applied-service-charge-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-applied-tax-rate-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-check-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-config-reference-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-curbside-pickup-info-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-customer-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-delivery-info-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-delivery-service-info-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-device-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-external-reference-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-fulfillment-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-gift-card-info-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-loyalty-details-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-marketplace-facilitator-tax-info-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-order-response-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-order-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-refund-details-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-refund-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-refund-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-selection-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-toast-reference-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-update-payment-request-schema.json
+  - type: JSONSchema
+    url: json-schema/orders-void-information-schema.json
+  - type: JSONStructure
+    url: json-structure/orders-applicable-discount-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-applicable-discounts-request-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-applied-discount-reason-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-applied-discount-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-applied-discount-trigger-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-applied-loyalty-info-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-applied-packaging-info-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-applied-packaging-item-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-applied-service-charge-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-applied-tax-rate-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-check-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-config-reference-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-curbside-pickup-info-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-customer-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-delivery-info-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-delivery-service-info-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-device-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-external-reference-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-fulfillment-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-gift-card-info-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-loyalty-details-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-marketplace-facilitator-tax-info-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-order-response-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-order-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-payment-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-refund-details-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-refund-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-refund-transaction-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-selection-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-toast-reference-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-update-payment-request-structure.json
+  - type: JSONStructure
+    url: json-structure/orders-void-information-structure.json
+  - type: Example
+    url: examples/orders-applicable-discount-example.json
+  - type: Example
+    url: examples/orders-applicable-discounts-request-example.json
+  - type: Example
+    url: examples/orders-applied-discount-example.json
+  - type: Example
+    url: examples/orders-applied-discount-reason-example.json
+  - type: Example
+    url: examples/orders-applied-discount-trigger-example.json
+  - type: Example
+    url: examples/orders-applied-loyalty-info-example.json
+  - type: Example
+    url: examples/orders-applied-packaging-info-example.json
+  - type: Example
+    url: examples/orders-applied-packaging-item-example.json
+  - type: Example
+    url: examples/orders-applied-service-charge-example.json
+  - type: Example
+    url: examples/orders-applied-tax-rate-example.json
+  - type: Example
+    url: examples/orders-check-example.json
+  - type: Example
+    url: examples/orders-config-reference-example.json
+  - type: Example
+    url: examples/orders-curbside-pickup-info-example.json
+  - type: Example
+    url: examples/orders-customer-example.json
+  - type: Example
+    url: examples/orders-delivery-info-example.json
+  - type: Example
+    url: examples/orders-delivery-service-info-example.json
+  - type: Example
+    url: examples/orders-device-example.json
+  - type: Example
+    url: examples/orders-external-reference-example.json
+  - type: Example
+    url: examples/orders-fulfillment-example.json
+  - type: Example
+    url: examples/orders-gift-card-info-example.json
+  - type: Example
+    url: examples/orders-loyalty-details-example.json
+  - type: Example
+    url: examples/orders-marketplace-facilitator-tax-info-example.json
+  - type: Example
+    url: examples/orders-order-example.json
+  - type: Example
+    url: examples/orders-order-response-example.json
+  - type: Example
+    url: examples/orders-payment-example.json
+  - type: Example
+    url: examples/orders-refund-details-example.json
+  - type: Example
+    url: examples/orders-refund-example.json
+  - type: Example
+    url: examples/orders-refund-transaction-example.json
+  - type: Example
+    url: examples/orders-selection-example.json
+  - type: Example
+    url: examples/orders-toast-reference-example.json
+  - type: Example
+    url: examples/orders-update-payment-request-example.json
+  - type: Example
+    url: examples/orders-void-information-example.json
+  - type: JSON-LD
+    url: json-ld/toast-tab-orders-context.jsonld
+- aid: toast-tab:toast-order-management-config-api
+  name: Toast Order Management Configuration API
+  description: Read configuration that governs how orders flow through Toast — throttling,
+    prep-time rules, surge controls, and order-management settings used by online-ordering
+    and delivery integrations.
+  humanURL: https://doc.toasttab.com/openapi/ordermgmt.configuration/overview/
+  baseURL: https://ws-api.toasttab.com/ordermgmt-config/v1
+  tags:
+  - Orders
+  - Throttling
+  - Configuration
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/ordermgmt.configuration/overview/
+- aid: toast-tab:toast-restaurant-availability-api
+  name: Toast Restaurant Availability API
+  description: Returns whether a restaurant is currently accepting online orders,
+    its expected prep times, and per-channel availability so ordering partners and
+    delivery marketplaces can route demand appropriately.
+  humanURL: https://doc.toasttab.com/openapi/rx.availability.service/overview/
+  baseURL: https://ws-api.toasttab.com/restaurants/v1/availability
+  tags:
+  - Availability
+  - Online Ordering
+  - Delivery
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/rx.availability.service/overview/
+- aid: toast-tab:toast-credit-cards-api
+  name: Toast Credit Cards API
+  description: Read tokenized credit-card information attached to orders for receipts,
+    returns, and reconciliation. Toast Payments handles acceptance natively; this
+    API exposes the resulting tokenized card records.
+  humanURL: https://doc.toasttab.com/openapi/creditcards/overview/
+  baseURL: https://ws-api.toasttab.com/creditcards/v1
+  tags:
+  - Payments
+  - Credit Cards
+  - Tokens
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/creditcards/overview/
+- aid: toast-tab:toast-cash-management-api
+  name: Toast Cash Management API
+  description: Records and retrieves cash entries — paid in, paid out, deposits, drawer
+    counts — that flow into a restaurant's cash-management ledger and reconciliation
+    reports.
+  humanURL: https://doc.toasttab.com/openapi/cashmanagement/overview/
+  baseURL: https://ws-api.toasttab.com/cashmgmt/v1
+  tags:
+  - Cash Management
+  - Reconciliation
+  - Payments
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/cashmanagement/overview/
+- aid: toast-tab:toast-labor-api
+  name: Toast Labor API
+  description: Manages employees, jobs, time entries, breaks, and shifts for Toast's
+    labor-management surface — the integration point used by scheduling, payroll,
+    and HR vendors.
+  humanURL: https://doc.toasttab.com/openapi/labor/overview/
+  baseURL: https://ws-api.toasttab.com/labor/v1
+  tags:
+  - Labor
+  - Employees
+  - Time Tracking
+  - Scheduling
+  - Payroll
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/labor/overview/
+  - type: OpenAPI
+    url: openapi/toast-tab-labor-openapi.yml
+  - type: JSONSchema
+    url: json-schema/labor-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/labor-external-reference-schema.json
+  - type: JSONSchema
+    url: json-schema/labor-job-schema.json
+  - type: JSONSchema
+    url: json-schema/labor-job-wage-override-schema.json
+  - type: JSONSchema
+    url: json-schema/labor-schedule-config-schema.json
+  - type: JSONSchema
+    url: json-schema/labor-shift-schema.json
+  - type: JSONSchema
+    url: json-schema/labor-time-entry-break-schema.json
+  - type: JSONSchema
+    url: json-schema/labor-time-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/labor-toast-reference-schema.json
+  - type: JSONStructure
+    url: json-structure/labor-employee-structure.json
+  - type: JSONStructure
+    url: json-structure/labor-external-reference-structure.json
+  - type: JSONStructure
+    url: json-structure/labor-job-structure.json
+  - type: JSONStructure
+    url: json-structure/labor-job-wage-override-structure.json
+  - type: JSONStructure
+    url: json-structure/labor-schedule-config-structure.json
+  - type: JSONStructure
+    url: json-structure/labor-shift-structure.json
+  - type: JSONStructure
+    url: json-structure/labor-time-entry-break-structure.json
+  - type: JSONStructure
+    url: json-structure/labor-time-entry-structure.json
+  - type: JSONStructure
+    url: json-structure/labor-toast-reference-structure.json
+  - type: Example
+    url: examples/labor-employee-example.json
+  - type: Example
+    url: examples/labor-external-reference-example.json
+  - type: Example
+    url: examples/labor-job-example.json
+  - type: Example
+    url: examples/labor-job-wage-override-example.json
+  - type: Example
+    url: examples/labor-schedule-config-example.json
+  - type: Example
+    url: examples/labor-shift-example.json
+  - type: Example
+    url: examples/labor-time-entry-break-example.json
+  - type: Example
+    url: examples/labor-time-entry-example.json
+  - type: Example
+    url: examples/labor-toast-reference-example.json
+  - type: JSON-LD
+    url: json-ld/toast-tab-labor-context.jsonld
+- aid: toast-tab:toast-kitchen-api
+  name: Toast Kitchen API
+  description: Surfaces kitchen tickets, prep stations, ticket items, and ticket events
+    to support kitchen-display integrations and out-of-band prep orchestration.
+  humanURL: https://doc.toasttab.com/openapi/kitchen/overview/
+  baseURL: https://ws-api.toasttab.com/kitchen/v1
+  tags:
+  - Kitchen
+  - Tickets
+  - Prep
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/kitchen/overview/
+- aid: toast-tab:toast-packaging-configuration-api
+  name: Toast Packaging Configuration API
+  description: Read configuration about packaging — containers, lids, utensils, and
+    packaging instructions — that off-premises orders and delivery handoff workflows
+    must respect.
+  humanURL: https://doc.toasttab.com/openapi/packaging/overview/
+  baseURL: https://ws-api.toasttab.com/packaging/v1
+  tags:
+  - Packaging
+  - Delivery
+  - Off Premises
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/packaging/overview/
+- aid: toast-tab:toast-stock-api
+  name: Toast Stock API
+  description: Read and update menu-item stock levels — what is in stock, what is
+    sold out, what is limited — so online-ordering, delivery, and inventory tools
+    stay in sync with the restaurant's true sellable catalog.
+  humanURL: https://doc.toasttab.com/openapi/stock/overview/
+  baseURL: https://ws-api.toasttab.com/stock/v1
+  tags:
+  - Stock
+  - Inventory
+  - 86ing
+  - Online Ordering
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/stock/overview/
+  - type: OpenAPI
+    url: openapi/toast-tab-stock-openapi.yml
+  - type: JSONSchema
+    url: json-schema/stock-inventory-search-request-schema.json
+  - type: JSONSchema
+    url: json-schema/stock-menu-item-inventory-schema.json
+  - type: JSONStructure
+    url: json-structure/stock-inventory-search-request-structure.json
+  - type: JSONStructure
+    url: json-structure/stock-menu-item-inventory-structure.json
+  - type: Example
+    url: examples/stock-inventory-search-request-example.json
+  - type: Example
+    url: examples/stock-menu-item-inventory-example.json
+  - type: JSON-LD
+    url: json-ld/toast-tab-stock-context.jsonld
+- aid: toast-tab:toast-analytics-api
+  name: Toast Analytics API
+  description: Analytics and reporting endpoints for Restaurant Management Suites
+    Pro customers — sales, labor, productivity, and operational performance data exposed
+    for BI integrations and warehouse pipelines.
+  humanURL: https://doc.toasttab.com/openapi/analytics/overview/
+  baseURL: https://ws-api.toasttab.com/analytics/v1
+  tags:
+  - Analytics
+  - Reporting
+  - BI
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/analytics/overview/
+- aid: toast-tab:toast-partners-api
+  name: Toast Partners API
+  description: Enables Toast Partner Integration clients to enumerate the restaurants
+    that have authorized them. Exposes "accessible restaurants" and "connected restaurants"
+    so a partner can discover and provision its tenant base across the Toast network.
+  humanURL: https://doc.toasttab.com/openapi/partners/overview/
+  baseURL: https://ws-api.toasttab.com/partners/v1
+  tags:
+  - Partners
+  - Tenancy
+  - Onboarding
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/partners/overview/
+  - type: OpenAPI
+    url: openapi/toast-tab-partners-openapi.yml
+  - type: JSONSchema
+    url: json-schema/partners-paginated-response-schema.json
+  - type: JSONSchema
+    url: json-schema/partners-partner-access-external-rep-schema.json
+  - type: JSONSchema
+    url: json-schema/partners-partner-access-external-webhook-rep-schema.json
+  - type: JSONStructure
+    url: json-structure/partners-paginated-response-structure.json
+  - type: JSONStructure
+    url: json-structure/partners-partner-access-external-rep-structure.json
+  - type: JSONStructure
+    url: json-structure/partners-partner-access-external-webhook-rep-structure.json
+  - type: Example
+    url: examples/partners-paginated-response-example.json
+  - type: Example
+    url: examples/partners-partner-access-external-rep-example.json
+  - type: Example
+    url: examples/partners-partner-access-external-webhook-rep-example.json
+  - type: JSON-LD
+    url: json-ld/toast-tab-partners-context.jsonld
+- aid: toast-tab:toast-gift-cards-integration
+  name: Toast Gift Cards Integration
+  description: Specification for integrating third-party gift-card programs with Toast
+    — Toast calls the partner's endpoints to look up balances, authorize, redeem,
+    and reload gift cards inline with a check.
+  humanURL: https://doc.toasttab.com/openapi/giftcards/overview/
+  baseURL: https://doc.toasttab.com/openapi/giftcards
+  tags:
+  - Gift Cards
+  - Integrations
+  - Partners
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/giftcards/overview/
+- aid: toast-tab:toast-loyalty-integration
+  name: Toast Loyalty Integration
+  description: Specification for integrating third-party loyalty programs with Toast
+    — discovery, lookup, accrual, and redemption callbacks that Toast invokes against
+    partner endpoints during a transaction.
+  humanURL: https://doc.toasttab.com/openapi/loyalty/overview/
+  baseURL: https://doc.toasttab.com/openapi/loyalty
+  tags:
+  - Loyalty
+  - Integrations
+  - Partners
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/loyalty/overview/
+- aid: toast-tab:toast-tender-integration
+  name: Toast Tender Integration
+  description: Specification for integrating alternative tender types into Toast —
+    callback endpoints partners implement so Toast can validate, authorize, and reconcile
+    non-card forms of payment at checkout.
+  humanURL: https://doc.toasttab.com/openapi/tender/overview/
+  baseURL: https://doc.toasttab.com/openapi/tender
+  tags:
+  - Tender
+  - Payments
+  - Integrations
+  - Partners
+  properties:
+  - type: Documentation
+    url: https://doc.toasttab.com/openapi/tender/overview/
+common:
+- type: Website
+  url: https://pos.toasttab.com/
+- type: DeveloperPortal
+  url: https://dev.toasttab.com/
+- type: Documentation
+  url: https://doc.toasttab.com/
+- type: APIReference
+  url: https://doc.toasttab.com/openapi/
+- type: DeveloperGuide
+  url: https://doc.toasttab.com/doc/devguide/index.html
+- type: HowToGuides
+  url: https://doc.toasttab.com/doc/cookbook/index.html
+- type: PlatformGuide
+  url: https://doc.toasttab.com/doc/platformguide/index.html
+- type: ReleaseNotes
+  url: https://doc.toasttab.com/doc/relnotes/index.html
+- type: Authentication
+  url: https://doc.toasttab.com/doc/devguide/authentication.html
+- type: Webhooks
+  url: https://doc.toasttab.com/doc/devguide/webhooks.html
+- type: PartnerProgram
+  url: https://pos.toasttab.com/integrations
+- type: GitHubOrganization
+  url: https://github.com/toasttab
+- type: LinkedIn
+  url: https://www.linkedin.com/company/toast-inc
+- type: Investors
+  url: https://investors.toasttab.com/
+- type: Status
+  url: https://status.toasttab.com/
+- type: Support
+  url: https://central.toasttab.com/
+- type: Pricing
+  url: https://pos.toasttab.com/pricing
+- type: SignUp
+  url: https://pos.toasttab.com/get-a-demo
+- type: SpectralRules
+  url: rules/toast-tab-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/toast-tab-vocabulary.yaml
+- type: Plans
+  url: plans/toast-tab-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/toast-tab-rate-limits.yml
+- type: FinOps
+  url: finops/toast-tab-finops.yml
+- type: Features
+  data:
+  - name: OAuth 2.0 Client Credentials
+    description: Machine-to-machine authentication issuing bearer tokens for all Toast
+      platform APIs.
+  - name: Orders & Payments
+    description: Create, retrieve, modify, and void orders, checks, selections, payments,
+      and refunds.
+  - name: Menus
+    description: Read published menu, menu group, item, modifier, and pricing data
+      in V2 and V3 shapes.
+  - name: Labor Management
+    description: Manage employees, jobs, shifts, and time entries for scheduling and
+      payroll vendors.
+  - name: Stock / 86ing
+    description: Read and update menu-item stock levels to keep ordering channels
+      in sync.
+  - name: Partner Integrations
+    description: Discover accessible and connected restaurants across the Toast network
+      for a partner client.
+- type: UseCases
+  data:
+  - name: Online Ordering Integration
+    description: Post orders and read menus/stock to power third-party ordering and
+      delivery channels.
+  - name: Payroll & Scheduling
+    description: Sync employees, jobs, shifts, and time entries into payroll, HR,
+      and scheduling platforms.
+  - name: BI & Reporting
+    description: Pull analytics and operational data into warehouses and BI tooling.
+  - name: Gift Card & Loyalty Programs
+    description: Integrate third-party gift card, loyalty, and alternative tender
+      programs via callback specs.
+- type: Integrations
+  data:
+  - name: Delivery Marketplaces
+    description: Route demand and availability to delivery and online-ordering partners.
+  - name: Payroll Providers
+    description: Labor API time entries feed payroll and workforce-management systems.
+  - name: Loyalty & Gift Card Vendors
+    description: Inline callbacks let third-party loyalty/gift-card programs participate
+      in checks.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
