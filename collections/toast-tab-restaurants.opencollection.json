@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Restaurants API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Toast Get Restaurant Configuration Information",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/restaurants/:restaurantGUID",
+        "headers": [
+          {
+            "name": "Toast-Restaurant-External-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "restaurantGUID",
+            "value": "",
+            "type": "path",
+            "description": "The Toast GUID of the restaurant that you want to get \ninformation about.\n"
+          },
+          {
+            "name": "includeArchived",
+            "value": "",
+            "type": "query",
+            "description": "Set `includeArchived` to `true` if the API should return information\nabout the restaurant even if it is archived. The `General` object in\nthe response includes an `archived` value that your integration can\nuse to determine whether a restaurant is archived or not. A common\nreason for a restaurant being archived is if it was created in\nerror. Set `includeArchived` to `false` if the API should _not_\nreturn information about the restaurant if it is archived. Defaults\nto `false` if omitted.\n"
+          }
+        ]
+      },
+      "docs": "Returns a `RestaurantInfo` object\nthat contains detailed information about the configuration of a\nrestaurant.\n"
+    },
+    {
+      "info": {
+        "name": "Toast Get Restaurants in a Management Group",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/groups/:managementGroupGUID/restaurants",
+        "headers": [
+          {
+            "name": "Toast-Restaurant-External-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "managementGroupGUID",
+            "value": "",
+            "type": "path",
+            "description": "The GUID of the restaurant management group.\n"
+          }
+        ]
+      },
+      "docs": "Returns an array of `Restaurant` objects that are a part of the \nrestaurant management group you specify in the \n`managementGroupGUID` path parameter. Each `Restaurant` object \ncontains the unique Toast platform identifier for the restaurant in \nits `guid` value.\n"
+    }
+  ],
+  "bundled": true
+}

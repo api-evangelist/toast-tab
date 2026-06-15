@@ -1,0 +1,587 @@
+{
+  "item": [
+    {
+      "id": "35e1c43a-2e1b-45c2-b3f8-8fcae7f300a0",
+      "name": "Stock",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca924b7d-25ee-47a5-a577-c51b6ec24c5b",
+          "name": "Toast Get Menu Item Inventory for a Restaurant",
+          "request": {
+            "name": "Toast Get Menu Item Inventory for a Restaurant",
+            "description": {
+              "content": "Returns inventory information for all menu items that have an\n`OUT_OF_STOCK` or `QUANTITY` status.\n\nInventory information is not returned for menu items with an `IN_STOCK`\nstatus, because they are not considered at risk for going out of stock.\n\nTo restrict the menu items in the response to either `OUT_OF_STOCK` or\n`QUANTITY` stock status, use the `status` query parameter.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Limits the items in the response to those items with the specified\nstock status. Values are:\n\n* `OUT_OF_STOCK`- Returns all menu items that have the\n  `OUT_OF_STOCK` stock status.\n\n* `QUANTITY` - Returns all menu items that have the\n  `QUANTITY` stock status.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Toast GUID of the restaurant queried for inventory information.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "stock:read stock:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://toast-api-server/authentication/v1/authentication/login"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a66cceb1-255d-4879-b34e-df0c3fc4a31b",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast GUID of the restaurant queried for inventory information.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"itemGuidValidity\": \"VALID\",\n    \"status\": \"IN_STOCK\",\n    \"quantity\": 1,\n    \"multiLocationId\": \"90a86f12\",\n    \"versionId\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ed7b598-88cd-45f5-87f3-0a18e178e39a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast GUID of the restaurant queried for inventory information.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9e6cfdf-a43f-4197-8fd0-be483e31b80d",
+          "name": "Toast Get Inventory Information for Specific Menu Items",
+          "request": {
+            "name": "Toast Get Inventory Information for Specific Menu Items",
+            "description": {
+              "content": "Returns inventory information for a list of menu items.\n\nThe request must include a message body that contains an\n`InventorySearchRequest` object with one or both of these values:\n\n* A`multiLocationIds` value that contains an array of menu item\n  multi-location IDs to search for.\n\n* A `guids` value that contains an array of menu item GUIDs to search\n  for.\n\nFor information on these two identifier types, see <a\nhref=\"https://doc.toasttab.com/doc/devguide/portalToastIdentifiers.html\">Toast\nidentifiers</a>.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "inventory",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Toast GUID of the restaurant queried for inventory information.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "stock:read stock:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://toast-api-server/authentication/v1/authentication/login"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"guids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"multiLocationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"versionIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "521c18d0-f523-4f0d-b177-30682bad88b0",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "inventory",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast GUID of the restaurant queried for inventory information.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guids\": [\n    \"string\"\n  ],\n  \"multiLocationIds\": [\n    \"string\"\n  ],\n  \"versionIds\": [\n    \"string\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"itemGuidValidity\": \"VALID\",\n    \"status\": \"IN_STOCK\",\n    \"quantity\": 1,\n    \"multiLocationId\": \"90a86f12\",\n    \"versionId\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a758bf6-1806-469c-a0f4-0cb4f04356b6",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "inventory",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast GUID of the restaurant queried for inventory information.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guids\": [\n    \"string\"\n  ],\n  \"multiLocationIds\": [\n    \"string\"\n  ],\n  \"versionIds\": [\n    \"string\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36138ed1-c700-4900-933c-0f755c6235fe",
+          "name": "Toast Update Inventory Information for Specific Menu Items",
+          "request": {
+            "name": "Toast Update Inventory Information for Specific Menu Items",
+            "description": {
+              "content": "Updates inventory information for a list of menu items.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "inventory",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Toast GUID of the restaurant whose inventory information will be updated.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "stock:read stock:write"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://toast-api-server/authentication/v1/authentication/login"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"guid\": \"<uuid>\",\n    \"status\": \"<string>\",\n    \"quantity\": \"<double>\",\n    \"multiLocationId\": \"<string>\",\n    \"versionId\": \"<uuid>\"\n  },\n  {\n    \"guid\": \"<uuid>\",\n    \"status\": \"<string>\",\n    \"quantity\": \"<double>\",\n    \"multiLocationId\": \"<string>\",\n    \"versionId\": \"<uuid>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25c98371-8141-4ab2-ba30-5ac730f4d4e3",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "inventory",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast GUID of the restaurant whose inventory information will be updated.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"itemGuidValidity\": \"VALID\",\n    \"status\": \"IN_STOCK\",\n    \"quantity\": 1,\n    \"multiLocationId\": \"90a86f12\",\n    \"versionId\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"itemGuidValidity\": \"VALID\",\n    \"status\": \"IN_STOCK\",\n    \"quantity\": 1,\n    \"multiLocationId\": \"90a86f12\",\n    \"versionId\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "571272b7-bffa-4da6-8d7d-97de5398eebf",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "inventory",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast GUID of the restaurant whose inventory information will be updated.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"itemGuidValidity\": \"VALID\",\n    \"status\": \"IN_STOCK\",\n    \"quantity\": 1,\n    \"multiLocationId\": \"90a86f12\",\n    \"versionId\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://toast-api-server/stock",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5c3f4e3e-b4e8-418c-a353-b3037927c440",
+    "name": "Stock API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "\nThe stock API lets you retrieve and update inventory information for a\nrestaurant's menu items and modifiers.\n\n_*Note:*_ Modifiers are supported by an underlying menu item, called the\nmodifier's item reference. In this reference, the term \"menu item\" is used\nto generically refer to both standalone menu items and modifier item\nreferences, because the same data is used for both. For more information,\nsee <a\nhref=\"https://doc.toasttab.com/doc/platformguide/adminPricingModifierOptions.html#adminUnderstandingAModifierOptionsItemReference\">Understanding\na modifier option's item reference</a>.\n\nYou can use the stock API to:\n\n* Get all inventory information for a restaurant.\n* Get inventory information for a list of menu items.\n* Get inventory information for a specific status\n  of the menu items (such as all menu items that are out\n  of stock).\n* Update inventory information for a list of menu items.\n\n\nContact Support:\n Name: Toast developer support",
+      "type": "text/plain"
+    }
+  }
+}

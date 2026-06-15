@@ -1,0 +1,342 @@
+{
+  "item": [
+    {
+      "id": "45cc3d00-f7ed-4771-8bce-b3f8b700be14",
+      "name": "Toast Get Restaurant Configuration Information",
+      "request": {
+        "name": "Toast Get Restaurant Configuration Information",
+        "description": {
+          "content": "Returns a `RestaurantInfo` object\nthat contains detailed information about the configuration of a\nrestaurant.\n",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "restaurants",
+            ":restaurantGUID"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "includeArchived",
+              "value": "false",
+              "description": "Set `includeArchived` to `true` if the API should return information\nabout the restaurant even if it is archived. The `General` object in\nthe response includes an `archived` value that your integration can\nuse to determine whether a restaurant is archived or not. A common\nreason for a restaurant being archived is if it was created in\nerror. Set `includeArchived` to `false` if the API should _not_\nreturn information about the restaurant if it is archived. Defaults\nto `false` if omitted.\n"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "restaurantGUID",
+              "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n",
+            "key": "Toast-Restaurant-External-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "scope",
+              "value": "restaurants:read"
+            },
+            {
+              "key": "accessTokenUrl",
+              "value": "https://toast-api-server/authentication/v1/authentication/login"
+            },
+            {
+              "key": "grant_type",
+              "value": "client_credentials"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "cdf9a524-908e-4cc2-b280-32e8d55a17c5",
+          "name": "A `RestaurantInfo` object that contains detailed \ninformation about the configuration of a restaurant.\n",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "restaurants",
+                ":restaurantGUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "includeArchived",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restaurantGUID",
+                  "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n  \"general\": {\n    \"name\": \"Example Name\",\n    \"locationName\": \"Example Name\",\n    \"locationCode\": \"string\",\n    \"description\": \"string\",\n    \"timeZone\": \"string\",\n    \"closeoutHour\": 1,\n    \"managementGroupGuid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"currencyCode\": \"string\",\n    \"firstBusinessDate\": 5284,\n    \"archived\": true\n  },\n  \"urls\": {\n    \"website\": \"string\",\n    \"facebook\": \"string\",\n    \"twitter\": \"string\",\n    \"orderOnline\": \"string\",\n    \"purchaseGiftCard\": \"string\",\n    \"checkGiftCard\": \"string\"\n  },\n  \"location\": {\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"stateCode\": \"string\",\n    \"administrativeArea\": \"string\",\n    \"zipCode\": \"string\",\n    \"country\": \"string\",\n    \"phone\": \"string\",\n    \"phoneCountryCode\": \"string\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"schedules\": {\n    \"daySchedules\": {\n      \"identifier\": \"string\"\n    },\n    \"weekSchedule\": {\n      \"monday\": \"string\",\n      \"tuesday\": \"string\",\n      \"wednesday\": \"string\",\n      \"thursday\": \"string\",\n      \"friday\": \"90a86f12\",\n      \"saturday\": \"string\",\n      \"sunday\": \"string\"\n    }\n  },\n  \"delivery\": {\n    \"enabled\": true,\n    \"minimum\": 1,\n    \"area\": \"string\"\n  },\n  \"onlineOrdering\": {\n    \"enabled\": true,\n    \"scheduling\": true,\n    \"specialRequests\": true,\n    \"specialRequestsMessage\": \"string\",\n    \"paymentOptions\": {\n      \"delivery\": {\n        \"cash\": true,\n        \"ccSameDay\": true,\n        \"ccFuture\": true\n      },\n      \"takeout\": {\n        \"cash\": true,\n        \"ccSameDay\": true,\n        \"ccFuture\": true,\n        \"ccInStore\": true\n      },\n      \"ccTip\": true\n    }\n  },\n  \"prepTimes\": {\n    \"deliveryPrepTime\": 1,\n    \"deliveryTimeAfterOpen\": 1,\n    \"deliveryTimeBeforeClose\": 1,\n    \"takeoutPrepTime\": 1,\n    \"takeoutTimeAfterOpen\": 1,\n    \"takeoutTimeBeforeClose\": 1,\n    \"takeoutThrottlingTime\": 1,\n    \"deliveryThrottlingTime\": 1\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "50cd5b2d-f6f8-4154-8073-2d407029e1ae",
+          "name": "If the restaurant GUID you provided is invalid, the API will return\nan HTTP 404 response. The API will also return an HTTP 404 response\nif you provided the GUID of an archived restaurant and you have not\nset the `includeArchived` query parameter to `true`.\n",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "restaurants",
+                ":restaurantGUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "includeArchived",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restaurantGUID",
+                  "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "453707ee-2339-4e15-8805-9488e464da53",
+      "name": "Toast Get Restaurants in a Management Group",
+      "request": {
+        "name": "Toast Get Restaurants in a Management Group",
+        "description": {
+          "content": "Returns an array of `Restaurant` objects that are a part of the \nrestaurant management group you specify in the \n`managementGroupGUID` path parameter. Each `Restaurant` object \ncontains the unique Toast platform identifier for the restaurant in \nits `guid` value.\n",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "groups",
+            ":managementGroupGUID",
+            "restaurants"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "managementGroupGUID",
+              "description": "(Required) The GUID of the restaurant management group.\n"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) The Toast GUID of one restaurant location in the management \ngroup.\n",
+            "key": "Toast-Restaurant-External-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "scope",
+              "value": "restaurants:read"
+            },
+            {
+              "key": "accessTokenUrl",
+              "value": "https://toast-api-server/authentication/v1/authentication/login"
+            },
+            {
+              "key": "grant_type",
+              "value": "client_credentials"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "2a5c2104-fb00-4d8e-9ac5-54c9be948e9d",
+          "name": "An array of `Restaurant` objects.\n",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "groups",
+                ":managementGroupGUID",
+                "restaurants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "managementGroupGUID",
+                  "description": "(Required) The GUID of the restaurant management group.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Toast GUID of one restaurant location in the management \ngroup.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\"\n  },\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\"\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://toast-api-server/restaurants/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "067de58b-a899-41e5-b8d3-25cc87f7a0b4",
+    "name": "Restaurants API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Returns information about the configuration of restaurant. \n\n\nContact Support:\n Name: Toast developer support",
+      "type": "text/plain"
+    }
+  }
+}
