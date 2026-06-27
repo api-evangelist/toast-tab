@@ -66,13 +66,13 @@ apis:
     url: json-structure/authentication-authentication-response-structure.json
   - type: JSONStructure
     url: json-structure/authentication-authentication-token-structure.json
-  - type: Example
+  - type: Examples
     url: examples/authentication-authentication-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/authentication-authentication-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/authentication-authentication-token-example.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/toast-tab-authentication-context.jsonld
   - url: graphql/toast-tab-graphql.md
     type: GraphQL
@@ -160,41 +160,41 @@ apis:
     url: json-structure/restaurants-urls-structure.json
   - type: JSONStructure
     url: json-structure/restaurants-week-schedule-structure.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-day-schedule-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-delivery-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-delivery-payment-options-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-general-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-hours-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-image-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-location-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-online-ordering-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-payment-options-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-prep-times-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-restaurant-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-restaurant-info-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-schedules-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-service-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-takeout-payment-options-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-urls-example.json
-  - type: Example
+  - type: Examples
     url: examples/restaurants-week-schedule-example.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/toast-tab-restaurants-context.jsonld
 - aid: toast-tab:toast-configuration-api
   name: Toast Configuration API
@@ -403,95 +403,95 @@ apis:
     url: json-structure/menus-weight-unit-of-measure-structure.json
   - type: JSONStructure
     url: json-structure/menus-width-structure.json
-  - type: Example
+  - type: Examples
     url: examples/menus-alcohol-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-allergen-item-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-availability-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-catalog-product-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-catalog-product-info-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-catalog-product-option-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-catalog-product-option-value-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-catalog-product-variant-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-catalog-product-variant-option-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-content-advisories-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-dimension-unit-of-measure-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-guest-count-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-height-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-image-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-images-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-item-tag-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-length-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-master-id-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-menu-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-menu-group-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-menu-item-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-metadata-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-modifier-group-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-modifier-option-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-modifier-option-tax-info-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-multi-location-id-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-portion-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-pos-button-color-dark-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-pos-button-color-light-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-pos-name-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-pre-modifier-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-pre-modifier-group-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-pricing-rules-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-restaurant-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-sales-category-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-schedule-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-sequence-price-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-size-sequence-pricing-rule-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-time-range-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-time-specific-price-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-visibility-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-weight-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-weight-unit-of-measure-example.json
-  - type: Example
+  - type: Examples
     url: examples/menus-width-example.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/toast-tab-menus-context.jsonld
 - aid: toast-tab:toast-menus-v3-api
   name: Toast Menus API (V3)
@@ -654,71 +654,71 @@ apis:
     url: json-structure/orders-update-payment-request-structure.json
   - type: JSONStructure
     url: json-structure/orders-void-information-structure.json
-  - type: Example
+  - type: Examples
     url: examples/orders-applicable-discount-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-applicable-discounts-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-applied-discount-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-applied-discount-reason-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-applied-discount-trigger-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-applied-loyalty-info-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-applied-packaging-info-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-applied-packaging-item-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-applied-service-charge-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-applied-tax-rate-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-check-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-config-reference-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-curbside-pickup-info-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-customer-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-delivery-info-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-delivery-service-info-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-device-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-external-reference-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-fulfillment-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-gift-card-info-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-loyalty-details-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-marketplace-facilitator-tax-info-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-order-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-order-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-payment-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-refund-details-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-refund-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-refund-transaction-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-selection-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-toast-reference-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-update-payment-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/orders-void-information-example.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/toast-tab-orders-context.jsonld
 - aid: toast-tab:toast-order-management-config-api
   name: Toast Order Management Configuration API
@@ -830,25 +830,25 @@ apis:
     url: json-structure/labor-time-entry-structure.json
   - type: JSONStructure
     url: json-structure/labor-toast-reference-structure.json
-  - type: Example
+  - type: Examples
     url: examples/labor-employee-example.json
-  - type: Example
+  - type: Examples
     url: examples/labor-external-reference-example.json
-  - type: Example
+  - type: Examples
     url: examples/labor-job-example.json
-  - type: Example
+  - type: Examples
     url: examples/labor-job-wage-override-example.json
-  - type: Example
+  - type: Examples
     url: examples/labor-schedule-config-example.json
-  - type: Example
+  - type: Examples
     url: examples/labor-shift-example.json
-  - type: Example
+  - type: Examples
     url: examples/labor-time-entry-break-example.json
-  - type: Example
+  - type: Examples
     url: examples/labor-time-entry-example.json
-  - type: Example
+  - type: Examples
     url: examples/labor-toast-reference-example.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/toast-tab-labor-context.jsonld
 - aid: toast-tab:toast-kitchen-api
   name: Toast Kitchen API
@@ -902,11 +902,11 @@ apis:
     url: json-structure/stock-inventory-search-request-structure.json
   - type: JSONStructure
     url: json-structure/stock-menu-item-inventory-structure.json
-  - type: Example
+  - type: Examples
     url: examples/stock-inventory-search-request-example.json
-  - type: Example
+  - type: Examples
     url: examples/stock-menu-item-inventory-example.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/toast-tab-stock-context.jsonld
 - aid: toast-tab:toast-analytics-api
   name: Toast Analytics API
@@ -950,13 +950,13 @@ apis:
     url: json-structure/partners-partner-access-external-rep-structure.json
   - type: JSONStructure
     url: json-structure/partners-partner-access-external-webhook-rep-structure.json
-  - type: Example
+  - type: Examples
     url: examples/partners-paginated-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/partners-partner-access-external-rep-example.json
-  - type: Example
+  - type: Examples
     url: examples/partners-partner-access-external-webhook-rep-example.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/toast-tab-partners-context.jsonld
 - aid: toast-tab:toast-gift-cards-integration
   name: Toast Gift Cards Integration
@@ -1036,7 +1036,7 @@ common:
   url: https://central.toasttab.com/
 - type: Pricing
   url: https://pos.toasttab.com/pricing
-- type: SignUp
+- type: Signup
   url: https://pos.toasttab.com/get-a-demo
 - type: SpectralRules
   url: rules/toast-tab-spectral-rules.yml
