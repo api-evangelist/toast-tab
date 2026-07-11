@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/toast-tab-labor-openapi.yml, openapi/toast-tab-menus-openapi.yml, openapi/toast-tab-orders-openapi.yml,
+  openapi/toast-tab-partners-openapi.yml, openapi/toast-tab-restaurants-openapi.yml, openapi/toast-tab-stock-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://toast-api-server/authentication/v1/authentication/login
+    scopes: 7
+  description: "Access to Toast APIs, specific endpoints, \nand specific API endpoint operations\
+    \ is \ncontrolled by the scopes that are associated \nwith your API account. \nA full reference\
+    \ for Toast API scopes and \ntheir capabilities can be found in the\n[_Toast Developer Guide_](https://doc.toasttab.com/doc/devguide/apiScopes.html)."
+  sources:
+  - openapi/toast-tab-labor-openapi.yml
+  - openapi/toast-tab-menus-openapi.yml
+  - openapi/toast-tab-orders-openapi.yml
+  - openapi/toast-tab-partners-openapi.yml
+  - openapi/toast-tab-restaurants-openapi.yml
+  - openapi/toast-tab-stock-openapi.yml
