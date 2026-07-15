@@ -1002,6 +1002,8 @@ apis:
   - type: Documentation
     url: https://doc.toasttab.com/openapi/tender/overview/
 common:
+- type: AgenticAccess
+  url: agentic-access/toast-tab-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/toast-tab-vulnerability-disclosure.yml
 - type: DomainSecurity
