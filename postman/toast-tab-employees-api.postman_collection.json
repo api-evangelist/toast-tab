@@ -1,0 +1,1858 @@
+{
+  "info": {
+    "_postman_id": "b66b8249-883b-4f53-af53-ef94d75b164e",
+    "name": "Toast Authentication Employees API",
+    "description": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:14:31.000Z",
+    "updatedAt": "2026-07-28T03:14:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b66b8249-883b-4f53-af53-ef94d75b164e"
+  },
+  "item": [
+    {
+      "name": "employees",
+      "item": [
+        {
+          "name": "{employeeId}",
+          "item": [
+            {
+              "name": "externalId",
+              "item": [
+                {
+                  "name": "Toast Add an External Identifier",
+                  "id": "a5ef48af-a64e-42b0-ab15-1a5119387a78",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId/externalId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId",
+                        "externalId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "96dcd3f2-52b2-482a-b55b-72ea5e97a5b2",
+                          "key": "employeeId",
+                          "value": "<string>",
+                          "description": "(Required) The Toast platform GUID of the employee record.\n"
+                        }
+                      ]
+                    },
+                    "description": "Adds an external identifier for an existing employee. Include \nthe string value of the new external identifier in the message \nbody.\n\nYou cannot change an existing external identifier with another \n`POST` request; use `PUT` instead. The Toast platform uses this \nexternal identifier as one of the unique, persistent \nidentifiers for an employee record.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "9bc98ddc-37dc-427e-8624-4e869f547984",
+                      "name": "Returns the updated employee record.\n",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                            "key": "Toast-Restaurant-External-ID",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/externalId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "externalId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"guid\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"firstName\": \"<string>\",\n  \"chosenName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"passcode\": \"<string>\",\n  \"externalEmployeeId\": \"<string>\",\n  \"deleted\": \"<boolean>\",\n  \"jobReferences\": [\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ],\n  \"wageOverrides\": [\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"v2EmployeeGuid\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:14:32.000Z",
+                      "updatedAt": "2026-07-28T03:14:32.000Z",
+                      "uid": "35240-9bc98ddc-37dc-427e-8624-4e869f547984"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-a5ef48af-a64e-42b0-ab15-1a5119387a78"
+                },
+                {
+                  "name": "Toast Add or Replace an External Identifier",
+                  "id": "702a4958-9013-42df-9e3f-df01c6470c12",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId/externalId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId",
+                        "externalId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d958ebe1-8349-4a11-8226-ee779a8e592c",
+                          "key": "employeeId",
+                          "value": "<string>",
+                          "description": "(Required) The Toast platform GUID of the employee record.\n"
+                        }
+                      ]
+                    },
+                    "description": "Adds or replaces the external identifier for an\nexisting employee. Include the string value of the new external\nidentifier in the message body.\n\nThe Toast platform uses this external identifier as one of the \nunique, persistent identifiers for an employee record. \n_Changing the external identifier for an existing employee \nmight affect reporting and other Toast platform functions that \nselect employees using the `externalId` value._\n"
+                  },
+                  "response": [
+                    {
+                      "id": "9a5107d2-938e-4b2e-8a71-6f2ff7419058",
+                      "name": "Returns the updated employee record.\n",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                            "key": "Toast-Restaurant-External-ID",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/externalId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "externalId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"guid\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"firstName\": \"<string>\",\n  \"chosenName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"passcode\": \"<string>\",\n  \"externalEmployeeId\": \"<string>\",\n  \"deleted\": \"<boolean>\",\n  \"jobReferences\": [\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ],\n  \"wageOverrides\": [\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"v2EmployeeGuid\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:14:32.000Z",
+                      "updatedAt": "2026-07-28T03:14:32.000Z",
+                      "uid": "35240-9a5107d2-938e-4b2e-8a71-6f2ff7419058"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-702a4958-9013-42df-9e3f-df01c6470c12"
+                }
+              ],
+              "id": "a8246f65-61e1-40ec-a703-aa4d86c06022",
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-a8246f65-61e1-40ec-a703-aa4d86c06022"
+            },
+            {
+              "name": "unarchive",
+              "item": [
+                {
+                  "name": "Toast Unarchive an Employee",
+                  "id": "5ed99f00-078c-40ee-8ebd-db1d6959a5ba",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId/unarchive",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId",
+                        "unarchive"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d4aeb5ba-48e0-4ca5-b025-833d38618bbc",
+                          "key": "employeeId",
+                          "value": "<string>",
+                          "description": "(Required) The Toast platform GUID of the employee record.\n"
+                        }
+                      ]
+                    },
+                    "description": "Unarchives an employee record that was previously archived.\n\n* Unarchived employees can sign into the Toast POS.\n* Unarchived employees can sign in to Toast Web. \n* When you unarchive an employee, the employee has all \n  jobs that were previously assigned to them.\n* If an employee had a swipe card for signing into the \n  Toast POS, the swipe card _is not_ re-associated with \n  the employee when you unarchive them.\n\nIf you unarchive an employee who will take a different \nrole than the one they had when they were archived, you \nmust update the employee's jobs list and verify that the \nemployee should continue to sign into Toast Web.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "fd16a9fb-ec44-420e-8d9c-e5dae2c44885",
+                      "name": "Returns the updated employee record.\n",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                            "key": "Toast-Restaurant-External-ID",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/unarchive",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "unarchive"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"guid\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"firstName\": \"<string>\",\n  \"chosenName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"passcode\": \"<string>\",\n  \"externalEmployeeId\": \"<string>\",\n  \"deleted\": \"<boolean>\",\n  \"jobReferences\": [\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ],\n  \"wageOverrides\": [\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"v2EmployeeGuid\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:14:32.000Z",
+                      "updatedAt": "2026-07-28T03:14:32.000Z",
+                      "uid": "35240-fd16a9fb-ec44-420e-8d9c-e5dae2c44885"
+                    },
+                    {
+                      "id": "865651ec-2dad-4d4e-8852-a416174bff4d",
+                      "name": "Employee being unarchived is not currently archived.\n",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                            "key": "Toast-Restaurant-External-ID",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/unarchive",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "unarchive"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:14:32.000Z",
+                      "updatedAt": "2026-07-28T03:14:32.000Z",
+                      "uid": "35240-865651ec-2dad-4d4e-8852-a416174bff4d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-5ed99f00-078c-40ee-8ebd-db1d6959a5ba"
+                }
+              ],
+              "id": "dc59bd54-182d-41b3-9c5a-cb0d4e4659f4",
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-dc59bd54-182d-41b3-9c5a-cb0d4e4659f4"
+            },
+            {
+              "name": "jobs",
+              "item": [
+                {
+                  "name": "Toast Replace a Jobs List",
+                  "id": "ca3d3313-5a58-456c-b238-3927b5e2f353",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId/jobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId",
+                        "jobs"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bace0eda-ec4f-4c34-9e58-ff50c00beb17",
+                          "key": "employeeId",
+                          "value": "<string>",
+                          "description": "(Required) The Toast platform GUID of the employee record.\n"
+                        }
+                      ]
+                    },
+                    "description": "Replaces the list of jobs for an employee. Include a JSON  \narray of job identifiers in the message body.\n\nIf a job is defined at the restaurant group or subgroup level, \nthis operation adds or removes that job for the the employee at \n_all restaurant locations_ in the group or subgroup.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "1b384b5c-83f0-41a2-8453-b9b179d214e0",
+                      "name": "Returns the updated employee record.\n",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                            "key": "Toast-Restaurant-External-ID",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/jobs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "jobs"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"guid\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"firstName\": \"<string>\",\n  \"chosenName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"passcode\": \"<string>\",\n  \"externalEmployeeId\": \"<string>\",\n  \"deleted\": \"<boolean>\",\n  \"jobReferences\": [\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ],\n  \"wageOverrides\": [\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"v2EmployeeGuid\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:14:32.000Z",
+                      "updatedAt": "2026-07-28T03:14:32.000Z",
+                      "uid": "35240-1b384b5c-83f0-41a2-8453-b9b179d214e0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-ca3d3313-5a58-456c-b238-3927b5e2f353"
+                }
+              ],
+              "id": "f0670b3c-acc1-4846-ba40-fae5acacabb5",
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-f0670b3c-acc1-4846-ba40-fae5acacabb5"
+            },
+            {
+              "name": "wageOverrides",
+              "item": [
+                {
+                  "name": "Toast Replace Wage Overrides",
+                  "id": "ca469a3f-9441-4cb7-bcb4-76b941897039",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId/wageOverrides",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId",
+                        "wageOverrides"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f15418fe-58ac-442b-a92c-2ae37d4ad276",
+                          "key": "employeeId",
+                          "value": "<string>",
+                          "description": "(Required) The Toast platform GUID of the employee record.\n"
+                        }
+                      ]
+                    },
+                    "description": "Replaces the list of wage overrides for the jobs that are \nassigned to an employee. Include a JSON  array of \n`JobWageOverride` objects in the message body. Include the new \nwage for the employee in the `wage` value. Specify the wage in \nU.S. dollars.\n\nYou must include all existing wage overrides in the message \nbody. Any wage overrides that are not present in the array are \nremoved from the employee record.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "91123302-16a1-4b86-9ab9-44bb9c049872",
+                      "name": "The wage overrides for the employee are replaced. Returns \nthe updated employee record.\n",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                            "key": "Toast-Restaurant-External-ID",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/wageOverrides",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "wageOverrides"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"guid\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"firstName\": \"<string>\",\n  \"chosenName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"passcode\": \"<string>\",\n  \"externalEmployeeId\": \"<string>\",\n  \"deleted\": \"<boolean>\",\n  \"jobReferences\": [\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ],\n  \"wageOverrides\": [\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"v2EmployeeGuid\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:14:32.000Z",
+                      "updatedAt": "2026-07-28T03:14:32.000Z",
+                      "uid": "35240-91123302-16a1-4b86-9ab9-44bb9c049872"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-ca469a3f-9441-4cb7-bcb4-76b941897039"
+                }
+              ],
+              "id": "03e65955-afab-4112-9f7f-10a592bb3006",
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-03e65955-afab-4112-9f7f-10a592bb3006"
+            },
+            {
+              "name": "Toast Get Information About One Employee",
+              "id": "29b6e8b2-4ab7-4865-94c1-4f23bb5d5e40",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees/:employeeId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees",
+                    ":employeeId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "57520389-fe10-4654-a158-3a6cd868a8dc",
+                      "key": "employeeId",
+                      "value": "<string>",
+                      "description": "(Required) The Toast platform GUID or external identifier for the\nemployee to be returned.\n"
+                    }
+                  ]
+                },
+                "description": "Returns an `Employee` object containing information about one \nrestaurant employee.\n"
+              },
+              "response": [
+                {
+                  "id": "9ae6ad90-b8c4-404a-b945-48abfd30665a",
+                  "name": "Returns the employee information.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"guid\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"firstName\": \"<string>\",\n  \"chosenName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"passcode\": \"<string>\",\n  \"externalEmployeeId\": \"<string>\",\n  \"deleted\": \"<boolean>\",\n  \"jobReferences\": [\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ],\n  \"wageOverrides\": [\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"v2EmployeeGuid\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-9ae6ad90-b8c4-404a-b945-48abfd30665a"
+                },
+                {
+                  "id": "934fef68-a897-42e9-ac05-8a2c529b363c",
+                  "name": "The GUID or external identifier was malformed.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-934fef68-a897-42e9-ac05-8a2c529b363c"
+                },
+                {
+                  "id": "0ad22e2e-9ecc-4eb6-bbf4-e2a1a4000e77",
+                  "name": "Unauthorized - Missing or invalid authentication.\n\n**Cause:** No valid OAuth token provided in Authorization header.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-0ad22e2e-9ecc-4eb6-bbf4-e2a1a4000e77"
+                },
+                {
+                  "id": "ff730ba4-2efa-4287-97d9-9a004d1276f1",
+                  "name": "Forbidden - Insufficient permissions.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-ff730ba4-2efa-4287-97d9-9a004d1276f1"
+                },
+                {
+                  "id": "61930f2d-336d-45a2-9297-287b3f2837fb",
+                  "name": "The GUID or external identifier does not match any \nemployees at the current restaurant.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-61930f2d-336d-45a2-9297-287b3f2837fb"
+                },
+                {
+                  "id": "7343f72a-2681-4e77-93b2-270586a68d08",
+                  "name": "An unexpected internal error occurred. There is a \n`requestId` attached to this error that can be referenced \nby Toast support.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-7343f72a-2681-4e77-93b2-270586a68d08"
+                }
+              ],
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-29b6e8b2-4ab7-4865-94c1-4f23bb5d5e40"
+            },
+            {
+              "name": "Toast Delete an Employee",
+              "id": "7f3781b6-60af-48f8-8824-e06ff3fdf27d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees/:employeeId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees",
+                    ":employeeId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4a063d84-5e79-418a-80a7-0669399e0ec2",
+                      "key": "employeeId",
+                      "value": "<string>",
+                      "description": "(Required) The Toast platform GUID or external identifier for the \nemployee to be deleted.\n"
+                    }
+                  ]
+                },
+                "description": "Deletes a restaurant employee record by marking the record as \ndeleted. A deleted employee cannot log in at the restaurant or \nopen new time entries.\n\nIf you `GET` an employee record that has been deleted, its \n`deleted` value is `true` and its `deletedDate` value contains \nthe date and time the record was deleted. \n\nIf you delete an employee that has already been deleted then \nthe result is successful (200) and no change is made.\n\nThe deleted record appears in the list of deleted employees for \nthe restaurant in Toast Web. From the \nlist of deleted employees, you can enable a deleted record so \nthat the employee can use it again. Information about deleted \nemployees remains available in reports.\n\nYou cannot delete employees who have open time entries (time \nentries that do not have an out date value).\n"
+              },
+              "response": [
+                {
+                  "id": "8b8baef8-9991-47e4-a5f3-6c0d3a1a0395",
+                  "name": "The employee has been deleted. Returns an `Employee` object \ncontaining information about the deleted restaurant \nemployee.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"guid\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"firstName\": \"<string>\",\n  \"chosenName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"passcode\": \"<string>\",\n  \"externalEmployeeId\": \"<string>\",\n  \"deleted\": \"<boolean>\",\n  \"jobReferences\": [\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ],\n  \"wageOverrides\": [\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"v2EmployeeGuid\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-8b8baef8-9991-47e4-a5f3-6c0d3a1a0395"
+                },
+                {
+                  "id": "5f261703-c9f3-4f04-8498-8170f2a4f2bb",
+                  "name": "The GUID or external identifier was malformed.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-5f261703-c9f3-4f04-8498-8170f2a4f2bb"
+                },
+                {
+                  "id": "a217a477-9196-4ace-aad3-05fbb03c41b2",
+                  "name": "The GUID or external identifier does not match any\nemployees at the current restaurant.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-a217a477-9196-4ace-aad3-05fbb03c41b2"
+                },
+                {
+                  "id": "285940b1-9557-4245-b022-75d868a1662f",
+                  "name": "An unexpected internal error occurred. There is a \n`requestId` attached to this error that can be referenced \nby Toast support.\n",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-285940b1-9557-4245-b022-75d868a1662f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-7f3781b6-60af-48f8-8824-e06ff3fdf27d"
+            },
+            {
+              "name": "Toast Update Employee Information",
+              "id": "46d72241-4343-4781-906c-f3a7ff51f282",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/employees/:employeeId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees",
+                    ":employeeId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d6b1627c-54a3-4acc-a035-cd57c18fdf72",
+                      "key": "employeeId",
+                      "value": "<string>",
+                      "description": "(Required) The Toast platform GUID or external identifier for the \nemployee to be returned.\n"
+                    }
+                  ]
+                },
+                "description": "Updates the first name, chosen name, last name, external employee ID, and/or \npasscode of a restaurant employee. The `PATCH` operation cannot \nupdate any other employee information.\n"
+              },
+              "response": [
+                {
+                  "id": "395d1a86-9880-4a79-a22e-a7aab27742bf",
+                  "name": "Returns the updated Toast platform employee record.\n",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"guid\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"firstName\": \"<string>\",\n  \"chosenName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"passcode\": \"<string>\",\n  \"externalEmployeeId\": \"<string>\",\n  \"deleted\": \"<boolean>\",\n  \"jobReferences\": [\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ],\n  \"wageOverrides\": [\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"v2EmployeeGuid\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-395d1a86-9880-4a79-a22e-a7aab27742bf"
+                },
+                {
+                  "id": "b224e902-2cbd-4519-b3ba-0bd2a705cb72",
+                  "name": "The Toast platform GUID or external identifier was \nmalformed, or the body of the request was malformed.\n",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-b224e902-2cbd-4519-b3ba-0bd2a705cb72"
+                },
+                {
+                  "id": "00ab7802-c478-4c16-983c-85d332227276",
+                  "name": "The Toast platform GUID or external identifier does not \nmatch any employees at the current restaurant.\n",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-00ab7802-c478-4c16-983c-85d332227276"
+                },
+                {
+                  "id": "ada2746c-ebf5-424d-acae-112ec5df775d",
+                  "name": "An unexpected internal error occurred. There is a \n`requestId` attached to this error that can be referenced \nby Toast support.\n",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "employeeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:32.000Z",
+                  "updatedAt": "2026-07-28T03:14:32.000Z",
+                  "uid": "35240-ada2746c-ebf5-424d-acae-112ec5df775d"
+                }
+              ],
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-46d72241-4343-4781-906c-f3a7ff51f282"
+            }
+          ],
+          "id": "9978c5af-c7ac-45df-a087-2d18d2b914f7",
+          "createdAt": "2026-07-28T03:14:32.000Z",
+          "updatedAt": "2026-07-28T03:14:32.000Z",
+          "uid": "35240-9978c5af-c7ac-45df-a087-2d18d2b914f7"
+        },
+        {
+          "name": "Toast Get Employees",
+          "id": "e1c7b327-3574-4407-9c85-68bda2f32e99",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/employees?employeeIds=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "employees"
+              ],
+              "query": [
+                {
+                  "description": "An optional identifier that filters return values for a \nspecific employee. The identifier can be a Toast platform \nGUID or an external identifier. If present, the `employees` \nresource will only return the employees you specify. You \ncan include multiple `employeeIds` query parameters \n(maximum 100). If not present, the resource returns each \nemployee for the restaurant.\n",
+                  "key": "employeeIds",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns an array of `Employee` objects containing information \nabout restaurant employees.\n"
+          },
+          "response": [
+            {
+              "id": "f8b8aacd-8bbe-4ab0-a9c1-6775f76f6cb9",
+              "name": "JSON objects for all employees in the restaurant\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees?employeeIds=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "description": "An optional identifier that filters return values for a \nspecific employee. The identifier can be a Toast platform \nGUID or an external identifier. If present, the `employees` \nresource will only return the employees you specify. You \ncan include multiple `employeeIds` query parameters \n(maximum 100). If not present, the resource returns each \nemployee for the restaurant.\n",
+                      "key": "employeeIds",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"modifiedDate\": \"<dateTime>\",\n    \"deletedDate\": \"<dateTime>\",\n    \"firstName\": \"<string>\",\n    \"chosenName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"phoneNumberCountryCode\": \"<string>\",\n    \"passcode\": \"<string>\",\n    \"externalEmployeeId\": \"<string>\",\n    \"deleted\": \"<boolean>\",\n    \"jobReferences\": [\n      {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    ],\n    \"wageOverrides\": [\n      {\n        \"wage\": \"<double>\",\n        \"jobReference\": {\n          \"guid\": \"<string>\",\n          \"entityType\": \"<string>\",\n          \"externalId\": \"<string>\"\n        }\n      },\n      {\n        \"wage\": \"<double>\",\n        \"jobReference\": {\n          \"guid\": \"<string>\",\n          \"entityType\": \"<string>\",\n          \"externalId\": \"<string>\"\n        }\n      }\n    ],\n    \"v2EmployeeGuid\": \"<string>\"\n  },\n  {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"modifiedDate\": \"<dateTime>\",\n    \"deletedDate\": \"<dateTime>\",\n    \"firstName\": \"<string>\",\n    \"chosenName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"phoneNumberCountryCode\": \"<string>\",\n    \"passcode\": \"<string>\",\n    \"externalEmployeeId\": \"<string>\",\n    \"deleted\": \"<boolean>\",\n    \"jobReferences\": [\n      {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    ],\n    \"wageOverrides\": [\n      {\n        \"wage\": \"<double>\",\n        \"jobReference\": {\n          \"guid\": \"<string>\",\n          \"entityType\": \"<string>\",\n          \"externalId\": \"<string>\"\n        }\n      },\n      {\n        \"wage\": \"<double>\",\n        \"jobReference\": {\n          \"guid\": \"<string>\",\n          \"entityType\": \"<string>\",\n          \"externalId\": \"<string>\"\n        }\n      }\n    ],\n    \"v2EmployeeGuid\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-f8b8aacd-8bbe-4ab0-a9c1-6775f76f6cb9"
+            },
+            {
+              "id": "ab01cd9d-15bd-40fb-bc4d-e3a253408c17",
+              "name": "An unexpected internal error occurred. There is a \n`requestId` attached to this error that can be referenced \nby Toast support.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/employees?employeeIds=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ],
+                  "query": [
+                    {
+                      "description": "An optional identifier that filters return values for a \nspecific employee. The identifier can be a Toast platform \nGUID or an external identifier. If present, the `employees` \nresource will only return the employees you specify. You \ncan include multiple `employeeIds` query parameters \n(maximum 100). If not present, the resource returns each \nemployee for the restaurant.\n",
+                      "key": "employeeIds",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-ab01cd9d-15bd-40fb-bc4d-e3a253408c17"
+            }
+          ],
+          "createdAt": "2026-07-28T03:14:32.000Z",
+          "updatedAt": "2026-07-28T03:14:32.000Z",
+          "uid": "35240-e1c7b327-3574-4407-9c85-68bda2f32e99"
+        },
+        {
+          "name": "Toast Add an Employee",
+          "id": "cb58fa88-8dac-4498-b1ac-53dc3033f038",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/employees",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "employees"
+              ]
+            },
+            "description": "Creates a restaurant employee record.\n"
+          },
+          "response": [
+            {
+              "id": "70700e6b-19d1-432e-91a0-61eca5d89819",
+              "name": "Returns the created employee.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"guid\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"firstName\": \"<string>\",\n  \"chosenName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"passcode\": \"<string>\",\n  \"externalEmployeeId\": \"<string>\",\n  \"deleted\": \"<boolean>\",\n  \"jobReferences\": [\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  ],\n  \"wageOverrides\": [\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    {\n      \"wage\": \"<double>\",\n      \"jobReference\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"v2EmployeeGuid\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-70700e6b-19d1-432e-91a0-61eca5d89819"
+            },
+            {
+              "id": "6f62b2ad-8a58-49ae-b205-30f8df0e21b5",
+              "name": "The request contains data that is not supported by the \ncurrent version of the API as described.\n",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-6f62b2ad-8a58-49ae-b205-30f8df0e21b5"
+            },
+            {
+              "id": "4b4d378c-b252-4ae8-b2fe-7d6c45d8b08e",
+              "name": "The request did not have \"application/json\" in the \nContent-Type header.\n",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ]
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-4b4d378c-b252-4ae8-b2fe-7d6c45d8b08e"
+            },
+            {
+              "id": "2a6a9973-8cfc-4f8f-a05c-9ccaa8eeaa69",
+              "name": "An unexpected internal error occurred. There is a requestId \nattached to this error that can be referenced by Toast \nsupport.\n",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:14:32.000Z",
+              "updatedAt": "2026-07-28T03:14:32.000Z",
+              "uid": "35240-2a6a9973-8cfc-4f8f-a05c-9ccaa8eeaa69"
+            }
+          ],
+          "createdAt": "2026-07-28T03:14:32.000Z",
+          "updatedAt": "2026-07-28T03:14:32.000Z",
+          "uid": "35240-cb58fa88-8dac-4498-b1ac-53dc3033f038"
+        }
+      ],
+      "id": "58f5d808-531a-4fff-b7fa-90358a753e89",
+      "createdAt": "2026-07-28T03:14:32.000Z",
+      "updatedAt": "2026-07-28T03:14:32.000Z",
+      "uid": "35240-58f5d808-531a-4fff-b7fa-90358a753e89"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://toast-api-server/authentication/v1"
+    }
+  ]
+}

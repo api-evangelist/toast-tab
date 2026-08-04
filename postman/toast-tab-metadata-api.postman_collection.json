@@ -1,0 +1,107 @@
+{
+  "info": {
+    "_postman_id": "b5a38f89-ecf6-42f1-a809-b1ce4d74ef20",
+    "name": "Toast Authentication Metadata API",
+    "description": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:14:36.000Z",
+    "updatedAt": "2026-07-28T03:14:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b5a38f89-ecf6-42f1-a809-b1ce4d74ef20"
+  },
+  "item": [
+    {
+      "name": "metadata",
+      "item": [
+        {
+          "name": "Toast Get Menu Last Modified Timestamp",
+          "id": "de9591d1-8f95-42ed-b7c0-fd4518e3a990",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) The identifier for the restaurant.",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/metadata",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "metadata"
+              ]
+            },
+            "description": "A lightweight endpoint that allows you to determine if a restaurant's menu data has been updated. Toast support strongly recommends that you do not make a call to the `/menus` endpoint unless the date and time returned by the `/metadata` endpoint is more recent than the `lastUpdated` date and time. While this recommendation applies to all clients of the menus API, it is particularly important for clients that have limited bandwidth.\n"
+          },
+          "response": [
+            {
+              "id": "46ad7c1b-c001-4adc-ada9-e979a76966ee",
+              "name": "successful operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The identifier for the restaurant.",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/metadata",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metadata"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"restaurantGuid\": \"<uuid>\",\n  \"lastUpdated\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:14:37.000Z",
+              "updatedAt": "2026-07-28T03:14:37.000Z",
+              "uid": "35240-46ad7c1b-c001-4adc-ada9-e979a76966ee"
+            }
+          ],
+          "createdAt": "2026-07-28T03:14:37.000Z",
+          "updatedAt": "2026-07-28T03:14:37.000Z",
+          "uid": "35240-de9591d1-8f95-42ed-b7c0-fd4518e3a990"
+        }
+      ],
+      "id": "03310c1d-581c-4d14-9a84-5b5c00c7a809",
+      "createdAt": "2026-07-28T03:14:37.000Z",
+      "updatedAt": "2026-07-28T03:14:37.000Z",
+      "uid": "35240-03310c1d-581c-4d14-9a84-5b5c00c7a809"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://toast-api-server/authentication/v1"
+    }
+  ]
+}

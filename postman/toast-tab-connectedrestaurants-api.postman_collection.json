@@ -1,0 +1,175 @@
+{
+  "info": {
+    "_postman_id": "fb3d7a8e-ad2b-45f1-add9-2344e66c1a28",
+    "name": "Toast Authentication ConnectedRestaurants API",
+    "description": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:14:21.000Z",
+    "updatedAt": "2026-07-28T03:14:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fb3d7a8e-ad2b-45f1-add9-2344e66c1a28"
+  },
+  "item": [
+    {
+      "name": "connectedRestaurants",
+      "item": [
+        {
+          "name": "Toast Get Connected Restaurants",
+          "id": "45577332-a72d-4b6b-a770-b0368bc49f86",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/connectedRestaurants?lastModified=<date>&pageSize=<integer>&pageToken=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "connectedRestaurants"
+              ],
+              "query": [
+                {
+                  "description": "Limits the return data to restaurants that changed their access\nconfiguration for your partner service after a specific date and\ntime. You can use this parameter to identify new or updated\nrestaurants connected to your partner service.\n\nThe restaurants included in the response data either:\n\n* Gave access to your integrated partner service after a specific\n  date and time.\n\n* Modified the configuration for your integrated partner service after\n  a specific date and time. \n\nYou must [specify the date and\ntime](https://doc.toasttab.com/doc/devguide/api_dates_and_timestamps.html)\nas a UTC timestamp in ISO 8601 format, for example:\n`2020-03-01T00:00:00.000-0000`. URL-encode the timestamp. For\nexample, `2020-03-01T00%3A00%3A00.000-0000`.\n",
+                  "key": "lastModified",
+                  "value": "<date>"
+                },
+                {
+                  "description": "Controls the number of `PartnerAccessExternalRep` objects that the\nendpoint will return in each page of response data. The default page\nsize is `100`. The maximum page size is `200`.\n",
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Returns a specific set of restaurants in the response value. You get\nthe token string for the next page of connected restaurants from the\n`nextPageToken` value of the `PaginatedResponse` object for a page\nof results. You can also get the token strings for the first and\nnext pages from [the `link` response header\nfields](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link).\n",
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a `PaginatedResponse` object that contains a paginated array of\nthe restaurants that have connected to your integrated partner service.\nInformation about each restaurant is included in the array as a\n`PartnerAccessExternalRep` object.\n\nUse the `pageSize` query parameter to control the number of restaurants\nreturned in the response. The default `pageSize` is 100. The maximum\n`pageSize` is 200.\n\nRequest the next page of restaurant information using the `pageToken`\nquery parameter. You get the token string for the next page from the\n`nextPageToken` value of the `PaginatedResponse` object for a page of\nresults. You can also get the token strings for the first and next pages\nfrom [the `link` response header\nfields](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link).\n"
+          },
+          "response": [
+            {
+              "id": "c0f76212-5be2-4b34-9148-5cd57009ddd7",
+              "name": "Returns a `PaginatedResponse` object that contains a paginated array of\nthe restaurants that have connected to your integrated partner service.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/connectedRestaurants?lastModified=<date>&pageSize=<integer>&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connectedRestaurants"
+                  ],
+                  "query": [
+                    {
+                      "description": "Limits the return data to restaurants that changed their access\nconfiguration for your partner service after a specific date and\ntime. You can use this parameter to identify new or updated\nrestaurants connected to your partner service.\n\nThe restaurants included in the response data either:\n\n* Gave access to your integrated partner service after a specific\n  date and time.\n\n* Modified the configuration for your integrated partner service after\n  a specific date and time. \n\nYou must [specify the date and\ntime](https://doc.toasttab.com/doc/devguide/api_dates_and_timestamps.html)\nas a UTC timestamp in ISO 8601 format, for example:\n`2020-03-01T00:00:00.000-0000`. URL-encode the timestamp. For\nexample, `2020-03-01T00%3A00%3A00.000-0000`.\n",
+                      "key": "lastModified",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Controls the number of `PartnerAccessExternalRep` objects that the\nendpoint will return in each page of response data. The default page\nsize is `100`. The maximum page size is `200`.\n",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Returns a specific set of restaurants in the response value. You get\nthe token string for the next page of connected restaurants from the\n`nextPageToken` value of the `PaginatedResponse` object for a page\nof results. You can also get the token strings for the first and\nnext pages from [the `link` response header\nfields](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link).\n",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"currentPageNum\": \"<integer>\",\n    \"results\": [\n      {\n        \"restaurantGuid\": \"<uuid>\",\n        \"managementGroupGuid\": \"<uuid>\",\n        \"deleted\": \"<boolean>\",\n        \"restaurantName\": \"<string>\",\n        \"locationName\": \"<string>\",\n        \"createdByEmailAddress\": \"<string>\",\n        \"externalGroupRef\": \"<string>\",\n        \"externalRestaurantRef\": \"<string>\",\n        \"modifiedDate\": \"<long>\",\n        \"createdDate\": \"<long>\",\n        \"isoModifiedDate\": \"<string>\",\n        \"isoCreatedDate\": \"<string>\"\n      },\n      {\n        \"restaurantGuid\": \"<uuid>\",\n        \"managementGroupGuid\": \"<uuid>\",\n        \"deleted\": \"<boolean>\",\n        \"restaurantName\": \"<string>\",\n        \"locationName\": \"<string>\",\n        \"createdByEmailAddress\": \"<string>\",\n        \"externalGroupRef\": \"<string>\",\n        \"externalRestaurantRef\": \"<string>\",\n        \"modifiedDate\": \"<long>\",\n        \"createdDate\": \"<long>\",\n        \"isoModifiedDate\": \"<string>\",\n        \"isoCreatedDate\": \"<string>\"\n      }\n    ],\n    \"totalResultCount\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"currentPageToken\": \"<string>\",\n    \"nextPageToken\": \"<string>\",\n    \"totalCount\": \"<integer>\",\n    \"nextPageNum\": \"<integer>\",\n    \"lastPageNum\": \"<integer>\",\n    \"previousPageNum\": \"<integer>\"\n  },\n  {\n    \"currentPageNum\": \"<integer>\",\n    \"results\": [\n      {\n        \"restaurantGuid\": \"<uuid>\",\n        \"managementGroupGuid\": \"<uuid>\",\n        \"deleted\": \"<boolean>\",\n        \"restaurantName\": \"<string>\",\n        \"locationName\": \"<string>\",\n        \"createdByEmailAddress\": \"<string>\",\n        \"externalGroupRef\": \"<string>\",\n        \"externalRestaurantRef\": \"<string>\",\n        \"modifiedDate\": \"<long>\",\n        \"createdDate\": \"<long>\",\n        \"isoModifiedDate\": \"<string>\",\n        \"isoCreatedDate\": \"<string>\"\n      },\n      {\n        \"restaurantGuid\": \"<uuid>\",\n        \"managementGroupGuid\": \"<uuid>\",\n        \"deleted\": \"<boolean>\",\n        \"restaurantName\": \"<string>\",\n        \"locationName\": \"<string>\",\n        \"createdByEmailAddress\": \"<string>\",\n        \"externalGroupRef\": \"<string>\",\n        \"externalRestaurantRef\": \"<string>\",\n        \"modifiedDate\": \"<long>\",\n        \"createdDate\": \"<long>\",\n        \"isoModifiedDate\": \"<string>\",\n        \"isoCreatedDate\": \"<string>\"\n      }\n    ],\n    \"totalResultCount\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"currentPageToken\": \"<string>\",\n    \"nextPageToken\": \"<string>\",\n    \"totalCount\": \"<integer>\",\n    \"nextPageNum\": \"<integer>\",\n    \"lastPageNum\": \"<integer>\",\n    \"previousPageNum\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-07-28T03:14:21.000Z",
+              "updatedAt": "2026-07-28T03:14:21.000Z",
+              "uid": "35240-c0f76212-5be2-4b34-9148-5cd57009ddd7"
+            },
+            {
+              "id": "99706f42-ec98-4e36-90a2-930e92a71ca7",
+              "name": "Your Toast API client does not have permission to use the \n`/connectedRestaurants` endpoint.\n",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/connectedRestaurants?lastModified=<date>&pageSize=<integer>&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connectedRestaurants"
+                  ],
+                  "query": [
+                    {
+                      "description": "Limits the return data to restaurants that changed their access\nconfiguration for your partner service after a specific date and\ntime. You can use this parameter to identify new or updated\nrestaurants connected to your partner service.\n\nThe restaurants included in the response data either:\n\n* Gave access to your integrated partner service after a specific\n  date and time.\n\n* Modified the configuration for your integrated partner service after\n  a specific date and time. \n\nYou must [specify the date and\ntime](https://doc.toasttab.com/doc/devguide/api_dates_and_timestamps.html)\nas a UTC timestamp in ISO 8601 format, for example:\n`2020-03-01T00:00:00.000-0000`. URL-encode the timestamp. For\nexample, `2020-03-01T00%3A00%3A00.000-0000`.\n",
+                      "key": "lastModified",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Controls the number of `PartnerAccessExternalRep` objects that the\nendpoint will return in each page of response data. The default page\nsize is `100`. The maximum page size is `200`.\n",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Returns a specific set of restaurants in the response value. You get\nthe token string for the next page of connected restaurants from the\n`nextPageToken` value of the `PaginatedResponse` object for a page\nof results. You can also get the token strings for the first and\nnext pages from [the `link` response header\nfields](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link).\n",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:14:21.000Z",
+              "updatedAt": "2026-07-28T03:14:21.000Z",
+              "uid": "35240-99706f42-ec98-4e36-90a2-930e92a71ca7"
+            }
+          ],
+          "createdAt": "2026-07-28T03:14:21.000Z",
+          "updatedAt": "2026-07-28T03:14:21.000Z",
+          "uid": "35240-45577332-a72d-4b6b-a770-b0368bc49f86"
+        }
+      ],
+      "id": "2324b41c-119e-4177-b1d9-8ba6440df9c4",
+      "createdAt": "2026-07-28T03:14:21.000Z",
+      "updatedAt": "2026-07-28T03:14:21.000Z",
+      "uid": "35240-2324b41c-119e-4177-b1d9-8ba6440df9c4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://toast-api-server/authentication/v1"
+    }
+  ]
+}

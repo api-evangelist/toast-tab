@@ -1,0 +1,173 @@
+{
+  "info": {
+    "_postman_id": "88b4d17a-3771-4421-8920-7a4a29c7eb60",
+    "name": "Toast Authentication Menus API",
+    "description": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:14:35.000Z",
+    "updatedAt": "2026-07-28T03:14:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-88b4d17a-3771-4421-8920-7a4a29c7eb60"
+  },
+  "item": [
+    {
+      "name": "menus",
+      "item": [
+        {
+          "name": "Toast Get Menus",
+          "id": "37c7ecb3-b371-4d39-b243-9b3b110ac1fd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) The identifier for the restaurant.",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/menus",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "menus"
+              ]
+            },
+            "description": "Get menus\n"
+          },
+          "response": [
+            {
+              "id": "2c676074-4368-4b43-a5ba-472dacb92f48",
+              "name": "Successful operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The identifier for the restaurant.",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/menus",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "menus"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"restaurantGuid\": \"<uuid>\",\n  \"lastUpdated\": \"<string>\",\n  \"restaurantTimeZone\": \"<string>\",\n  \"menus\": [\n    {\n      \"name\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"multiLocationId\": \"<string>\",\n      \"masterId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"posName\": \"<string>\",\n      \"posButtonColorLight\": \"<string>\",\n      \"posButtonColorDark\": \"<string>\",\n      \"highResImage\": \"<string>\",\n      \"image\": \"<string>\",\n      \"visibility\": [\n        \"ORDERING_PARTNERS\"\n      ],\n      \"availability\": {},\n      \"menuGroups\": [\n        {\n          \"name\": \"<string>\",\n          \"guid\": \"<string>\",\n          \"multiLocationId\": \"<string>\",\n          \"masterId\": \"<long>\",\n          \"description\": \"<string>\",\n          \"posName\": \"<string>\",\n          \"posButtonColorLight\": \"<string>\",\n          \"posButtonColorDark\": \"<string>\",\n          \"image\": \"<string>\",\n          \"visibility\": [\n            \"POS\"\n          ],\n          \"itemTags\": [\n            {\n              \"name\": \"<string>\",\n              \"guid\": \"<string>\"\n            }\n          ],\n          \"menuGroups\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/MenuGroup detected>\"\n            }\n          ],\n          \"menuItems\": [\n            {\n              \"name\": \"<string>\",\n              \"kitchenName\": \"<string>\",\n              \"guid\": \"<string>\",\n              \"multiLocationId\": \"<string>\",\n              \"masterId\": \"<long>\",\n              \"description\": \"<string>\",\n              \"posName\": \"<string>\",\n              \"posButtonColorLight\": \"<string>\",\n              \"posButtonColorDark\": \"<string>\",\n              \"image\": \"<string>\",\n              \"visibility\": [\n                \"POS\"\n              ],\n              \"price\": \"<double>\",\n              \"pricingStrategy\": \"MENU_SPECIFIC_PRICE\",\n              \"pricingRules\": {},\n              \"isDeferred\": \"<boolean>\",\n              \"isDiscountable\": \"<boolean>\",\n              \"salesCategory\": {\n                \"name\": \"<string>\",\n                \"guid\": \"<string>\"\n              },\n              \"taxInfo\": [\n                \"<string>\"\n              ],\n              \"taxInclusion\": \"SMART_TAX\",\n              \"itemTags\": [\n                {\n                  \"name\": \"<string>\",\n                  \"guid\": \"<string>\"\n                }\n              ],\n              \"plu\": \"<string>\",\n              \"sku\": \"<string>\",\n              \"calories\": \"<integer>\",\n              \"contentAdvisories\": {\n                \"alcohol\": {\n                  \"containsAlcohol\": \"false\"\n                }\n              },\n              \"unitOfMeasure\": \"FL_OZ\",\n              \"portions\": [\n                {\n                  \"name\": \"<string>\",\n                  \"guid\": \"<string>\",\n                  \"modifierGroupReferences\": [\n                    \"<integer>\"\n                  ],\n                  \"priceScaleFactor\": \"<double>\"\n                }\n              ],\n              \"prepTime\": \"<integer>\",\n              \"prepStations\": [\n                \"<string>\"\n              ],\n              \"modifierGroupReferences\": [\n                \"<integer>\"\n              ],\n              \"eligiblePaymentAssistancePrograms\": [\n                \"<string>\"\n              ],\n              \"allergens\": [\n                {\n                  \"guid\": \"<uuid>\",\n                  \"code\": \"<string>\",\n                  \"groupGuid\": \"<uuid>\",\n                  \"groupCode\": \"<string>\",\n                  \"presenceType\": \"CONTAINS\"\n                }\n              ],\n              \"length\": \"<float>\",\n              \"height\": \"<float>\",\n              \"width\": \"<float>\",\n              \"dimensionUnitOfMeasure\": \"IN\",\n              \"weight\": \"<float>\",\n              \"weightUnitOfMeasure\": \"NONE\",\n              \"images\": [\n                \"<string>\"\n              ],\n              \"guestCount\": \"<float>\",\n              \"sortOrder\": \"<integer>\",\n              \"catalogProductInfo\": {\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"description\": \"<string>\",\n                  \"type\": \"OPTION\",\n                  \"images\": [\n                    \"<string>\"\n                  ],\n                  \"availableOptions\": [\n                    {\n                      \"id\": \"<uuid>\",\n                      \"name\": \"<string>\",\n                      \"sortOrder\": \"<integer>\",\n                      \"values\": [\n                        {\n                          \"id\": \"<uuid>\",\n                          \"name\": \"<string>\",\n                          \"sortOrder\": \"<integer>\"\n                        }\n                      ]\n                    }\n                  ]\n                },\n                \"productVariant\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"description\": \"<string>\",\n                  \"selectedOptions\": [\n                    {\n                      \"id\": \"<uuid>\",\n                      \"name\": \"<string>\",\n                      \"sortOrder\": \"<integer>\",\n                      \"value\": {\n                        \"id\": \"<uuid>\",\n                        \"name\": \"<string>\",\n                        \"sortOrder\": \"<integer>\"\n                      }\n                    }\n                  ]\n                }\n              },\n              \"isComboParent\": \"<boolean>\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"modifierGroupReferences\": {\n    \"identifier\": \"<integer>\",\n    \"nisi2\": {\n      \"name\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"referenceId\": \"<integer>\",\n      \"multiLocationId\": \"<string>\",\n      \"masterId\": \"<long>\",\n      \"posName\": \"<string>\",\n      \"posButtonColorLight\": \"<string>\",\n      \"posButtonColorDark\": \"<string>\",\n      \"visibility\": [\n        \"ORDERING_PARTNERS\"\n      ],\n      \"pricingStrategy\": \"<string>\",\n      \"pricingRules\": {},\n      \"defaultOptionsChargePrice\": \"true\",\n      \"defaultOptionsSubstitutionPricing\": \"false\",\n      \"minSelections\": \"<integer>\",\n      \"maxSelections\": \"<integer>\",\n      \"requiredMode\": \"OPTIONAL_FORCE_SHOW\",\n      \"isMultiSelect\": \"<boolean>\",\n      \"preModifierGroupReference\": \"<integer>\",\n      \"modifierOptionReferences\": [\n        \"<integer>\"\n      ]\n    },\n    \"est4c1\": {\n      \"name\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"referenceId\": \"<integer>\",\n      \"multiLocationId\": \"<string>\",\n      \"masterId\": \"<long>\",\n      \"posName\": \"<string>\",\n      \"posButtonColorLight\": \"<string>\",\n      \"posButtonColorDark\": \"<string>\",\n      \"visibility\": [\n        \"GRUBHUB\"\n      ],\n      \"pricingStrategy\": \"<string>\",\n      \"pricingRules\": {},\n      \"defaultOptionsChargePrice\": \"true\",\n      \"defaultOptionsSubstitutionPricing\": \"false\",\n      \"minSelections\": \"<integer>\",\n      \"maxSelections\": \"<integer>\",\n      \"requiredMode\": \"OPTIONAL\",\n      \"isMultiSelect\": \"<boolean>\",\n      \"preModifierGroupReference\": \"<integer>\",\n      \"modifierOptionReferences\": [\n        \"<integer>\"\n      ]\n    },\n    \"veniam_798\": {\n      \"name\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"referenceId\": \"<integer>\",\n      \"multiLocationId\": \"<string>\",\n      \"masterId\": \"<long>\",\n      \"posName\": \"<string>\",\n      \"posButtonColorLight\": \"<string>\",\n      \"posButtonColorDark\": \"<string>\",\n      \"visibility\": [\n        \"KIOSK\"\n      ],\n      \"pricingStrategy\": \"<string>\",\n      \"pricingRules\": {},\n      \"defaultOptionsChargePrice\": \"false\",\n      \"defaultOptionsSubstitutionPricing\": \"false\",\n      \"minSelections\": \"<integer>\",\n      \"maxSelections\": \"<integer>\",\n      \"requiredMode\": \"OPTIONAL_FORCE_SHOW\",\n      \"isMultiSelect\": \"<boolean>\",\n      \"preModifierGroupReference\": \"<integer>\",\n      \"modifierOptionReferences\": [\n        \"<integer>\"\n      ]\n    },\n    \"sit03\": {\n      \"name\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"referenceId\": \"<integer>\",\n      \"multiLocationId\": \"<string>\",\n      \"masterId\": \"<long>\",\n      \"posName\": \"<string>\",\n      \"posButtonColorLight\": \"<string>\",\n      \"posButtonColorDark\": \"<string>\",\n      \"visibility\": [\n        \"ORDERING_PARTNERS\"\n      ],\n      \"pricingStrategy\": \"<string>\",\n      \"pricingRules\": {},\n      \"defaultOptionsChargePrice\": \"false\",\n      \"defaultOptionsSubstitutionPricing\": \"true\",\n      \"minSelections\": \"<integer>\",\n      \"maxSelections\": \"<integer>\",\n      \"requiredMode\": \"OPTIONAL\",\n      \"isMultiSelect\": \"<boolean>\",\n      \"preModifierGroupReference\": \"<integer>\",\n      \"modifierOptionReferences\": [\n        \"<integer>\"\n      ]\n    }\n  },\n  \"modifierOptionReferences\": {\n    \"identifier\": \"<integer>\",\n    \"dolore__b\": {\n      \"referenceId\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"kitchenName\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"multiLocationId\": \"<string>\",\n      \"masterId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"posName\": \"<string>\",\n      \"posButtonColorLight\": \"<string>\",\n      \"posButtonColorDark\": \"<string>\",\n      \"prepStations\": [\n        \"<string>\"\n      ],\n      \"image\": \"<string>\",\n      \"visibility\": [\n        \"GRUBHUB\"\n      ],\n      \"price\": \"<double>\",\n      \"pricingStrategy\": \"<string>\",\n      \"pricingRules\": {},\n      \"salesCategory\": {\n        \"name\": \"<string>\",\n        \"guid\": \"<string>\"\n      },\n      \"taxInfo\": [\n        \"<string>\"\n      ],\n      \"modifierOptionTaxInfo\": {\n        \"taxRateGuids\": [\n          \"<string>\"\n        ],\n        \"overrideItemTaxRates\": \"<boolean>\"\n      },\n      \"itemTags\": [\n        {\n          \"name\": \"<string>\",\n          \"guid\": \"<string>\"\n        }\n      ],\n      \"plu\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"calories\": \"<integer>\",\n      \"contentAdvisories\": {\n        \"alcohol\": {\n          \"containsAlcohol\": \"false\"\n        }\n      },\n      \"unitOfMeasure\": \"ML\",\n      \"isDefault\": \"<boolean>\",\n      \"allowsDuplicates\": \"<boolean>\",\n      \"portions\": [\n        {\n          \"name\": \"<string>\",\n          \"guid\": \"<string>\",\n          \"modifierGroupReferences\": [\n            \"<integer>\"\n          ],\n          \"priceScaleFactor\": \"<double>\"\n        }\n      ],\n      \"prepTime\": \"<integer>\",\n      \"modifierGroupReferences\": [\n        \"<integer>\"\n      ],\n      \"length\": \"<float>\",\n      \"height\": \"<float>\",\n      \"width\": \"<float>\",\n      \"dimensionUnitOfMeasure\": \"IN\",\n      \"weight\": \"<float>\",\n      \"weightUnitOfMeasure\": \"LB\",\n      \"images\": [\n        \"<string>\"\n      ],\n      \"guestCount\": \"<float>\",\n      \"sortOrder\": \"<integer>\",\n      \"allergens\": [\n        {\n          \"guid\": \"<uuid>\",\n          \"code\": \"<string>\",\n          \"groupGuid\": \"<uuid>\",\n          \"groupCode\": \"<string>\",\n          \"presenceType\": \"TRACES\"\n        }\n      ]\n    }\n  },\n  \"preModifierGroupReferences\": {\n    \"identifier\": \"<integer>\",\n    \"in_da\": {\n      \"name\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"multiLocationId\": \"<string>\",\n      \"preModifiers\": [\n        {\n          \"name\": \"<string>\",\n          \"guid\": \"<string>\",\n          \"multiLocationId\": \"<string>\",\n          \"fixedPrice\": \"<double>\",\n          \"multiplicationFactor\": \"<double>\",\n          \"displayMode\": \"SUFFIX\",\n          \"posName\": \"<string>\",\n          \"posButtonColorLight\": \"<string>\",\n          \"posButtonColorDark\": \"<string>\",\n          \"chargeAsExtra\": \"<boolean>\",\n          \"plu\": \"<string>\"\n        }\n      ]\n    },\n    \"in421\": {\n      \"name\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"multiLocationId\": \"<string>\",\n      \"preModifiers\": [\n        {\n          \"name\": \"<string>\",\n          \"guid\": \"<string>\",\n          \"multiLocationId\": \"<string>\",\n          \"fixedPrice\": \"<double>\",\n          \"multiplicationFactor\": \"<double>\",\n          \"displayMode\": \"PREFIX\",\n          \"posName\": \"<string>\",\n          \"posButtonColorLight\": \"<string>\",\n          \"posButtonColorDark\": \"<string>\",\n          \"chargeAsExtra\": \"<boolean>\",\n          \"plu\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:14:36.000Z",
+              "updatedAt": "2026-07-28T03:14:36.000Z",
+              "uid": "35240-2c676074-4368-4b43-a5ba-472dacb92f48"
+            },
+            {
+              "id": "cc03bc92-e324-429d-9af9-0e0424e7e0b3",
+              "name": "No published data was found for the restaurant. Ensure that the restaurant GUID is correct and that its data has been published.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The identifier for the restaurant.",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<uuid>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/menus",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "menus"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:14:36.000Z",
+              "updatedAt": "2026-07-28T03:14:36.000Z",
+              "uid": "35240-cc03bc92-e324-429d-9af9-0e0424e7e0b3"
+            },
+            {
+              "id": "4361843f-b19e-41ef-b326-03ddb378460b",
+              "name": "Unable to retrieve menus for the restaurant due to a service outage.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The identifier for the restaurant.",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<uuid>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/menus",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "menus"
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:14:36.000Z",
+              "updatedAt": "2026-07-28T03:14:36.000Z",
+              "uid": "35240-4361843f-b19e-41ef-b326-03ddb378460b"
+            }
+          ],
+          "createdAt": "2026-07-28T03:14:36.000Z",
+          "updatedAt": "2026-07-28T03:14:36.000Z",
+          "uid": "35240-37c7ecb3-b371-4d39-b243-9b3b110ac1fd"
+        }
+      ],
+      "id": "176919e2-8244-4e69-a0b1-6fc780a102a1",
+      "createdAt": "2026-07-28T03:14:36.000Z",
+      "updatedAt": "2026-07-28T03:14:36.000Z",
+      "uid": "35240-176919e2-8244-4e69-a0b1-6fc780a102a1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://toast-api-server/authentication/v1"
+    }
+  ]
+}

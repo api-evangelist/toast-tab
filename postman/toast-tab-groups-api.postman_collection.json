@@ -1,0 +1,142 @@
+{
+  "info": {
+    "_postman_id": "de27e5b2-60d4-4ee6-a95f-b452d705f07d",
+    "name": "Toast Authentication Groups API",
+    "description": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:14:32.000Z",
+    "updatedAt": "2026-07-28T03:14:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-de27e5b2-60d4-4ee6-a95f-b452d705f07d"
+  },
+  "item": [
+    {
+      "name": "groups",
+      "item": [
+        {
+          "name": "{managementGroupGUID}",
+          "item": [
+            {
+              "name": "restaurants",
+              "item": [
+                {
+                  "name": "Toast Get Restaurants in a Management Group",
+                  "id": "e172990f-86da-4625-8212-5b1cc8e54a42",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Toast GUID of one restaurant location in the management \ngroup.\n",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:managementGroupGUID/restaurants",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":managementGroupGUID",
+                        "restaurants"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6e3a3f31-2394-445b-aa13-d992db3208a3",
+                          "key": "managementGroupGUID",
+                          "value": "<string>",
+                          "description": "(Required) The GUID of the restaurant management group.\n"
+                        }
+                      ]
+                    },
+                    "description": "Returns an array of `Restaurant` objects that are a part of the \nrestaurant management group you specify in the \n`managementGroupGUID` path parameter. Each `Restaurant` object \ncontains the unique Toast platform identifier for the restaurant in \nits `guid` value.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "0907abbe-70e5-42fa-be66-77d787509c58",
+                      "name": "An array of `Restaurant` objects.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The Toast GUID of one restaurant location in the management \ngroup.\n",
+                            "key": "Toast-Restaurant-External-ID",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:managementGroupGUID/restaurants",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":managementGroupGUID",
+                            "restaurants"
+                          ],
+                          "variable": [
+                            {
+                              "key": "managementGroupGUID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"guid\": \"<string>\"\n  },\n  {\n    \"guid\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:14:33.000Z",
+                      "updatedAt": "2026-07-28T03:14:33.000Z",
+                      "uid": "35240-0907abbe-70e5-42fa-be66-77d787509c58"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:14:33.000Z",
+                  "updatedAt": "2026-07-28T03:14:33.000Z",
+                  "uid": "35240-e172990f-86da-4625-8212-5b1cc8e54a42"
+                }
+              ],
+              "id": "cbaff6cd-bc1c-4035-8156-cb3758140363",
+              "createdAt": "2026-07-28T03:14:33.000Z",
+              "updatedAt": "2026-07-28T03:14:33.000Z",
+              "uid": "35240-cbaff6cd-bc1c-4035-8156-cb3758140363"
+            }
+          ],
+          "id": "4b861e1e-5e47-4ead-8495-004b57e68496",
+          "createdAt": "2026-07-28T03:14:33.000Z",
+          "updatedAt": "2026-07-28T03:14:33.000Z",
+          "uid": "35240-4b861e1e-5e47-4ead-8495-004b57e68496"
+        }
+      ],
+      "id": "32bea875-84d7-4504-b7c7-4b9eec6a296d",
+      "createdAt": "2026-07-28T03:14:33.000Z",
+      "updatedAt": "2026-07-28T03:14:33.000Z",
+      "uid": "35240-32bea875-84d7-4504-b7c7-4b9eec6a296d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://toast-api-server/authentication/v1"
+    }
+  ]
+}

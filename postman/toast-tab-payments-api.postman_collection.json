@@ -1,0 +1,800 @@
+{
+  "info": {
+    "_postman_id": "8dd05c1a-7624-40a9-81fb-dc1a870bd405",
+    "name": "Toast Authentication Payments API",
+    "description": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:14:45.000Z",
+    "updatedAt": "2026-07-28T03:14:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8dd05c1a-7624-40a9-81fb-dc1a870bd405"
+  },
+  "item": [
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "{guid}",
+          "item": [
+            {
+              "name": "Toast Get a Payment",
+              "id": "6efe67cb-5b4c-4b6a-be37-e6d7e31abc4b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The GUID of the restaurant used as the context of the request.",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments/:guid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments",
+                    ":guid"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c0936dd3-4bcb-422f-baab-f17c529f727d",
+                      "key": "guid",
+                      "value": "<string>",
+                      "description": "(Required) The GUID for the payment you want to return."
+                    }
+                  ]
+                },
+                "description": "Returns a JSON `Payment` object containing detailed information about a  single payment, specified by its GUID."
+              },
+              "response": [
+                {
+                  "id": "d325647a-987c-446e-98d8-5761580d80af",
+                  "name": "Returns a JSON `Payment` object.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The GUID of the restaurant used as the context of the request.",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:guid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":guid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "guid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"amount\": \"<double>\",\n  \"entityType\": \"<string>\",\n  \"guid\": \"<string>\",\n  \"tipAmount\": \"<double>\",\n  \"type\": \"REWARDCARD\",\n  \"externalId\": \"<string>\",\n  \"paidDate\": \"<dateTime>\",\n  \"paidBusinessDate\": \"<integer>\",\n  \"cardEntryMode\": \"APPLE_PAY_CNP\",\n  \"amountTendered\": \"<double>\",\n  \"cardType\": \"EFTPOS\",\n  \"first6Digits\": \"<string>\",\n  \"last4Digits\": \"<string>\",\n  \"originalProcessingFee\": \"<double>\",\n  \"server\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"cashDrawer\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"refundStatus\": \"FULL\",\n  \"refund\": {\n    \"refundAmount\": \"<double>\",\n    \"tipRefundAmount\": \"<double>\",\n    \"refundDate\": \"<dateTime>\",\n    \"refundBusinessDate\": \"<integer>\",\n    \"refundTransaction\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\"\n    }\n  },\n  \"paymentStatus\": \"AUTHORIZED_AT_RISK\",\n  \"voidInfo\": {\n    \"voidUser\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"voidApprover\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"voidDate\": \"<dateTime>\",\n    \"voidBusinessDate\": \"<integer>\",\n    \"voidReason\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    }\n  },\n  \"houseAccount\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"otherPayment\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"createdDevice\": {\n    \"id\": \"<string>\"\n  },\n  \"lastModifiedDevice\": {\n    \"id\": \"<string>\"\n  },\n  \"mcaRepaymentAmount\": \"<double>\",\n  \"cardPaymentId\": \"<string>\",\n  \"orderGuid\": \"<string>\",\n  \"checkGuid\": \"<string>\",\n  \"tenderTransactionGuid\": \"<string>\",\n  \"networkTransactionIdentifier\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:14:46.000Z",
+                  "updatedAt": "2026-07-28T03:14:46.000Z",
+                  "uid": "35240-d325647a-987c-446e-98d8-5761580d80af"
+                },
+                {
+                  "id": "6fe772b3-f251-4ea4-b79c-b5e0da1befac",
+                  "name": "The GUID was malformed.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The GUID of the restaurant used as the context of the request.",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:guid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":guid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "guid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:46.000Z",
+                  "updatedAt": "2026-07-28T03:14:46.000Z",
+                  "uid": "35240-6fe772b3-f251-4ea4-b79c-b5e0da1befac"
+                },
+                {
+                  "id": "f3425964-ad09-416e-83e7-f0559c393f2f",
+                  "name": "The specified payment was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The GUID of the restaurant used as the context of the request.",
+                        "key": "Toast-Restaurant-External-ID",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:guid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":guid"
+                      ],
+                      "variable": [
+                        {
+                          "key": "guid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:14:46.000Z",
+                  "updatedAt": "2026-07-28T03:14:46.000Z",
+                  "uid": "35240-f3425964-ad09-416e-83e7-f0559c393f2f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:14:46.000Z",
+              "updatedAt": "2026-07-28T03:14:46.000Z",
+              "uid": "35240-6efe67cb-5b4c-4b6a-be37-e6d7e31abc4b"
+            }
+          ],
+          "id": "b6086158-d252-4c96-a535-971881ea616f",
+          "createdAt": "2026-07-28T03:14:46.000Z",
+          "updatedAt": "2026-07-28T03:14:46.000Z",
+          "uid": "35240-b6086158-d252-4c96-a535-971881ea616f"
+        },
+        {
+          "name": "Toast Get Payment Identifiers",
+          "id": "40daec88-ff65-4601-b876-27dea5364f69",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) The GUID of the restaurant used as the context of the request.",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments?paidBusinessDate=<string>&refundBusinessDate=<string>&voidBusinessDate=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "description": "Returns a list of the payments that were made during\none business day.\n\nSpecify the business day in the format yyyyMMdd.\nFor example, `20170101`.\n",
+                  "key": "paidBusinessDate",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Returns a list of the payments that were refunded\nduring one business day.\n\nSpecify the business day in the format\nyyyyMMdd. For example, `20170101`.\n",
+                  "key": "refundBusinessDate",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Returns a list of the payments that were voided during\none business day.\n\nSpecify the business day in the format yyyyMMdd.\nFor example, `20170101`.\n",
+                  "key": "voidBusinessDate",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of the GUIDs for each payment made during\none restaurant business day.\n\nThe specific hours that make up a business\nday depend on the business day cutoff in the restaurant configuration,\nwhich is available from the restaurants API in the `closeoutHour`\nproperty.\n\nThe business day for a restaurant is based on its local time (not UTC\nor local time for an API client).\n\nYou must include one of the\n`paidBusinessDate`, `refundBusinessDate`, or `voidBusinessDate` query\nparameters.\n"
+          },
+          "response": [
+            {
+              "id": "eaa28ba8-d5c8-4370-9106-61fdfbaf4fae",
+              "name": "A JSON array of the GUID identifiers for the payments.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The GUID of the restaurant used as the context of the request.",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?paidBusinessDate=<string>&refundBusinessDate=<string>&voidBusinessDate=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Returns a list of the payments that were made during\none business day.\n\nSpecify the business day in the format yyyyMMdd.\nFor example, `20170101`.\n",
+                      "key": "paidBusinessDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a list of the payments that were refunded\nduring one business day.\n\nSpecify the business day in the format\nyyyyMMdd. For example, `20170101`.\n",
+                      "key": "refundBusinessDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a list of the payments that were voided during\none business day.\n\nSpecify the business day in the format yyyyMMdd.\nFor example, `20170101`.\n",
+                      "key": "voidBusinessDate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "createdAt": "2026-07-28T03:14:46.000Z",
+              "updatedAt": "2026-07-28T03:14:46.000Z",
+              "uid": "35240-eaa28ba8-d5c8-4370-9106-61fdfbaf4fae"
+            },
+            {
+              "id": "333a1677-1c97-4965-b297-edc228cd134d",
+              "name": "The API cannot process the request.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The GUID of the restaurant used as the context of the request.",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?paidBusinessDate=<string>&refundBusinessDate=<string>&voidBusinessDate=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Returns a list of the payments that were made during\none business day.\n\nSpecify the business day in the format yyyyMMdd.\nFor example, `20170101`.\n",
+                      "key": "paidBusinessDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a list of the payments that were refunded\nduring one business day.\n\nSpecify the business day in the format\nyyyyMMdd. For example, `20170101`.\n",
+                      "key": "refundBusinessDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a list of the payments that were voided during\none business day.\n\nSpecify the business day in the format yyyyMMdd.\nFor example, `20170101`.\n",
+                      "key": "voidBusinessDate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:14:46.000Z",
+              "updatedAt": "2026-07-28T03:14:46.000Z",
+              "uid": "35240-333a1677-1c97-4965-b297-edc228cd134d"
+            }
+          ],
+          "createdAt": "2026-07-28T03:14:46.000Z",
+          "updatedAt": "2026-07-28T03:14:46.000Z",
+          "uid": "35240-40daec88-ff65-4601-b876-27dea5364f69"
+        }
+      ],
+      "id": "ce3b4311-61ce-4022-aca2-876a132c81b5",
+      "createdAt": "2026-07-28T03:14:46.000Z",
+      "updatedAt": "2026-07-28T03:14:46.000Z",
+      "uid": "35240-ce3b4311-61ce-4022-aca2-876a132c81b5"
+    },
+    {
+      "name": "orders",
+      "item": [
+        {
+          "name": "{orderGuid}",
+          "item": [
+            {
+              "name": "checks",
+              "item": [
+                {
+                  "name": "{checkGuid}",
+                  "item": [
+                    {
+                      "name": "payments",
+                      "item": [
+                        {
+                          "name": "{paymentGuid}",
+                          "item": [
+                            {
+                              "name": "Toast Update a Tip Amount",
+                              "id": "2f7925d7-ba20-4c30-9305-64a5c4b0f47b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"tipAmount\": \"<double>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/orders/:orderGuid/checks/:checkGuid/payments/:paymentGuid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "orders",
+                                    ":orderGuid",
+                                    "checks",
+                                    ":checkGuid",
+                                    "payments",
+                                    ":paymentGuid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "d11e3f6f-93d1-464a-ba9c-5e2f3b478dc5",
+                                      "key": "orderGuid",
+                                      "value": "<string>",
+                                      "description": "(Required) The Toast platform identifier of the order that you are\nupdating a tip in.\n"
+                                    },
+                                    {
+                                      "id": "dae25770-5e2b-4641-a638-97326e2b22a6",
+                                      "key": "checkGuid",
+                                      "value": "<string>",
+                                      "description": "(Required) The Toast platform identifier of the check that you are\nupdating a tip in.\n"
+                                    },
+                                    {
+                                      "id": "879b7549-183d-42fb-b699-0f7af4040f6a",
+                                      "key": "paymentGuid",
+                                      "value": "<string>",
+                                      "description": "(Required) The Toast platform identifier of the payment that you are\nupdating a tip in.\n"
+                                    }
+                                  ]
+                                },
+                                "description": "Updates the tip amount in an existing payment for a check in an\norder. Include the new `tipAmount` value in a `Payment` object\nin the message body.\n\nThis endpoint does not allow any other\n`Payment` object value for a `PATCH` request.\n\nSpecify the Toast\nplatform GUID of the order, check, and payment in REST path\nparameters.\n\nFor more information, see [the _Toast Developer Guide_](https://doc.toasttab.com/doc/devguide/apiUpdatingTipsInAPayment.html).\n"
+                              },
+                              "response": [
+                                {
+                                  "id": "0a29059c-d8c2-4deb-8f1b-3a075f58b942",
+                                  "name": "A JSON `Order` object\nthat includes the tip amount that you updated.\n",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"tipAmount\": \"<double>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/orders/:orderGuid/checks/:checkGuid/payments/:paymentGuid",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "orders",
+                                        ":orderGuid",
+                                        "checks",
+                                        ":checkGuid",
+                                        "payments",
+                                        ":paymentGuid"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orderGuid"
+                                        },
+                                        {
+                                          "key": "checkGuid"
+                                        },
+                                        {
+                                          "key": "paymentGuid"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"checks\": [\n    {\n      \"entityType\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"selections\": [\n        {\n          \"entityType\": \"<string>\",\n          \"guid\": \"<string>\",\n          \"item\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"multiLocationId\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"quantity\": \"<double>\",\n          \"externalId\": \"<string>\",\n          \"itemGroup\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"multiLocationId\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"optionGroup\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"multiLocationId\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"preModifier\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"multiLocationId\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"seatNumber\": \"<integer>\",\n          \"unitOfMeasure\": \"LB\",\n          \"selectionType\": \"PORTION\",\n          \"salesCategory\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"multiLocationId\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"appliedDiscounts\": [\n            {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\",\n              \"externalId\": \"<string>\",\n              \"name\": \"<string>\",\n              \"discountAmount\": \"<double>\",\n              \"nonTaxDiscountAmount\": \"<double>\",\n              \"discount\": {\n                \"guid\": \"<string>\",\n                \"entityType\": \"<string>\"\n              },\n              \"triggers\": [\n                {\n                  \"selection\": {\n                    \"guid\": \"<string>\",\n                    \"entityType\": \"<string>\",\n                    \"externalId\": \"<string>\"\n                  },\n                  \"quantity\": \"<double>\"\n                }\n              ],\n              \"approver\": {\n                \"guid\": \"<string>\",\n                \"entityType\": \"<string>\",\n                \"externalId\": \"<string>\"\n              },\n              \"processingState\": \"PENDING_VOID\",\n              \"appliedDiscountReason\": {\n                \"name\": \"<string>\",\n                \"description\": \"<string>\",\n                \"comment\": \"<string>\",\n                \"discountReason\": {\n                  \"guid\": \"<string>\",\n                  \"entityType\": \"<string>\"\n                }\n              },\n              \"loyaltyDetails\": {\n                \"vendor\": \"PAYTRONIX\",\n                \"referenceId\": \"<string>\"\n              },\n              \"comboItems\": [\n                {\n                  \"guid\": \"<string>\",\n                  \"entityType\": \"<string>\",\n                  \"externalId\": \"<string>\"\n                }\n              ],\n              \"appliedPromoCode\": \"<string>\",\n              \"discountType\": \"FIXED_TOTAL\",\n              \"discountPercent\": \"<double>\"\n            }\n          ],\n          \"deferred\": \"<boolean>\",\n          \"preDiscountPrice\": \"<double>\",\n          \"price\": \"<double>\",\n          \"tax\": \"<double>\",\n          \"voided\": \"<boolean>\",\n          \"voidDate\": \"<dateTime>\",\n          \"voidBusinessDate\": \"<integer>\",\n          \"voidReason\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"refundDetails\": {\n            \"refundAmount\": \"<double>\",\n            \"taxRefundAmount\": \"<double>\",\n            \"refundTransaction\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\"\n            }\n          },\n          \"displayName\": \"<string>\",\n          \"plu\": \"<string>\",\n          \"premodifierPlu\": \"<string>\",\n          \"createdDate\": \"<dateTime>\",\n          \"modifiedDate\": \"<dateTime>\",\n          \"modifiers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Selection detected>\"\n            }\n          ],\n          \"fulfillmentStatus\": \"NEW\",\n          \"fulfillment\": {\n            \"quantity\": \"<double>\",\n            \"unit\": \"<string>\"\n          },\n          \"taxInclusion\": \"NOT_INCLUDED\",\n          \"appliedTaxes\": [\n            {\n              \"entityType\": \"<string>\",\n              \"guid\": \"<string>\",\n              \"taxRate\": {\n                \"guid\": \"<string>\",\n                \"entityType\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"rate\": \"<double>\",\n              \"taxAmount\": \"<double>\",\n              \"type\": \"PERCENT\",\n              \"facilitatorCollectAndRemitTax\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"jurisdiction\": \"<string>\",\n              \"jurisdictionType\": \"<string>\"\n            }\n          ],\n          \"diningOption\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"openPriceAmount\": \"<double>\",\n          \"receiptLinePrice\": \"<double>\",\n          \"optionGroupPricingMode\": \"INCLUDED\",\n          \"externalPriceAmount\": \"<double>\",\n          \"splitOrigin\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          }\n        }\n      ],\n      \"externalId\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"openedDate\": \"<dateTime>\",\n      \"closedDate\": \"<dateTime>\",\n      \"modifiedDate\": \"<dateTime>\",\n      \"deletedDate\": \"<dateTime>\",\n      \"deleted\": \"<boolean>\",\n      \"customer\": {\n        \"email\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"guid\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"phoneCountryCode\": \"<string>\"\n      },\n      \"appliedLoyaltyInfo\": {\n        \"entityType\": \"<string>\",\n        \"guid\": \"<string>\",\n        \"loyaltyIdentifier\": \"<string>\",\n        \"vendor\": \"PAYTRONIX\",\n        \"maskedLoyaltyIdentifier\": \"<string>\",\n        \"accrualFamilyGuid\": \"<string>\",\n        \"accrualText\": \"<string>\"\n      },\n      \"taxExempt\": false,\n      \"displayNumber\": \"<string>\",\n      \"appliedServiceCharges\": [\n        {\n          \"entityType\": \"<string>\",\n          \"guid\": \"<string>\",\n          \"serviceCharge\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"externalId\": \"<string>\",\n          \"chargeAmount\": \"<double>\",\n          \"chargeType\": \"FIXED\",\n          \"name\": \"<string>\",\n          \"delivery\": \"<boolean>\",\n          \"takeout\": \"<boolean>\",\n          \"dineIn\": \"<boolean>\",\n          \"gratuity\": \"<boolean>\",\n          \"taxable\": \"<boolean>\",\n          \"appliedTaxes\": [\n            {\n              \"entityType\": \"<string>\",\n              \"guid\": \"<string>\",\n              \"taxRate\": {\n                \"guid\": \"<string>\",\n                \"entityType\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"rate\": \"<double>\",\n              \"taxAmount\": \"<double>\",\n              \"type\": \"EXTERNAL\",\n              \"facilitatorCollectAndRemitTax\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"jurisdiction\": \"<string>\",\n              \"jurisdictionType\": \"<string>\"\n            }\n          ],\n          \"serviceChargeCalculation\": \"POST_DISCOUNT\",\n          \"refundDetails\": {\n            \"refundAmount\": \"<double>\",\n            \"taxRefundAmount\": \"<double>\",\n            \"refundTransaction\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\"\n            }\n          },\n          \"serviceChargeCategory\": \"SERVICE_CHARGE\",\n          \"paymentGuid\": \"<string>\"\n        }\n      ],\n      \"amount\": \"<double>\",\n      \"taxAmount\": \"<double>\",\n      \"totalAmount\": \"<double>\",\n      \"payments\": [\n        {\n          \"amount\": \"<double>\",\n          \"entityType\": \"<string>\",\n          \"guid\": \"<string>\",\n          \"tipAmount\": \"<double>\",\n          \"type\": \"HOUSE_ACCOUNT\",\n          \"externalId\": \"<string>\",\n          \"paidDate\": \"<dateTime>\",\n          \"paidBusinessDate\": \"<integer>\",\n          \"cardEntryMode\": \"ONLINE\",\n          \"amountTendered\": \"<double>\",\n          \"cardType\": \"JCB\",\n          \"first6Digits\": \"<string>\",\n          \"last4Digits\": \"<string>\",\n          \"originalProcessingFee\": \"<double>\",\n          \"server\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"cashDrawer\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"refundStatus\": \"FULL\",\n          \"refund\": {\n            \"refundAmount\": \"<double>\",\n            \"tipRefundAmount\": \"<double>\",\n            \"refundDate\": \"<dateTime>\",\n            \"refundBusinessDate\": \"<integer>\",\n            \"refundTransaction\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\"\n            }\n          },\n          \"paymentStatus\": \"PROCESSING_VOID\",\n          \"voidInfo\": {\n            \"voidUser\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\",\n              \"externalId\": \"<string>\"\n            },\n            \"voidApprover\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\",\n              \"externalId\": \"<string>\"\n            },\n            \"voidDate\": \"<dateTime>\",\n            \"voidBusinessDate\": \"<integer>\",\n            \"voidReason\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\",\n              \"externalId\": \"<string>\"\n            }\n          },\n          \"houseAccount\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"otherPayment\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"createdDevice\": {\n            \"id\": \"<string>\"\n          },\n          \"lastModifiedDevice\": {\n            \"id\": \"<string>\"\n          },\n          \"mcaRepaymentAmount\": \"<double>\",\n          \"cardPaymentId\": \"<string>\",\n          \"orderGuid\": \"<string>\",\n          \"checkGuid\": \"<string>\",\n          \"tenderTransactionGuid\": \"<string>\",\n          \"networkTransactionIdentifier\": \"<string>\"\n        }\n      ],\n      \"tabName\": \"<string>\",\n      \"paymentStatus\": \"CLOSED\",\n      \"appliedDiscounts\": [\n        {\n          \"guid\": \"<string>\",\n          \"entityType\": \"<string>\",\n          \"externalId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"discountAmount\": \"<double>\",\n          \"nonTaxDiscountAmount\": \"<double>\",\n          \"discount\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\"\n          },\n          \"triggers\": [\n            {\n              \"selection\": {\n                \"guid\": \"<string>\",\n                \"entityType\": \"<string>\",\n                \"externalId\": \"<string>\"\n              },\n              \"quantity\": \"<double>\"\n            }\n          ],\n          \"approver\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"processingState\": \"PENDING_VOID\",\n          \"appliedDiscountReason\": {\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"comment\": \"<string>\",\n            \"discountReason\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\"\n            }\n          },\n          \"loyaltyDetails\": {\n            \"vendor\": \"TOAST\",\n            \"referenceId\": \"<string>\"\n          },\n          \"comboItems\": [\n            {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\",\n              \"externalId\": \"<string>\"\n            }\n          ],\n          \"appliedPromoCode\": \"<string>\",\n          \"discountType\": \"PERCENT\",\n          \"discountPercent\": \"<double>\"\n        }\n      ],\n      \"voided\": \"<boolean>\",\n      \"voidDate\": \"<dateTime>\",\n      \"voidBusinessDate\": \"<integer>\",\n      \"paidDate\": \"<dateTime>\",\n      \"createdDevice\": {\n        \"id\": \"<string>\"\n      },\n      \"lastModifiedDevice\": {\n        \"id\": \"<string>\"\n      },\n      \"duration\": \"<integer>\",\n      \"openedBy\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"diningOption\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"entityType\": \"<string>\",\n  \"guid\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"openedDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"promisedDate\": \"<dateTime>\",\n  \"channelGuid\": \"<uuid>\",\n  \"table\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"serviceArea\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"restaurantService\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"revenueCenter\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"source\": \"<string>\",\n  \"duration\": \"<integer>\",\n  \"deliveryInfo\": {\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipCode\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"administrativeArea\": \"<string>\",\n    \"country\": \"<string>\",\n    \"latitude\": \"<double>\",\n    \"longitude\": \"<double>\",\n    \"notes\": \"<string>\",\n    \"deliveredDate\": \"<dateTime>\",\n    \"dispatchedDate\": \"<dateTime>\",\n    \"deliveryEmployee\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"deliveryState\": \"IN_PROGRESS\"\n  },\n  \"requiredPrepTime\": \"<string>\",\n  \"estimatedFulfillmentDate\": \"<dateTime>\",\n  \"numberOfGuests\": \"<integer>\",\n  \"voided\": \"<boolean>\",\n  \"voidDate\": \"<dateTime>\",\n  \"voidBusinessDate\": \"<integer>\",\n  \"paidDate\": \"<dateTime>\",\n  \"closedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"deleted\": \"<boolean>\",\n  \"businessDate\": \"<integer>\",\n  \"server\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"pricingFeatures\": [\n    \"TAXESV3\"\n  ],\n  \"approvalStatus\": \"APPROVED\",\n  \"createdDevice\": {\n    \"id\": \"<string>\"\n  },\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDevice\": {\n    \"id\": \"<string>\"\n  },\n  \"curbsidePickupInfo\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"transportColor\": \"<string>\",\n    \"transportDescription\": \"<string>\",\n    \"notes\": \"<string>\"\n  },\n  \"marketplaceFacilitatorTaxInfo\": {\n    \"facilitatorCollectAndRemitTaxOrder\": \"<boolean>\",\n    \"taxes\": [\n      {\n        \"entityType\": \"<string>\",\n        \"guid\": \"<string>\",\n        \"taxRate\": {\n          \"guid\": \"<string>\",\n          \"entityType\": \"<string>\"\n        },\n        \"name\": \"<string>\",\n        \"rate\": \"<double>\",\n        \"taxAmount\": \"<double>\",\n        \"type\": \"FIXED\",\n        \"facilitatorCollectAndRemitTax\": \"<boolean>\",\n        \"displayName\": \"<string>\",\n        \"jurisdiction\": \"<string>\",\n        \"jurisdictionType\": \"<string>\"\n      }\n    ]\n  },\n  \"createdInTestMode\": \"<boolean>\",\n  \"appliedPackagingInfo\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"appliedPackagingItems\": [\n      {\n        \"entityType\": \"<string>\",\n        \"guid\": \"<string>\",\n        \"inclusion\": \"YES\",\n        \"itemConfigId\": \"<string>\",\n        \"itemTypes\": [\n          \"<string>\"\n        ],\n        \"guestDisplayName\": \"<string>\"\n      }\n    ]\n  },\n  \"excessFood\": \"<boolean>\",\n  \"displayNumber\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T03:14:46.000Z",
+                                  "updatedAt": "2026-07-28T03:14:46.000Z",
+                                  "uid": "35240-0a29059c-d8c2-4deb-8f1b-3a075f58b942"
+                                },
+                                {
+                                  "id": "8fd6531d-d6e1-48f3-a4e3-5c5403cb0122",
+                                  "name": "The API cannot process the request.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"tipAmount\": \"<double>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/orders/:orderGuid/checks/:checkGuid/payments/:paymentGuid",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "orders",
+                                        ":orderGuid",
+                                        "checks",
+                                        ":checkGuid",
+                                        "payments",
+                                        ":paymentGuid"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orderGuid"
+                                        },
+                                        {
+                                          "key": "checkGuid"
+                                        },
+                                        {
+                                          "key": "paymentGuid"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T03:14:46.000Z",
+                                  "updatedAt": "2026-07-28T03:14:46.000Z",
+                                  "uid": "35240-8fd6531d-d6e1-48f3-a4e3-5c5403cb0122"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:14:46.000Z",
+                              "updatedAt": "2026-07-28T03:14:46.000Z",
+                              "uid": "35240-2f7925d7-ba20-4c30-9305-64a5c4b0f47b"
+                            }
+                          ],
+                          "id": "f208abd9-e43f-4116-923c-952e1c36ed36",
+                          "createdAt": "2026-07-28T03:14:46.000Z",
+                          "updatedAt": "2026-07-28T03:14:46.000Z",
+                          "uid": "35240-f208abd9-e43f-4116-923c-952e1c36ed36"
+                        },
+                        {
+                          "name": "Toast Post Payments",
+                          "id": "b7418a21-d88c-4ed6-8e5a-bf5c8466f9b7",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"amount\": \"<double>\",\n    \"entityType\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"tipAmount\": \"<double>\",\n    \"type\": \"OTHER\",\n    \"externalId\": \"<string>\",\n    \"paidDate\": \"<dateTime>\",\n    \"paidBusinessDate\": \"<integer>\",\n    \"cardEntryMode\": \"PRE_AUTHED\",\n    \"amountTendered\": \"<double>\",\n    \"cardType\": \"VISA\",\n    \"first6Digits\": \"<string>\",\n    \"last4Digits\": \"<string>\",\n    \"originalProcessingFee\": \"<double>\",\n    \"server\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"cashDrawer\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"refundStatus\": \"FULL\",\n    \"refund\": {\n      \"refundAmount\": \"<double>\",\n      \"tipRefundAmount\": \"<double>\",\n      \"refundDate\": \"<dateTime>\",\n      \"refundBusinessDate\": \"<integer>\",\n      \"refundTransaction\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\"\n      }\n    },\n    \"paymentStatus\": \"CAPTURED\",\n    \"voidInfo\": {\n      \"voidUser\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidApprover\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidDate\": \"<dateTime>\",\n      \"voidBusinessDate\": \"<integer>\",\n      \"voidReason\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    \"houseAccount\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"otherPayment\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"createdDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"lastModifiedDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"mcaRepaymentAmount\": \"<double>\",\n    \"cardPaymentId\": \"<string>\",\n    \"orderGuid\": \"<string>\",\n    \"checkGuid\": \"<string>\",\n    \"tenderTransactionGuid\": \"<string>\",\n    \"networkTransactionIdentifier\": \"<string>\"\n  },\n  {\n    \"amount\": \"<double>\",\n    \"entityType\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"tipAmount\": \"<double>\",\n    \"type\": \"LEVELUP\",\n    \"externalId\": \"<string>\",\n    \"paidDate\": \"<dateTime>\",\n    \"paidBusinessDate\": \"<integer>\",\n    \"cardEntryMode\": \"FUTURE_ORDER\",\n    \"amountTendered\": \"<double>\",\n    \"cardType\": \"MAESTRO\",\n    \"first6Digits\": \"<string>\",\n    \"last4Digits\": \"<string>\",\n    \"originalProcessingFee\": \"<double>\",\n    \"server\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"cashDrawer\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"refundStatus\": \"FULL\",\n    \"refund\": {\n      \"refundAmount\": \"<double>\",\n      \"tipRefundAmount\": \"<double>\",\n      \"refundDate\": \"<dateTime>\",\n      \"refundBusinessDate\": \"<integer>\",\n      \"refundTransaction\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\"\n      }\n    },\n    \"paymentStatus\": \"CANCELLED\",\n    \"voidInfo\": {\n      \"voidUser\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidApprover\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidDate\": \"<dateTime>\",\n      \"voidBusinessDate\": \"<integer>\",\n      \"voidReason\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    \"houseAccount\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"otherPayment\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"createdDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"lastModifiedDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"mcaRepaymentAmount\": \"<double>\",\n    \"cardPaymentId\": \"<string>\",\n    \"orderGuid\": \"<string>\",\n    \"checkGuid\": \"<string>\",\n    \"tenderTransactionGuid\": \"<string>\",\n    \"networkTransactionIdentifier\": \"<string>\"\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/orders/:orderGuid/checks/:checkGuid/payments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "orders",
+                                ":orderGuid",
+                                "checks",
+                                ":checkGuid",
+                                "payments"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c114908d-7c71-45c2-a105-d426365c89d3",
+                                  "key": "orderGuid",
+                                  "value": "<string>",
+                                  "description": "(Required) The Toast platform identifier of the order that you are\nadding payments to.\n"
+                                },
+                                {
+                                  "id": "5245a9aa-6cc9-4a96-97af-2a24fdbc4e5f",
+                                  "key": "checkGuid",
+                                  "value": "<string>",
+                                  "description": "(Required) The Toast platform identifier of the check that you are\nadding payments to.\n"
+                                }
+                              ]
+                            },
+                            "description": "Adds one or more payments to a check in an existing order. Include\ninformation about the payments in an array of `Payment` objects in the\nmessage body. Specify the Toast platform GUID of the order\nand check in REST path parameters.\n\nFor more information, see [the _Toast Developer Guide_](https://doc.toasttab.com/doc/devguide/apiAddingPaymentsToACheck.html).\n"
+                          },
+                          "response": [
+                            {
+                              "id": "a35bc15e-26fc-4a68-812f-43066cf55044",
+                              "name": "A JSON `Order` object that includes the payments that you added.\n",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"amount\": \"<double>\",\n    \"entityType\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"tipAmount\": \"<double>\",\n    \"type\": \"OTHER\",\n    \"externalId\": \"<string>\",\n    \"paidDate\": \"<dateTime>\",\n    \"paidBusinessDate\": \"<integer>\",\n    \"cardEntryMode\": \"PRE_AUTHED\",\n    \"amountTendered\": \"<double>\",\n    \"cardType\": \"VISA\",\n    \"first6Digits\": \"<string>\",\n    \"last4Digits\": \"<string>\",\n    \"originalProcessingFee\": \"<double>\",\n    \"server\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"cashDrawer\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"refundStatus\": \"FULL\",\n    \"refund\": {\n      \"refundAmount\": \"<double>\",\n      \"tipRefundAmount\": \"<double>\",\n      \"refundDate\": \"<dateTime>\",\n      \"refundBusinessDate\": \"<integer>\",\n      \"refundTransaction\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\"\n      }\n    },\n    \"paymentStatus\": \"CAPTURED\",\n    \"voidInfo\": {\n      \"voidUser\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidApprover\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidDate\": \"<dateTime>\",\n      \"voidBusinessDate\": \"<integer>\",\n      \"voidReason\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    \"houseAccount\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"otherPayment\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"createdDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"lastModifiedDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"mcaRepaymentAmount\": \"<double>\",\n    \"cardPaymentId\": \"<string>\",\n    \"orderGuid\": \"<string>\",\n    \"checkGuid\": \"<string>\",\n    \"tenderTransactionGuid\": \"<string>\",\n    \"networkTransactionIdentifier\": \"<string>\"\n  },\n  {\n    \"amount\": \"<double>\",\n    \"entityType\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"tipAmount\": \"<double>\",\n    \"type\": \"LEVELUP\",\n    \"externalId\": \"<string>\",\n    \"paidDate\": \"<dateTime>\",\n    \"paidBusinessDate\": \"<integer>\",\n    \"cardEntryMode\": \"FUTURE_ORDER\",\n    \"amountTendered\": \"<double>\",\n    \"cardType\": \"MAESTRO\",\n    \"first6Digits\": \"<string>\",\n    \"last4Digits\": \"<string>\",\n    \"originalProcessingFee\": \"<double>\",\n    \"server\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"cashDrawer\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"refundStatus\": \"FULL\",\n    \"refund\": {\n      \"refundAmount\": \"<double>\",\n      \"tipRefundAmount\": \"<double>\",\n      \"refundDate\": \"<dateTime>\",\n      \"refundBusinessDate\": \"<integer>\",\n      \"refundTransaction\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\"\n      }\n    },\n    \"paymentStatus\": \"CANCELLED\",\n    \"voidInfo\": {\n      \"voidUser\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidApprover\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidDate\": \"<dateTime>\",\n      \"voidBusinessDate\": \"<integer>\",\n      \"voidReason\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    \"houseAccount\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"otherPayment\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"createdDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"lastModifiedDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"mcaRepaymentAmount\": \"<double>\",\n    \"cardPaymentId\": \"<string>\",\n    \"orderGuid\": \"<string>\",\n    \"checkGuid\": \"<string>\",\n    \"tenderTransactionGuid\": \"<string>\",\n    \"networkTransactionIdentifier\": \"<string>\"\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/orders/:orderGuid/checks/:checkGuid/payments",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "orders",
+                                    ":orderGuid",
+                                    "checks",
+                                    ":checkGuid",
+                                    "payments"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orderGuid"
+                                    },
+                                    {
+                                      "key": "checkGuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"checks\": [\n    {\n      \"entityType\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"selections\": [\n        {\n          \"entityType\": \"<string>\",\n          \"guid\": \"<string>\",\n          \"item\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"multiLocationId\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"quantity\": \"<double>\",\n          \"externalId\": \"<string>\",\n          \"itemGroup\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"multiLocationId\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"optionGroup\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"multiLocationId\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"preModifier\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"multiLocationId\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"seatNumber\": \"<integer>\",\n          \"unitOfMeasure\": \"LB\",\n          \"selectionType\": \"PORTION\",\n          \"salesCategory\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"multiLocationId\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"appliedDiscounts\": [\n            {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\",\n              \"externalId\": \"<string>\",\n              \"name\": \"<string>\",\n              \"discountAmount\": \"<double>\",\n              \"nonTaxDiscountAmount\": \"<double>\",\n              \"discount\": {\n                \"guid\": \"<string>\",\n                \"entityType\": \"<string>\"\n              },\n              \"triggers\": [\n                {\n                  \"selection\": {\n                    \"guid\": \"<string>\",\n                    \"entityType\": \"<string>\",\n                    \"externalId\": \"<string>\"\n                  },\n                  \"quantity\": \"<double>\"\n                }\n              ],\n              \"approver\": {\n                \"guid\": \"<string>\",\n                \"entityType\": \"<string>\",\n                \"externalId\": \"<string>\"\n              },\n              \"processingState\": \"PENDING_VOID\",\n              \"appliedDiscountReason\": {\n                \"name\": \"<string>\",\n                \"description\": \"<string>\",\n                \"comment\": \"<string>\",\n                \"discountReason\": {\n                  \"guid\": \"<string>\",\n                  \"entityType\": \"<string>\"\n                }\n              },\n              \"loyaltyDetails\": {\n                \"vendor\": \"PAYTRONIX\",\n                \"referenceId\": \"<string>\"\n              },\n              \"comboItems\": [\n                {\n                  \"guid\": \"<string>\",\n                  \"entityType\": \"<string>\",\n                  \"externalId\": \"<string>\"\n                }\n              ],\n              \"appliedPromoCode\": \"<string>\",\n              \"discountType\": \"FIXED_TOTAL\",\n              \"discountPercent\": \"<double>\"\n            }\n          ],\n          \"deferred\": \"<boolean>\",\n          \"preDiscountPrice\": \"<double>\",\n          \"price\": \"<double>\",\n          \"tax\": \"<double>\",\n          \"voided\": \"<boolean>\",\n          \"voidDate\": \"<dateTime>\",\n          \"voidBusinessDate\": \"<integer>\",\n          \"voidReason\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"refundDetails\": {\n            \"refundAmount\": \"<double>\",\n            \"taxRefundAmount\": \"<double>\",\n            \"refundTransaction\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\"\n            }\n          },\n          \"displayName\": \"<string>\",\n          \"plu\": \"<string>\",\n          \"premodifierPlu\": \"<string>\",\n          \"createdDate\": \"<dateTime>\",\n          \"modifiedDate\": \"<dateTime>\",\n          \"modifiers\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Selection detected>\"\n            }\n          ],\n          \"fulfillmentStatus\": \"NEW\",\n          \"fulfillment\": {\n            \"quantity\": \"<double>\",\n            \"unit\": \"<string>\"\n          },\n          \"taxInclusion\": \"NOT_INCLUDED\",\n          \"appliedTaxes\": [\n            {\n              \"entityType\": \"<string>\",\n              \"guid\": \"<string>\",\n              \"taxRate\": {\n                \"guid\": \"<string>\",\n                \"entityType\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"rate\": \"<double>\",\n              \"taxAmount\": \"<double>\",\n              \"type\": \"PERCENT\",\n              \"facilitatorCollectAndRemitTax\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"jurisdiction\": \"<string>\",\n              \"jurisdictionType\": \"<string>\"\n            }\n          ],\n          \"diningOption\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"openPriceAmount\": \"<double>\",\n          \"receiptLinePrice\": \"<double>\",\n          \"optionGroupPricingMode\": \"INCLUDED\",\n          \"externalPriceAmount\": \"<double>\",\n          \"splitOrigin\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          }\n        }\n      ],\n      \"externalId\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"openedDate\": \"<dateTime>\",\n      \"closedDate\": \"<dateTime>\",\n      \"modifiedDate\": \"<dateTime>\",\n      \"deletedDate\": \"<dateTime>\",\n      \"deleted\": \"<boolean>\",\n      \"customer\": {\n        \"email\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"guid\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"phoneCountryCode\": \"<string>\"\n      },\n      \"appliedLoyaltyInfo\": {\n        \"entityType\": \"<string>\",\n        \"guid\": \"<string>\",\n        \"loyaltyIdentifier\": \"<string>\",\n        \"vendor\": \"PAYTRONIX\",\n        \"maskedLoyaltyIdentifier\": \"<string>\",\n        \"accrualFamilyGuid\": \"<string>\",\n        \"accrualText\": \"<string>\"\n      },\n      \"taxExempt\": false,\n      \"displayNumber\": \"<string>\",\n      \"appliedServiceCharges\": [\n        {\n          \"entityType\": \"<string>\",\n          \"guid\": \"<string>\",\n          \"serviceCharge\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"externalId\": \"<string>\",\n          \"chargeAmount\": \"<double>\",\n          \"chargeType\": \"FIXED\",\n          \"name\": \"<string>\",\n          \"delivery\": \"<boolean>\",\n          \"takeout\": \"<boolean>\",\n          \"dineIn\": \"<boolean>\",\n          \"gratuity\": \"<boolean>\",\n          \"taxable\": \"<boolean>\",\n          \"appliedTaxes\": [\n            {\n              \"entityType\": \"<string>\",\n              \"guid\": \"<string>\",\n              \"taxRate\": {\n                \"guid\": \"<string>\",\n                \"entityType\": \"<string>\"\n              },\n              \"name\": \"<string>\",\n              \"rate\": \"<double>\",\n              \"taxAmount\": \"<double>\",\n              \"type\": \"EXTERNAL\",\n              \"facilitatorCollectAndRemitTax\": \"<boolean>\",\n              \"displayName\": \"<string>\",\n              \"jurisdiction\": \"<string>\",\n              \"jurisdictionType\": \"<string>\"\n            }\n          ],\n          \"serviceChargeCalculation\": \"POST_DISCOUNT\",\n          \"refundDetails\": {\n            \"refundAmount\": \"<double>\",\n            \"taxRefundAmount\": \"<double>\",\n            \"refundTransaction\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\"\n            }\n          },\n          \"serviceChargeCategory\": \"SERVICE_CHARGE\",\n          \"paymentGuid\": \"<string>\"\n        }\n      ],\n      \"amount\": \"<double>\",\n      \"taxAmount\": \"<double>\",\n      \"totalAmount\": \"<double>\",\n      \"payments\": [\n        {\n          \"amount\": \"<double>\",\n          \"entityType\": \"<string>\",\n          \"guid\": \"<string>\",\n          \"tipAmount\": \"<double>\",\n          \"type\": \"HOUSE_ACCOUNT\",\n          \"externalId\": \"<string>\",\n          \"paidDate\": \"<dateTime>\",\n          \"paidBusinessDate\": \"<integer>\",\n          \"cardEntryMode\": \"ONLINE\",\n          \"amountTendered\": \"<double>\",\n          \"cardType\": \"JCB\",\n          \"first6Digits\": \"<string>\",\n          \"last4Digits\": \"<string>\",\n          \"originalProcessingFee\": \"<double>\",\n          \"server\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"cashDrawer\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"refundStatus\": \"FULL\",\n          \"refund\": {\n            \"refundAmount\": \"<double>\",\n            \"tipRefundAmount\": \"<double>\",\n            \"refundDate\": \"<dateTime>\",\n            \"refundBusinessDate\": \"<integer>\",\n            \"refundTransaction\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\"\n            }\n          },\n          \"paymentStatus\": \"PROCESSING_VOID\",\n          \"voidInfo\": {\n            \"voidUser\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\",\n              \"externalId\": \"<string>\"\n            },\n            \"voidApprover\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\",\n              \"externalId\": \"<string>\"\n            },\n            \"voidDate\": \"<dateTime>\",\n            \"voidBusinessDate\": \"<integer>\",\n            \"voidReason\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\",\n              \"externalId\": \"<string>\"\n            }\n          },\n          \"houseAccount\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"otherPayment\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"createdDevice\": {\n            \"id\": \"<string>\"\n          },\n          \"lastModifiedDevice\": {\n            \"id\": \"<string>\"\n          },\n          \"mcaRepaymentAmount\": \"<double>\",\n          \"cardPaymentId\": \"<string>\",\n          \"orderGuid\": \"<string>\",\n          \"checkGuid\": \"<string>\",\n          \"tenderTransactionGuid\": \"<string>\",\n          \"networkTransactionIdentifier\": \"<string>\"\n        }\n      ],\n      \"tabName\": \"<string>\",\n      \"paymentStatus\": \"CLOSED\",\n      \"appliedDiscounts\": [\n        {\n          \"guid\": \"<string>\",\n          \"entityType\": \"<string>\",\n          \"externalId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"discountAmount\": \"<double>\",\n          \"nonTaxDiscountAmount\": \"<double>\",\n          \"discount\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\"\n          },\n          \"triggers\": [\n            {\n              \"selection\": {\n                \"guid\": \"<string>\",\n                \"entityType\": \"<string>\",\n                \"externalId\": \"<string>\"\n              },\n              \"quantity\": \"<double>\"\n            }\n          ],\n          \"approver\": {\n            \"guid\": \"<string>\",\n            \"entityType\": \"<string>\",\n            \"externalId\": \"<string>\"\n          },\n          \"processingState\": \"PENDING_VOID\",\n          \"appliedDiscountReason\": {\n            \"name\": \"<string>\",\n            \"description\": \"<string>\",\n            \"comment\": \"<string>\",\n            \"discountReason\": {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\"\n            }\n          },\n          \"loyaltyDetails\": {\n            \"vendor\": \"TOAST\",\n            \"referenceId\": \"<string>\"\n          },\n          \"comboItems\": [\n            {\n              \"guid\": \"<string>\",\n              \"entityType\": \"<string>\",\n              \"externalId\": \"<string>\"\n            }\n          ],\n          \"appliedPromoCode\": \"<string>\",\n          \"discountType\": \"PERCENT\",\n          \"discountPercent\": \"<double>\"\n        }\n      ],\n      \"voided\": \"<boolean>\",\n      \"voidDate\": \"<dateTime>\",\n      \"voidBusinessDate\": \"<integer>\",\n      \"paidDate\": \"<dateTime>\",\n      \"createdDevice\": {\n        \"id\": \"<string>\"\n      },\n      \"lastModifiedDevice\": {\n        \"id\": \"<string>\"\n      },\n      \"duration\": \"<integer>\",\n      \"openedBy\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    }\n  ],\n  \"diningOption\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"entityType\": \"<string>\",\n  \"guid\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"openedDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"promisedDate\": \"<dateTime>\",\n  \"channelGuid\": \"<uuid>\",\n  \"table\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"serviceArea\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"restaurantService\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"revenueCenter\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"source\": \"<string>\",\n  \"duration\": \"<integer>\",\n  \"deliveryInfo\": {\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipCode\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"administrativeArea\": \"<string>\",\n    \"country\": \"<string>\",\n    \"latitude\": \"<double>\",\n    \"longitude\": \"<double>\",\n    \"notes\": \"<string>\",\n    \"deliveredDate\": \"<dateTime>\",\n    \"dispatchedDate\": \"<dateTime>\",\n    \"deliveryEmployee\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"deliveryState\": \"IN_PROGRESS\"\n  },\n  \"requiredPrepTime\": \"<string>\",\n  \"estimatedFulfillmentDate\": \"<dateTime>\",\n  \"numberOfGuests\": \"<integer>\",\n  \"voided\": \"<boolean>\",\n  \"voidDate\": \"<dateTime>\",\n  \"voidBusinessDate\": \"<integer>\",\n  \"paidDate\": \"<dateTime>\",\n  \"closedDate\": \"<dateTime>\",\n  \"deletedDate\": \"<dateTime>\",\n  \"deleted\": \"<boolean>\",\n  \"businessDate\": \"<integer>\",\n  \"server\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"externalId\": \"<string>\"\n  },\n  \"pricingFeatures\": [\n    \"TAXESV3\"\n  ],\n  \"approvalStatus\": \"APPROVED\",\n  \"createdDevice\": {\n    \"id\": \"<string>\"\n  },\n  \"createdDate\": \"<dateTime>\",\n  \"lastModifiedDevice\": {\n    \"id\": \"<string>\"\n  },\n  \"curbsidePickupInfo\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"transportColor\": \"<string>\",\n    \"transportDescription\": \"<string>\",\n    \"notes\": \"<string>\"\n  },\n  \"marketplaceFacilitatorTaxInfo\": {\n    \"facilitatorCollectAndRemitTaxOrder\": \"<boolean>\",\n    \"taxes\": [\n      {\n        \"entityType\": \"<string>\",\n        \"guid\": \"<string>\",\n        \"taxRate\": {\n          \"guid\": \"<string>\",\n          \"entityType\": \"<string>\"\n        },\n        \"name\": \"<string>\",\n        \"rate\": \"<double>\",\n        \"taxAmount\": \"<double>\",\n        \"type\": \"FIXED\",\n        \"facilitatorCollectAndRemitTax\": \"<boolean>\",\n        \"displayName\": \"<string>\",\n        \"jurisdiction\": \"<string>\",\n        \"jurisdictionType\": \"<string>\"\n      }\n    ]\n  },\n  \"createdInTestMode\": \"<boolean>\",\n  \"appliedPackagingInfo\": {\n    \"guid\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"appliedPackagingItems\": [\n      {\n        \"entityType\": \"<string>\",\n        \"guid\": \"<string>\",\n        \"inclusion\": \"YES\",\n        \"itemConfigId\": \"<string>\",\n        \"itemTypes\": [\n          \"<string>\"\n        ],\n        \"guestDisplayName\": \"<string>\"\n      }\n    ]\n  },\n  \"excessFood\": \"<boolean>\",\n  \"displayNumber\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:14:46.000Z",
+                              "updatedAt": "2026-07-28T03:14:46.000Z",
+                              "uid": "35240-a35bc15e-26fc-4a68-812f-43066cf55044"
+                            },
+                            {
+                              "id": "7883e01b-f85e-42c2-a8c5-36c24b3c1382",
+                              "name": "The API cannot process the request.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"amount\": \"<double>\",\n    \"entityType\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"tipAmount\": \"<double>\",\n    \"type\": \"OTHER\",\n    \"externalId\": \"<string>\",\n    \"paidDate\": \"<dateTime>\",\n    \"paidBusinessDate\": \"<integer>\",\n    \"cardEntryMode\": \"PRE_AUTHED\",\n    \"amountTendered\": \"<double>\",\n    \"cardType\": \"VISA\",\n    \"first6Digits\": \"<string>\",\n    \"last4Digits\": \"<string>\",\n    \"originalProcessingFee\": \"<double>\",\n    \"server\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"cashDrawer\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"refundStatus\": \"FULL\",\n    \"refund\": {\n      \"refundAmount\": \"<double>\",\n      \"tipRefundAmount\": \"<double>\",\n      \"refundDate\": \"<dateTime>\",\n      \"refundBusinessDate\": \"<integer>\",\n      \"refundTransaction\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\"\n      }\n    },\n    \"paymentStatus\": \"CAPTURED\",\n    \"voidInfo\": {\n      \"voidUser\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidApprover\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidDate\": \"<dateTime>\",\n      \"voidBusinessDate\": \"<integer>\",\n      \"voidReason\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    \"houseAccount\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"otherPayment\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"createdDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"lastModifiedDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"mcaRepaymentAmount\": \"<double>\",\n    \"cardPaymentId\": \"<string>\",\n    \"orderGuid\": \"<string>\",\n    \"checkGuid\": \"<string>\",\n    \"tenderTransactionGuid\": \"<string>\",\n    \"networkTransactionIdentifier\": \"<string>\"\n  },\n  {\n    \"amount\": \"<double>\",\n    \"entityType\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"tipAmount\": \"<double>\",\n    \"type\": \"LEVELUP\",\n    \"externalId\": \"<string>\",\n    \"paidDate\": \"<dateTime>\",\n    \"paidBusinessDate\": \"<integer>\",\n    \"cardEntryMode\": \"FUTURE_ORDER\",\n    \"amountTendered\": \"<double>\",\n    \"cardType\": \"MAESTRO\",\n    \"first6Digits\": \"<string>\",\n    \"last4Digits\": \"<string>\",\n    \"originalProcessingFee\": \"<double>\",\n    \"server\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"cashDrawer\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"refundStatus\": \"FULL\",\n    \"refund\": {\n      \"refundAmount\": \"<double>\",\n      \"tipRefundAmount\": \"<double>\",\n      \"refundDate\": \"<dateTime>\",\n      \"refundBusinessDate\": \"<integer>\",\n      \"refundTransaction\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\"\n      }\n    },\n    \"paymentStatus\": \"CANCELLED\",\n    \"voidInfo\": {\n      \"voidUser\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidApprover\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      },\n      \"voidDate\": \"<dateTime>\",\n      \"voidBusinessDate\": \"<integer>\",\n      \"voidReason\": {\n        \"guid\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"externalId\": \"<string>\"\n      }\n    },\n    \"houseAccount\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"otherPayment\": {\n      \"guid\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"externalId\": \"<string>\"\n    },\n    \"createdDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"lastModifiedDevice\": {\n      \"id\": \"<string>\"\n    },\n    \"mcaRepaymentAmount\": \"<double>\",\n    \"cardPaymentId\": \"<string>\",\n    \"orderGuid\": \"<string>\",\n    \"checkGuid\": \"<string>\",\n    \"tenderTransactionGuid\": \"<string>\",\n    \"networkTransactionIdentifier\": \"<string>\"\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/orders/:orderGuid/checks/:checkGuid/payments",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "orders",
+                                    ":orderGuid",
+                                    "checks",
+                                    ":checkGuid",
+                                    "payments"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orderGuid"
+                                    },
+                                    {
+                                      "key": "checkGuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:14:46.000Z",
+                              "updatedAt": "2026-07-28T03:14:46.000Z",
+                              "uid": "35240-7883e01b-f85e-42c2-a8c5-36c24b3c1382"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:14:46.000Z",
+                          "updatedAt": "2026-07-28T03:14:46.000Z",
+                          "uid": "35240-b7418a21-d88c-4ed6-8e5a-bf5c8466f9b7"
+                        }
+                      ],
+                      "id": "cef78d63-11b4-45e7-97d7-788a5275decc",
+                      "createdAt": "2026-07-28T03:14:46.000Z",
+                      "updatedAt": "2026-07-28T03:14:46.000Z",
+                      "uid": "35240-cef78d63-11b4-45e7-97d7-788a5275decc"
+                    }
+                  ],
+                  "id": "0b69c5f4-54ba-46cb-8340-55fd67dc348d",
+                  "createdAt": "2026-07-28T03:14:46.000Z",
+                  "updatedAt": "2026-07-28T03:14:46.000Z",
+                  "uid": "35240-0b69c5f4-54ba-46cb-8340-55fd67dc348d"
+                }
+              ],
+              "id": "6856f1e1-8eff-4225-a4a6-6f6d97dfeb43",
+              "createdAt": "2026-07-28T03:14:46.000Z",
+              "updatedAt": "2026-07-28T03:14:46.000Z",
+              "uid": "35240-6856f1e1-8eff-4225-a4a6-6f6d97dfeb43"
+            }
+          ],
+          "id": "c0ca4eec-894a-4146-94a2-ded32b50e4a7",
+          "createdAt": "2026-07-28T03:14:46.000Z",
+          "updatedAt": "2026-07-28T03:14:46.000Z",
+          "uid": "35240-c0ca4eec-894a-4146-94a2-ded32b50e4a7"
+        }
+      ],
+      "id": "c6cf8b58-162c-4988-9ae6-60dae739cd68",
+      "createdAt": "2026-07-28T03:14:46.000Z",
+      "updatedAt": "2026-07-28T03:14:46.000Z",
+      "uid": "35240-c6cf8b58-162c-4988-9ae6-60dae739cd68"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://toast-api-server/authentication/v1"
+    }
+  ]
+}
