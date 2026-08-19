@@ -1,0 +1,113 @@
+{
+  "item": [
+    {
+      "id": "1fbdf3c4-d787-4b3c-8428-ef02f76e8862",
+      "name": "Metadata",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de6d0c0c-aab1-4621-8c0a-7d257928b8b0",
+          "name": "Toast Get Menu Last Modified Timestamp",
+          "request": {
+            "name": "Toast Get Menu Last Modified Timestamp",
+            "description": {
+              "content": "A lightweight endpoint that allows you to determine if a restaurant's menu data has been updated. Toast support strongly recommends that you do not make a call to the `/menus` endpoint unless the date and time returned by the `/metadata` endpoint is more recent than the `lastUpdated` date and time. While this recommendation applies to all clients of the menus API, it is particularly important for clients that have limited bandwidth.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The identifier for the restaurant.",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "08209f1f-e1fe-4020-9a14-11db23606db0",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The identifier for the restaurant.",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"restaurantGuid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n  \"lastUpdated\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://toast-api-server/authentication/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cb13e5ac-0054-46f0-a044-15ec3a65755f",
+    "name": "Toast Authentication Metadata API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+      "type": "text/plain"
+    }
+  }
+}

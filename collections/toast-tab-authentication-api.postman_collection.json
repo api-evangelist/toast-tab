@@ -1,0 +1,169 @@
+{
+  "item": [
+    {
+      "id": "adcbeea2-31da-4fb2-b1de-b78b234c3363",
+      "name": "Authentication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5be4f3d2-26c5-44ac-a04f-3fdb809a3a71",
+          "name": "Toast Get an Authentication Token",
+          "request": {
+            "name": "Toast Get an Authentication Token",
+            "description": {
+              "content": "Returns an authentication token that your Toast API client can present\nwhen using other Toast platform APIs.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authentication",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\",\n  \"userAccessType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4068dded-8fc8-4a86-8978-061ccc87cfcf",
+              "name": "A JSON `AuthenticationResponse` object that includes an\nauthentication token string.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authentication",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"VKuhk4NaLedOcjZpJM8grvdrsFi3MlcM\",\n  \"clientSecret\": \"eS960aiKdvgbSDcLUCk68HR2CJKwwHNO2HKfgxjCWxoj27KIp6jFAi2XOOc_oCuv\",\n  \"userAccessType\": \"TOAST_MACHINE_CLIENT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": {\n    \"tokenType\": \"Bearer\",\n    \"scope\": \"string\",\n    \"expiresIn\": 86400,\n    \"accessToken\": \"string\",\n    \"idToken\": \"90a86f12\",\n    \"refreshToken\": \"string\"\n  },\n  \"status\": \"SUCCESS\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa827b9a-dc89-4d04-adb2-6fbc83b7f4f7",
+              "name": "The Toast API client credentials in your request are not valid.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authentication",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"VKuhk4NaLedOcjZpJM8grvdrsFi3MlcM\",\n  \"clientSecret\": \"eS960aiKdvgbSDcLUCk68HR2CJKwwHNO2HKfgxjCWxoj27KIp6jFAi2XOOc_oCuv\",\n  \"userAccessType\": \"TOAST_MACHINE_CLIENT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"IN_STOCK\",\n  \"code\": 1,\n  \"message\": \"string\",\n  \"messageKey\": \"string\",\n  \"fieldName\": \"Example Name\",\n  \"link\": \"https://doc.toasttab.com/\",\n  \"requestId\": \"90a86f12\",\n  \"developerMessage\": \"string\",\n  \"errors\": [\n    {\n      \"status\": \"IN_STOCK\",\n      \"code\": 1,\n      \"message\": \"string\",\n      \"messageKey\": \"string\",\n      \"fieldName\": \"Example Name\",\n      \"link\": \"https://doc.toasttab.com/\",\n      \"requestId\": \"90a86f12\",\n      \"developerMessage\": \"string\",\n      \"errors\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ErrorMessage detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ErrorMessage detected>\"\n        }\n      ],\n      \"canRetry\": \"string\"\n    },\n    {\n      \"status\": \"IN_STOCK\",\n      \"code\": 1,\n      \"message\": \"string\",\n      \"messageKey\": \"string\",\n      \"fieldName\": \"Example Name\",\n      \"link\": \"https://doc.toasttab.com/\",\n      \"requestId\": \"90a86f12\",\n      \"developerMessage\": \"string\",\n      \"errors\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ErrorMessage detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ErrorMessage detected>\"\n        }\n      ],\n      \"canRetry\": \"string\"\n    }\n  ],\n  \"canRetry\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://toast-api-server/authentication/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "250412c1-3faa-4799-af0d-0df9f00ec86d",
+    "name": "Toast Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+      "type": "text/plain"
+    }
+  }
+}

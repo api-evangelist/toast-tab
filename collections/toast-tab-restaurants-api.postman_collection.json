@@ -1,0 +1,309 @@
+{
+  "item": [
+    {
+      "id": "4c7c91d0-e89c-4f75-b44d-2a06f3f18d0c",
+      "name": "Restaurants",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c4eb3057-f339-4301-a553-d1e12694d2bc",
+          "name": "Toast Get Accessible Restaurants",
+          "request": {
+            "name": "Toast Get Accessible Restaurants",
+            "description": {
+              "content": "Returns an array of `PartnerAccessExternalRep` \nobjects that contain information about the Toast restaurants that your partner \nAPI client can access. If a `lastModified` date is specified, the API returns \nall objects that were created or modified after that date.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restaurants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lastModified",
+                  "value": "<date>",
+                  "description": "Limits the return data to restaurants that changed their \naccess configuration for a partner API client after a \nspecific date and time.\n\nRestaurants returned either:\n\n* Gave access to a partner API client for a partner \n  integration service after a specific date and time.\n\n* Modified the configuration for a partner integration \n  after a specific date and time. \n\nYou must specify the date and time as a UTC timestamp in \nISO 8601 format, for example: \n`2020-03-01T00:00:00.000-0000`. URL encode the timestamp. \nFor example, `2020-03-01T00%3A00%3A00.000-0000`.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "fed860bf-11ba-43f4-9935-afcb97a1a871",
+              "name": "Returns the list of external partner accesses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restaurants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lastModified",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"restaurantGuid\": \"e728cd53-2fa7-4e63-8f8f-93e78ea66b03\",\n    \"managementGroupGuid\": \"bdfda703-2a83-4e0f-9b8a-8ea0ee6cab79\",\n    \"deleted\": true,\n    \"restaurantName\": \"Main Street Cafe\",\n    \"locationName\": \"123 Main Street\",\n    \"createdByEmailAddress\": \"clefebvre@mainstreetcafe.com\",\n    \"externalGroupRef\": \"string\",\n    \"externalRestaurantRef\": \"string\",\n    \"modifiedDate\": 1678846869551,\n    \"createdDate\": 1643858534451,\n    \"isoModifiedDate\": \"2023-03-12 08:32:34.008000+00:00\",\n    \"isoCreatedDate\": \"2022-05-17 10:21:38.008000+00:00\"\n  },\n  {\n    \"restaurantGuid\": \"e728cd53-2fa7-4e63-8f8f-93e78ea66b03\",\n    \"managementGroupGuid\": \"bdfda703-2a83-4e0f-9b8a-8ea0ee6cab79\",\n    \"deleted\": true,\n    \"restaurantName\": \"Main Street Cafe\",\n    \"locationName\": \"123 Main Street\",\n    \"createdByEmailAddress\": \"clefebvre@mainstreetcafe.com\",\n    \"externalGroupRef\": \"string\",\n    \"externalRestaurantRef\": \"string\",\n    \"modifiedDate\": 1678846869551,\n    \"createdDate\": 1643858534451,\n    \"isoModifiedDate\": \"2023-03-12 08:32:34.008000+00:00\",\n    \"isoCreatedDate\": \"2022-05-17 10:21:38.008000+00:00\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48a9dd89-4d91-40c0-98bf-7cf516ac36f4",
+              "name": "Your Toast API client does not have permission to use the \n`/restaurants` endpoint.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restaurants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lastModified",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c12f050-17fe-4cbf-a181-640f2f7e21c7",
+          "name": "Toast Get Restaurant Configuration Information",
+          "request": {
+            "name": "Toast Get Restaurant Configuration Information",
+            "description": {
+              "content": "Returns a `RestaurantInfo` object\nthat contains detailed information about the configuration of a\nrestaurant.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restaurants",
+                ":restaurantGUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeArchived",
+                  "value": "false",
+                  "description": "Set `includeArchived` to `true` if the API should return information\nabout the restaurant even if it is archived. The `General` object in\nthe response includes an `archived` value that your integration can\nuse to determine whether a restaurant is archived or not. A common\nreason for a restaurant being archived is if it was created in\nerror. Set `includeArchived` to `false` if the API should _not_\nreturn information about the restaurant if it is archived. Defaults\nto `false` if omitted.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restaurantGUID",
+                  "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "144ee0a4-87a0-4d08-9bb4-ebd59bb39c64",
+              "name": "A `RestaurantInfo` object that contains detailed \ninformation about the configuration of a restaurant.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restaurants",
+                    ":restaurantGUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeArchived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restaurantGUID",
+                      "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n  \"general\": {\n    \"name\": \"Example Name\",\n    \"locationName\": \"Example Name\",\n    \"locationCode\": \"string\",\n    \"description\": \"string\",\n    \"timeZone\": \"string\",\n    \"closeoutHour\": 1,\n    \"managementGroupGuid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"currencyCode\": \"string\",\n    \"firstBusinessDate\": 1762,\n    \"archived\": true\n  },\n  \"urls\": {\n    \"website\": \"string\",\n    \"facebook\": \"string\",\n    \"twitter\": \"string\",\n    \"orderOnline\": \"string\",\n    \"purchaseGiftCard\": \"string\",\n    \"checkGiftCard\": \"string\"\n  },\n  \"location\": {\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"stateCode\": \"string\",\n    \"administrativeArea\": \"string\",\n    \"zipCode\": \"string\",\n    \"country\": \"string\",\n    \"phone\": \"string\",\n    \"phoneCountryCode\": \"string\",\n    \"latitude\": 1,\n    \"longitude\": 1\n  },\n  \"schedules\": {\n    \"daySchedules\": {\n      \"identifier\": \"string\",\n      \"key_0\": {\n        \"scheduleName\": \"Example Name\",\n        \"services\": [\n          {\n            \"name\": \"Example Name\",\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"overnight\": true\n          },\n          {\n            \"name\": \"Example Name\",\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"overnight\": true\n          }\n        ],\n        \"openTime\": \"2026-06-03T12:00:00.000+0000\",\n        \"closeTime\": \"2026-06-03T12:00:00.000+0000\"\n      },\n      \"key_1\": {\n        \"scheduleName\": \"Example Name\",\n        \"services\": [\n          {\n            \"name\": \"Example Name\",\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"overnight\": true\n          },\n          {\n            \"name\": \"Example Name\",\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"overnight\": true\n          }\n        ],\n        \"openTime\": \"2026-06-03T12:00:00.000+0000\",\n        \"closeTime\": \"2026-06-03T12:00:00.000+0000\"\n      }\n    },\n    \"weekSchedule\": {\n      \"monday\": \"string\",\n      \"tuesday\": \"string\",\n      \"wednesday\": \"string\",\n      \"thursday\": \"string\",\n      \"friday\": \"90a86f12\",\n      \"saturday\": \"string\",\n      \"sunday\": \"string\"\n    }\n  },\n  \"delivery\": {\n    \"enabled\": true,\n    \"minimum\": 1,\n    \"area\": \"string\"\n  },\n  \"onlineOrdering\": {\n    \"enabled\": true,\n    \"scheduling\": true,\n    \"specialRequests\": true,\n    \"specialRequestsMessage\": \"string\",\n    \"paymentOptions\": {\n      \"delivery\": {\n        \"cash\": true,\n        \"ccSameDay\": true,\n        \"ccFuture\": true\n      },\n      \"takeout\": {\n        \"cash\": true,\n        \"ccSameDay\": true,\n        \"ccFuture\": true,\n        \"ccInStore\": true\n      },\n      \"ccTip\": true\n    }\n  },\n  \"prepTimes\": {\n    \"deliveryPrepTime\": 1,\n    \"deliveryTimeAfterOpen\": 1,\n    \"deliveryTimeBeforeClose\": 1,\n    \"takeoutPrepTime\": 1,\n    \"takeoutTimeAfterOpen\": 1,\n    \"takeoutTimeBeforeClose\": 1,\n    \"takeoutThrottlingTime\": 1,\n    \"deliveryThrottlingTime\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96221d2a-7f1e-439f-be95-fb19421fa180",
+              "name": "If the restaurant GUID you provided is invalid, the API will return\nan HTTP 404 response. The API will also return an HTTP 404 response\nif you provided the GUID of an archived restaurant and you have not\nset the `includeArchived` query parameter to `true`.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restaurants",
+                    ":restaurantGUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeArchived",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restaurantGUID",
+                      "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast GUID of the restaurant that you want to get \ninformation about.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://toast-api-server/authentication/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "79951cf2-3c6e-479a-af3f-b58b6d7cad6d",
+    "name": "Toast Authentication Restaurants API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+      "type": "text/plain"
+    }
+  }
+}

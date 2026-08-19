@@ -1,0 +1,510 @@
+{
+  "item": [
+    {
+      "id": "df6db6c2-a799-4342-8a9d-8d87ed985e2e",
+      "name": "Time entries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5a957ad-3e82-4546-ac23-793f587f9d26",
+          "name": "Toast Get Time Entries",
+          "request": {
+            "name": "Toast Get Time Entries",
+            "description": {
+              "content": "Returns an array of `TimeEntry` objects that contain \ninformation about employee shift events. The information \nincludes shift start times, end times, and the start and end \ntimes of break periods.\n\n*  Include one or more `timeEntryId` query parameters set to \n   the GUIDs for specific time entries.\n\n*  Include both a `startDate` and an `endDate` query parameter \n   to get time entries for a specific time period.\n\n*  Include both a `modifiedStartDate` and a `modifiedEndDate` \n   query parameter to get the time entries that were modified \n   during a specific time period.\n\n*  Includes a `businessDate` query parameter to get the time \n   entries with an `inDate` during a specific business date.\n\nValid requests include one or more `timeEntryId` parameters, \nboth a `startDate` and an `endDate`, both a `modifiedStartDate` \nand a `modifiedEndDate`, or a `businessDate`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeEntries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timeEntryIds",
+                  "value": "<string>",
+                  "description": "Optional array of one or more time entry identifiers, \neither the Toast platform GUID or an external identifier. \n100 max.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeEntryIds",
+                  "value": "<string>",
+                  "description": "Optional array of one or more time entry identifiers, \neither the Toast platform GUID or an external identifier. \n100 max.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<ISO-8601>",
+                  "description": "Optional start date and time of time period to match time \nentries. A time entry matches the time period if its \nclock-in `inDate` is after (inclusive) the specified \n`startDate` and before (exclusive) the `endDate`. The \nspecified period cannot be longer than one month.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<ISO-8601>",
+                  "description": "Optional end date and time of time period to match time \nentries. A time entry matches the time period if its \nclock-in `inDate` is after (inclusive) the specified \n`startDate` and before (exclusive) the `endDate`. The \nspecified period cannot be longer than one month.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "modifiedStartDate",
+                  "value": "<ISO-8601>",
+                  "description": "Start date and time of the time period to match modified \ntime entries. A time entry matches the time period if that \nentry was modified after (inclusive) the \n`modifiedStartDate`. If you include this parameter, you \nmust also include the `modifiedEndDate` parameter.  The \nspecified period cannot be longer than one month.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "modifiedEndDate",
+                  "value": "<ISO-8601>",
+                  "description": "End date and time of the time period to match modified time \nentries. A time entry matches the time period if that entry \nwas modified before (exclusive) the `modifiedEndDate`. If \nyou include this parameter, you must also include the \n`modifiedStartDate` parameter.  The specified period cannot \nbe longer than one month.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "businessDate",
+                  "value": "<yyyymmdd>",
+                  "description": "Optional date to match time entries. A time entry matches \nthe business date if its clock-in `inDate` is during the \nbusiness date. The cutoff from one `businessDate` to the \nnext is the `closeoutHour` for the restaurant.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeMissedBreaks",
+                  "value": "<boolean>",
+                  "description": "Optional flag to indicate whether missed breaks should be \nreturned in the breaks array for the time entries.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeArchived",
+                  "value": "<boolean>",
+                  "description": "Controls whether the response includes archived time entries, when\nusing the `startDate` and `endDate` parameters.\n\n**Important**: this parameter _has no effect_ if you use the\n`modifiedStartDate` and `modifiedEndDate` parameters or the\n`businessDate` parameter to select time entries.\n\n* Querying by modified date range _always_ returns archived time entries.\n* Querying by businessDate _never_ returns archived time entries.\n\nThis parameter is optional and the default value is `false`.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "ce5c20dd-8a3f-4bca-a864-73383ff933c0",
+              "name": "Returns the specified time entries.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeEntries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeEntryIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeEntryIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<ISO-8601>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<ISO-8601>"
+                    },
+                    {
+                      "key": "modifiedStartDate",
+                      "value": "<ISO-8601>"
+                    },
+                    {
+                      "key": "modifiedEndDate",
+                      "value": "<ISO-8601>"
+                    },
+                    {
+                      "key": "businessDate",
+                      "value": "<yyyymmdd>"
+                    },
+                    {
+                      "key": "includeMissedBreaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeArchived",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"entityType\": \"string\",\n    \"externalId\": \"string\",\n    \"createdDate\": \"1953-01-30T08:06:43.693Z\",\n    \"modifiedDate\": \"1957-11-14T06:32:29.545Z\",\n    \"deletedDate\": \"1970-02-18T07:31:32.214Z\",\n    \"deleted\": true,\n    \"jobReference\": {\n      \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n      \"entityType\": \"string\",\n      \"externalId\": \"string\"\n    },\n    \"employeeReference\": {\n      \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n      \"entityType\": \"string\",\n      \"externalId\": \"string\"\n    },\n    \"shiftReference\": {\n      \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n      \"entityType\": \"string\",\n      \"externalId\": \"string\"\n    },\n    \"inDate\": \"2020-06-09T02:32:31.353Z\",\n    \"outDate\": \"2001-09-12T04:51:53.343Z\",\n    \"autoClockedOut\": false,\n    \"businessDate\": \"string\",\n    \"regularHours\": 2965.143370367761,\n    \"overtimeHours\": 2784.8577023870657,\n    \"hourlyWage\": 29.537731331263917,\n    \"breaks\": [\n      {\n        \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n        \"breakType\": {\n          \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n          \"entityType\": \"string\"\n        },\n        \"paid\": true,\n        \"inDate\": \"2026-06-03T12:00:00.000+0000\",\n        \"outDate\": \"2026-06-03T12:00:00.000+0000\",\n        \"missed\": true,\n        \"waived\": true,\n        \"auditResponse\": true\n      },\n      {\n        \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n        \"breakType\": {\n          \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n          \"entityType\": \"string\"\n        },\n        \"paid\": true,\n        \"inDate\": \"2026-06-03T12:00:00.000+0000\",\n        \"outDate\": \"2026-06-03T12:00:00.000+0000\",\n        \"missed\": true,\n        \"waived\": true,\n        \"auditResponse\": true\n      }\n    ],\n    \"declaredCashTips\": 6530.962038713558,\n    \"nonCashTips\": 811.1764751702966,\n    \"nonCashTipsRoundingLoss\": 7179.131101779001,\n    \"cashGratuityServiceCharges\": 635.1518803871203,\n    \"nonCashGratuityServiceCharges\": 1348.97815605178,\n    \"tipsWithheld\": 2539.282794123754,\n    \"nonCashSales\": 4771.580348019001,\n    \"cashSales\": 6813.136667997061\n  },\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"entityType\": \"string\",\n    \"externalId\": \"string\",\n    \"createdDate\": \"1956-03-16T10:27:37.056Z\",\n    \"modifiedDate\": \"2014-07-03T01:46:37.691Z\",\n    \"deletedDate\": \"1952-06-29T23:39:04.859Z\",\n    \"deleted\": false,\n    \"jobReference\": {\n      \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n      \"entityType\": \"string\",\n      \"externalId\": \"string\"\n    },\n    \"employeeReference\": {\n      \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n      \"entityType\": \"string\",\n      \"externalId\": \"string\"\n    },\n    \"shiftReference\": {\n      \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n      \"entityType\": \"string\",\n      \"externalId\": \"string\"\n    },\n    \"inDate\": \"1955-01-29T08:37:17.599Z\",\n    \"outDate\": \"2022-12-20T15:08:00.570Z\",\n    \"autoClockedOut\": true,\n    \"businessDate\": \"string\",\n    \"regularHours\": 3478.7549411392683,\n    \"overtimeHours\": 6754.448670603239,\n    \"hourlyWage\": 6034.078512941579,\n    \"breaks\": [\n      {\n        \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n        \"breakType\": {\n          \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n          \"entityType\": \"string\"\n        },\n        \"paid\": true,\n        \"inDate\": \"2026-06-03T12:00:00.000+0000\",\n        \"outDate\": \"2026-06-03T12:00:00.000+0000\",\n        \"missed\": true,\n        \"waived\": true,\n        \"auditResponse\": true\n      },\n      {\n        \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n        \"breakType\": {\n          \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n          \"entityType\": \"string\"\n        },\n        \"paid\": true,\n        \"inDate\": \"2026-06-03T12:00:00.000+0000\",\n        \"outDate\": \"2026-06-03T12:00:00.000+0000\",\n        \"missed\": true,\n        \"waived\": true,\n        \"auditResponse\": true\n      }\n    ],\n    \"declaredCashTips\": 978.7367380055778,\n    \"nonCashTips\": 453.5447202000098,\n    \"nonCashTipsRoundingLoss\": 3123.0557346861533,\n    \"cashGratuityServiceCharges\": 7752.033297823102,\n    \"nonCashGratuityServiceCharges\": 7409.4639399014295,\n    \"tipsWithheld\": 740.9525248783222,\n    \"nonCashSales\": 6935.888572514813,\n    \"cashSales\": 2981.5640635040318\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e79d6e9e-10ff-4055-a4b2-bd547cc79229",
+              "name": "An unexpected internal error occurred. There is a \n`requestId` attached to this error that can be referenced \nby Toast support.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeEntries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeEntryIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeEntryIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<ISO-8601>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<ISO-8601>"
+                    },
+                    {
+                      "key": "modifiedStartDate",
+                      "value": "<ISO-8601>"
+                    },
+                    {
+                      "key": "modifiedEndDate",
+                      "value": "<ISO-8601>"
+                    },
+                    {
+                      "key": "businessDate",
+                      "value": "<yyyymmdd>"
+                    },
+                    {
+                      "key": "includeMissedBreaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeArchived",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d592ca78-3c97-4faf-9709-d61983350f8f",
+          "name": "Toast Get One Time Entry",
+          "request": {
+            "name": "Toast Get One Time Entry",
+            "description": {
+              "content": "Returns a `TimeEntry` object containing information about one \nemployee shift. The information includes the shift start time, \nend time, and the start and end times of break periods.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeEntries",
+                ":timeEntryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeMissedBreaks",
+                  "value": "<boolean>",
+                  "description": "Optional flag to indicate whether missed breaks should be \nreturned in the breaks array for the time entries.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeArchived",
+                  "value": "<boolean>",
+                  "description": "Controls whether the response includes an archived time entry.\nOptional.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "timeEntryId",
+                  "description": "(Required) The Toast platform GUID or an external identifier for the \ntime entry.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "cbbbb361-6e58-4beb-9c5c-698a2f019d24",
+              "name": "Returns the specified time entry.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeEntries",
+                    ":timeEntryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeMissedBreaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeArchived",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "timeEntryId",
+                      "description": "(Required) The Toast platform GUID or an external identifier for the \ntime entry.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n  \"entityType\": \"string\",\n  \"externalId\": \"string\",\n  \"createdDate\": \"2018-02-27T16:05:21.590Z\",\n  \"modifiedDate\": \"2004-09-03T06:34:35.443Z\",\n  \"deletedDate\": \"1956-05-15T08:30:16.408Z\",\n  \"deleted\": true,\n  \"jobReference\": {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"entityType\": \"string\",\n    \"externalId\": \"string\"\n  },\n  \"employeeReference\": {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"entityType\": \"string\",\n    \"externalId\": \"string\"\n  },\n  \"shiftReference\": {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n    \"entityType\": \"string\",\n    \"externalId\": \"string\"\n  },\n  \"inDate\": \"1987-02-26T10:07:44.740Z\",\n  \"outDate\": \"2000-03-05T06:37:48.161Z\",\n  \"autoClockedOut\": true,\n  \"businessDate\": \"string\",\n  \"regularHours\": 1380.7413248398404,\n  \"overtimeHours\": 4170.766753280478,\n  \"hourlyWage\": 939.9342886298334,\n  \"breaks\": [\n    {\n      \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n      \"breakType\": {\n        \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n        \"entityType\": \"string\"\n      },\n      \"paid\": true,\n      \"inDate\": \"2026-06-03T12:00:00.000+0000\",\n      \"outDate\": \"2026-06-03T12:00:00.000+0000\",\n      \"missed\": true,\n      \"waived\": true,\n      \"auditResponse\": true\n    },\n    {\n      \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n      \"breakType\": {\n        \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\",\n        \"entityType\": \"string\"\n      },\n      \"paid\": true,\n      \"inDate\": \"2026-06-03T12:00:00.000+0000\",\n      \"outDate\": \"2026-06-03T12:00:00.000+0000\",\n      \"missed\": true,\n      \"waived\": true,\n      \"auditResponse\": true\n    }\n  ],\n  \"declaredCashTips\": 2158.4392637674187,\n  \"nonCashTips\": 647.4372908218728,\n  \"nonCashTipsRoundingLoss\": 5719.2858737609795,\n  \"cashGratuityServiceCharges\": 1546.5330791538522,\n  \"nonCashGratuityServiceCharges\": 6992.547985876549,\n  \"tipsWithheld\": 7222.994666357531,\n  \"nonCashSales\": 1304.4834525950166,\n  \"cashSales\": 2707.089922880926\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04ff9223-4076-4180-8914-87e737ba5ea4",
+              "name": "The GUID or external identifier was malformed.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeEntries",
+                    ":timeEntryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeMissedBreaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeArchived",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "timeEntryId",
+                      "description": "(Required) The Toast platform GUID or an external identifier for the \ntime entry.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8e12eaf0-3ad6-4875-b3d9-1c85439383b4",
+              "name": "An unexpected internal error occurred. There is a \n`requestId` attached to this error that can be referenced \nby Toast support.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeEntries",
+                    ":timeEntryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeMissedBreaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "includeArchived",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "timeEntryId",
+                      "description": "(Required) The Toast platform GUID or an external identifier for the \ntime entry.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast platform GUID of the restaurant that is the \ncontext for this operation.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://toast-api-server/authentication/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6cd051bc-2462-4b82-b5b5-6731da837a46",
+    "name": "Toast Authentication Time entries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "item": [
+    {
+      "id": "8eaec6a3-14f9-43d5-9f98-27565c8639c1",
+      "name": "Groups",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0766beae-c08c-4b83-b338-78db8277d223",
+          "name": "Toast Get Restaurants in a Management Group",
+          "request": {
+            "name": "Toast Get Restaurants in a Management Group",
+            "description": {
+              "content": "Returns an array of `Restaurant` objects that are a part of the \nrestaurant management group you specify in the \n`managementGroupGUID` path parameter. Each `Restaurant` object \ncontains the unique Toast platform identifier for the restaurant in \nits `guid` value.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":managementGroupGUID",
+                "restaurants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "managementGroupGUID",
+                  "description": "(Required) The GUID of the restaurant management group.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Toast GUID of one restaurant location in the management \ngroup.\n",
+                "key": "Toast-Restaurant-External-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "ac072df4-9bb5-4e06-9632-765e17208258",
+              "name": "An array of `Restaurant` objects.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":managementGroupGUID",
+                    "restaurants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "managementGroupGUID",
+                      "description": "(Required) The GUID of the restaurant management group.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Toast GUID of one restaurant location in the management \ngroup.\n",
+                    "key": "Toast-Restaurant-External-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\"\n  },\n  {\n    \"guid\": \"5a401af8-d2e2-4090-8c45-9f87b8b6c4d1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://toast-api-server/authentication/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "249d1053-22f3-4e55-b161-86ca7c78e0df",
+    "name": "Toast Authentication Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The authentication API returns an authentication token that you can present\nwhen your integration client software uses other Toast APIs. For more\ninformation about authentication, see [the Toast Developer\nGuide](https://doc.toasttab.com/doc/devguide/authentication.html).\n\n\nContact Support:\n Name: Toast developer support",
+      "type": "text/plain"
+    }
+  }
+}
