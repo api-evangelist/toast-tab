@@ -28,6 +28,22 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/toast-tab.png
 tags:
+- Restaurant
+- Point-of-Sale
+- Payments
+- Online Ordering
+- Delivery
+- Loyalty
+- Gift Cards
+- Menus
+- Order
+- Kitchen
+- Labor
+- Scheduling
+- Inventory
+- Hospitality
+- Partner Integrations
+tags_raw:
 - Restaurants
 - Point Of Sale
 - Payments
@@ -86,6 +102,10 @@ apis:
   humanURL: https://doc.toasttab.com/openapi/ordermgmt.configuration/overview/
   baseURL: https://ws-api.toasttab.com/ordermgmt-config/v1
   tags:
+  - Order
+  - Throttling
+  - Configuration
+  tags_raw:
   - Orders
   - Throttling
   - Configuration
@@ -185,6 +205,10 @@ apis:
   baseURL: https://doc.toasttab.com/openapi/giftcards
   tags:
   - Gift Cards
+  - Integration
+  - Partners
+  tags_raw:
+  - Gift Cards
   - Integrations
   - Partners
   properties:
@@ -199,6 +223,10 @@ apis:
   baseURL: https://doc.toasttab.com/openapi/loyalty
   tags:
   - Loyalty
+  - Integration
+  - Partners
+  tags_raw:
+  - Loyalty
   - Integrations
   - Partners
   properties:
@@ -212,6 +240,11 @@ apis:
   humanURL: https://doc.toasttab.com/openapi/tender/overview/
   baseURL: https://doc.toasttab.com/openapi/tender
   tags:
+  - Tender
+  - Payments
+  - Integration
+  - Partners
+  tags_raw:
   - Tender
   - Payments
   - Integrations
@@ -3036,6 +3069,8 @@ apis:
   humanURL: https://doc.toasttab.com/openapi/authentication/overview/
   baseURL: https://ws-api.toasttab.com/authentication/v1
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -3738,6 +3773,8 @@ apis:
   humanURL: https://doc.toasttab.com/openapi/authentication/overview/
   baseURL: https://ws-api.toasttab.com/authentication/v1
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -5849,6 +5886,8 @@ apis:
   humanURL: https://doc.toasttab.com/openapi/authentication/overview/
   baseURL: https://ws-api.toasttab.com/authentication/v1
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -7256,6 +7295,8 @@ apis:
   humanURL: https://doc.toasttab.com/openapi/authentication/overview/
   baseURL: https://ws-api.toasttab.com/authentication/v1
   tags:
+  - Restaurant
+  tags_raw:
   - Restaurants
   properties:
   - type: OpenAPI
@@ -9362,6 +9403,8 @@ apis:
   humanURL: https://doc.toasttab.com/openapi/authentication/overview/
   baseURL: https://ws-api.toasttab.com/authentication/v1
   tags:
+  - Time Entries
+  tags_raw:
   - Time entries
   properties:
   - type: OpenAPI
