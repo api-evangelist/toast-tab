@@ -13,6 +13,18 @@ description: 'Toast (NYSE: TOST) is a cloud-based restaurant technology platform
   Analytics API Access (Restaurant Management Suites Pro), and Partner Integrations
   (technology companies building productized integrations).'
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: approval
