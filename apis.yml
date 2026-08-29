@@ -10114,6 +10114,9 @@ apis:
   - type: JSONLD
     url: json-ld/toast-tab-partners-context.jsonld
 common:
+- type: CapabilityMap
+  url: capabilities/toast-tab-capability-edges.yml
+  name: Toast Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/toast/overview
 - type: AgenticAccess

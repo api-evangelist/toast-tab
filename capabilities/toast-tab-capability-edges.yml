@@ -1,0 +1,56 @@
+slug: toast-tab
+provider: Toast
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Travel & Hospitality
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Employees
+  spec_file: toast-tab-employees-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.85
+  evidence: POST /employees  employeesPost  Toast Add an Employee; PUT /employees/{employeeId}/wageOverrides  Toast
+    Replace Wage Overrides; PUT /employees/{employeeId}/jobs  Toast Replace a Jobs List
+  reason: CRUD over employee records, job assignments and wage overrides — employee record/HR operations
+    administration. Wage overrides touch compensation but records management dominates.
+- tag: Discounts
+  spec_file: toast-tab-discounts-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.7
+  evidence: POST /orders/{orderGuid}/checks/{checkGuid}/appliedDiscounts  Toast Add Check-level Discounts;
+    POST /applicableDiscounts  Toast Get Applicable Discounts
+  reason: Operations determine applicable discounts and apply check- and item-level discounts to restaurant
+    orders — discount and promotion management. Some ambiguity with transactional order processing.
+- tag: Menus
+  spec_file: toast-tab-menus-api-openapi.yml
+  capability_id: BC-4070.10
+  capability_id_l1: BC-4070
+  capability_name: Menu Engineering & Recipe Management
+  confidence: 0.7
+  evidence: GET /menus menusGet 'Toast Get Menus'; schemas ModifierGroup, ModifierOption, Portion, PricingRules,
+    TimeSpecificPrice
+  reason: The operation retrieves the restaurant's structured menu (items, modifier groups, portions,
+    pricing rules), which is menu definition/engineering within F&B operations rather than generic product
+    master data.
+- tag: Shifts
+  spec_file: toast-tab-shifts-api-openapi.yml
+  capability_id: BC-300
+  capability_id_l1: BC-300
+  capability_name: Human Capital Management
+  confidence: 0.7
+  evidence: POST /shifts shiftsPost 'Toast Create a Shift'; PUT /shifts/{shiftId} 'Toast Update a Shift';
+    schemas Shift, ScheduleConfig
+  reason: CRUD over employee work shifts and schedule configuration is workforce scheduling within Human
+    Capital Management; no listed L2 cleanly covers shift rostering, so L1 only.
