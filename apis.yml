@@ -9415,7 +9415,7 @@ apis:
   humanURL: https://doc.toasttab.com/openapi/authentication/overview/
   baseURL: https://ws-api.toasttab.com/authentication/v1
   tags:
-  - Time Entries
+  - Time entries
   tags_raw:
   - Time entries
   properties:
